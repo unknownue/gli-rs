@@ -20,3 +20,7 @@ cc = { version = "1.0.*", features = ["parallel"] }
 
 [build-dependencies.bindgen]
 version = "0.47.*"
+optional = true
+
+[features]
+bindings_generation = ["bindgen"]

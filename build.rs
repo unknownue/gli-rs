@@ -1,7 +1,9 @@
 
-const OUTPUT_FILE: &'static str = "gen/binding.rs";
-
+#[cfg(feature = "bindings_generation")]
+const OUTPUT_LOCARTION: &'static str = "gen/bindings.rs";
+#[cfg(feature = "bindings_generation")]
 use std::path::Path;
+
 use std::env;
 
 fn main() {
@@ -36,21 +38,28 @@ fn main() {
             .cpp(true);
     }
 
-    build.compile("gli_cpp");
+    build.compile("libgli.a");
 
     generate_bindings();
 }
 
 
+#[cfg(feature = "bindings_generation")]
 fn generate_bindings() {
 
     let mut bindings = bindgen::Builder::default()
         .header("vendors/gli/gli/gli.hpp")
-        .clang_arg("-I./wrapper")
-        .clang_arg("-I./vendors/gli/external")
-        .clang_arg("-std=c++11")
+        .clang_args(&[
+            "-I./wrapper",
+            "-I./vendors/gli/external",
+            "-std=c++11",
+        ])
+        .whitelist_type(".*texture.*")
+        .whitelist_function("gli::is_.*")
+        .opaque_type("__darwin_.*")
+        .opaque_type("std::.*")
+        .derive_debug(true)
         .rustfmt_bindings(true)
-        .blacklist_type("__darwin_.*")
         .trust_clang_mangling(false)
         .layout_tests(false);
 
@@ -66,6 +75,9 @@ fn generate_bindings() {
     let bindings_generated = bindings.generate()
         .expect("Failed to generate bindings!");
 
-    bindings_generated.write_to_file(Path::new(OUTPUT_FILE))
+    bindings_generated.write_to_file(Path::new(OUTPUT_LOCARTION))
         .expect("Failed to write bindings!");
 }
+
+#[cfg(not(feature = "bindings_generation"))]
+fn generate_bindings() {}
