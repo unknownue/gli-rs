@@ -1,8 +1,22 @@
+
 [package]
 name    = "gli-rs"
 version = "0.1.0"
 authors = ["usami-renko <usami-ssc@protonmail.com>"]
 edition = "2018"
+build   = "build.rs"
+
+homepage    = "https://github.com/Usami-Renko/gli-rs"
+repository  = "https://github.com/Usami-Renko/gli-rs"
 description = "Rust binding for OpenGL Image(GLI)"
+keywords    = ["Graphics", "OpenGL Image"]
+license     = "MIT"
 
 [dependencies]
+
+
+[build-dependencies]
+cc = { version = "1.0.*", features = ["parallel"] }
+
+[build-dependencies.bindgen]
+version = "0.47.*"
