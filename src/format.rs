@@ -125,6 +125,17 @@ impl Format {
     }
 }
 
+pub struct Swizzle(gli::swizzle);
+
+impl Swizzle {
+
+    /// Determine whether the Swizzle value represent a channel.
+    #[inline]
+    pub fn is_channel(&self) -> bool {
+        self.0 >= Swizzle::CHANNEL_FIRST.0 && self.0 <= Swizzle::LAST.0
+    }
+}
+
 impl Format {
     pub const UNDEFINED: Format = Format(gli::format_FORMAT_UNDEFINED);
 
@@ -372,3 +383,14 @@ impl Format {
     pub const LAST              : Format = Format(gli::format_FORMAT_LAST);
 }
 
+impl Swizzle {
+    pub const RED           : Swizzle = Swizzle(gli::swizzle_SWIZZLE_RED);
+    pub const FIRST         : Swizzle = Swizzle(gli::swizzle_SWIZZLE_FIRST);
+    pub const CHANNEL_FIRST : Swizzle = Swizzle(gli::swizzle_SWIZZLE_CHANNEL_FIRST);
+    pub const GREEN         : Swizzle = Swizzle(gli::swizzle_SWIZZLE_GREEN);
+    pub const BLUE          : Swizzle = Swizzle(gli::swizzle_SWIZZLE_BLUE);
+    pub const ALPHA         : Swizzle = Swizzle(gli::swizzle_SWIZZLE_ALPHA);
+    pub const CHANNEL_LAST  : Swizzle = Swizzle(gli::swizzle_SWIZZLE_CHANNEL_LAST);
+    pub const ZERO          : Swizzle = Swizzle(gli::swizzle_SWIZZLE_ZERO);
+    pub const LAST          : Swizzle = Swizzle(gli::swizzle_SWIZZLE_LAST);
+}
