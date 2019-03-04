@@ -17,10 +17,8 @@ license     = "MIT"
 
 [build-dependencies]
 cc = { version = "1.0.*", features = ["parallel"] }
-
-[build-dependencies.bindgen]
-version = "0.47.*"
-optional = true
+bindgen = "0.47.*"
 
 [features]
-bindings_generation = ["bindgen"]
+# use this feature to enable binding generation.
+bindings = []
