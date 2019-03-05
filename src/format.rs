@@ -2,6 +2,7 @@
 use crate::ffi::root::gli;
 
 /// Texture data format.
+#[derive(Debug)]
 pub struct Format(pub(crate) gli::format);
 
 impl Format {

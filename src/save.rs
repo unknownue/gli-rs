@@ -16,7 +16,7 @@ use std::ffi::CString;
 /// `path` is the path for where to save the file. It must include the filename and filename extension.
 ///
 /// This function ignores the filename extension in the path and save to DDS anyway but keep the requested filename extension.
-pub fn save(texture: impl GliTexture, path: impl AsRef<Path>) -> Result<()> {
+pub fn save(texture: &impl GliTexture, path: impl AsRef<Path>) -> Result<()> {
 
     if let Some(dst_extension) = path.as_ref().extension().and_then(OsStr::to_str) {
         match dst_extension {
@@ -37,7 +37,7 @@ pub fn save(texture: impl GliTexture, path: impl AsRef<Path>) -> Result<()> {
 /// `path` is the path for where to save the file. It must include the filename and filename extension.
 ///
 /// This function ignores the filename extension in the path and save to DDS anyway but keep the requested filename extension.
-pub fn save_dds(texture: impl GliTexture, path: impl AsRef<Path>) -> Result<()> {
+pub fn save_dds(texture: &impl GliTexture, path: impl AsRef<Path>) -> Result<()> {
 
     let dst_path = path.as_ref().to_str()
         .and_then(|p| CString::new(p).ok())
@@ -57,7 +57,7 @@ pub fn save_dds(texture: impl GliTexture, path: impl AsRef<Path>) -> Result<()> 
 /// `path` is the path for where to save the file. It must include the filename and filename extension.
 ///
 /// This function ignores the filename extension in the path and save to KTX anyway but keep the requested filename extension.
-pub fn save_ktx(texture: impl GliTexture, path: impl AsRef<Path>) -> Result<()> {
+pub fn save_ktx(texture: &impl GliTexture, path: impl AsRef<Path>) -> Result<()> {
 
     let dst_path = path.as_ref().to_str()
         .and_then(|p| CString::new(p).ok())
@@ -77,7 +77,7 @@ pub fn save_ktx(texture: impl GliTexture, path: impl AsRef<Path>) -> Result<()> 
 /// `path` is the path for where to save the file. It must include the filename and filename extension.
 ///
 /// This function ignores the filename extension in the path and save to KMG anyway but keep the requested filename extension.
-pub fn save_kmg(texture: impl GliTexture, path: impl AsRef<Path>) -> Result<()> {
+pub fn save_kmg(texture: &impl GliTexture, path: impl AsRef<Path>) -> Result<()> {
 
     let dst_path = path.as_ref().to_str()
         .and_then(|p| CString::new(p).ok())
