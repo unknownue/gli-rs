@@ -1,7 +1,8 @@
 
 use crate::ffi::root::gli;
 
-pub struct Format(gli::format);
+/// Texture data format.
+pub struct Format(pub(crate) gli::format);
 
 impl Format {
 
@@ -125,6 +126,7 @@ impl Format {
     }
 }
 
+/// Represent the source of a channel.
 pub struct Swizzle(gli::swizzle);
 
 impl Swizzle {
@@ -139,8 +141,8 @@ impl Swizzle {
 impl Format {
     pub const UNDEFINED: Format = Format(gli::format_FORMAT_UNDEFINED);
 
-    pub const RG4_UNORM_PACK8     : Format = Format(gli::format_FORMAT_RG4_UNORM_PACK8);
     pub const FIRST               : Format = Format(gli::format_FORMAT_FIRST);
+    pub const RG4_UNORM_PACK8     : Format = Format(gli::format_FORMAT_RG4_UNORM_PACK8);
     pub const RGBA4_UNORM_PACK16  : Format = Format(gli::format_FORMAT_RGBA4_UNORM_PACK16);
     pub const BGRA4_UNORM_PACK16  : Format = Format(gli::format_FORMAT_BGRA4_UNORM_PACK16);
     pub const R5G6B5_UNORM_PACK16 : Format = Format(gli::format_FORMAT_R5G6B5_UNORM_PACK16);
@@ -384,8 +386,8 @@ impl Format {
 }
 
 impl Swizzle {
-    pub const RED           : Swizzle = Swizzle(gli::swizzle_SWIZZLE_RED);
     pub const FIRST         : Swizzle = Swizzle(gli::swizzle_SWIZZLE_FIRST);
+    pub const RED           : Swizzle = Swizzle(gli::swizzle_SWIZZLE_RED);
     pub const CHANNEL_FIRST : Swizzle = Swizzle(gli::swizzle_SWIZZLE_CHANNEL_FIRST);
     pub const GREEN         : Swizzle = Swizzle(gli::swizzle_SWIZZLE_GREEN);
     pub const BLUE          : Swizzle = Swizzle(gli::swizzle_SWIZZLE_BLUE);

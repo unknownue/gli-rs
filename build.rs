@@ -52,6 +52,7 @@ fn generate_bindings() {
             "-std=c++11",
         ])
         .whitelist_type(".*texture.*")
+        .whitelist_type(".*image.*")
         .whitelist_function("gli::is_.*")
         .opaque_type("__darwin_.*")
         .opaque_type("std::.*")
