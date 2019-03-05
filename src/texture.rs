@@ -1,7 +1,19 @@
 
 pub use self::t1d::Texture1D;
+pub use self::t2d::Texture2D;
+pub use self::t3d::Texture3D;
+pub use self::t1d_array::Texture1DArray;
+pub use self::t2d_array::Texture2DArray;
+pub use self::tcube::TextureCube;
+pub use self::tcube_array::TextureCubeArray;
 
 mod t1d;
+mod t2d;
+mod t3d;
+mod t1d_array;
+mod t2d_array;
+mod tcube;
+mod tcube_array;
 
 use std::os::raw::c_void;
 

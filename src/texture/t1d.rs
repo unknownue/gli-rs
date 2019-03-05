@@ -7,17 +7,9 @@ use crate::texture::GliTexture;
 use crate::texture::inner::TextureAccess;
 use crate::Extent1d;
 
+/// 1d texture
 pub struct Texture1D {
     ffi: gli::texture1d,
-}
-
-// TODO: Impl index operations.
-impl ::std::ops::Index<usize> for Texture1D {
-    type Output = GliImage;
-
-    fn index(&self, _index: usize) -> &Self::Output {
-        unimplemented!()
-    }
 }
 
 impl Texture1D {
@@ -62,11 +54,19 @@ impl Texture1D {
     }
 }
 
+// TODO: Impl index operations.
+impl ::std::ops::Index<usize> for Texture1D {
+    type Output = GliImage;
+
+    fn index(&self, _index: usize) -> &Self::Output {
+        unimplemented!("Texture1D index operation")
+    }
+}
+
 impl GliTexture for Texture1D {
     const TARGET_TYPE: Target = Target::TARGET_1D;
     type ExtentType = Extent1d; // equivalent to gli::texture1d_extent_type.
 
-    /// Return the size of a texture instance: width, height and depth.
     fn extent(&self, level: usize) -> Self::ExtentType {
         unsafe { self.ffi.extent(level) }
     }
