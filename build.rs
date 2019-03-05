@@ -44,16 +44,17 @@ fn generate_bindings() {
 
     const OUTPUT_LOCATION: &'static str = "build/bindings.rs";
 
-    let mut bindings = bindgen::Builder::default()
+    bindgen::Builder::default()
         .header("./wrapper/gli_lib.cpp")
         .clang_args(&[
             "-I./vendors/gli/external",
             "-I./vendors/gli/gli",
             "-std=c++11",
         ])
-        .whitelist_type(".*texture.*")
-        .whitelist_type(".*image.*")
+        .whitelist_type("gli::texture.*")
+        .whitelist_type("gli::image.*")
         .whitelist_function("gli::is_.*")
+        .whitelist_function("gli::load.*")
         .opaque_type("__darwin_.*")
         .opaque_type("std::.*")
         .opaque_type("glm::.*")
@@ -61,12 +62,9 @@ fn generate_bindings() {
         .derive_debug(true)
         .rustfmt_bindings(true)
         .trust_clang_mangling(true)
-        .layout_tests(false);
-
-    let bindings_generated = bindings.generate()
-        .expect("Failed to generate bindings!");
-
-    bindings_generated.write_to_file(::std::path::Path::new(OUTPUT_LOCATION))
+        .layout_tests(false)
+        .generate().expect("Failed to generate bindings!")
+        .write_to_file(::std::path::Path::new(OUTPUT_LOCATION))
         .expect("Failed to write bindings!");
 }
 

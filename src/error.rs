@@ -1,4 +1,6 @@
 
+#![allow(dead_code)]
+
 use failure::{Backtrace, Context, Fail};
 use std::fmt;
 use std::path::{Path, PathBuf};
@@ -39,6 +41,7 @@ impl Fail for Error {
 }
 
 impl fmt::Display for Error {
+
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         self.ctx.fmt(f)
     }
@@ -56,12 +59,15 @@ pub enum ErrorKind {
 
     /// Generally, these errors correspond to bugs in this library.
     Bug(String),
+
+    /// An unexpected I/O error occurred.
+    Io,
 }
 
 impl ErrorKind {
 
     /// A convenience routine for creating an error associated with a path.
-    pub(crate) fn path(path: impl AsRef<Path>) -> ErrorKind {
+    pub fn path(path: impl AsRef<Path>) -> ErrorKind {
         ErrorKind::Path(path.as_ref().to_path_buf())
     }
 }
@@ -78,8 +84,11 @@ impl fmt::Display for ErrorKind {
                 write!(f, "{}", path.display())
             },
             | ErrorKind::Bug(ref msg) => {
-                let report = "Please report this bug with a backtrace at https://github.com/Usami-Renko/gli-rs";
+                let report = "Please report this bug with a backtrace for this repository";
                 write!(f, "Bug: {}\n{}", msg, report)
+            },
+            | ErrorKind::Io => {
+                write!(f, "I/O error")
             },
         }
     }

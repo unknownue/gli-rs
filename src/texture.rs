@@ -21,15 +21,17 @@ use crate::format::{Format, Swizzles};
 use crate::target::Target;
 use crate::Extent3d;
 
-mod inner {
+pub(crate) mod inner {
 
-    pub trait TextureAccess {
-        fn raw_texture(&self) -> &crate::ffi::root::gli::texture;
-        fn raw_texture_mut(&mut self) -> &mut crate::ffi::root::gli::texture;
+    use crate::ffi::root::gli::texture as RawTexture;
+
+    pub trait TextureAccessible: From<RawTexture> {
+        fn raw_texture(&self) -> &RawTexture;
+        fn raw_texture_mut(&mut self) -> &mut RawTexture;
     }
 }
 
-pub trait GliTexture: inner::TextureAccess + Sized {
+pub trait GliTexture: inner::TextureAccessible + Sized {
     const TARGET_TYPE: Target;
     type ExtentType;
 

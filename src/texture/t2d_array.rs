@@ -4,7 +4,7 @@ use crate::format::{Format, Swizzle};
 use crate::target::Target;
 use crate::image::GliImage;
 use crate::texture::GliTexture;
-use crate::texture::inner::TextureAccess;
+use crate::texture::inner::TextureAccessible;
 use crate::Extent2d;
 
 /// 2d array texture
@@ -73,7 +73,7 @@ impl GliTexture for Texture2DArray {
     }
 }
 
-impl TextureAccess for Texture2DArray {
+impl TextureAccessible for Texture2DArray {
 
     fn raw_texture(&self) -> &gli::texture {
         &self.ffi._base
@@ -81,5 +81,12 @@ impl TextureAccess for Texture2DArray {
 
     fn raw_texture_mut(&mut self) -> &mut gli::texture {
         &mut self.ffi._base
+    }
+}
+
+impl From<gli::texture> for Texture2DArray {
+
+    fn from(ffi: gli::texture) -> Texture2DArray {
+        Texture2DArray { ffi: gli::texture2d_array { _base: ffi } }
     }
 }
