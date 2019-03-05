@@ -127,7 +127,9 @@ impl Format {
 }
 
 /// Represent the source of a channel.
-pub struct Swizzle(gli::swizzle);
+pub struct Swizzle(pub(crate) gli::swizzle);
+
+pub type Swizzles = [gli::swizzle; 4];
 
 impl Swizzle {
 

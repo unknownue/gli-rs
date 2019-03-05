@@ -3,7 +3,7 @@ use crate::ffi::root::gli;
 
 
 #[derive(Debug, Clone, Eq, PartialEq)]
-pub struct Target(gli::target);
+pub struct Target(pub(crate) gli::target);
 
 impl Target {
 
