@@ -55,6 +55,7 @@ fn generate_bindings() {
         .whitelist_type("gli::image.*")
         .whitelist_function("gli::is_.*")
         .whitelist_function("gli::load.*")
+        .whitelist_function("gli::save.*")
         .opaque_type("__darwin_.*")
         .opaque_type("std::.*")
         .opaque_type("glm::.*")

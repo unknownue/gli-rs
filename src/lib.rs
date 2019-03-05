@@ -7,12 +7,15 @@ pub use self::image::GliImage;
 
 pub use self::target::Target;
 pub use self::format::{Format, Swizzle, Swizzles};
+
 pub use self::load::*;
+pub use self::save::*;
 
 pub mod texture;
 
 mod target;
 mod load;
+mod save;
 mod image;
 mod format;
 

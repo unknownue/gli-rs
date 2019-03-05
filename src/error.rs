@@ -21,8 +21,12 @@ impl Error {
         self.ctx.get_context()
     }
 
-    pub fn parse<T: AsRef<str>>(msg: T) -> Error {
-        Error::from(ErrorKind::Parse(msg.as_ref().to_string()))
+    pub fn load_texture(msg: impl AsRef<str>) -> Error {
+        Error::from(ErrorKind::LoadTexture(msg.as_ref().to_string()))
+    }
+
+    pub fn save_texture(msg: impl AsRef<str>) -> Error {
+        Error::from(ErrorKind::SaveTexture(msg.as_ref().to_string()))
     }
 
     pub fn bug<T: AsRef<str>>(msg: T) -> Error {
@@ -51,8 +55,11 @@ impl fmt::Display for Error {
 #[derive(Clone, Debug)]
 pub enum ErrorKind {
 
-    /// An error that occurred while parsing a data source
-    Parse(String),
+    /// An error that occurred while loading a data source from texture asset.
+    LoadTexture(String),
+
+    /// An error that occurred while saving texture to specific image format.
+    SaveTexture(String),
 
     /// An error that occurred while working with a file path.
     Path(PathBuf),
@@ -77,8 +84,11 @@ impl fmt::Display for ErrorKind {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
 
         match *self {
-            | ErrorKind::Parse(ref msg) => {
-                write!(f, "Parse error: {}", msg)
+            | ErrorKind::LoadTexture(ref msg) => {
+                write!(f, "Load texture error: {}", msg)
+            },
+            | ErrorKind::SaveTexture(ref msg) => {
+                write!(f, "Save texture error: {}", msg)
             },
             | ErrorKind::Path(ref path) => {
                 write!(f, "{}", path.display())
