@@ -13,7 +13,7 @@ keywords    = ["Graphics", "OpenGL Image"]
 license     = "MIT"
 
 [dependencies]
-
+failure = "0.1.5"
 
 [build-dependencies]
 cc = { version = "1.0.*", features = ["parallel"] }
