@@ -1,6 +1,8 @@
 
 use crate::ffi::root::gli;
 
+use std::fmt;
+
 
 #[derive(Debug, Clone, Eq, PartialEq)]
 pub struct Target(pub(crate) gli::target);
@@ -61,4 +63,22 @@ impl Target {
     pub const TARGET_CUBE       : Target = Target(gli::target_TARGET_CUBE);
     pub const TARGET_CUBE_ARRAY : Target = Target(gli::target_TARGET_CUBE_ARRAY);
     pub const TARGET_LAST       : Target = Target(gli::target_TARGET_LAST);
+}
+
+impl fmt::Display for Target {
+
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match *self {
+            | Target::TARGET_1D         => write!(f, stringify!(Target::TARGET_1D        )),
+            | Target::TARGET_1D_ARRAY   => write!(f, stringify!(Target::TARGET_1D_ARRAY  )),
+            | Target::TARGET_2D         => write!(f, stringify!(Target::TARGET_2D        )),
+            | Target::TARGET_2D_ARRAY   => write!(f, stringify!(Target::TARGET_2D_ARRAY  )),
+            | Target::TARGET_3D         => write!(f, stringify!(Target::TARGET_3D        )),
+            | Target::TARGET_RECT       => write!(f, stringify!(Target::TARGET_RECT      )),
+            | Target::TARGET_RECT_ARRAY => write!(f, stringify!(Target::TARGET_RECT_ARRAY)),
+            | Target::TARGET_CUBE       => write!(f, stringify!(Target::TARGET_CUBE      )),
+            | Target::TARGET_CUBE_ARRAY => write!(f, stringify!(Target::TARGET_CUBE_ARRAY)),
+            | _ => write!(f, "Unknown target"),
+        }
+    }
 }

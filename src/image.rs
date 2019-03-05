@@ -4,6 +4,7 @@ use std::os::raw::c_void;
 use crate::ffi::root::gli;
 use crate::format::Format;
 use crate::Extent3d;
+use crate::texture::GliTexture;
 
 /// GliImage representation for a single texture level.
 pub struct GliImage {
@@ -28,7 +29,7 @@ impl GliImage {
     /// This image object is effectively an image view where format can be reinterpreted with a different compatible image format.
     /// For formats to be compatible, the block size of source and destination must match.
     #[inline]
-    pub fn copy_from(image: &GliImage, format: Format) -> GliImage {
+    pub fn new_from(image: &GliImage, format: Format) -> GliImage {
         GliImage { ffi: unsafe { gli::image::new2(&image.ffi, format.0) } }
     }
 
@@ -84,4 +85,32 @@ impl GliImage {
     // TODO: another size(&self) method is missing, due to template specialization.
 
     // TODO: store(..) methods is missing, due to template specialization.
+
+//    /// This function is just for inner crate usage. Don't call this function.
+//    #[inline]
+//    pub(crate) fn inner_new(texture: &impl GliTexture) -> GliImage {
+//
+//        // compute_data
+//        let compute_data = {
+//            let base_offset = gli::storage_linear_base_offset()
+//
+//        };
+//
+//
+//        size_type const BaseOffset = this->Storage->base_offset(BaseLayer, BaseFace, BaseLevel);
+//
+//        return this->Storage->data() + BaseOffset;
+//
+//
+//        let image = gli::image {
+//            Storage: texture.raw_texture().Storage,
+//            Format: texture.format().0,
+//            BaseLevel: texture.base_level(),
+//            Data: *mut root::gli::image_data_type,
+//            Size: root::gli::image_size_type,
+//        };
+//
+//
+//        unimplemented!()
+//    }
 }

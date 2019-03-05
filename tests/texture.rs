@@ -28,7 +28,8 @@ mod texture {
             println!("\tLayers count: {}", texture_loaded.layers());
             println!("\tLevels count: {}", texture_loaded.levels());
             println!("\tSize: {}", texture_loaded.size());
-            println!("\tFormat: {:?}", texture_loaded.format());
+            println!("\tFormat: {}", texture_loaded.format());
+            println!("\tTarget: {}", texture_loaded.target());
         }
 
         gli::save_dds(&texture_loaded, Path::new(FILE_SAVE_PATH))
@@ -55,7 +56,8 @@ mod texture {
             println!("\tLayers count: {}", texture_loaded.layers());
             println!("\tLevels count: {}", texture_loaded.levels());
             println!("\tSize: {}", texture_loaded.size());
-            println!("\tFormat: {:?}", texture_loaded.format());
+            println!("\tFormat: {}", texture_loaded.format());
+            println!("\tTarget: {}", texture_loaded.target());
         }
 
         gli::save_ktx(&texture_loaded, Path::new(FILE_SAVE_PATH))
