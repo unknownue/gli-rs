@@ -72,11 +72,22 @@ mod texture {
 //
 //        let mut texture_loaded: Texture2D = gli::load_ktx(Path::new(TEST_KTX_PATH))
 //            .unwrap();
-//        let mut raw_texture = texture_loaded.raw_texture_mut();
 //
 //        unsafe {
+//            let raw_texture = texture_loaded.raw_texture_mut();
 //            raw_texture.is_print_shared_storage_count = true;
+//            assert_eq!(raw_texture.get_shared_storage_count(), 1);
+//        }
 //
+//        unsafe {
+//            let base_level_image = texture_loaded.level(0);
+//            let raw_texture = texture_loaded.raw_texture_mut();
+//            assert_eq!(raw_texture.get_shared_storage_count(), 2);
+//            assert_eq!(base_level_image.ffi.get_shared_storage_count(), 2);
+//        }
+//
+//        unsafe {
+//            let raw_texture = texture_loaded.raw_texture();
 //            assert_eq!(raw_texture.get_shared_storage_count(), 1);
 //        }
 //    }

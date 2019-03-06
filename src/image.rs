@@ -8,7 +8,7 @@ use crate::texture::GliTexture;
 
 /// GliImage representation for a single texture level.
 pub struct GliImage {
-    ffi: gli::image,
+    pub ffi: gli::image,
 }
 
 impl GliImage {
@@ -88,7 +88,7 @@ impl GliImage {
 
     /// This function is just for inner crate usage. Don't call this function.
     #[inline]
-    pub(crate) fn _inner_new(texture: &impl GliTexture, format: Format, base_layer: usize, base_face: usize, base_level: usize) -> GliImage {
+    pub(crate) fn inner_new(texture: &impl GliTexture, format: Format, base_layer: usize, base_face: usize, base_level: usize) -> GliImage {
         GliImage { ffi: unsafe { gli::image::new3(texture.raw_texture(), format.0, base_layer, base_face, base_level) } }
     }
 }

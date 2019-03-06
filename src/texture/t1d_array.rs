@@ -2,8 +2,7 @@
 use crate::ffi::root::gli;
 use crate::format::{Format, Swizzle};
 use crate::target::Target;
-use crate::image::GliImage;
-use crate::texture::GliTexture;
+use crate::texture::{GliTexture, Texture1D};
 use crate::texture::inner::TextureAccessible;
 use crate::Extent1d;
 
@@ -36,15 +35,15 @@ impl Texture1DArray {
 
     /// Create a texture1d_array view with an existing storage_linear.
     #[inline]
-    pub fn new_from(texture: &Texture1DArray) -> Texture1DArray {
-        Texture1DArray { ffi: unsafe { gli::texture1d_array::new3(&texture.ffi._base) } }
+    pub fn new_from(texture: &impl GliTexture) -> Texture1DArray {
+        Texture1DArray { ffi: unsafe { gli::texture1d_array::new3(texture.raw_texture()) } }
     }
 
     /// Create a texture1d_array view with an existing storage_linear.
     #[inline]
-    pub fn new_detail(texture: &Texture1DArray, format: Format, base_layer: usize, max_layer: usize, base_face: usize, max_face: usize, base_level: usize, max_level: usize) -> Texture1DArray {
+    pub fn new_detail(texture: &impl GliTexture, format: Format, base_layer: usize, max_layer: usize, base_face: usize, max_face: usize, base_level: usize, max_level: usize) -> Texture1DArray {
         let default_swizzles = [Swizzle::RED.0, Swizzle::GREEN.0, Swizzle::BLUE.0, Swizzle::ALPHA.0];
-        Texture1DArray { ffi: unsafe { gli::texture1d_array::new4(&texture.ffi._base, format.0, base_layer, max_layer, base_face, max_face, base_level, max_level, &default_swizzles) } }
+        Texture1DArray { ffi: unsafe { gli::texture1d_array::new4(texture.raw_texture(), format.0, base_layer, max_layer, base_face, max_face, base_level, max_level, &default_swizzles) } }
     }
 
     /// Create a texture1d_array view, reference a subset of an existing texture1d_array instance.
@@ -52,15 +51,22 @@ impl Texture1DArray {
     pub fn new_from_subset(texture: &Texture1DArray, base_layer: usize, max_layer: usize, base_level: usize, max_level: usize) -> Texture1DArray {
         Texture1DArray { ffi: unsafe { gli::texture1d_array::new5(&texture.ffi, base_layer, max_layer, base_level, max_level) } }
     }
-}
 
-// TODO: Impl index operations.
-impl ::std::ops::Index<usize> for Texture1DArray {
-    type Output = GliImage;
+   /// Create a view of the texture identified by Layer in the texture array.
+   ///
+   /// This method is equivalent to `[]` operator in C++ version.
+    #[inline]
+    pub fn layer(&self, layer: usize) -> Texture1D {
 
-    fn index(&self, _index: usize) -> &Self::Output {
-        unimplemented!("Texture1DArray index operation")
-    }
+       debug_assert!(self.empty());
+       debug_assert!(layer < self.layers());
+
+       Texture1D::new_detail(
+           self, self.format(),
+           self.base_layer() + layer, self.base_layer() + layer,
+           self.base_face(), self.max_face(),
+           self.base_level(), self.max_level())
+   }
 }
 
 impl GliTexture for Texture1DArray {

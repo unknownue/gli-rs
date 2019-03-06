@@ -2,8 +2,7 @@
 use crate::ffi::root::gli;
 use crate::format::{Format, Swizzle};
 use crate::target::Target;
-use crate::image::GliImage;
-use crate::texture::GliTexture;
+use crate::texture::{GliTexture, Texture2D};
 use crate::texture::inner::TextureAccessible;
 use crate::Extent2d;
 
@@ -36,15 +35,15 @@ impl TextureCube {
 
     /// Create a texture_cube view with an existing storage_linear.
     #[inline]
-    pub fn new_from(texture: &TextureCube) -> TextureCube {
-        TextureCube { ffi: unsafe { gli::texture_cube::new3(&texture.ffi._base) } }
+    pub fn new_from(texture: &impl GliTexture) -> TextureCube {
+        TextureCube { ffi: unsafe { gli::texture_cube::new3(texture.raw_texture()) } }
     }
 
     /// Create a texture_cube view with an existing storage_linear.
     #[inline]
-    pub fn new_detail(texture: &TextureCube, format: Format, base_layer: usize, max_layer: usize, base_face: usize, max_face: usize, base_level: usize, max_level: usize) -> TextureCube {
+    pub fn new_detail(texture: &impl GliTexture, format: Format, base_layer: usize, max_layer: usize, base_face: usize, max_face: usize, base_level: usize, max_level: usize) -> TextureCube {
         let default_swizzles = [Swizzle::RED.0, Swizzle::GREEN.0, Swizzle::BLUE.0, Swizzle::ALPHA.0];
-        TextureCube { ffi: unsafe { gli::texture_cube::new4(&texture.ffi._base, format.0, base_layer, max_layer, base_face, max_face, base_level, max_level, &default_swizzles) } }
+        TextureCube { ffi: unsafe { gli::texture_cube::new4(texture.raw_texture(), format.0, base_layer, max_layer, base_face, max_face, base_level, max_level, &default_swizzles) } }
     }
 
     /// Create a texture_cube view, reference a subset of an existing texture_cube instance.
@@ -52,14 +51,20 @@ impl TextureCube {
     pub fn new_from_subset(texture: &TextureCube, base_layer: usize, max_layer: usize, base_level: usize, max_level: usize) -> TextureCube {
         TextureCube { ffi: unsafe { gli::texture_cube::new5(&texture.ffi, base_layer, max_layer, base_level, max_level) } }
     }
-}
 
-// TODO: Impl index operations.
-impl ::std::ops::Index<usize> for TextureCube {
-    type Output = GliImage;
+    /// Create a view of the texture identified by Face in the texture cube.
+    ///
+    /// This method is equivalent to `[]` operator in C++ version.
+    #[inline]
+    pub fn face(&self, face: usize) -> Texture2D {
 
-    fn index(&self, _index: usize) -> &Self::Output {
-        unimplemented!("TextureCube index operation")
+        debug_assert!(face < self.faces());
+
+        Texture2D::new_detail(
+            self, self.format(),
+            self.base_layer(), self.max_layer(),
+            self.base_face() + face, self.base_face() + face,
+            self.base_level(), self.max_level())
     }
 }
 

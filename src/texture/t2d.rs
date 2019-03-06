@@ -36,21 +36,31 @@ impl Texture2D {
 
     /// Create a texture2d view with an existing storage_linear.
     #[inline]
-    pub fn new_from(texture: &Texture2D) -> Texture2D {
-        Texture2D { ffi: unsafe { gli::texture2d::new3(&texture.ffi._base) } }
+    pub fn new_from(texture: &impl GliTexture) -> Texture2D {
+        Texture2D { ffi: unsafe { gli::texture2d::new3(texture.raw_texture()) } }
     }
 
     /// Create a texture2d view with an existing storage_linear.
     #[inline]
-    pub fn new_detail(texture: &Texture2D, format: Format, base_layer: usize, max_layer: usize, base_face: usize, max_face: usize, base_level: usize, max_level: usize) -> Texture2D {
+    pub fn new_detail(texture: &impl GliTexture, format: Format, base_layer: usize, max_layer: usize, base_face: usize, max_face: usize, base_level: usize, max_level: usize) -> Texture2D {
         let default_swizzles = [Swizzle::RED.0, Swizzle::GREEN.0, Swizzle::BLUE.0, Swizzle::ALPHA.0];
-        Texture2D { ffi: unsafe { gli::texture2d::new4(&texture.ffi._base, format.0, base_layer, max_layer, base_face, max_face, base_level, max_level, &default_swizzles) } }
+        Texture2D { ffi: unsafe { gli::texture2d::new4(texture.raw_texture(), format.0, base_layer, max_layer, base_face, max_face, base_level, max_level, &default_swizzles) } }
     }
 
     /// Create a texture2d view, reference a subset of an existing texture2d instance.
     #[inline]
     pub fn new_from_subset(texture: &Texture2D, base_level: usize, max_level: usize) -> Texture2D {
         Texture2D { ffi: unsafe { gli::texture2d::new5(&texture.ffi, base_level, max_level) } }
+    }
+
+    /// Create a view of the image identified by Level in the mipmap chain of the texture.
+    ///
+    /// This method is equivalent to `[]` operator in C++ version.
+    #[inline]
+    pub fn level(&self, level: usize) -> GliImage {
+
+        debug_assert!(level < self.levels());
+        GliImage::inner_new(self, self.format(), self.base_layer(), self.base_face(), self.base_level() + level)
     }
 }
 
@@ -61,18 +71,6 @@ impl GliTexture for Texture2D {
     /// Return the dimensions of a texture instance: width and height.
     fn extent(&self, level: usize) -> Self::ExtentType {
         unsafe { self.ffi.extent(level) }
-    }
-}
-
-// TODO: Impl index operations.
-impl ::std::ops::Index<usize> for Texture2D {
-    type Output = GliImage;
-
-    fn index(&self, _index: usize) -> &Self::Output {
-
-        //GliImage::inner_new(self, self.format(), self.base_layer(), self.base_face(), self.base_level());
-
-        unimplemented!("Texture2D index operation")
     }
 }
 
