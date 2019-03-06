@@ -1,0 +1,19 @@
+os:
+  - osx
+  - linux
+
+language: rust
+
+before_script:
+  - rustup component add rustfmt
+
+rust:
+  - stable
+
+script:
+  - cargo fmt --all -- --check
+  - cargo build --manifest-path ./Cargo.toml
+
+branches:
+  only:
+    - master
