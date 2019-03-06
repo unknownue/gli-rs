@@ -1,4 +1,7 @@
 
+#[cfg(feature = "bindings")]
+const OUTPUT_LOCATION: &'static str = "build/bindings.rs";
+
 fn main() {
     build_gli_lib();
     generate_bindings();
@@ -41,8 +44,6 @@ fn build_gli_lib() {
 
 #[cfg(feature = "bindings")]
 fn generate_bindings() {
-
-    const OUTPUT_LOCATION: &'static str = "build/bindings.rs";
 
     bindgen::Builder::default()
         .header("./wrapper/gli_lib.cpp")
