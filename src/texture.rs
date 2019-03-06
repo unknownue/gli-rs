@@ -17,6 +17,7 @@ mod tcube_array;
 
 use std::os::raw::c_void;
 
+use crate::ffi::root::gli;
 use crate::format::{Format, Swizzles};
 use crate::target::Target;
 use crate::Extent3d;
@@ -156,5 +157,20 @@ pub trait GliTexture: inner::TextureAccessible + Sized {
     /// Return the target of a texture instance.
     fn target(&self) -> Target {
         Self::TARGET_TYPE
+    }
+}
+
+impl Drop for gli::texture {
+
+    fn drop(&mut self) {
+
+        // In original gli::texture class(C++), it contains member wrapped with std::shared_ptr.
+        // Here manually call destructor(`~texture()`) on texture object to decrease shared_ptr counter for its inner member.
+        // Dangerous operation. This operation is not fully tested.
+        // It does make sense since Rust can't dual with the class member with shared_ptr in texture class.
+        // If you find better method to dual with this problem, welcome to create an issue on github.
+        unsafe {
+            gli::destroy_texture(self)
+        }
     }
 }

@@ -8,6 +8,16 @@ mod texture {
     use gli::texture::Texture2D;
     use gli::texture::GliTexture;
 
+    fn print_texture_info(texture: &impl GliTexture) {
+
+        println!("\tFaces  count: {}", texture.faces());
+        println!("\tLayers count: {}", texture.layers());
+        println!("\tLevels count: {}", texture.levels());
+        println!("\tSize: {}", texture.size());
+        println!("\tFormat: {}", texture.format());
+        println!("\tTarget: {}", texture.target());
+    }
+
     #[test]
     fn load_and_save_dds() {
 
@@ -20,16 +30,11 @@ mod texture {
         if texture_loaded.empty() {
             assert!(true, "DDS texture is empty.");
         } else {
-            println!("DDS Texture info:");
-
             let extent = texture_loaded.extent(0);
+
+            println!("DDS Texture info:");
             println!("\tExtent: ({}, {})", extent[0], extent[1]);
-            println!("\tFaces  count: {}", texture_loaded.faces());
-            println!("\tLayers count: {}", texture_loaded.layers());
-            println!("\tLevels count: {}", texture_loaded.levels());
-            println!("\tSize: {}", texture_loaded.size());
-            println!("\tFormat: {}", texture_loaded.format());
-            println!("\tTarget: {}", texture_loaded.target());
+            print_texture_info(&texture_loaded);
         }
 
         gli::save_dds(&texture_loaded, Path::new(FILE_SAVE_PATH))
@@ -48,19 +53,31 @@ mod texture {
         if texture_loaded.empty() {
             assert!(true, "KTX texture is empty.");
         } else {
-            println!("KTX Texture info:");
-
             let extent = texture_loaded.extent(0);
+
             println!("\tExtent: ({}, {})", extent[0], extent[1]);
-            println!("\tFaces  count: {}", texture_loaded.faces());
-            println!("\tLayers count: {}", texture_loaded.layers());
-            println!("\tLevels count: {}", texture_loaded.levels());
-            println!("\tSize: {}", texture_loaded.size());
-            println!("\tFormat: {}", texture_loaded.format());
-            println!("\tTarget: {}", texture_loaded.target());
+            println!("KTX Texture info:");
+            print_texture_info(&texture_loaded);
         }
 
         gli::save_ktx(&texture_loaded, Path::new(FILE_SAVE_PATH))
             .unwrap();
     }
+
+//    #[test]
+//    fn shared_ptr_test() {
+//
+//        use crate::texture::gli::texture::inner::TextureAccessible;
+//        const TEST_KTX_PATH: &'static str = "./vendors/gli/data/array_r8_uint.ktx";
+//
+//        let mut texture_loaded: Texture2D = gli::load_ktx(Path::new(TEST_KTX_PATH))
+//            .unwrap();
+//        let mut raw_texture = texture_loaded.raw_texture_mut();
+//
+//        unsafe {
+//            raw_texture.is_print_shared_storage_count = true;
+//
+//            assert_eq!(raw_texture.get_shared_storage_count(), 1);
+//        }
+//    }
 }

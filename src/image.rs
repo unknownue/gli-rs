@@ -86,31 +86,22 @@ impl GliImage {
 
     // TODO: store(..) methods is missing, due to template specialization.
 
-//    /// This function is just for inner crate usage. Don't call this function.
-//    #[inline]
-//    pub(crate) fn inner_new(texture: &impl GliTexture) -> GliImage {
-//
-//        // compute_data
-//        let compute_data = {
-//            let base_offset = gli::storage_linear_base_offset()
-//
-//        };
-//
-//
-//        size_type const BaseOffset = this->Storage->base_offset(BaseLayer, BaseFace, BaseLevel);
-//
-//        return this->Storage->data() + BaseOffset;
-//
-//
-//        let image = gli::image {
-//            Storage: texture.raw_texture().Storage,
-//            Format: texture.format().0,
-//            BaseLevel: texture.base_level(),
-//            Data: *mut root::gli::image_data_type,
-//            Size: root::gli::image_size_type,
-//        };
-//
-//
-//        unimplemented!()
-//    }
+    /// This function is just for inner crate usage. Don't call this function.
+    #[inline]
+    pub(crate) fn _inner_new(texture: &impl GliTexture, format: Format, base_layer: usize, base_face: usize, base_level: usize) -> GliImage {
+        GliImage { ffi: unsafe { gli::image::new3(texture.raw_texture(), format.0, base_layer, base_face, base_level) } }
+    }
+}
+
+impl Drop for GliImage {
+
+    fn drop(&mut self) {
+
+        // Same with gli::texture class, gli::image class in C++ contains member wrapped with std::shared_ptr.
+        // Rust can't dual with shared_ptr in ffi.
+        // Manually call destructor to decrease its shared_ptr counter.
+        unsafe {
+            gli::destroy_image(&mut self.ffi)
+        }
+    }
 }

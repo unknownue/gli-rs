@@ -64,12 +64,14 @@ impl GliTexture for Texture2D {
     }
 }
 
-
 // TODO: Impl index operations.
 impl ::std::ops::Index<usize> for Texture2D {
     type Output = GliImage;
 
     fn index(&self, _index: usize) -> &Self::Output {
+
+        //GliImage::inner_new(self, self.format(), self.base_layer(), self.base_face(), self.base_level());
+
         unimplemented!("Texture2D index operation")
     }
 }
