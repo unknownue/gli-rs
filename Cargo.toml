@@ -12,6 +12,16 @@ description = "Rust binding for OpenGL Image(GLI)"
 keywords    = ["Graphics", "OpenGL Image", "Texture"]
 license     = "MIT"
 
+include = [
+    "src/*",
+    "build/bindings.rs",
+    "build.rs",
+    "Cargo.toml",
+    "vendors/gli/external/*",
+    "vendors/gli/gli/*",
+    "wrapper/*",
+]
+
 [dependencies]
 failure = "0.1.5"
 
