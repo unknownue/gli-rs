@@ -56,7 +56,7 @@ impl TextureCubeArray {
     ///
     /// This method is equivalent to `[]` operator in C++ version.
     #[inline]
-    pub fn layer(&self, layer: usize) -> TextureCube {
+    pub fn get_layer(&self, layer: usize) -> TextureCube {
 
         debug_assert!(layer < self.layers());
 

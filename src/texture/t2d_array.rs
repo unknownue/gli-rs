@@ -56,7 +56,7 @@ impl Texture2DArray {
     ///
     /// This method is equivalent to `[]` operator in C++ version.
     #[inline]
-    pub fn layer(&self, layer: usize) -> Texture2D {
+    pub fn get_layer(&self, layer: usize) -> Texture2D {
 
         debug_assert!(layer < self.layers());
 

@@ -56,7 +56,7 @@ impl TextureCube {
     ///
     /// This method is equivalent to `[]` operator in C++ version.
     #[inline]
-    pub fn face(&self, face: usize) -> Texture2D {
+    pub fn get_face(&self, face: usize) -> Texture2D {
 
         debug_assert!(face < self.faces());
 

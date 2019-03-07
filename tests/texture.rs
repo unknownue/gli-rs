@@ -80,7 +80,7 @@ mod texture {
 //        }
 //
 //        unsafe {
-//            let base_level_image = texture_loaded.level(0);
+//            let base_level_image = texture_loaded.get_level(0);
 //            let raw_texture = texture_loaded.raw_texture_mut();
 //            assert_eq!(raw_texture.get_shared_storage_count(), 2);
 //            assert_eq!(base_level_image.ffi.get_shared_storage_count(), 2);

@@ -57,7 +57,7 @@ impl Texture1D {
     ///
     /// This method is equivalent to `[]` operator in C++ version.
     #[inline]
-    pub fn level(&self, level: usize) -> GliImage {
+    pub fn get_level(&self, level: usize) -> GliImage {
 
         debug_assert!(level < self.levels());
         GliImage::inner_new(self, self.format(), self.base_layer(), self.base_face(), self.base_level() + level)
