@@ -15,7 +15,7 @@ use std::ffi::CString;
 ///
 /// `path` is the path for where to save the file. It must include the filename and filename extension.
 ///
-/// This function ignores the filename extension in the path and save to DDS anyway but keep the requested filename extension.
+/// The function use the filename extension included in the path to figure out the file container to use.
 pub fn save(texture: &impl GliTexture, path: impl AsRef<Path>) -> Result<()> {
 
     if let Some(dst_extension) = path.as_ref().extension().and_then(OsStr::to_str) {

@@ -1,7 +1,7 @@
 
 use std::fs;
 use std::path::Path;
-use std::ffi::CString;
+use std::ffi::CStr;
 
 use crate::ffi::root::gli;
 use crate::texture::GliTexture;
@@ -20,19 +20,19 @@ pub fn load<T>(path: impl AsRef<Path>) -> Result<T>
     // Read the texture file content into bytes in Rust.
     let texture_data = fs::read(path)
         .map_err(|_| ErrorKind::Io)?;
-    load_from_bytes(texture_data)
+    load_from_bytes(&texture_data)
 }
 
 /// Loads a texture(DDS, KTX or KMG) storage_linear from memory.
 ///
 /// Return an error in case of failure.
-pub fn load_from_bytes<T>(data: Vec<u8>) -> Result<T>
+pub fn load_from_bytes<T>(data: &[u8]) -> Result<T>
     where
         T: GliTexture {
 
     // Read the texture file content into bytes in Rust.
     let bytes_length = data.len();
-    let texture_data = unsafe { CString::from_vec_unchecked(data) };
+    let texture_data = unsafe { CStr::from_bytes_with_nul_unchecked(data) };
 
     // let gli lib to handle the post-processing.
     // TODO: bytes_length may be invalid.
@@ -61,18 +61,18 @@ pub fn load_dds<T>(path: impl AsRef<Path>) -> Result<T>
 
     let texture_data = fs::read(path)
         .map_err(|_| ErrorKind::Io)?;
-    load_dds_from_bytes(texture_data)
+    load_dds_from_bytes(&texture_data)
 }
 
 /// Loads a texture storage_linear from DDS memory.
 ///
 /// Return an error in case of failure.
-pub fn load_dds_from_bytes<T>(data: Vec<u8>) -> Result<T>
+pub fn load_dds_from_bytes<T>(data: &[u8]) -> Result<T>
     where
         T: GliTexture {
 
     let bytes_length = data.len();
-    let texture_data = unsafe { CString::from_vec_unchecked(data) };
+    let texture_data = unsafe { CStr::from_bytes_with_nul_unchecked(data) };
 
     let raw_texture = unsafe {
         gli::load_dds2(texture_data.as_ptr(), bytes_length)
@@ -99,18 +99,18 @@ pub fn load_ktx<T>(path: impl AsRef<Path>) -> Result<T>
 
     let texture_data = fs::read(path)
         .map_err(|_| ErrorKind::Io)?;
-    load_ktx_from_bytes(texture_data)
+    load_ktx_from_bytes(&texture_data)
 }
 
 /// Loads a texture storage_linear from KTX memory.
 ///
 /// Return an error in case of failure.
-pub fn load_ktx_from_bytes<T>(data: Vec<u8>) -> Result<T>
+pub fn load_ktx_from_bytes<T>(data: &[u8]) -> Result<T>
     where
         T: GliTexture {
 
     let bytes_length = data.len();
-    let texture_data = unsafe { CString::from_vec_unchecked(data) };
+    let texture_data = unsafe { CStr::from_bytes_with_nul_unchecked(data) };
 
     let raw_texture = unsafe {
         gli::load_ktx2(texture_data.as_ptr(), bytes_length)
@@ -137,18 +137,18 @@ pub fn load_kmg<T>(path: impl AsRef<Path>) -> Result<T>
 
     let texture_data = fs::read(path)
         .map_err(|_| ErrorKind::Io)?;
-    load_kmg_from_bytes(texture_data)
+    load_kmg_from_bytes(&texture_data)
 }
 
 /// Loads a texture storage_linear from KMG (Khronos Image) memory.
 ///
 /// Return an error in case of failure.
-pub fn load_kmg_from_bytes<T>(data: Vec<u8>) -> Result<T>
+pub fn load_kmg_from_bytes<T>(data: &[u8]) -> Result<T>
     where
         T: GliTexture {
 
     let bytes_length = data.len();
-    let texture_data = unsafe { CString::from_vec_unchecked(data) };
+    let texture_data = unsafe { CStr::from_bytes_with_nul_unchecked(data) };
 
     let raw_texture = unsafe {
         gli::load_kmg2(texture_data.as_ptr(), bytes_length)
