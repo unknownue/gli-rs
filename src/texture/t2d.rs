@@ -24,14 +24,14 @@ impl Texture2D {
     #[inline]
     pub fn new(format: Format, extent: Extent2d, levels: usize) -> Texture2D {
         let default_swizzles = [Swizzle::RED.0, Swizzle::GREEN.0, Swizzle::BLUE.0, Swizzle::ALPHA.0];
-        Texture2D { ffi: unsafe { gli::texture2d::new1(format.0, &extent, levels, &default_swizzles) } }
+        Texture2D { ffi: unsafe { gli::texture2d::new1(format.0, &extent.into(), levels, &default_swizzles) } }
     }
 
     /// Create a texture2d and allocate a new storage_linear with a complete mipmap chain.
     #[inline]
     pub fn new_with_mipmap_chain(format: Format, extent: Extent2d) -> Texture2D {
         let default_swizzles = [Swizzle::RED.0, Swizzle::GREEN.0, Swizzle::BLUE.0, Swizzle::ALPHA.0];
-        Texture2D { ffi: unsafe { gli::texture2d::new2(format.0, &extent, &default_swizzles) } }
+        Texture2D { ffi: unsafe { gli::texture2d::new2(format.0, &extent.into(), &default_swizzles) } }
     }
 
     /// Create a texture2d view with an existing storage_linear.
@@ -70,7 +70,7 @@ impl GliTexture for Texture2D {
 
     /// Return the dimensions of a texture instance: width and height.
     fn extent(&self, level: usize) -> Self::ExtentType {
-        unsafe { self.ffi.extent(level) }
+        unsafe { self.ffi.extent(level).into() }
     }
 }
 

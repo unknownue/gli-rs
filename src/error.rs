@@ -6,10 +6,10 @@ use std::fmt;
 use std::path::{Path, PathBuf};
 use std::result;
 
-/// A type alias for handling errors throughout gli-rs.
+/// A type alias for handling errors throughout this crate.
 pub type Result<T> = result::Result<T, Error>;
 
-/// An error that can occur.
+/// The error type throughout this crate.
 #[derive(Debug)]
 pub struct Error {
     ctx: Context<ErrorKind>,

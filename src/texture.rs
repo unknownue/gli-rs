@@ -74,10 +74,10 @@ pub trait GliTexture: inner::TextureAccessible + Sized {
     }
 
     /// Copy a subset of a specific image of a texture.
-    fn copy_subset(&mut self, src_texture: &Self, src_layer: usize, src_face: usize, src_level: usize, src_offset: &Extent3d, dst_layer: usize, dst_face: usize, dst_level: usize, dst_offset: &Extent3d, extent: &Extent3d) {
+    fn copy_subset(&mut self, src_texture: &Self, src_layer: usize, src_face: usize, src_level: usize, src_offset: Extent3d, dst_layer: usize, dst_face: usize, dst_level: usize, dst_offset: Extent3d, extent: Extent3d) {
         unsafe {
             self.raw_texture_mut()
-                .copy1(src_texture.raw_texture(), src_layer, src_face, src_level, src_offset, dst_layer, dst_face, dst_level, dst_offset, extent)
+                .copy1(src_texture.raw_texture(), src_layer, src_face, src_level, &src_offset.into(), dst_layer, dst_face, dst_level, &dst_offset.into(), &extent.into())
         }
     }
 

@@ -75,12 +75,3 @@ fn generate_bindings() {
 
 #[cfg(not(feature = "bindings"))]
 fn generate_bindings() {}
-
-// if cfg!(target_os = "macos") {
-//     // To disable the fixup bindgen applies which adds search
-//     // paths from clang command line in order to avoid potential
-//     // conflict with -stdlib=libc++.
-//     bindings = bindings
-//         .clang_arg("-stdlib=libc++")
-//         .clang_arg("--target=x86_64-apple-darwin");
-// }

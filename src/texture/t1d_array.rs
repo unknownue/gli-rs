@@ -23,14 +23,14 @@ impl Texture1DArray {
     #[inline]
     pub fn new(format: Format, extent: Extent1d, layers: usize, levels: usize) -> Texture1DArray {
         let default_swizzles = [Swizzle::RED.0, Swizzle::GREEN.0, Swizzle::BLUE.0, Swizzle::ALPHA.0];
-        Texture1DArray { ffi: unsafe { gli::texture1d_array::new1(format.0, &extent, layers, levels, &default_swizzles) } }
+        Texture1DArray { ffi: unsafe { gli::texture1d_array::new1(format.0, &extent.into(), layers, levels, &default_swizzles) } }
     }
 
     /// Create a texture1d_array and allocate a new storage_linear with a complete mipmap chain.
     #[inline]
     pub fn new_with_mipmap_chain(format: Format, extent: Extent1d, layers: usize) -> Texture1DArray {
         let default_swizzles = [Swizzle::RED.0, Swizzle::GREEN.0, Swizzle::BLUE.0, Swizzle::ALPHA.0];
-        Texture1DArray { ffi: unsafe { gli::texture1d_array::new2(format.0, &extent, layers, &default_swizzles) } }
+        Texture1DArray { ffi: unsafe { gli::texture1d_array::new2(format.0, &extent.into(), layers, &default_swizzles) } }
     }
 
     /// Create a texture1d_array view with an existing storage_linear.
@@ -74,7 +74,7 @@ impl GliTexture for Texture1DArray {
     type ExtentType = Extent1d; // equivalent to gli::texture1d_extent_type.
 
     fn extent(&self, level: usize) -> Self::ExtentType {
-        unsafe { self.ffi.extent(level) }
+        unsafe { self.ffi.extent(level).into() }
     }
 }
 

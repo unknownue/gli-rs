@@ -23,14 +23,14 @@ impl TextureCubeArray {
     #[inline]
     pub fn new(format: Format, extent: Extent2d, layers: usize, levels: usize) -> TextureCubeArray {
         let default_swizzles = [Swizzle::RED.0, Swizzle::GREEN.0, Swizzle::BLUE.0, Swizzle::ALPHA.0];
-        TextureCubeArray { ffi: unsafe { gli::texture_cube_array::new1(format.0, &extent, layers, levels, &default_swizzles) } }
+        TextureCubeArray { ffi: unsafe { gli::texture_cube_array::new1(format.0, &extent.into(), layers, levels, &default_swizzles) } }
     }
 
     /// Create a texture_cube_array and allocate a new storage_linear with a complete mipmap chain.
     #[inline]
     pub fn new_with_mipmap_chain(format: Format, extent: Extent2d, layers: usize) -> TextureCubeArray {
         let default_swizzles = [Swizzle::RED.0, Swizzle::GREEN.0, Swizzle::BLUE.0, Swizzle::ALPHA.0];
-        TextureCubeArray { ffi: unsafe { gli::texture_cube_array::new2(format.0, &extent, layers, &default_swizzles) } }
+        TextureCubeArray { ffi: unsafe { gli::texture_cube_array::new2(format.0, &extent.into(), layers, &default_swizzles) } }
     }
 
     /// Create a texture_cube_array view with an existing storage_linear.
@@ -74,7 +74,7 @@ impl GliTexture for TextureCubeArray {
 
     /// Return the dimensions of a texture instance: width and height where both should be equal.
     fn extent(&self, level: usize) -> Self::ExtentType {
-        unsafe { self.ffi.extent(level) }
+        unsafe { self.ffi.extent(level).into() }
     }
 }
 

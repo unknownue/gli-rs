@@ -8,7 +8,7 @@ use crate::texture::GliTexture;
 
 /// GliImage representation for a single texture level.
 pub struct GliImage {
-    pub ffi: gli::image,
+    ffi: gli::image,
 }
 
 impl GliImage {
@@ -16,7 +16,7 @@ impl GliImage {
     /// Create an image object and allocate an image storage for it.
     #[inline]
     pub fn new(format: Format, extent: Extent3d) -> GliImage {
-        GliImage { ffi: unsafe { gli::image::new1(format.0, &extent) } }
+        GliImage { ffi: unsafe { gli::image::new1(format.0, &extent.into()) } }
     }
 
     /// Create an empty image instance.
@@ -64,7 +64,7 @@ impl GliImage {
     /// Return the dimensions of an image instance: width, height and depth.
     #[inline]
     pub fn extent(&self) -> Extent3d {
-        unsafe { self.ffi.extent() }
+        unsafe { self.ffi.extent().into() }
     }
 
     /// Return the image instance format.

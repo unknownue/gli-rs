@@ -24,14 +24,14 @@ impl Texture3D {
     #[inline]
     pub fn new(format: Format, extent: Extent3d, levels: usize) -> Texture3D {
         let default_swizzles = [Swizzle::RED.0, Swizzle::GREEN.0, Swizzle::BLUE.0, Swizzle::ALPHA.0];
-        Texture3D { ffi: unsafe { gli::texture3d::new1(format.0, &extent, levels, &default_swizzles) } }
+        Texture3D { ffi: unsafe { gli::texture3d::new1(format.0, &extent.into(), levels, &default_swizzles) } }
     }
 
     /// Create a texture3d and allocate a new storage_linear with a complete mipmap chain.
     #[inline]
     pub fn new_with_mipmap_chain(format: Format, extent: Extent3d) -> Texture3D {
         let default_swizzles = [Swizzle::RED.0, Swizzle::GREEN.0, Swizzle::BLUE.0, Swizzle::ALPHA.0];
-        Texture3D { ffi: unsafe { gli::texture3d::new2(format.0, &extent, &default_swizzles) } }
+        Texture3D { ffi: unsafe { gli::texture3d::new2(format.0, &extent.into(), &default_swizzles) } }
     }
 
     /// Create a texture3d view with an existing storage_linear.
@@ -70,7 +70,7 @@ impl GliTexture for Texture3D {
 
     /// Return the dimensions of a texture instance: width, height and depth
     fn extent(&self, level: usize) -> Self::ExtentType {
-        unsafe { self.ffi.extent(level) }
+        unsafe { self.ffi.extent(level).into() }
     }
 }
 

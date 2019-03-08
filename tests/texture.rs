@@ -5,8 +5,7 @@ mod texture {
     extern crate gli_rs as gli;
 
     use std::path::Path;
-    use gli::texture::Texture2D;
-    use gli::texture::GliTexture;
+    use gli::{Texture2D, GliTexture};
 
     fn print_texture_info(texture: &impl GliTexture) {
 
@@ -33,7 +32,7 @@ mod texture {
             let extent = texture_loaded.extent(0);
 
             println!("DDS Texture info:");
-            println!("\tExtent: ({}, {})", extent[0], extent[1]);
+            println!("\tExtent: ({}, {})", extent.width, extent.height);
             print_texture_info(&texture_loaded);
         }
 
@@ -55,7 +54,7 @@ mod texture {
         } else {
             let extent = texture_loaded.extent(0);
 
-            println!("\tExtent: ({}, {})", extent[0], extent[1]);
+            println!("\tExtent: ({}, {})", extent.width, extent.height);
             println!("KTX Texture info:");
             print_texture_info(&texture_loaded);
         }
