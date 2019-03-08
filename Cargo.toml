@@ -9,7 +9,7 @@ build   = "build.rs"
 homepage    = "https://github.com/Usami-Renko/gli-rs"
 repository  = "https://github.com/Usami-Renko/gli-rs"
 description = "Rust binding for OpenGL Image(GLI)"
-keywords    = ["Graphics", "OpenGL Image", "Texture"]
+keywords    = ["Graphics", "gli", "Texture"]
 license     = "MIT"
 
 include = [
@@ -21,6 +21,9 @@ include = [
     "vendors/gli/gli/*",
     "wrapper/*",
 ]
+
+[badges]
+travis-ci = { repository = "Usami-Renko/gli-rs" }
 
 [dependencies]
 failure = "0.1.5"
