@@ -11,6 +11,7 @@ repository  = "https://github.com/Usami-Renko/gli-rs"
 description = "Rust binding for OpenGL Image(GLI)"
 keywords    = ["Graphics", "gli", "Texture"]
 license     = "MIT"
+readme      = "README.md"
 
 include = [
     "src/*",

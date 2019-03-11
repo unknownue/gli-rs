@@ -22,7 +22,7 @@ use crate::format::{Format, Swizzles};
 use crate::target::Target;
 use crate::Extent3d;
 
-pub mod inner {
+pub(crate) mod inner {
 
     use crate::ffi::root::gli::texture as RawTexture;
 

@@ -15,6 +15,8 @@ This crate aims to fill the gap of loading KTX and DDS image file for graphic de
 
 Although not all the api has been translated to Rust and fully tested, it does work for the most part.
 
+This crate is still in early stage, and failed to build on Windows and Linux.
+
 ## Usage
 
 Add this to `Cargo.toml`:

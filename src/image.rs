@@ -87,13 +87,14 @@ impl GliImage {
     // TODO: store(..) methods is missing, due to template specialization.
 
     /// This function is just for inner crate usage. Don't call this function.
+    #[doc(hidden)]
     #[inline]
     pub(crate) fn inner_new(texture: &impl GliTexture, format: Format, base_layer: usize, base_face: usize, base_level: usize) -> GliImage {
         GliImage { ffi: unsafe { gli::image::new3(texture.raw_texture(), format.0, base_layer, base_face, base_level) } }
     }
 }
 
-impl Drop for GliImage {
+impl Drop for gli::image {
 
     fn drop(&mut self) {
 
@@ -101,7 +102,7 @@ impl Drop for GliImage {
         // Rust can't dual with shared_ptr in ffi.
         // Manually call destructor to decrease its shared_ptr counter.
         unsafe {
-            gli::destroy_image(&mut self.ffi)
+            gli::destroy_image(self)
         }
     }
 }
