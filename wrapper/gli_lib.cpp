@@ -1,3 +1,4 @@
 
 // generate all stuff.
- #include "gli.hpp"
+#define GLI_IMPLEMENTATION
+#include "gli_bindings.hpp"

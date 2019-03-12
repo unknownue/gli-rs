@@ -1,5 +1,5 @@
 
-#[cfg(test)]
+#[cfg(not(test))]
 mod texture {
 
     extern crate gli_rs as gli;

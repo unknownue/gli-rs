@@ -13,8 +13,10 @@ fn build_gli_lib() {
 
     let mut build = cc::Build::new();
 
-    build.include("./vendors/gli/gli")
+    build
+        .include("./vendors/gli/gli/core")
         .include("./vendors/gli/external")
+        .include("./wrapper/bindings")
         .file("./wrapper/gli_lib.cpp");
 
     let target = env::var("TARGET")
@@ -49,7 +51,8 @@ fn generate_bindings() {
         .header("./wrapper/gli_lib.cpp")
         .clang_args(&[
             "-I./vendors/gli/external",
-            "-I./vendors/gli/gli",
+            "-I./vendors/gli/gli/core",
+            "-I./wrapper/bindings/",
             "-std=c++11",
         ])
         .whitelist_type("gli::texture.*")
@@ -57,6 +60,7 @@ fn generate_bindings() {
         .whitelist_function("gli::is_.*")
         .whitelist_function("gli::load.*")
         .whitelist_function("gli::save.*")
+        .whitelist_type("gli::swizzle.*")
         .whitelist_function("gli::destroy_.*")
         .opaque_type("__darwin_.*")
         .opaque_type("glm::.*")
@@ -66,7 +70,7 @@ fn generate_bindings() {
         .derive_debug(true)
         .derive_copy(false)
         .rustfmt_bindings(true)
-        .trust_clang_mangling(true)
+        .trust_clang_mangling(false)
         .layout_tests(false)
         .generate().expect("Failed to generate bindings!")
         .write_to_file(::std::path::Path::new(OUTPUT_LOCATION))
