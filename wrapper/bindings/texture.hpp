@@ -5,9 +5,10 @@
 
 #include "image.hpp"
 #include "target.hpp"
-#include "levels.hpp"
 #include <array>
 #include <iostream>
+
+#include "../../vendors/gli/gli/levels.hpp"
 
 namespace gli {
 

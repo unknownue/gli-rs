@@ -19,34 +19,34 @@ impl TextureCube {
         TextureCube { ffi: unsafe { gli::texture_cube::new() } }
     }
 
-    /// Create a texture_cube and allocate a new storage_linear.
+    /// Create a texture_cube.hpp and allocate a new storage_linear.
     #[inline]
     pub fn new(format: Format, extent: Extent2d, levels: usize) -> TextureCube {
         let default_swizzles = [Swizzle::RED.0, Swizzle::GREEN.0, Swizzle::BLUE.0, Swizzle::ALPHA.0];
         TextureCube { ffi: unsafe { gli::texture_cube::new1(format.0, &extent.into(), levels, &default_swizzles) } }
     }
 
-    /// Create a texture_cube and allocate a new storage_linear with a complete mipmap chain.
+    /// Create a texture_cube.hpp and allocate a new storage_linear with a complete mipmap chain.
     #[inline]
     pub fn new_with_mipmap_chain(format: Format, extent: Extent2d) -> TextureCube {
         let default_swizzles = [Swizzle::RED.0, Swizzle::GREEN.0, Swizzle::BLUE.0, Swizzle::ALPHA.0];
         TextureCube { ffi: unsafe { gli::texture_cube::new2(format.0, &extent.into(), &default_swizzles) } }
     }
 
-    /// Create a texture_cube view with an existing storage_linear.
+    /// Create a texture_cube.hpp view with an existing storage_linear.
     #[inline]
     pub fn new_from(texture: &impl GliTexture) -> TextureCube {
         TextureCube { ffi: unsafe { gli::texture_cube::new3(texture.raw_texture()) } }
     }
 
-    /// Create a texture_cube view with an existing storage_linear.
+    /// Create a texture_cube.hpp view with an existing storage_linear.
     #[inline]
     pub fn new_detail(texture: &impl GliTexture, format: Format, base_layer: usize, max_layer: usize, base_face: usize, max_face: usize, base_level: usize, max_level: usize) -> TextureCube {
         let default_swizzles = [Swizzle::RED.0, Swizzle::GREEN.0, Swizzle::BLUE.0, Swizzle::ALPHA.0];
         TextureCube { ffi: unsafe { gli::texture_cube::new4(texture.raw_texture(), format.0, base_layer, max_layer, base_face, max_face, base_level, max_level, &default_swizzles) } }
     }
 
-    /// Create a texture_cube view, reference a subset of an existing texture_cube instance.
+    /// Create a texture_cube.hpp view, reference a subset of an existing texture_cube.hpp instance.
     #[inline]
     pub fn new_from_subset(texture: &TextureCube, base_layer: usize, max_layer: usize, base_level: usize, max_level: usize) -> TextureCube {
         TextureCube { ffi: unsafe { gli::texture_cube::new5(&texture.ffi, base_layer, max_layer, base_level, max_level) } }

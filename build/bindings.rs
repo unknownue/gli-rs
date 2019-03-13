@@ -1296,6 +1296,1178 @@ pub mod root {
             #[doc = " Manually Call destructor for image object. Helper function used in FFI."]
             pub fn destroy_image(Image: *mut root::gli::image);
         }
+        #[doc = " 1d texture"]
+        #[repr(C)]
+        pub struct texture1d {
+            pub _base: root::gli::texture,
+        }
+        pub type texture1d_extent_type = root::gli::extent1d;
+        extern "C" {
+            #[doc = " Return the width of a texture instance"]
+            #[link_name = "\u{1}extent"]
+            pub fn texture1d_extent(
+                this: *const root::gli::texture1d,
+                Level: root::gli::texture_size_type,
+            ) -> root::gli::texture1d_extent_type;
+        }
+        extern "C" {
+            #[doc = " Create an empty texture 1D"]
+            #[link_name = "\u{1}texture1d"]
+            pub fn texture1d_texture1d(this: *mut root::gli::texture1d);
+        }
+        extern "C" {
+            #[doc = " Create a texture1d and allocate a new storage_linear"]
+            #[link_name = "\u{1}texture1d"]
+            pub fn texture1d_texture1d1(
+                this: *mut root::gli::texture1d,
+                Format: root::gli::texture_format_type,
+                Extent: *const root::gli::texture1d_extent_type,
+                Levels: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            );
+        }
+        extern "C" {
+            #[doc = " Create a texture1d and allocate a new storage_linear with a complete mipmap chain"]
+            #[link_name = "\u{1}texture1d"]
+            pub fn texture1d_texture1d2(
+                this: *mut root::gli::texture1d,
+                Format: root::gli::texture_format_type,
+                Extent: *const root::gli::texture1d_extent_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            );
+        }
+        extern "C" {
+            #[doc = " Create a texture1d view with an existing storage_linear"]
+            #[link_name = "\u{1}texture1d"]
+            pub fn texture1d_texture1d3(
+                this: *mut root::gli::texture1d,
+                Texture: *const root::gli::texture,
+            );
+        }
+        extern "C" {
+            #[doc = " Create a texture1d view with an existing storage_linear"]
+            #[link_name = "\u{1}texture1d"]
+            pub fn texture1d_texture1d4(
+                this: *mut root::gli::texture1d,
+                Texture: *const root::gli::texture,
+                Format: root::gli::texture_format_type,
+                BaseLayer: root::gli::texture_size_type,
+                MaxLayer: root::gli::texture_size_type,
+                BaseFace: root::gli::texture_size_type,
+                MaxFace: root::gli::texture_size_type,
+                BaseLevel: root::gli::texture_size_type,
+                MaxLevel: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            );
+        }
+        extern "C" {
+            #[doc = " Create a texture1d view, reference a subset of an existing texture1d instance"]
+            #[link_name = "\u{1}texture1d"]
+            pub fn texture1d_texture1d5(
+                this: *mut root::gli::texture1d,
+                Texture: *const root::gli::texture1d,
+                BaseLevel: root::gli::texture_size_type,
+                MaxLevel: root::gli::texture_size_type,
+            );
+        }
+        impl texture1d {
+            #[inline]
+            pub unsafe fn extent(
+                &self,
+                Level: root::gli::texture_size_type,
+            ) -> root::gli::texture1d_extent_type {
+                texture1d_extent(self, Level)
+            }
+            #[inline]
+            pub unsafe fn new() -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture1d_texture1d(&mut __bindgen_tmp);
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new1(
+                Format: root::gli::texture_format_type,
+                Extent: *const root::gli::texture1d_extent_type,
+                Levels: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            ) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture1d_texture1d1(&mut __bindgen_tmp, Format, Extent, Levels, Swizzles);
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new2(
+                Format: root::gli::texture_format_type,
+                Extent: *const root::gli::texture1d_extent_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            ) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture1d_texture1d2(&mut __bindgen_tmp, Format, Extent, Swizzles);
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new3(Texture: *const root::gli::texture) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture1d_texture1d3(&mut __bindgen_tmp, Texture);
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new4(
+                Texture: *const root::gli::texture,
+                Format: root::gli::texture_format_type,
+                BaseLayer: root::gli::texture_size_type,
+                MaxLayer: root::gli::texture_size_type,
+                BaseFace: root::gli::texture_size_type,
+                MaxFace: root::gli::texture_size_type,
+                BaseLevel: root::gli::texture_size_type,
+                MaxLevel: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            ) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture1d_texture1d4(
+                    &mut __bindgen_tmp,
+                    Texture,
+                    Format,
+                    BaseLayer,
+                    MaxLayer,
+                    BaseFace,
+                    MaxFace,
+                    BaseLevel,
+                    MaxLevel,
+                    Swizzles,
+                );
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new5(
+                Texture: *const root::gli::texture1d,
+                BaseLevel: root::gli::texture_size_type,
+                MaxLevel: root::gli::texture_size_type,
+            ) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture1d_texture1d5(&mut __bindgen_tmp, Texture, BaseLevel, MaxLevel);
+                __bindgen_tmp
+            }
+        }
+        #[doc = " 1d array texture"]
+        #[repr(C)]
+        pub struct texture1d_array {
+            pub _base: root::gli::texture,
+        }
+        pub type texture1d_array_extent_type = root::gli::extent1d;
+        extern "C" {
+            #[doc = " Return the width of a texture instance"]
+            #[link_name = "\u{1}extent"]
+            pub fn texture1d_array_extent(
+                this: *const root::gli::texture1d_array,
+                Level: root::gli::texture_size_type,
+            ) -> root::gli::texture1d_array_extent_type;
+        }
+        extern "C" {
+            #[doc = " Create an empty texture 1D array"]
+            #[link_name = "\u{1}texture1d_array"]
+            pub fn texture1d_array_texture1d_array(this: *mut root::gli::texture1d_array);
+        }
+        extern "C" {
+            #[doc = " Create a texture1d_array and allocate a new storage_linear"]
+            #[link_name = "\u{1}texture1d_array"]
+            pub fn texture1d_array_texture1d_array1(
+                this: *mut root::gli::texture1d_array,
+                Format: root::gli::texture_format_type,
+                Extent: *const root::gli::texture1d_array_extent_type,
+                Layers: root::gli::texture_size_type,
+                Levels: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            );
+        }
+        extern "C" {
+            #[doc = " Create a texture1d_array and allocate a new storage_linear with a complete mipmap chain"]
+            #[link_name = "\u{1}texture1d_array"]
+            pub fn texture1d_array_texture1d_array2(
+                this: *mut root::gli::texture1d_array,
+                Format: root::gli::texture_format_type,
+                Extent: *const root::gli::texture1d_array_extent_type,
+                Layers: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            );
+        }
+        extern "C" {
+            #[doc = " Create a texture1d_array view with an existing storage_linear"]
+            #[link_name = "\u{1}texture1d_array"]
+            pub fn texture1d_array_texture1d_array3(
+                this: *mut root::gli::texture1d_array,
+                Texture: *const root::gli::texture,
+            );
+        }
+        extern "C" {
+            #[doc = " Create a texture1d_array view with an existing storage_linear"]
+            #[link_name = "\u{1}texture1d_array"]
+            pub fn texture1d_array_texture1d_array4(
+                this: *mut root::gli::texture1d_array,
+                Texture: *const root::gli::texture,
+                Format: root::gli::texture_format_type,
+                BaseLayer: root::gli::texture_size_type,
+                MaxLayer: root::gli::texture_size_type,
+                BaseFace: root::gli::texture_size_type,
+                MaxFace: root::gli::texture_size_type,
+                BaseLevel: root::gli::texture_size_type,
+                MaxLevel: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            );
+        }
+        extern "C" {
+            #[doc = " Create a texture view, reference a subset of an exiting storage_linear"]
+            #[link_name = "\u{1}texture1d_array"]
+            pub fn texture1d_array_texture1d_array5(
+                this: *mut root::gli::texture1d_array,
+                Texture: *const root::gli::texture1d_array,
+                BaseLayer: root::gli::texture_size_type,
+                MaxLayer: root::gli::texture_size_type,
+                BaseLevel: root::gli::texture_size_type,
+                MaxLevel: root::gli::texture_size_type,
+            );
+        }
+        impl texture1d_array {
+            #[inline]
+            pub unsafe fn extent(
+                &self,
+                Level: root::gli::texture_size_type,
+            ) -> root::gli::texture1d_array_extent_type {
+                texture1d_array_extent(self, Level)
+            }
+            #[inline]
+            pub unsafe fn new() -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture1d_array_texture1d_array(&mut __bindgen_tmp);
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new1(
+                Format: root::gli::texture_format_type,
+                Extent: *const root::gli::texture1d_array_extent_type,
+                Layers: root::gli::texture_size_type,
+                Levels: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            ) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture1d_array_texture1d_array1(
+                    &mut __bindgen_tmp,
+                    Format,
+                    Extent,
+                    Layers,
+                    Levels,
+                    Swizzles,
+                );
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new2(
+                Format: root::gli::texture_format_type,
+                Extent: *const root::gli::texture1d_array_extent_type,
+                Layers: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            ) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture1d_array_texture1d_array2(
+                    &mut __bindgen_tmp,
+                    Format,
+                    Extent,
+                    Layers,
+                    Swizzles,
+                );
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new3(Texture: *const root::gli::texture) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture1d_array_texture1d_array3(&mut __bindgen_tmp, Texture);
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new4(
+                Texture: *const root::gli::texture,
+                Format: root::gli::texture_format_type,
+                BaseLayer: root::gli::texture_size_type,
+                MaxLayer: root::gli::texture_size_type,
+                BaseFace: root::gli::texture_size_type,
+                MaxFace: root::gli::texture_size_type,
+                BaseLevel: root::gli::texture_size_type,
+                MaxLevel: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            ) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture1d_array_texture1d_array4(
+                    &mut __bindgen_tmp,
+                    Texture,
+                    Format,
+                    BaseLayer,
+                    MaxLayer,
+                    BaseFace,
+                    MaxFace,
+                    BaseLevel,
+                    MaxLevel,
+                    Swizzles,
+                );
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new5(
+                Texture: *const root::gli::texture1d_array,
+                BaseLayer: root::gli::texture_size_type,
+                MaxLayer: root::gli::texture_size_type,
+                BaseLevel: root::gli::texture_size_type,
+                MaxLevel: root::gli::texture_size_type,
+            ) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture1d_array_texture1d_array5(
+                    &mut __bindgen_tmp,
+                    Texture,
+                    BaseLayer,
+                    MaxLayer,
+                    BaseLevel,
+                    MaxLevel,
+                );
+                __bindgen_tmp
+            }
+        }
+        #[doc = " 2d texture"]
+        #[repr(C)]
+        pub struct texture2d {
+            pub _base: root::gli::texture,
+        }
+        pub type texture2d_extent_type = root::gli::extent2d;
+        extern "C" {
+            #[doc = " Return the dimensions of a texture instance: width and height."]
+            #[link_name = "\u{1}extent"]
+            pub fn texture2d_extent(
+                this: *const root::gli::texture2d,
+                Level: root::gli::texture_size_type,
+            ) -> root::gli::texture2d_extent_type;
+        }
+        extern "C" {
+            #[doc = " Create an empty texture 2D."]
+            #[link_name = "\u{1}texture2d"]
+            pub fn texture2d_texture2d(this: *mut root::gli::texture2d);
+        }
+        extern "C" {
+            #[doc = " Create a texture2d and allocate a new storage_linear."]
+            #[link_name = "\u{1}texture2d"]
+            pub fn texture2d_texture2d1(
+                this: *mut root::gli::texture2d,
+                Format: root::gli::texture_format_type,
+                Extent: *const root::gli::texture2d_extent_type,
+                Levels: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            );
+        }
+        extern "C" {
+            #[doc = " Create a texture2d and allocate a new storage_linear with a complete mipmap chain."]
+            #[link_name = "\u{1}texture2d"]
+            pub fn texture2d_texture2d2(
+                this: *mut root::gli::texture2d,
+                Format: root::gli::texture_format_type,
+                Extent: *const root::gli::texture2d_extent_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            );
+        }
+        extern "C" {
+            #[doc = " Create a texture2d view with an existing storage_linear."]
+            #[link_name = "\u{1}texture2d"]
+            pub fn texture2d_texture2d3(
+                this: *mut root::gli::texture2d,
+                Texture: *const root::gli::texture,
+            );
+        }
+        extern "C" {
+            #[doc = " Create a texture2d view with an existing storage_linear."]
+            #[link_name = "\u{1}texture2d"]
+            pub fn texture2d_texture2d4(
+                this: *mut root::gli::texture2d,
+                Texture: *const root::gli::texture,
+                Format: root::gli::texture_format_type,
+                BaseLayer: root::gli::texture_size_type,
+                MaxLayer: root::gli::texture_size_type,
+                BaseFace: root::gli::texture_size_type,
+                MaxFace: root::gli::texture_size_type,
+                BaseLevel: root::gli::texture_size_type,
+                MaxLevel: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            );
+        }
+        extern "C" {
+            #[doc = " Create a texture2d view, reference a subset of an existing texture2d instance."]
+            #[link_name = "\u{1}texture2d"]
+            pub fn texture2d_texture2d5(
+                this: *mut root::gli::texture2d,
+                Texture: *const root::gli::texture2d,
+                BaseLevel: root::gli::texture_size_type,
+                MaxLevel: root::gli::texture_size_type,
+            );
+        }
+        impl texture2d {
+            #[inline]
+            pub unsafe fn extent(
+                &self,
+                Level: root::gli::texture_size_type,
+            ) -> root::gli::texture2d_extent_type {
+                texture2d_extent(self, Level)
+            }
+            #[inline]
+            pub unsafe fn new() -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture2d_texture2d(&mut __bindgen_tmp);
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new1(
+                Format: root::gli::texture_format_type,
+                Extent: *const root::gli::texture2d_extent_type,
+                Levels: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            ) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture2d_texture2d1(&mut __bindgen_tmp, Format, Extent, Levels, Swizzles);
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new2(
+                Format: root::gli::texture_format_type,
+                Extent: *const root::gli::texture2d_extent_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            ) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture2d_texture2d2(&mut __bindgen_tmp, Format, Extent, Swizzles);
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new3(Texture: *const root::gli::texture) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture2d_texture2d3(&mut __bindgen_tmp, Texture);
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new4(
+                Texture: *const root::gli::texture,
+                Format: root::gli::texture_format_type,
+                BaseLayer: root::gli::texture_size_type,
+                MaxLayer: root::gli::texture_size_type,
+                BaseFace: root::gli::texture_size_type,
+                MaxFace: root::gli::texture_size_type,
+                BaseLevel: root::gli::texture_size_type,
+                MaxLevel: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            ) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture2d_texture2d4(
+                    &mut __bindgen_tmp,
+                    Texture,
+                    Format,
+                    BaseLayer,
+                    MaxLayer,
+                    BaseFace,
+                    MaxFace,
+                    BaseLevel,
+                    MaxLevel,
+                    Swizzles,
+                );
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new5(
+                Texture: *const root::gli::texture2d,
+                BaseLevel: root::gli::texture_size_type,
+                MaxLevel: root::gli::texture_size_type,
+            ) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture2d_texture2d5(&mut __bindgen_tmp, Texture, BaseLevel, MaxLevel);
+                __bindgen_tmp
+            }
+        }
+        #[doc = " 2d array texture"]
+        #[repr(C)]
+        pub struct texture2d_array {
+            pub _base: root::gli::texture,
+        }
+        pub type texture2d_array_extent_type = root::gli::extent2d;
+        extern "C" {
+            #[doc = " Return the dimensions of a texture instance: width and height"]
+            #[link_name = "\u{1}extent"]
+            pub fn texture2d_array_extent(
+                this: *const root::gli::texture2d_array,
+                Level: root::gli::texture_size_type,
+            ) -> root::gli::texture2d_array_extent_type;
+        }
+        extern "C" {
+            #[doc = " Create an empty texture 2D array"]
+            #[link_name = "\u{1}texture2d_array"]
+            pub fn texture2d_array_texture2d_array(this: *mut root::gli::texture2d_array);
+        }
+        extern "C" {
+            #[doc = " Create a texture2d_array and allocate a new storage_linear"]
+            #[link_name = "\u{1}texture2d_array"]
+            pub fn texture2d_array_texture2d_array1(
+                this: *mut root::gli::texture2d_array,
+                Format: root::gli::texture_format_type,
+                Extent: *const root::gli::texture2d_array_extent_type,
+                Layers: root::gli::texture_size_type,
+                Levels: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            );
+        }
+        extern "C" {
+            #[doc = " Create a texture2d_array and allocate a new storage_linear with a complete mipmap chain"]
+            #[link_name = "\u{1}texture2d_array"]
+            pub fn texture2d_array_texture2d_array2(
+                this: *mut root::gli::texture2d_array,
+                Format: root::gli::texture_format_type,
+                Extent: *const root::gli::texture2d_array_extent_type,
+                Layers: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            );
+        }
+        extern "C" {
+            #[doc = " Create a texture2d_array view with an existing storage_linear"]
+            #[link_name = "\u{1}texture2d_array"]
+            pub fn texture2d_array_texture2d_array3(
+                this: *mut root::gli::texture2d_array,
+                Texture: *const root::gli::texture,
+            );
+        }
+        extern "C" {
+            #[doc = " Create a texture2d_array view with an existing storage_linear"]
+            #[link_name = "\u{1}texture2d_array"]
+            pub fn texture2d_array_texture2d_array4(
+                this: *mut root::gli::texture2d_array,
+                Texture: *const root::gli::texture,
+                Format: root::gli::texture_format_type,
+                BaseLayer: root::gli::texture_size_type,
+                MaxLayer: root::gli::texture_size_type,
+                BaseFace: root::gli::texture_size_type,
+                MaxFace: root::gli::texture_size_type,
+                BaseLevel: root::gli::texture_size_type,
+                MaxLevel: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            );
+        }
+        extern "C" {
+            #[doc = " Create a texture view, reference a subset of an exiting texture2d_array instance"]
+            #[link_name = "\u{1}texture2d_array"]
+            pub fn texture2d_array_texture2d_array5(
+                this: *mut root::gli::texture2d_array,
+                Texture: *const root::gli::texture2d_array,
+                BaseLayer: root::gli::texture_size_type,
+                MaxLayer: root::gli::texture_size_type,
+                BaseLevel: root::gli::texture_size_type,
+                MaxLevel: root::gli::texture_size_type,
+            );
+        }
+        impl texture2d_array {
+            #[inline]
+            pub unsafe fn extent(
+                &self,
+                Level: root::gli::texture_size_type,
+            ) -> root::gli::texture2d_array_extent_type {
+                texture2d_array_extent(self, Level)
+            }
+            #[inline]
+            pub unsafe fn new() -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture2d_array_texture2d_array(&mut __bindgen_tmp);
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new1(
+                Format: root::gli::texture_format_type,
+                Extent: *const root::gli::texture2d_array_extent_type,
+                Layers: root::gli::texture_size_type,
+                Levels: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            ) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture2d_array_texture2d_array1(
+                    &mut __bindgen_tmp,
+                    Format,
+                    Extent,
+                    Layers,
+                    Levels,
+                    Swizzles,
+                );
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new2(
+                Format: root::gli::texture_format_type,
+                Extent: *const root::gli::texture2d_array_extent_type,
+                Layers: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            ) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture2d_array_texture2d_array2(
+                    &mut __bindgen_tmp,
+                    Format,
+                    Extent,
+                    Layers,
+                    Swizzles,
+                );
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new3(Texture: *const root::gli::texture) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture2d_array_texture2d_array3(&mut __bindgen_tmp, Texture);
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new4(
+                Texture: *const root::gli::texture,
+                Format: root::gli::texture_format_type,
+                BaseLayer: root::gli::texture_size_type,
+                MaxLayer: root::gli::texture_size_type,
+                BaseFace: root::gli::texture_size_type,
+                MaxFace: root::gli::texture_size_type,
+                BaseLevel: root::gli::texture_size_type,
+                MaxLevel: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            ) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture2d_array_texture2d_array4(
+                    &mut __bindgen_tmp,
+                    Texture,
+                    Format,
+                    BaseLayer,
+                    MaxLayer,
+                    BaseFace,
+                    MaxFace,
+                    BaseLevel,
+                    MaxLevel,
+                    Swizzles,
+                );
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new5(
+                Texture: *const root::gli::texture2d_array,
+                BaseLayer: root::gli::texture_size_type,
+                MaxLayer: root::gli::texture_size_type,
+                BaseLevel: root::gli::texture_size_type,
+                MaxLevel: root::gli::texture_size_type,
+            ) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture2d_array_texture2d_array5(
+                    &mut __bindgen_tmp,
+                    Texture,
+                    BaseLayer,
+                    MaxLayer,
+                    BaseLevel,
+                    MaxLevel,
+                );
+                __bindgen_tmp
+            }
+        }
+        #[doc = " 3d texture"]
+        #[repr(C)]
+        pub struct texture3d {
+            pub _base: root::gli::texture,
+        }
+        pub type texture3d_extent_type = root::gli::extent3d;
+        extern "C" {
+            #[doc = " Return the dimensions of a texture instance: width, height and depth"]
+            #[link_name = "\u{1}extent"]
+            pub fn texture3d_extent(
+                this: *const root::gli::texture3d,
+                Level: root::gli::texture_size_type,
+            ) -> root::gli::texture3d_extent_type;
+        }
+        extern "C" {
+            #[doc = " Create an empty texture 3D"]
+            #[link_name = "\u{1}texture3d"]
+            pub fn texture3d_texture3d(this: *mut root::gli::texture3d);
+        }
+        extern "C" {
+            #[doc = " Create a texture3d and allocate a new storage_linear"]
+            #[link_name = "\u{1}texture3d"]
+            pub fn texture3d_texture3d1(
+                this: *mut root::gli::texture3d,
+                Format: root::gli::texture_format_type,
+                Extent: *const root::gli::texture3d_extent_type,
+                Levels: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            );
+        }
+        extern "C" {
+            #[doc = " Create a texture3d and allocate a new storage_linear with a complete mipmap chain"]
+            #[link_name = "\u{1}texture3d"]
+            pub fn texture3d_texture3d2(
+                this: *mut root::gli::texture3d,
+                Format: root::gli::texture_format_type,
+                Extent: *const root::gli::texture3d_extent_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            );
+        }
+        extern "C" {
+            #[doc = " Create a texture3d view with an existing storage_linear"]
+            #[link_name = "\u{1}texture3d"]
+            pub fn texture3d_texture3d3(
+                this: *mut root::gli::texture3d,
+                Texture: *const root::gli::texture,
+            );
+        }
+        extern "C" {
+            #[doc = " Create a texture3d view with an existing storage_linear"]
+            #[link_name = "\u{1}texture3d"]
+            pub fn texture3d_texture3d4(
+                this: *mut root::gli::texture3d,
+                Texture: *const root::gli::texture,
+                Format: root::gli::texture_format_type,
+                BaseLayer: root::gli::texture_size_type,
+                MaxLayer: root::gli::texture_size_type,
+                BaseFace: root::gli::texture_size_type,
+                MaxFace: root::gli::texture_size_type,
+                BaseLevel: root::gli::texture_size_type,
+                MaxLevel: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            );
+        }
+        extern "C" {
+            #[doc = " Create a texture3d view, reference a subset of an existing texture3d instance"]
+            #[link_name = "\u{1}texture3d"]
+            pub fn texture3d_texture3d5(
+                this: *mut root::gli::texture3d,
+                Texture: *const root::gli::texture3d,
+                BaseLevel: root::gli::texture_size_type,
+                MaxLevel: root::gli::texture_size_type,
+            );
+        }
+        impl texture3d {
+            #[inline]
+            pub unsafe fn extent(
+                &self,
+                Level: root::gli::texture_size_type,
+            ) -> root::gli::texture3d_extent_type {
+                texture3d_extent(self, Level)
+            }
+            #[inline]
+            pub unsafe fn new() -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture3d_texture3d(&mut __bindgen_tmp);
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new1(
+                Format: root::gli::texture_format_type,
+                Extent: *const root::gli::texture3d_extent_type,
+                Levels: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            ) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture3d_texture3d1(&mut __bindgen_tmp, Format, Extent, Levels, Swizzles);
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new2(
+                Format: root::gli::texture_format_type,
+                Extent: *const root::gli::texture3d_extent_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            ) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture3d_texture3d2(&mut __bindgen_tmp, Format, Extent, Swizzles);
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new3(Texture: *const root::gli::texture) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture3d_texture3d3(&mut __bindgen_tmp, Texture);
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new4(
+                Texture: *const root::gli::texture,
+                Format: root::gli::texture_format_type,
+                BaseLayer: root::gli::texture_size_type,
+                MaxLayer: root::gli::texture_size_type,
+                BaseFace: root::gli::texture_size_type,
+                MaxFace: root::gli::texture_size_type,
+                BaseLevel: root::gli::texture_size_type,
+                MaxLevel: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            ) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture3d_texture3d4(
+                    &mut __bindgen_tmp,
+                    Texture,
+                    Format,
+                    BaseLayer,
+                    MaxLayer,
+                    BaseFace,
+                    MaxFace,
+                    BaseLevel,
+                    MaxLevel,
+                    Swizzles,
+                );
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new5(
+                Texture: *const root::gli::texture3d,
+                BaseLevel: root::gli::texture_size_type,
+                MaxLevel: root::gli::texture_size_type,
+            ) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture3d_texture3d5(&mut __bindgen_tmp, Texture, BaseLevel, MaxLevel);
+                __bindgen_tmp
+            }
+        }
+        #[doc = " Cube map texture"]
+        #[repr(C)]
+        pub struct texture_cube {
+            pub _base: root::gli::texture,
+        }
+        pub type texture_cube_extent_type = root::gli::extent2d;
+        extern "C" {
+            #[doc = " Return the dimensions of a texture instance: width and height where both should be equal."]
+            #[link_name = "\u{1}extent"]
+            pub fn texture_cube_extent(
+                this: *const root::gli::texture_cube,
+                Level: root::gli::texture_size_type,
+            ) -> root::gli::texture_cube_extent_type;
+        }
+        extern "C" {
+            #[doc = " Create an empty texture cube"]
+            #[link_name = "\u{1}texture_cube"]
+            pub fn texture_cube_texture_cube(this: *mut root::gli::texture_cube);
+        }
+        extern "C" {
+            #[doc = " Create a texture_cube and allocate a new storage_linear"]
+            #[link_name = "\u{1}texture_cube"]
+            pub fn texture_cube_texture_cube1(
+                this: *mut root::gli::texture_cube,
+                Format: root::gli::texture_format_type,
+                Extent: *const root::gli::texture_cube_extent_type,
+                Levels: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            );
+        }
+        extern "C" {
+            #[doc = " Create a texture_cube and allocate a new storage_linear with a complete mipmap chain"]
+            #[link_name = "\u{1}texture_cube"]
+            pub fn texture_cube_texture_cube2(
+                this: *mut root::gli::texture_cube,
+                Format: root::gli::texture_format_type,
+                Extent: *const root::gli::texture_cube_extent_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            );
+        }
+        extern "C" {
+            #[doc = " Create a texture_cube view with an existing storage_linear"]
+            #[link_name = "\u{1}texture_cube"]
+            pub fn texture_cube_texture_cube3(
+                this: *mut root::gli::texture_cube,
+                Texture: *const root::gli::texture,
+            );
+        }
+        extern "C" {
+            #[doc = " Create a texture_cube view with an existing storage_linear"]
+            #[link_name = "\u{1}texture_cube"]
+            pub fn texture_cube_texture_cube4(
+                this: *mut root::gli::texture_cube,
+                Texture: *const root::gli::texture,
+                Format: root::gli::texture_format_type,
+                BaseLayer: root::gli::texture_size_type,
+                MaxLayer: root::gli::texture_size_type,
+                BaseFace: root::gli::texture_size_type,
+                MaxFace: root::gli::texture_size_type,
+                BaseLevel: root::gli::texture_size_type,
+                MaxLevel: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            );
+        }
+        extern "C" {
+            #[doc = " Create a texture_cube view, reference a subset of an existing texture_cube instance"]
+            #[link_name = "\u{1}texture_cube"]
+            pub fn texture_cube_texture_cube5(
+                this: *mut root::gli::texture_cube,
+                Texture: *const root::gli::texture_cube,
+                BaseFace: root::gli::texture_size_type,
+                MaxFace: root::gli::texture_size_type,
+                BaseLevel: root::gli::texture_size_type,
+                MaxLevel: root::gli::texture_size_type,
+            );
+        }
+        impl texture_cube {
+            #[inline]
+            pub unsafe fn extent(
+                &self,
+                Level: root::gli::texture_size_type,
+            ) -> root::gli::texture_cube_extent_type {
+                texture_cube_extent(self, Level)
+            }
+            #[inline]
+            pub unsafe fn new() -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture_cube_texture_cube(&mut __bindgen_tmp);
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new1(
+                Format: root::gli::texture_format_type,
+                Extent: *const root::gli::texture_cube_extent_type,
+                Levels: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            ) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture_cube_texture_cube1(&mut __bindgen_tmp, Format, Extent, Levels, Swizzles);
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new2(
+                Format: root::gli::texture_format_type,
+                Extent: *const root::gli::texture_cube_extent_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            ) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture_cube_texture_cube2(&mut __bindgen_tmp, Format, Extent, Swizzles);
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new3(Texture: *const root::gli::texture) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture_cube_texture_cube3(&mut __bindgen_tmp, Texture);
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new4(
+                Texture: *const root::gli::texture,
+                Format: root::gli::texture_format_type,
+                BaseLayer: root::gli::texture_size_type,
+                MaxLayer: root::gli::texture_size_type,
+                BaseFace: root::gli::texture_size_type,
+                MaxFace: root::gli::texture_size_type,
+                BaseLevel: root::gli::texture_size_type,
+                MaxLevel: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            ) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture_cube_texture_cube4(
+                    &mut __bindgen_tmp,
+                    Texture,
+                    Format,
+                    BaseLayer,
+                    MaxLayer,
+                    BaseFace,
+                    MaxFace,
+                    BaseLevel,
+                    MaxLevel,
+                    Swizzles,
+                );
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new5(
+                Texture: *const root::gli::texture_cube,
+                BaseFace: root::gli::texture_size_type,
+                MaxFace: root::gli::texture_size_type,
+                BaseLevel: root::gli::texture_size_type,
+                MaxLevel: root::gli::texture_size_type,
+            ) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture_cube_texture_cube5(
+                    &mut __bindgen_tmp,
+                    Texture,
+                    BaseFace,
+                    MaxFace,
+                    BaseLevel,
+                    MaxLevel,
+                );
+                __bindgen_tmp
+            }
+        }
+        #[doc = " Cube map array texture"]
+        #[repr(C)]
+        pub struct texture_cube_array {
+            pub _base: root::gli::texture,
+        }
+        pub type texture_cube_array_extent_type = root::gli::extent2d;
+        extern "C" {
+            #[doc = " Return the dimensions of a texture instance: width and height where both should be equal."]
+            #[link_name = "\u{1}extent"]
+            pub fn texture_cube_array_extent(
+                this: *const root::gli::texture_cube_array,
+                Level: root::gli::texture_size_type,
+            ) -> root::gli::texture_cube_array_extent_type;
+        }
+        extern "C" {
+            #[doc = " Create an empty texture cube array"]
+            #[link_name = "\u{1}texture_cube_array"]
+            pub fn texture_cube_array_texture_cube_array(this: *mut root::gli::texture_cube_array);
+        }
+        extern "C" {
+            #[doc = " Create a texture_cube_array and allocate a new storage_linear"]
+            #[link_name = "\u{1}texture_cube_array"]
+            pub fn texture_cube_array_texture_cube_array1(
+                this: *mut root::gli::texture_cube_array,
+                Format: root::gli::texture_format_type,
+                Extent: *const root::gli::texture_cube_array_extent_type,
+                Layers: root::gli::texture_size_type,
+                Levels: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            );
+        }
+        extern "C" {
+            #[doc = " Create a texture_cube_array and allocate a new storage_linear with a complete mipmap chain"]
+            #[link_name = "\u{1}texture_cube_array"]
+            pub fn texture_cube_array_texture_cube_array2(
+                this: *mut root::gli::texture_cube_array,
+                Format: root::gli::texture_format_type,
+                Extent: *const root::gli::texture_cube_array_extent_type,
+                Layers: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            );
+        }
+        extern "C" {
+            #[doc = " Create a texture_cube_array view with an existing storage_linear"]
+            #[link_name = "\u{1}texture_cube_array"]
+            pub fn texture_cube_array_texture_cube_array3(
+                this: *mut root::gli::texture_cube_array,
+                Texture: *const root::gli::texture,
+            );
+        }
+        extern "C" {
+            #[doc = " Reference a subset of an exiting storage_linear constructor"]
+            #[link_name = "\u{1}texture_cube_array"]
+            pub fn texture_cube_array_texture_cube_array4(
+                this: *mut root::gli::texture_cube_array,
+                Texture: *const root::gli::texture,
+                Format: root::gli::texture_format_type,
+                BaseLayer: root::gli::texture_size_type,
+                MaxLayer: root::gli::texture_size_type,
+                BaseFace: root::gli::texture_size_type,
+                MaxFace: root::gli::texture_size_type,
+                BaseLevel: root::gli::texture_size_type,
+                MaxLevel: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            );
+        }
+        extern "C" {
+            #[doc = " Create a texture view, reference a subset of an exiting texture_cube_array instance"]
+            #[link_name = "\u{1}texture_cube_array"]
+            pub fn texture_cube_array_texture_cube_array5(
+                this: *mut root::gli::texture_cube_array,
+                Texture: *const root::gli::texture_cube_array,
+                BaseLayer: root::gli::texture_size_type,
+                MaxLayer: root::gli::texture_size_type,
+                BaseFace: root::gli::texture_size_type,
+                MaxFace: root::gli::texture_size_type,
+                BaseLevel: root::gli::texture_size_type,
+                MaxLevel: root::gli::texture_size_type,
+            );
+        }
+        impl texture_cube_array {
+            #[inline]
+            pub unsafe fn extent(
+                &self,
+                Level: root::gli::texture_size_type,
+            ) -> root::gli::texture_cube_array_extent_type {
+                texture_cube_array_extent(self, Level)
+            }
+            #[inline]
+            pub unsafe fn new() -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture_cube_array_texture_cube_array(&mut __bindgen_tmp);
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new1(
+                Format: root::gli::texture_format_type,
+                Extent: *const root::gli::texture_cube_array_extent_type,
+                Layers: root::gli::texture_size_type,
+                Levels: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            ) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture_cube_array_texture_cube_array1(
+                    &mut __bindgen_tmp,
+                    Format,
+                    Extent,
+                    Layers,
+                    Levels,
+                    Swizzles,
+                );
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new2(
+                Format: root::gli::texture_format_type,
+                Extent: *const root::gli::texture_cube_array_extent_type,
+                Layers: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            ) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture_cube_array_texture_cube_array2(
+                    &mut __bindgen_tmp,
+                    Format,
+                    Extent,
+                    Layers,
+                    Swizzles,
+                );
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new3(Texture: *const root::gli::texture) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture_cube_array_texture_cube_array3(&mut __bindgen_tmp, Texture);
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new4(
+                Texture: *const root::gli::texture,
+                Format: root::gli::texture_format_type,
+                BaseLayer: root::gli::texture_size_type,
+                MaxLayer: root::gli::texture_size_type,
+                BaseFace: root::gli::texture_size_type,
+                MaxFace: root::gli::texture_size_type,
+                BaseLevel: root::gli::texture_size_type,
+                MaxLevel: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            ) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture_cube_array_texture_cube_array4(
+                    &mut __bindgen_tmp,
+                    Texture,
+                    Format,
+                    BaseLayer,
+                    MaxLayer,
+                    BaseFace,
+                    MaxFace,
+                    BaseLevel,
+                    MaxLevel,
+                    Swizzles,
+                );
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new5(
+                Texture: *const root::gli::texture_cube_array,
+                BaseLayer: root::gli::texture_size_type,
+                MaxLayer: root::gli::texture_size_type,
+                BaseFace: root::gli::texture_size_type,
+                MaxFace: root::gli::texture_size_type,
+                BaseLevel: root::gli::texture_size_type,
+                MaxLevel: root::gli::texture_size_type,
+            ) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture_cube_array_texture_cube_array5(
+                    &mut __bindgen_tmp,
+                    Texture,
+                    BaseLayer,
+                    MaxLayer,
+                    BaseFace,
+                    MaxFace,
+                    BaseLevel,
+                    MaxLevel,
+                );
+                __bindgen_tmp
+            }
+        }
     }
     pub mod std {
         #[allow(unused_imports)]
@@ -1572,6 +2744,366 @@ pub mod root {
             extern "C" {
                 #[doc = " Manually Call destructor for image object. Helper function used in FFI."]
                 pub fn destroy_image(img: *mut root::gli::image);
+            }
+        }
+        pub mod Texture1D {
+            #[allow(unused_imports)]
+            use self::super::super::super::root;
+            extern "C" {
+                pub fn tex1d_new_empty() -> root::gli::texture1d;
+            }
+            extern "C" {
+                pub fn tex1d_new_(
+                    format: root::gli::texture_format_type,
+                    extent: root::gli::texture1d_extent_type,
+                    levels: root::gli::texture_size_type,
+                ) -> root::gli::texture1d;
+            }
+            extern "C" {
+                pub fn tex1d_new_with_mipmap_chain(
+                    format: root::gli::texture_format_type,
+                    extent: root::gli::texture1d_extent_type,
+                ) -> root::gli::texture1d;
+            }
+            extern "C" {
+                pub fn tex1d_share_from(tex: *const root::gli::texture1d) -> root::gli::texture1d;
+            }
+            extern "C" {
+                pub fn tex1d_share_from_detail(
+                    tex: *const root::gli::texture1d,
+                    format: root::gli::texture_format_type,
+                    base_layer: root::gli::texture_size_type,
+                    max_layer: root::gli::texture_size_type,
+                    base_face: root::gli::texture_size_type,
+                    max_face: root::gli::texture_size_type,
+                    base_level: root::gli::texture_size_type,
+                    max_level: root::gli::texture_size_type,
+                ) -> root::gli::texture1d;
+            }
+            extern "C" {
+                pub fn tex1d_share_from_subset(
+                    tex: *const root::gli::texture1d,
+                    base_level: root::gli::texture_size_type,
+                    max_level: root::gli::texture_size_type,
+                ) -> root::gli::texture1d;
+            }
+            extern "C" {
+                pub fn tex1d_extent(
+                    tex: *const root::gli::texture1d,
+                    level: root::gli::texture_size_type,
+                ) -> root::gli::texture1d_extent_type;
+            }
+        }
+        pub mod Texture1DArray {
+            #[allow(unused_imports)]
+            use self::super::super::super::root;
+            extern "C" {
+                pub fn tex1darray_new_empty() -> root::gli::texture1d_array;
+            }
+            extern "C" {
+                pub fn tex1darray_new_(
+                    format: root::gli::texture_format_type,
+                    extent: root::gli::texture1d_array_extent_type,
+                    layers: root::gli::texture_size_type,
+                    levels: root::gli::texture_size_type,
+                ) -> root::gli::texture1d_array;
+            }
+            extern "C" {
+                pub fn tex1darray_new_with_mipmap_chain(
+                    format: root::gli::texture_format_type,
+                    extent: root::gli::texture1d_array_extent_type,
+                    layers: root::gli::texture_size_type,
+                ) -> root::gli::texture1d_array;
+            }
+            extern "C" {
+                pub fn tex1darray_share_from(
+                    tex: *const root::gli::texture1d_array,
+                ) -> root::gli::texture1d_array;
+            }
+            extern "C" {
+                pub fn tex1darray_share_from_detail(
+                    tex: *const root::gli::texture1d_array,
+                    format: root::gli::texture_format_type,
+                    base_layer: root::gli::texture_size_type,
+                    max_layer: root::gli::texture_size_type,
+                    base_face: root::gli::texture_size_type,
+                    max_face: root::gli::texture_size_type,
+                    base_level: root::gli::texture_size_type,
+                    max_level: root::gli::texture_size_type,
+                ) -> root::gli::texture1d_array;
+            }
+            extern "C" {
+                pub fn tex1darray_share_from_subset(
+                    tex: *const root::gli::texture1d_array,
+                    base_layer: root::gli::texture_size_type,
+                    max_layer: root::gli::texture_size_type,
+                    base_level: root::gli::texture_size_type,
+                    max_level: root::gli::texture_size_type,
+                ) -> root::gli::texture1d_array;
+            }
+            extern "C" {
+                pub fn tex1darray_extent(
+                    tex: *const root::gli::texture1d_array,
+                    level: root::gli::texture_size_type,
+                ) -> root::gli::texture1d_array_extent_type;
+            }
+        }
+        pub mod Texture2D {
+            #[allow(unused_imports)]
+            use self::super::super::super::root;
+            extern "C" {
+                pub fn tex2d_new_empty() -> root::gli::texture2d;
+            }
+            extern "C" {
+                pub fn tex2d_new_(
+                    format: root::gli::texture_format_type,
+                    extent: root::gli::texture2d_extent_type,
+                    levels: root::gli::texture_size_type,
+                ) -> root::gli::texture2d;
+            }
+            extern "C" {
+                pub fn tex2d_new_with_mipmap_chain(
+                    format: root::gli::texture_format_type,
+                    extent: root::gli::texture2d_extent_type,
+                ) -> root::gli::texture2d;
+            }
+            extern "C" {
+                pub fn tex2d_share_from(tex: *const root::gli::texture2d) -> root::gli::texture2d;
+            }
+            extern "C" {
+                pub fn tex2d_share_from_detail(
+                    tex: *const root::gli::texture2d,
+                    format: root::gli::texture_format_type,
+                    base_layer: root::gli::texture_size_type,
+                    max_layer: root::gli::texture_size_type,
+                    base_face: root::gli::texture_size_type,
+                    max_face: root::gli::texture_size_type,
+                    base_level: root::gli::texture_size_type,
+                    max_level: root::gli::texture_size_type,
+                ) -> root::gli::texture2d;
+            }
+            extern "C" {
+                pub fn tex2d_share_from_subset(
+                    tex: *const root::gli::texture2d,
+                    base_level: root::gli::texture_size_type,
+                    max_level: root::gli::texture_size_type,
+                ) -> root::gli::texture2d;
+            }
+            extern "C" {
+                pub fn tex2d_extent(
+                    tex: *const root::gli::texture2d,
+                    level: root::gli::texture_size_type,
+                ) -> root::gli::texture2d_extent_type;
+            }
+        }
+        pub mod Texture2DArray {
+            #[allow(unused_imports)]
+            use self::super::super::super::root;
+            extern "C" {
+                pub fn tex2darray_new_empty() -> root::gli::texture2d_array;
+            }
+            extern "C" {
+                pub fn tex2darray_new_(
+                    format: root::gli::texture_format_type,
+                    extent: root::gli::texture2d_array_extent_type,
+                    layers: root::gli::texture_size_type,
+                    levels: root::gli::texture_size_type,
+                ) -> root::gli::texture2d_array;
+            }
+            extern "C" {
+                pub fn tex2darray_new_with_mipmap_chain(
+                    format: root::gli::texture_format_type,
+                    extent: root::gli::texture2d_array_extent_type,
+                    layers: root::gli::texture_size_type,
+                ) -> root::gli::texture2d_array;
+            }
+            extern "C" {
+                pub fn tex2darray_share_from(
+                    tex: *const root::gli::texture2d_array,
+                ) -> root::gli::texture2d_array;
+            }
+            extern "C" {
+                pub fn tex2darray_share_from_detail(
+                    tex: *const root::gli::texture2d_array,
+                    format: root::gli::texture_format_type,
+                    base_layer: root::gli::texture_size_type,
+                    max_layer: root::gli::texture_size_type,
+                    base_face: root::gli::texture_size_type,
+                    max_face: root::gli::texture_size_type,
+                    base_level: root::gli::texture_size_type,
+                    max_level: root::gli::texture_size_type,
+                ) -> root::gli::texture2d_array;
+            }
+            extern "C" {
+                pub fn tex2darray_share_from_subset(
+                    tex: *const root::gli::texture2d_array,
+                    base_layer: root::gli::texture_size_type,
+                    max_layer: root::gli::texture_size_type,
+                    base_level: root::gli::texture_size_type,
+                    max_level: root::gli::texture_size_type,
+                ) -> root::gli::texture2d_array;
+            }
+            extern "C" {
+                pub fn tex2darray_extent(
+                    tex: *const root::gli::texture2d_array,
+                    level: root::gli::texture_size_type,
+                ) -> root::gli::texture2d_array_extent_type;
+            }
+        }
+        pub mod Texture3D {
+            #[allow(unused_imports)]
+            use self::super::super::super::root;
+            extern "C" {
+                pub fn tex3d_new_empty() -> root::gli::texture3d;
+            }
+            extern "C" {
+                pub fn tex3d_new_(
+                    format: root::gli::texture_format_type,
+                    extent: root::gli::texture3d_extent_type,
+                    levels: root::gli::texture_size_type,
+                ) -> root::gli::texture3d;
+            }
+            extern "C" {
+                pub fn tex3d_new_with_mipmap_chain(
+                    format: root::gli::texture_format_type,
+                    extent: root::gli::texture3d_extent_type,
+                ) -> root::gli::texture3d;
+            }
+            extern "C" {
+                pub fn tex3d_share_from(tex: *const root::gli::texture3d) -> root::gli::texture3d;
+            }
+            extern "C" {
+                pub fn tex3d_share_from_detail(
+                    tex: *const root::gli::texture3d,
+                    format: root::gli::texture_format_type,
+                    base_layer: root::gli::texture_size_type,
+                    max_layer: root::gli::texture_size_type,
+                    base_face: root::gli::texture_size_type,
+                    max_face: root::gli::texture_size_type,
+                    base_level: root::gli::texture_size_type,
+                    max_level: root::gli::texture_size_type,
+                ) -> root::gli::texture3d;
+            }
+            extern "C" {
+                pub fn tex3d_share_from_subset(
+                    tex: *const root::gli::texture3d,
+                    base_level: root::gli::texture_size_type,
+                    max_level: root::gli::texture_size_type,
+                ) -> root::gli::texture3d;
+            }
+            extern "C" {
+                pub fn tex3d_extent(
+                    tex: *const root::gli::texture3d,
+                    level: root::gli::texture_size_type,
+                ) -> root::gli::texture3d_extent_type;
+            }
+        }
+        pub mod TextureCube {
+            #[allow(unused_imports)]
+            use self::super::super::super::root;
+            extern "C" {
+                pub fn texcube_new_empty() -> root::gli::texture_cube;
+            }
+            extern "C" {
+                pub fn texcube_new_(
+                    format: root::gli::texture_format_type,
+                    extent: root::gli::texture_cube_extent_type,
+                    levels: root::gli::texture_size_type,
+                ) -> root::gli::texture_cube;
+            }
+            extern "C" {
+                pub fn texcube_new_with_mipmap_chain(
+                    format: root::gli::texture_format_type,
+                    extent: root::gli::texture_cube_extent_type,
+                ) -> root::gli::texture_cube;
+            }
+            extern "C" {
+                pub fn texcube_share_from(
+                    tex: *const root::gli::texture_cube,
+                ) -> root::gli::texture_cube;
+            }
+            extern "C" {
+                pub fn texcube_share_from_detail(
+                    tex: *const root::gli::texture_cube,
+                    format: root::gli::texture_format_type,
+                    base_layer: root::gli::texture_size_type,
+                    max_layer: root::gli::texture_size_type,
+                    base_face: root::gli::texture_size_type,
+                    max_face: root::gli::texture_size_type,
+                    base_level: root::gli::texture_size_type,
+                    max_level: root::gli::texture_size_type,
+                ) -> root::gli::texture_cube;
+            }
+            extern "C" {
+                pub fn texcube_share_from_subset(
+                    tex: *const root::gli::texture_cube,
+                    base_face: root::gli::texture_size_type,
+                    max_face: root::gli::texture_size_type,
+                    base_level: root::gli::texture_size_type,
+                    max_level: root::gli::texture_size_type,
+                ) -> root::gli::texture_cube;
+            }
+            extern "C" {
+                pub fn texcube_extent(
+                    tex: *const root::gli::texture_cube,
+                    level: root::gli::texture_size_type,
+                ) -> root::gli::texture_cube_extent_type;
+            }
+        }
+        pub mod TextureCubeArray {
+            #[allow(unused_imports)]
+            use self::super::super::super::root;
+            extern "C" {
+                pub fn texcubearray_new_empty() -> root::gli::texture_cube_array;
+            }
+            extern "C" {
+                pub fn texcubearray_new_(
+                    format: root::gli::texture_format_type,
+                    extent: root::gli::texture_cube_array_extent_type,
+                    layers: root::gli::texture_size_type,
+                    levels: root::gli::texture_size_type,
+                ) -> root::gli::texture_cube_array;
+            }
+            extern "C" {
+                pub fn texcubearray_new_with_mipmap_chain(
+                    format: root::gli::texture_format_type,
+                    extent: root::gli::texture_cube_array_extent_type,
+                    layers: root::gli::texture_size_type,
+                ) -> root::gli::texture_cube_array;
+            }
+            extern "C" {
+                pub fn texcubearray_share_from(
+                    tex: *const root::gli::texture_cube_array,
+                ) -> root::gli::texture_cube_array;
+            }
+            extern "C" {
+                pub fn texcubearray_share_from_detail(
+                    tex: *const root::gli::texture_cube_array,
+                    format: root::gli::texture_format_type,
+                    base_layer: root::gli::texture_size_type,
+                    max_layer: root::gli::texture_size_type,
+                    base_face: root::gli::texture_size_type,
+                    max_face: root::gli::texture_size_type,
+                    base_level: root::gli::texture_size_type,
+                    max_level: root::gli::texture_size_type,
+                ) -> root::gli::texture_cube_array;
+            }
+            extern "C" {
+                pub fn texcubearray_share_from_subset(
+                    tex: *const root::gli::texture_cube_array,
+                    base_layer: root::gli::texture_size_type,
+                    max_layer: root::gli::texture_size_type,
+                    base_face: root::gli::texture_size_type,
+                    max_face: root::gli::texture_size_type,
+                    base_level: root::gli::texture_size_type,
+                    max_level: root::gli::texture_size_type,
+                ) -> root::gli::texture_cube_array;
+            }
+            extern "C" {
+                pub fn texcubearray_extent(
+                    tex: *const root::gli::texture_cube_array,
+                    level: root::gli::texture_size_type,
+                ) -> root::gli::texture_cube_array_extent_type;
             }
         }
     }
