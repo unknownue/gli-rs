@@ -43,17 +43,20 @@ pub trait GliTexture: inner::TextureAccessible + Sized {
         self.raw_texture_mut().Swizzles = swizzles;
     }
 
-    /// Return the base face of the texture instance, effectively a memory offset in the actual texture storage_type to identify where to start reading the faces.
+    /// Return the base face of the texture instance, effectively a memory offset in the actual texture storage_type
+    /// to identify where to start reading the faces.
     fn base_face(&self) -> usize {
         unsafe { self.raw_texture().base_face() }
     }
 
-    /// Return the base layer of the texture instance, effectively a memory offset in the actual texture storage_type to identify where to start reading the layers.
+    /// Return the base layer of the texture instance, effectively a memory offset in the actual texture storage_type
+    /// to identify where to start reading the layers.
     fn base_layer(&self) -> usize {
         unsafe { self.raw_texture().base_layer() }
     }
 
-    /// Return the base level of the texture instance, effectively a memory offset in the actual texture storage_type to identify where to start reading the levels.
+    /// Return the base level of the texture instance, effectively a memory offset in the actual texture storage_type
+    /// to identify where to start reading the levels.
     fn base_level(&self) -> usize {
         unsafe { self.raw_texture().base_level() }
     }
@@ -121,17 +124,20 @@ pub trait GliTexture: inner::TextureAccessible + Sized {
     // TODO: load(..) method is missing, due to template specialization.
     // fn load();
 
-    /// Return the max face of the texture instance, effectively a memory offset to the beginning of the last face in the actual texture storage_type that the texture instance can access.
+    /// Return the max face of the texture instance, effectively a memory offset to the beginning of the last face
+    /// in the actual texture storage_type that the texture instance can access.
     fn max_face(&self) -> usize {
         unsafe { self.raw_texture().max_face() }
     }
 
-    /// Return the max layer of the texture instance, effectively a memory offset to the beginning of the last layer in the actual texture storage_type that the texture instance can access.
+    /// Return the max layer of the texture instance, effectively a memory offset to the beginning of the last layer
+    /// in the actual texture storage_type that the texture instance can access.
     fn max_layer(&self) -> usize {
         unsafe { self.raw_texture().max_layer() }
     }
 
-    /// Return the max level of the texture instance, effectively a memory offset to the beginning of the last level in the actual texture storage_type that the texture instance can access.
+    /// Return the max level of the texture instance, effectively a memory offset to the beginning of the last level
+    /// in the actual texture storage_type that the texture instance can access.
     fn max_level(&self) -> usize {
         unsafe { self.raw_texture().max_level() }
     }

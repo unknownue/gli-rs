@@ -57,10 +57,9 @@ fn generate_bindings() {
         ]);
 
     builder = builder
+        .whitelist_function("bindings::.*")
         .whitelist_type("gli::texture.*")
         .whitelist_type("gli::image.*")
-        .whitelist_type(".*target.*") // redundancy
-        .whitelist_type("gli::swizzle.*") // redundancy
         .whitelist_function("gli::is_.*")
         .whitelist_function("gli::load.*")
         .whitelist_function("gli::save.*")

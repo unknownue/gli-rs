@@ -1,3 +1,5 @@
+/// @brief Include to use the format enum and query properties of formats.
+/// @file gli/format.hpp
 
 #pragma once
 
@@ -266,10 +268,20 @@ extern "C" {
             SWIZZLE_ONE, SWIZZLE_LAST = SWIZZLE_ONE
         };
 
+        /// Determine whether the Swizzle value represent a channel
+        inline bool is_channel(swizzle Swizzle) {
+            return Swizzle >= SWIZZLE_CHANNEL_FIRST && Swizzle <= SWIZZLE_CHANNEL_LAST;
+        }
+
         enum {
             FORMAT_COUNT = FORMAT_LAST - FORMAT_FIRST + 1,
             SWIZZLE_COUNT = SWIZZLE_LAST - SWIZZLE_FIRST + 1
         };
+
+        /// Evaluate whether a format value is value or not
+        inline bool is_valid(format Format) {
+            return Format >= FORMAT_FIRST && Format <= FORMAT_LAST;
+        }
 
         typedef glm::vec<4, swizzle> swizzles;
 

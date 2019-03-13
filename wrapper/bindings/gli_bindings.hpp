@@ -15,3 +15,7 @@ namespace gli {
 #include "type.hpp"
 #include "target.hpp"
 #include "format.hpp"
+
+#include "storage_linear.hpp"
+#include "image.hpp"
+#include "texture.hpp"

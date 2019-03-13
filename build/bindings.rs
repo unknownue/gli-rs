@@ -7,6 +7,10 @@ pub mod root {
     pub mod gli {
         #[allow(unused_imports)]
         use self::super::super::root;
+        pub type byte = root::glm::uint8;
+        pub type extent1d = root::glm::ivec1;
+        pub type extent2d = root::glm::ivec2;
+        pub type extent3d = root::glm::ivec3;
         pub const target_TARGET_1D: root::gli::target = 0;
         pub const target_TARGET_FIRST: root::gli::target = 0;
         pub const target_TARGET_1D_ARRAY: root::gli::target = 1;
@@ -311,17 +315,1185 @@ pub mod root {
             #[doc = " Evaluate whether the format has depth and stencil components"]
             pub fn is_depth_stencil(Format: root::gli::format) -> bool;
         }
-        pub mod detail {
-            #[allow(unused_imports)]
-            use self::super::super::super::root;
+        #[repr(C)]
+        #[derive(Debug)]
+        pub struct storage_linear {
+            pub Layers: root::gli::storage_linear_size_type,
+            pub Faces: root::gli::storage_linear_size_type,
+            pub Levels: root::gli::storage_linear_size_type,
+            pub BlockSize: root::gli::storage_linear_size_type,
+            pub BlockCount: root::gli::storage_linear_extent_type,
+            pub BlockExtent: root::gli::storage_linear_extent_type,
+            pub Extent: root::gli::storage_linear_extent_type,
+            pub Data: [u64; 3usize],
+        }
+        pub type storage_linear_extent_type = root::gli::extent3d;
+        pub type storage_linear_size_type = usize;
+        pub use self::super::super::root::gli::format as storage_linear_format_type;
+        pub type storage_linear_data_type = root::gli::byte;
+        extern "C" {
+            #[link_name = "\u{1}empty"]
+            pub fn storage_linear_empty(this: *const root::gli::storage_linear) -> bool;
+        }
+        extern "C" {
+            #[link_name = "\u{1}size"]
+            pub fn storage_linear_size(
+                this: *const root::gli::storage_linear,
+            ) -> root::gli::storage_linear_size_type;
+        }
+        extern "C" {
+            #[link_name = "\u{1}layers"]
+            pub fn storage_linear_layers(
+                this: *const root::gli::storage_linear,
+            ) -> root::gli::storage_linear_size_type;
+        }
+        extern "C" {
+            #[link_name = "\u{1}levels"]
+            pub fn storage_linear_levels(
+                this: *const root::gli::storage_linear,
+            ) -> root::gli::storage_linear_size_type;
+        }
+        extern "C" {
+            #[link_name = "\u{1}faces"]
+            pub fn storage_linear_faces(
+                this: *const root::gli::storage_linear,
+            ) -> root::gli::storage_linear_size_type;
+        }
+        extern "C" {
+            #[link_name = "\u{1}block_size"]
+            pub fn storage_linear_block_size(
+                this: *const root::gli::storage_linear,
+            ) -> root::gli::storage_linear_size_type;
+        }
+        extern "C" {
+            #[link_name = "\u{1}block_extent"]
+            pub fn storage_linear_block_extent(
+                this: *const root::gli::storage_linear,
+            ) -> root::gli::storage_linear_extent_type;
+        }
+        extern "C" {
+            #[link_name = "\u{1}block_count"]
+            pub fn storage_linear_block_count(
+                this: *const root::gli::storage_linear,
+                Level: root::gli::storage_linear_size_type,
+            ) -> root::gli::storage_linear_extent_type;
+        }
+        extern "C" {
+            #[link_name = "\u{1}extent"]
+            pub fn storage_linear_extent(
+                this: *const root::gli::storage_linear,
+                Level: root::gli::storage_linear_size_type,
+            ) -> root::gli::storage_linear_extent_type;
+        }
+        extern "C" {
+            #[link_name = "\u{1}data"]
+            pub fn storage_linear_data(
+                this: *mut root::gli::storage_linear,
+            ) -> *mut root::gli::storage_linear_data_type;
+        }
+        extern "C" {
+            #[link_name = "\u{1}data"]
+            pub fn storage_linear_data1(
+                this: *const root::gli::storage_linear,
+            ) -> *const root::gli::storage_linear_data_type;
+        }
+        extern "C" {
+            #[doc = " Compute the relative memory offset to access the data for a specific layer, face and level"]
+            #[link_name = "\u{1}base_offset"]
+            pub fn storage_linear_base_offset(
+                this: *const root::gli::storage_linear,
+                Layer: root::gli::storage_linear_size_type,
+                Face: root::gli::storage_linear_size_type,
+                Level: root::gli::storage_linear_size_type,
+            ) -> root::gli::storage_linear_size_type;
+        }
+        extern "C" {
+            #[link_name = "\u{1}image_offset"]
+            pub fn storage_linear_image_offset(
+                this: *const root::gli::storage_linear,
+                Coord: *const root::gli::extent1d,
+                Extent: *const root::gli::extent1d,
+            ) -> root::gli::storage_linear_size_type;
+        }
+        extern "C" {
+            #[link_name = "\u{1}image_offset"]
+            pub fn storage_linear_image_offset1(
+                this: *const root::gli::storage_linear,
+                Coord: *const root::gli::extent2d,
+                Extent: *const root::gli::extent2d,
+            ) -> root::gli::storage_linear_size_type;
+        }
+        extern "C" {
+            #[link_name = "\u{1}image_offset"]
+            pub fn storage_linear_image_offset2(
+                this: *const root::gli::storage_linear,
+                Coord: *const root::gli::extent3d,
+                Extent: *const root::gli::extent3d,
+            ) -> root::gli::storage_linear_size_type;
+        }
+        extern "C" {
+            #[doc = " Copy a subset of a specific image of a texture"]
+            #[link_name = "\u{1}copy"]
+            pub fn storage_linear_copy(
+                this: *mut root::gli::storage_linear,
+                StorageSrc: *const root::gli::storage_linear,
+                LayerSrc: usize,
+                FaceSrc: usize,
+                LevelSrc: usize,
+                BlockIndexSrc: *const root::gli::storage_linear_extent_type,
+                LayerDst: usize,
+                FaceDst: usize,
+                LevelDst: usize,
+                BlockIndexDst: *const root::gli::storage_linear_extent_type,
+                BlockCount: *const root::gli::storage_linear_extent_type,
+            );
+        }
+        extern "C" {
+            #[link_name = "\u{1}level_size"]
+            pub fn storage_linear_level_size(
+                this: *const root::gli::storage_linear,
+                Level: root::gli::storage_linear_size_type,
+            ) -> root::gli::storage_linear_size_type;
+        }
+        extern "C" {
+            #[link_name = "\u{1}face_size"]
+            pub fn storage_linear_face_size(
+                this: *const root::gli::storage_linear,
+                BaseLevel: root::gli::storage_linear_size_type,
+                MaxLevel: root::gli::storage_linear_size_type,
+            ) -> root::gli::storage_linear_size_type;
+        }
+        extern "C" {
+            #[link_name = "\u{1}layer_size"]
+            pub fn storage_linear_layer_size(
+                this: *const root::gli::storage_linear,
+                BaseFace: root::gli::storage_linear_size_type,
+                MaxFace: root::gli::storage_linear_size_type,
+                BaseLevel: root::gli::storage_linear_size_type,
+                MaxLevel: root::gli::storage_linear_size_type,
+            ) -> root::gli::storage_linear_size_type;
+        }
+        extern "C" {
+            #[link_name = "\u{1}storage_linear"]
+            pub fn storage_linear_storage_linear(this: *mut root::gli::storage_linear);
+        }
+        extern "C" {
+            #[link_name = "\u{1}storage_linear"]
+            pub fn storage_linear_storage_linear1(
+                this: *mut root::gli::storage_linear,
+                Format: root::gli::storage_linear_format_type,
+                Extent: *const root::gli::storage_linear_extent_type,
+                Layers: root::gli::storage_linear_size_type,
+                Faces: root::gli::storage_linear_size_type,
+                Levels: root::gli::storage_linear_size_type,
+            );
+        }
+        impl storage_linear {
+            #[inline]
+            pub unsafe fn empty(&self) -> bool {
+                storage_linear_empty(self)
+            }
+            #[inline]
+            pub unsafe fn size(&self) -> root::gli::storage_linear_size_type {
+                storage_linear_size(self)
+            }
+            #[inline]
+            pub unsafe fn layers(&self) -> root::gli::storage_linear_size_type {
+                storage_linear_layers(self)
+            }
+            #[inline]
+            pub unsafe fn levels(&self) -> root::gli::storage_linear_size_type {
+                storage_linear_levels(self)
+            }
+            #[inline]
+            pub unsafe fn faces(&self) -> root::gli::storage_linear_size_type {
+                storage_linear_faces(self)
+            }
+            #[inline]
+            pub unsafe fn block_size(&self) -> root::gli::storage_linear_size_type {
+                storage_linear_block_size(self)
+            }
+            #[inline]
+            pub unsafe fn block_extent(&self) -> root::gli::storage_linear_extent_type {
+                storage_linear_block_extent(self)
+            }
+            #[inline]
+            pub unsafe fn block_count(
+                &self,
+                Level: root::gli::storage_linear_size_type,
+            ) -> root::gli::storage_linear_extent_type {
+                storage_linear_block_count(self, Level)
+            }
+            #[inline]
+            pub unsafe fn extent(
+                &self,
+                Level: root::gli::storage_linear_size_type,
+            ) -> root::gli::storage_linear_extent_type {
+                storage_linear_extent(self, Level)
+            }
+            #[inline]
+            pub unsafe fn data(&mut self) -> *mut root::gli::storage_linear_data_type {
+                storage_linear_data(self)
+            }
+            #[inline]
+            pub unsafe fn data1(&self) -> *const root::gli::storage_linear_data_type {
+                storage_linear_data1(self)
+            }
+            #[inline]
+            pub unsafe fn base_offset(
+                &self,
+                Layer: root::gli::storage_linear_size_type,
+                Face: root::gli::storage_linear_size_type,
+                Level: root::gli::storage_linear_size_type,
+            ) -> root::gli::storage_linear_size_type {
+                storage_linear_base_offset(self, Layer, Face, Level)
+            }
+            #[inline]
+            pub unsafe fn image_offset(
+                &self,
+                Coord: *const root::gli::extent1d,
+                Extent: *const root::gli::extent1d,
+            ) -> root::gli::storage_linear_size_type {
+                storage_linear_image_offset(self, Coord, Extent)
+            }
+            #[inline]
+            pub unsafe fn image_offset1(
+                &self,
+                Coord: *const root::gli::extent2d,
+                Extent: *const root::gli::extent2d,
+            ) -> root::gli::storage_linear_size_type {
+                storage_linear_image_offset1(self, Coord, Extent)
+            }
+            #[inline]
+            pub unsafe fn image_offset2(
+                &self,
+                Coord: *const root::gli::extent3d,
+                Extent: *const root::gli::extent3d,
+            ) -> root::gli::storage_linear_size_type {
+                storage_linear_image_offset2(self, Coord, Extent)
+            }
+            #[inline]
+            pub unsafe fn copy(
+                &mut self,
+                StorageSrc: *const root::gli::storage_linear,
+                LayerSrc: usize,
+                FaceSrc: usize,
+                LevelSrc: usize,
+                BlockIndexSrc: *const root::gli::storage_linear_extent_type,
+                LayerDst: usize,
+                FaceDst: usize,
+                LevelDst: usize,
+                BlockIndexDst: *const root::gli::storage_linear_extent_type,
+                BlockCount: *const root::gli::storage_linear_extent_type,
+            ) {
+                storage_linear_copy(
+                    self,
+                    StorageSrc,
+                    LayerSrc,
+                    FaceSrc,
+                    LevelSrc,
+                    BlockIndexSrc,
+                    LayerDst,
+                    FaceDst,
+                    LevelDst,
+                    BlockIndexDst,
+                    BlockCount,
+                )
+            }
+            #[inline]
+            pub unsafe fn level_size(
+                &self,
+                Level: root::gli::storage_linear_size_type,
+            ) -> root::gli::storage_linear_size_type {
+                storage_linear_level_size(self, Level)
+            }
+            #[inline]
+            pub unsafe fn face_size(
+                &self,
+                BaseLevel: root::gli::storage_linear_size_type,
+                MaxLevel: root::gli::storage_linear_size_type,
+            ) -> root::gli::storage_linear_size_type {
+                storage_linear_face_size(self, BaseLevel, MaxLevel)
+            }
+            #[inline]
+            pub unsafe fn layer_size(
+                &self,
+                BaseFace: root::gli::storage_linear_size_type,
+                MaxFace: root::gli::storage_linear_size_type,
+                BaseLevel: root::gli::storage_linear_size_type,
+                MaxLevel: root::gli::storage_linear_size_type,
+            ) -> root::gli::storage_linear_size_type {
+                storage_linear_layer_size(self, BaseFace, MaxFace, BaseLevel, MaxLevel)
+            }
+            #[inline]
+            pub unsafe fn new() -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                storage_linear_storage_linear(&mut __bindgen_tmp);
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new1(
+                Format: root::gli::storage_linear_format_type,
+                Extent: *const root::gli::storage_linear_extent_type,
+                Layers: root::gli::storage_linear_size_type,
+                Faces: root::gli::storage_linear_size_type,
+                Levels: root::gli::storage_linear_size_type,
+            ) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                storage_linear_storage_linear1(
+                    &mut __bindgen_tmp,
+                    Format,
+                    Extent,
+                    Layers,
+                    Faces,
+                    Levels,
+                );
+                __bindgen_tmp
+            }
+        }
+        #[doc = " Genetic texture class. It can support any target."]
+        #[repr(C)]
+        pub struct texture {
+            pub Storage: [u64; 2usize],
+            pub is_print_shared_storage_count: bool,
+            pub Target: root::gli::texture_target_type,
+            pub Format: root::gli::texture_format_type,
+            pub BaseLayer: root::gli::texture_size_type,
+            pub MaxLayer: root::gli::texture_size_type,
+            pub BaseFace: root::gli::texture_size_type,
+            pub MaxFace: root::gli::texture_size_type,
+            pub BaseLevel: root::gli::texture_size_type,
+            pub MaxLevel: root::gli::texture_size_type,
+            pub Swizzles: root::gli::texture_swizzles_type,
+            pub Cache: root::gli::texture_cache,
+        }
+        pub type texture_size_type = usize;
+        pub use self::super::super::root::gli::format as texture_format_type;
+        pub use self::super::super::root::gli::target as texture_target_type;
+        pub type texture_swizzles_type = root::gli::swizzles;
+        pub type texture_storage_type = root::gli::storage_linear;
+        pub type texture_data_type = root::gli::storage_linear_data_type;
+        pub type texture_extent_type = root::gli::storage_linear_extent_type;
+        #[repr(C)]
+        pub struct texture_cache {
+            pub Faces: root::gli::texture_size_type,
+            pub Levels: root::gli::texture_size_type,
+            pub BaseAddresses: [u64; 3usize],
+            pub ImageExtent: [u32; 48usize],
+            pub ImageMemorySize: [u64; 16usize],
+            pub GlobalMemorySize: root::gli::texture_size_type,
+        }
+        pub const texture_cache_ctor_DEFAULT: root::gli::texture_cache_ctor = 0;
+        pub type texture_cache_ctor = u32;
+        extern "C" {
+            #[doc = " Return whether the texture instance is empty, no storage_type or description have been assigned to the instance."]
+            #[link_name = "\u{1}empty"]
+            pub fn texture_empty(this: *const root::gli::texture) -> bool;
+        }
+        extern "C" {
+            #[doc = " Return the texture instance format"]
+            #[link_name = "\u{1}format"]
+            pub fn texture_format(
+                this: *const root::gli::texture,
+            ) -> root::gli::texture_format_type;
+        }
+        extern "C" {
+            #[link_name = "\u{1}swizzles"]
+            pub fn texture_swizzles(
+                this: *const root::gli::texture,
+            ) -> root::gli::texture_swizzles_type;
+        }
+        extern "C" {
+            #[doc = " Return the base layer of the texture instance, effectively a memory offset in the actual texture storage_type to identify where to start reading the layers."]
+            #[link_name = "\u{1}base_layer"]
+            pub fn texture_base_layer(
+                this: *const root::gli::texture,
+            ) -> root::gli::texture_size_type;
+        }
+        extern "C" {
+            #[doc = " Return the max layer of the texture instance, effectively a memory offset to the beginning of the last layer in the actual texture storage_type that the texture instance can access."]
+            #[link_name = "\u{1}max_layer"]
+            pub fn texture_max_layer(
+                this: *const root::gli::texture,
+            ) -> root::gli::texture_size_type;
+        }
+        extern "C" {
+            #[doc = " Return max_layer() - base_layer() + 1"]
+            #[link_name = "\u{1}layers"]
+            pub fn texture_layers(this: *const root::gli::texture) -> root::gli::texture_size_type;
+        }
+        extern "C" {
+            #[doc = " Return the base face of the texture instance, effectively a memory offset in the actual texture storage_type to identify where to start reading the faces."]
+            #[link_name = "\u{1}base_face"]
+            pub fn texture_base_face(
+                this: *const root::gli::texture,
+            ) -> root::gli::texture_size_type;
+        }
+        extern "C" {
+            #[doc = " Return the max face of the texture instance, effectively a memory offset to the beginning of the last face in the actual texture storage_type that the texture instance can access."]
+            #[link_name = "\u{1}max_face"]
+            pub fn texture_max_face(
+                this: *const root::gli::texture,
+            ) -> root::gli::texture_size_type;
+        }
+        extern "C" {
+            #[doc = " Return max_face() - base_face() + 1"]
+            #[link_name = "\u{1}faces"]
+            pub fn texture_faces(this: *const root::gli::texture) -> root::gli::texture_size_type;
+        }
+        extern "C" {
+            #[doc = " Return the base level of the texture instance, effectively a memory offset in the actual texture storage_type to identify where to start reading the levels."]
+            #[link_name = "\u{1}base_level"]
+            pub fn texture_base_level(
+                this: *const root::gli::texture,
+            ) -> root::gli::texture_size_type;
+        }
+        extern "C" {
+            #[doc = " Return the max level of the texture instance, effectively a memory offset to the beginning of the last level in the actual texture storage_type that the texture instance can access."]
+            #[link_name = "\u{1}max_level"]
+            pub fn texture_max_level(
+                this: *const root::gli::texture,
+            ) -> root::gli::texture_size_type;
+        }
+        extern "C" {
+            #[doc = " Return max_level() - base_level() + 1."]
+            #[link_name = "\u{1}levels"]
+            pub fn texture_levels(this: *const root::gli::texture) -> root::gli::texture_size_type;
+        }
+        extern "C" {
+            #[doc = " Return the size of a texture instance: width, height and depth."]
+            #[link_name = "\u{1}extent"]
+            pub fn texture_extent(
+                this: *const root::gli::texture,
+                Level: root::gli::texture_size_type,
+            ) -> root::gli::texture_extent_type;
+        }
+        extern "C" {
+            #[doc = " Return the memory size of a texture instance storage_type in bytes."]
+            #[link_name = "\u{1}size"]
+            pub fn texture_size(this: *const root::gli::texture) -> root::gli::texture_size_type;
+        }
+        extern "C" {
+            #[doc = " Return the memory size of a specific level identified by Level."]
+            #[link_name = "\u{1}size"]
+            pub fn texture_size1(
+                this: *const root::gli::texture,
+                Level: root::gli::texture_size_type,
+            ) -> root::gli::texture_size_type;
+        }
+        extern "C" {
+            #[doc = " Return a pointer to the beginning of the texture instance data."]
+            #[link_name = "\u{1}data"]
+            pub fn texture_data(this: *mut root::gli::texture) -> *mut ::std::os::raw::c_void;
+        }
+        extern "C" {
+            #[doc = " Return a pointer to the beginning of the texture instance data."]
+            #[link_name = "\u{1}data"]
+            pub fn texture_data1(this: *const root::gli::texture) -> *const ::std::os::raw::c_void;
+        }
+        extern "C" {
+            #[doc = " Return a pointer to the beginning of the texture instance data."]
+            #[link_name = "\u{1}data"]
+            pub fn texture_data2(
+                this: *mut root::gli::texture,
+                Layer: root::gli::texture_size_type,
+                Face: root::gli::texture_size_type,
+                Level: root::gli::texture_size_type,
+            ) -> *mut ::std::os::raw::c_void;
+        }
+        extern "C" {
+            #[doc = " Return a pointer to the beginning of the texture instance data."]
+            #[link_name = "\u{1}data"]
+            pub fn texture_data3(
+                this: *const root::gli::texture,
+                Layer: root::gli::texture_size_type,
+                Face: root::gli::texture_size_type,
+                Level: root::gli::texture_size_type,
+            ) -> *const ::std::os::raw::c_void;
+        }
+        extern "C" {
+            #[doc = " Clear the entire texture storage_linear with zeros"]
+            #[link_name = "\u{1}clear"]
+            pub fn texture_clear(this: *mut root::gli::texture);
+        }
+        extern "C" {
+            #[doc = " Copy a specific image of a texture"]
+            #[link_name = "\u{1}copy"]
+            pub fn texture_copy(
+                this: *mut root::gli::texture,
+                TextureSrc: *const root::gli::texture,
+                LayerSrc: usize,
+                FaceSrc: usize,
+                LevelSrc: usize,
+                LayerDst: usize,
+                FaceDst: usize,
+                LevelDst: usize,
+            );
+        }
+        extern "C" {
+            #[doc = " Copy a subset of a specific image of a texture"]
+            #[link_name = "\u{1}copy"]
+            pub fn texture_copy1(
+                this: *mut root::gli::texture,
+                TextureSrc: *const root::gli::texture,
+                LayerSrc: usize,
+                FaceSrc: usize,
+                LevelSrc: usize,
+                OffsetSrc: *const root::gli::texture_extent_type,
+                LayerDst: usize,
+                FaceDst: usize,
+                LevelDst: usize,
+                OffsetDst: *const root::gli::texture_extent_type,
+                Extent: *const root::gli::texture_extent_type,
+            );
+        }
+        extern "C" {
+            #[link_name = "\u{1}get_shared_storage_count"]
+            pub fn texture_get_shared_storage_count(
+                this: *const root::gli::texture,
+            ) -> ::std::os::raw::c_int;
+        }
+        extern "C" {
+            #[doc = " Create an empty texture instance"]
+            #[link_name = "\u{1}texture"]
+            pub fn texture_texture(this: *mut root::gli::texture);
+        }
+        extern "C" {
+            #[doc = " Create a texture object and allocate a texture storage for it"]
+            #[doc = " @param Target Type/Shape of the texture storage_linear"]
+            #[doc = " @param Format Texel format"]
+            #[doc = " @param Extent Size of the texture: width, height and depth."]
+            #[doc = " @param Layers Number of one-dimensional or two-dimensional images of identical size and format"]
+            #[doc = " @param Faces 6 for cube map textures otherwise 1."]
+            #[doc = " @param Levels Number of images in the texture mipmap chain."]
+            #[doc = " @param Swizzles A mechanism to swizzle the components of a texture before they are applied according to the texture environment."]
+            #[link_name = "\u{1}texture"]
+            pub fn texture_texture1(
+                this: *mut root::gli::texture,
+                Target: root::gli::texture_target_type,
+                Format: root::gli::texture_format_type,
+                Extent: *const root::gli::texture_extent_type,
+                Layers: root::gli::texture_size_type,
+                Faces: root::gli::texture_size_type,
+                Levels: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            );
+        }
+        extern "C" {
+            #[doc = " Create a texture object by sharing an existing texture storage_type from another texture instance."]
+            #[doc = " This texture object is effectively a texture view where the layer, the face and the level allows identifying"]
+            #[doc = " a specific subset of the texture storage_linear source."]
+            #[doc = " This texture object is effectively a texture view where the target and format can be reinterpreted"]
+            #[doc = " with a different compatible texture target and texture format."]
+            #[link_name = "\u{1}texture"]
+            pub fn texture_texture2(
+                this: *mut root::gli::texture,
+                Texture: *const root::gli::texture,
+                Target: root::gli::texture_target_type,
+                Format: root::gli::texture_format_type,
+                BaseLayer: root::gli::texture_size_type,
+                MaxLayer: root::gli::texture_size_type,
+                BaseFace: root::gli::texture_size_type,
+                MaxFace: root::gli::texture_size_type,
+                BaseLevel: root::gli::texture_size_type,
+                MaxLevel: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            );
+        }
+        extern "C" {
+            #[doc = " Create a texture object by sharing an existing texture storage_type from another texture instance."]
+            #[doc = " This texture object is effectively a texture view where the target and format can be reinterpreted"]
+            #[doc = " with a different compatible texture target and texture format."]
+            #[link_name = "\u{1}texture"]
+            pub fn texture_texture3(
+                this: *mut root::gli::texture,
+                Texture: *const root::gli::texture,
+                Target: root::gli::texture_target_type,
+                Format: root::gli::texture_format_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            );
+        }
+        impl texture {
+            #[inline]
+            pub unsafe fn empty(&self) -> bool {
+                texture_empty(self)
+            }
+            #[inline]
+            pub unsafe fn format(&self) -> root::gli::texture_format_type {
+                texture_format(self)
+            }
+            #[inline]
+            pub unsafe fn swizzles(&self) -> root::gli::texture_swizzles_type {
+                texture_swizzles(self)
+            }
+            #[inline]
+            pub unsafe fn base_layer(&self) -> root::gli::texture_size_type {
+                texture_base_layer(self)
+            }
+            #[inline]
+            pub unsafe fn max_layer(&self) -> root::gli::texture_size_type {
+                texture_max_layer(self)
+            }
+            #[inline]
+            pub unsafe fn layers(&self) -> root::gli::texture_size_type {
+                texture_layers(self)
+            }
+            #[inline]
+            pub unsafe fn base_face(&self) -> root::gli::texture_size_type {
+                texture_base_face(self)
+            }
+            #[inline]
+            pub unsafe fn max_face(&self) -> root::gli::texture_size_type {
+                texture_max_face(self)
+            }
+            #[inline]
+            pub unsafe fn faces(&self) -> root::gli::texture_size_type {
+                texture_faces(self)
+            }
+            #[inline]
+            pub unsafe fn base_level(&self) -> root::gli::texture_size_type {
+                texture_base_level(self)
+            }
+            #[inline]
+            pub unsafe fn max_level(&self) -> root::gli::texture_size_type {
+                texture_max_level(self)
+            }
+            #[inline]
+            pub unsafe fn levels(&self) -> root::gli::texture_size_type {
+                texture_levels(self)
+            }
+            #[inline]
+            pub unsafe fn extent(
+                &self,
+                Level: root::gli::texture_size_type,
+            ) -> root::gli::texture_extent_type {
+                texture_extent(self, Level)
+            }
+            #[inline]
+            pub unsafe fn size(&self) -> root::gli::texture_size_type {
+                texture_size(self)
+            }
+            #[inline]
+            pub unsafe fn size1(
+                &self,
+                Level: root::gli::texture_size_type,
+            ) -> root::gli::texture_size_type {
+                texture_size1(self, Level)
+            }
+            #[inline]
+            pub unsafe fn data(&mut self) -> *mut ::std::os::raw::c_void {
+                texture_data(self)
+            }
+            #[inline]
+            pub unsafe fn data1(&self) -> *const ::std::os::raw::c_void {
+                texture_data1(self)
+            }
+            #[inline]
+            pub unsafe fn data2(
+                &mut self,
+                Layer: root::gli::texture_size_type,
+                Face: root::gli::texture_size_type,
+                Level: root::gli::texture_size_type,
+            ) -> *mut ::std::os::raw::c_void {
+                texture_data2(self, Layer, Face, Level)
+            }
+            #[inline]
+            pub unsafe fn data3(
+                &self,
+                Layer: root::gli::texture_size_type,
+                Face: root::gli::texture_size_type,
+                Level: root::gli::texture_size_type,
+            ) -> *const ::std::os::raw::c_void {
+                texture_data3(self, Layer, Face, Level)
+            }
+            #[inline]
+            pub unsafe fn clear(&mut self) {
+                texture_clear(self)
+            }
+            #[inline]
+            pub unsafe fn copy(
+                &mut self,
+                TextureSrc: *const root::gli::texture,
+                LayerSrc: usize,
+                FaceSrc: usize,
+                LevelSrc: usize,
+                LayerDst: usize,
+                FaceDst: usize,
+                LevelDst: usize,
+            ) {
+                texture_copy(
+                    self, TextureSrc, LayerSrc, FaceSrc, LevelSrc, LayerDst, FaceDst, LevelDst,
+                )
+            }
+            #[inline]
+            pub unsafe fn copy1(
+                &mut self,
+                TextureSrc: *const root::gli::texture,
+                LayerSrc: usize,
+                FaceSrc: usize,
+                LevelSrc: usize,
+                OffsetSrc: *const root::gli::texture_extent_type,
+                LayerDst: usize,
+                FaceDst: usize,
+                LevelDst: usize,
+                OffsetDst: *const root::gli::texture_extent_type,
+                Extent: *const root::gli::texture_extent_type,
+            ) {
+                texture_copy1(
+                    self, TextureSrc, LayerSrc, FaceSrc, LevelSrc, OffsetSrc, LayerDst, FaceDst,
+                    LevelDst, OffsetDst, Extent,
+                )
+            }
+            #[inline]
+            pub unsafe fn get_shared_storage_count(&self) -> ::std::os::raw::c_int {
+                texture_get_shared_storage_count(self)
+            }
+            #[inline]
+            pub unsafe fn new() -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture_texture(&mut __bindgen_tmp);
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new1(
+                Target: root::gli::texture_target_type,
+                Format: root::gli::texture_format_type,
+                Extent: *const root::gli::texture_extent_type,
+                Layers: root::gli::texture_size_type,
+                Faces: root::gli::texture_size_type,
+                Levels: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            ) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture_texture1(
+                    &mut __bindgen_tmp,
+                    Target,
+                    Format,
+                    Extent,
+                    Layers,
+                    Faces,
+                    Levels,
+                    Swizzles,
+                );
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new2(
+                Texture: *const root::gli::texture,
+                Target: root::gli::texture_target_type,
+                Format: root::gli::texture_format_type,
+                BaseLayer: root::gli::texture_size_type,
+                MaxLayer: root::gli::texture_size_type,
+                BaseFace: root::gli::texture_size_type,
+                MaxFace: root::gli::texture_size_type,
+                BaseLevel: root::gli::texture_size_type,
+                MaxLevel: root::gli::texture_size_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            ) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture_texture2(
+                    &mut __bindgen_tmp,
+                    Texture,
+                    Target,
+                    Format,
+                    BaseLayer,
+                    MaxLayer,
+                    BaseFace,
+                    MaxFace,
+                    BaseLevel,
+                    MaxLevel,
+                    Swizzles,
+                );
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new3(
+                Texture: *const root::gli::texture,
+                Target: root::gli::texture_target_type,
+                Format: root::gli::texture_format_type,
+                Swizzles: *const root::gli::texture_swizzles_type,
+            ) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                texture_texture3(&mut __bindgen_tmp, Texture, Target, Format, Swizzles);
+                __bindgen_tmp
+            }
+        }
+        extern "C" {
+            #[doc = " Manually Call destructor for texture object. Helper function used in FFI."]
+            pub fn destroy_texture(Texture: *mut root::gli::texture);
+        }
+        #[doc = " Image, representation for a single texture level"]
+        #[repr(C)]
+        #[derive(Debug)]
+        pub struct image {
+            pub is_print_shared_storage_count: bool,
+            pub Storage: [u64; 2usize],
+            pub Format: root::gli::image_format_type,
+            pub BaseLevel: root::gli::image_size_type,
+            pub Data: *mut root::gli::image_data_type,
+            pub Size: root::gli::image_size_type,
+        }
+        pub type image_size_type = usize;
+        pub use self::super::super::root::gli::format as image_format_type;
+        pub type image_extent_type = root::gli::storage_linear_extent_type;
+        pub type image_data_type = root::gli::storage_linear_data_type;
+        extern "C" {
+            #[doc = " Return whether the image instance is empty, no storage_linear or description have been assigned to the instance."]
+            #[link_name = "\u{1}empty"]
+            pub fn image_empty(this: *const root::gli::image) -> bool;
+        }
+        extern "C" {
+            #[doc = " Return the image instance format."]
+            #[link_name = "\u{1}format"]
+            pub fn image_format(this: *const root::gli::image) -> root::gli::image_format_type;
+        }
+        extern "C" {
+            #[doc = " Return the dimensions of an image instance: width, height and depth."]
+            #[link_name = "\u{1}extent"]
+            pub fn image_extent(this: *const root::gli::image) -> root::gli::image_extent_type;
+        }
+        extern "C" {
+            #[doc = " Return the memory size of an image instance storage_linear in bytes."]
+            #[link_name = "\u{1}size"]
+            pub fn image_size(this: *const root::gli::image) -> root::gli::image_size_type;
+        }
+        extern "C" {
+            #[doc = " Return a pointer to the beginning of the image instance data."]
+            #[link_name = "\u{1}data"]
+            pub fn image_data(this: *mut root::gli::image) -> *mut ::std::os::raw::c_void;
+        }
+        extern "C" {
+            #[doc = " Return a pointer to the beginning of the image instance data."]
+            #[link_name = "\u{1}data"]
+            pub fn image_data1(this: *const root::gli::image) -> *const ::std::os::raw::c_void;
+        }
+        extern "C" {
+            #[doc = " Clear the entire image storage_linear with zeros"]
+            #[link_name = "\u{1}clear"]
+            pub fn image_clear(this: *mut root::gli::image);
+        }
+        extern "C" {
+            #[link_name = "\u{1}get_shared_storage_count"]
+            pub fn image_get_shared_storage_count(
+                this: *const root::gli::image,
+            ) -> ::std::os::raw::c_int;
+        }
+        extern "C" {
+            #[doc = " Create an empty image instance"]
+            #[link_name = "\u{1}image"]
+            pub fn image_image(this: *mut root::gli::image);
+        }
+        extern "C" {
+            #[doc = " Create an image object and allocate an image storoge for it."]
+            #[link_name = "\u{1}image"]
+            pub fn image_image1(
+                this: *mut root::gli::image,
+                Format: root::gli::image_format_type,
+                Extent: *const root::gli::image_extent_type,
+            );
+        }
+        extern "C" {
+            #[doc = " Create an image object by sharing an existing image storage_linear from another image instance."]
+            #[doc = " This image object is effectively an image view where format can be reinterpreted"]
+            #[doc = " with a different compatible image format."]
+            #[doc = " For formats to be compatible, the block size of source and destination must match."]
+            #[link_name = "\u{1}image"]
+            pub fn image_image2(
+                this: *mut root::gli::image,
+                Image: *const root::gli::image,
+                Format: root::gli::image_format_type,
+            );
+        }
+        extern "C" {
+            #[link_name = "\u{1}image"]
+            pub fn image_image3(
+                this: *mut root::gli::image,
+                Texture: *const root::gli::texture,
+                Format: root::gli::image_format_type,
+                BaseLayer: root::gli::image_size_type,
+                BaseFace: root::gli::image_size_type,
+                BaseLevel: root::gli::image_size_type,
+            );
+        }
+        impl image {
+            #[inline]
+            pub unsafe fn empty(&self) -> bool {
+                image_empty(self)
+            }
+            #[inline]
+            pub unsafe fn format(&self) -> root::gli::image_format_type {
+                image_format(self)
+            }
+            #[inline]
+            pub unsafe fn extent(&self) -> root::gli::image_extent_type {
+                image_extent(self)
+            }
+            #[inline]
+            pub unsafe fn size(&self) -> root::gli::image_size_type {
+                image_size(self)
+            }
+            #[inline]
+            pub unsafe fn data(&mut self) -> *mut ::std::os::raw::c_void {
+                image_data(self)
+            }
+            #[inline]
+            pub unsafe fn data1(&self) -> *const ::std::os::raw::c_void {
+                image_data1(self)
+            }
+            #[inline]
+            pub unsafe fn clear(&mut self) {
+                image_clear(self)
+            }
+            #[inline]
+            pub unsafe fn get_shared_storage_count(&self) -> ::std::os::raw::c_int {
+                image_get_shared_storage_count(self)
+            }
+            #[inline]
+            pub unsafe fn new() -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                image_image(&mut __bindgen_tmp);
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new1(
+                Format: root::gli::image_format_type,
+                Extent: *const root::gli::image_extent_type,
+            ) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                image_image1(&mut __bindgen_tmp, Format, Extent);
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new2(
+                Image: *const root::gli::image,
+                Format: root::gli::image_format_type,
+            ) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                image_image2(&mut __bindgen_tmp, Image, Format);
+                __bindgen_tmp
+            }
+            #[inline]
+            pub unsafe fn new3(
+                Texture: *const root::gli::texture,
+                Format: root::gli::image_format_type,
+                BaseLayer: root::gli::image_size_type,
+                BaseFace: root::gli::image_size_type,
+                BaseLevel: root::gli::image_size_type,
+            ) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                image_image3(
+                    &mut __bindgen_tmp,
+                    Texture,
+                    Format,
+                    BaseLayer,
+                    BaseFace,
+                    BaseLevel,
+                );
+                __bindgen_tmp
+            }
+        }
+        extern "C" {
+            #[doc = " Manually Call destructor for image object. Helper function used in FFI."]
+            pub fn destroy_image(Image: *mut root::gli::image);
         }
     }
     pub mod std {
         #[allow(unused_imports)]
         use self::super::super::root;
+        #[repr(C)]
+        #[derive(Debug)]
+        pub struct allocator {
+            pub _address: u8,
+        }
+        pub type allocator_size_type = u64;
+        pub type allocator_difference_type = u64;
+        pub type allocator_pointer = u8;
+        pub type allocator_const_pointer = u8;
+        pub type allocator_reference = u8;
+        pub type allocator_const_reference = u8;
+        pub type allocator_value_type = u8;
+        pub type allocator_propagate_on_container_move_assignment = u8;
+        pub type allocator_is_always_equal = u8;
+        #[repr(C)]
+        #[derive(Debug)]
+        pub struct allocator_rebind {
+            pub _address: u8,
+        }
+        pub type allocator_rebind_other = u8;
+        #[repr(C)]
+        #[derive(Debug)]
+        pub struct shared_ptr {
+            pub _address: u8,
+        }
+        pub type shared_ptr_element_type = u8;
+        #[repr(C)]
+        #[derive(Debug)]
+        pub struct shared_ptr___nat {
+            pub _address: u8,
+        }
+        pub type shared_ptr___shared_ptr_default_allocator_type = u8;
+        #[repr(C)]
+        #[derive(Debug)]
+        pub struct vector {
+            pub _address: u8,
+        }
+        pub type vector___base = u8;
+        pub type vector___default_allocator_type = u8;
+        pub type vector___self = u8;
+        pub type vector_value_type = u8;
+        pub type vector_allocator_type = u8;
+        pub type vector___alloc_traits = u8;
+        pub type vector_reference = u8;
+        pub type vector_const_reference = u8;
+        pub type vector_size_type = u8;
+        pub type vector_difference_type = u8;
+        pub type vector_pointer = u8;
+        pub type vector_const_pointer = u8;
+        pub type vector_iterator = u8;
+        pub type vector_const_iterator = u8;
+        pub type vector_reverse_iterator = u8;
+        pub type vector_const_reverse_iterator = u8;
+        #[repr(C)]
+        #[derive(Debug)]
+        pub struct vector___RAII_IncreaseAnnotator {
+            pub _address: u8,
+        }
+        pub type array___self = u8;
+        pub type array_value_type = u8;
+        pub type array_reference = u8;
+        pub type array_const_reference = u8;
+        pub type array_iterator = u8;
+        pub type array_const_iterator = u8;
+        pub type array_pointer = u8;
+        pub type array_const_pointer = u8;
+        pub type array_size_type = u64;
+        pub type array_difference_type = u64;
+        pub type array_reverse_iterator = u8;
+        pub type array_const_reverse_iterator = u8;
     }
     pub mod glm {
         #[allow(unused_imports)]
         use self::super::super::root;
+        #[doc = " 8 bit unsigned integer type."]
+        pub type uint8 = u8;
+        #[doc = " 1 component vector of signed integer numbers."]
+        pub type ivec1 = u32;
+        #[doc = " 2 components vector of signed integer numbers."]
+        #[doc = ""]
+        #[doc = " @see <a href=\"http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf\">GLSL 4.20.8 specification, section 4.1.5 Vectors</a>"]
+        pub type ivec2 = [u32; 2usize];
+        #[doc = " 3 components vector of signed integer numbers."]
+        #[doc = ""]
+        #[doc = " @see <a href=\"http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf\">GLSL 4.20.8 specification, section 4.1.5 Vectors</a>"]
+        pub type ivec3 = [u32; 3usize];
+    }
+    pub mod bindings {
+        #[allow(unused_imports)]
+        use self::super::super::root;
+        pub mod Texture {
+            #[allow(unused_imports)]
+            use self::super::super::super::root;
+            extern "C" {
+                pub fn empty(tex: *const root::gli::texture) -> bool;
+            }
+            extern "C" {
+                pub fn target(tex: *const root::gli::texture) -> root::gli::texture_target_type;
+            }
+            extern "C" {
+                pub fn swizzles(tex: *const root::gli::texture)
+                    -> root::gli::texture_swizzles_type;
+            }
+            extern "C" {
+                pub fn base_layer(tex: *const root::gli::texture) -> root::gli::texture_size_type;
+            }
+            extern "C" {
+                pub fn max_layer(tex: *const root::gli::texture) -> root::gli::texture_size_type;
+            }
+            extern "C" {
+                pub fn layers(tex: *const root::gli::texture) -> root::gli::texture_size_type;
+            }
+            extern "C" {
+                pub fn base_face(tex: *const root::gli::texture) -> root::gli::texture_size_type;
+            }
+            extern "C" {
+                pub fn max_face(tex: *const root::gli::texture) -> root::gli::texture_size_type;
+            }
+            extern "C" {
+                pub fn faces(tex: *const root::gli::texture) -> root::gli::texture_size_type;
+            }
+            extern "C" {
+                pub fn base_level(tex: *const root::gli::texture) -> root::gli::texture_size_type;
+            }
+            extern "C" {
+                pub fn max_level(tex: *const root::gli::texture) -> root::gli::texture_size_type;
+            }
+            extern "C" {
+                pub fn levels(tex: *const root::gli::texture) -> root::gli::texture_size_type;
+            }
+            extern "C" {
+                pub fn extent(
+                    tex: *const root::gli::texture,
+                    level: root::gli::texture_size_type,
+                ) -> root::gli::texture_extent_type;
+            }
+            extern "C" {
+                pub fn size(tex: *const root::gli::texture) -> root::gli::texture_size_type;
+            }
+            extern "C" {
+                pub fn size_level(
+                    tex: *const root::gli::texture,
+                    level: root::gli::texture_size_type,
+                ) -> root::gli::texture_size_type;
+            }
+            extern "C" {
+                pub fn data(tex: *mut root::gli::texture) -> *mut ::std::os::raw::c_void;
+            }
+            extern "C" {
+                pub fn data_detail(
+                    tex: *const root::gli::texture,
+                    layer: root::gli::texture_size_type,
+                    face: root::gli::texture_size_type,
+                    level: root::gli::texture_size_type,
+                ) -> *const ::std::os::raw::c_void;
+            }
+            extern "C" {
+                pub fn data_detail_mut(
+                    tex: *mut root::gli::texture,
+                    layer: root::gli::texture_size_type,
+                    face: root::gli::texture_size_type,
+                    level: root::gli::texture_size_type,
+                ) -> *mut ::std::os::raw::c_void;
+            }
+            extern "C" {
+                pub fn clear(tex: *mut root::gli::texture);
+            }
+            extern "C" {
+                pub fn copy(
+                    tex: *mut root::gli::texture,
+                    src: *const root::gli::texture,
+                    src_layer: usize,
+                    src_face: usize,
+                    src_level: usize,
+                    dst_layer: usize,
+                    dst_face: usize,
+                    dst_level: usize,
+                );
+            }
+            extern "C" {
+                pub fn copy_subset(
+                    tex: *mut root::gli::texture,
+                    src: *const root::gli::texture,
+                    src_layer: usize,
+                    src_face: usize,
+                    src_level: usize,
+                    src_offset: *const root::gli::texture_extent_type,
+                    dst_layer: usize,
+                    dst_face: usize,
+                    dst_level: usize,
+                    dst_offset: *const root::gli::texture_extent_type,
+                    extent: *const root::gli::texture_extent_type,
+                );
+            }
+        }
     }
 }
