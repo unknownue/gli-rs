@@ -2638,6 +2638,11 @@ pub mod root {
                 pub fn texture_empty(tex: *const root::gli::texture) -> bool;
             }
             extern "C" {
+                pub fn texture_format(
+                    tex: *const root::gli::texture,
+                ) -> root::gli::texture_format_type;
+            }
+            extern "C" {
                 pub fn texture_target(
                     tex: *const root::gli::texture,
                 ) -> root::gli::texture_target_type;
@@ -2709,7 +2714,14 @@ pub mod root {
                 ) -> root::gli::texture_size_type;
             }
             extern "C" {
-                pub fn texture_data(tex: *mut root::gli::texture) -> *mut ::std::os::raw::c_void;
+                pub fn texture_data(
+                    tex: *const root::gli::texture,
+                ) -> *const ::std::os::raw::c_void;
+            }
+            extern "C" {
+                pub fn texture_data_mut(
+                    tex: *mut root::gli::texture,
+                ) -> *mut ::std::os::raw::c_void;
             }
             extern "C" {
                 pub fn texture_data_detail(
@@ -2771,7 +2783,7 @@ pub mod root {
             extern "C" {
                 pub fn image_new_(
                     format: root::gli::image_format_type,
-                    extent: *const root::gli::image_extent_type,
+                    extent: root::gli::image_extent_type,
                 ) -> root::gli::image;
             }
             extern "C" {
@@ -2835,11 +2847,11 @@ pub mod root {
                 ) -> root::gli::texture1d;
             }
             extern "C" {
-                pub fn tex1d_share_from(tex: *const root::gli::texture1d) -> root::gli::texture1d;
+                pub fn tex1d_share_from(tex: *const root::gli::texture) -> root::gli::texture1d;
             }
             extern "C" {
                 pub fn tex1d_share_from_detail(
-                    tex: *const root::gli::texture1d,
+                    tex: *const root::gli::texture,
                     format: root::gli::texture_format_type,
                     base_layer: root::gli::texture_size_type,
                     max_layer: root::gli::texture_size_type,
@@ -2886,12 +2898,12 @@ pub mod root {
             }
             extern "C" {
                 pub fn tex1darray_share_from(
-                    tex: *const root::gli::texture1d_array,
+                    tex: *const root::gli::texture,
                 ) -> root::gli::texture1d_array;
             }
             extern "C" {
                 pub fn tex1darray_share_from_detail(
-                    tex: *const root::gli::texture1d_array,
+                    tex: *const root::gli::texture,
                     format: root::gli::texture_format_type,
                     base_layer: root::gli::texture_size_type,
                     max_layer: root::gli::texture_size_type,
@@ -2937,11 +2949,11 @@ pub mod root {
                 ) -> root::gli::texture2d;
             }
             extern "C" {
-                pub fn tex2d_share_from(tex: *const root::gli::texture2d) -> root::gli::texture2d;
+                pub fn tex2d_share_from(tex: *const root::gli::texture) -> root::gli::texture2d;
             }
             extern "C" {
                 pub fn tex2d_share_from_detail(
-                    tex: *const root::gli::texture2d,
+                    tex: *const root::gli::texture,
                     format: root::gli::texture_format_type,
                     base_layer: root::gli::texture_size_type,
                     max_layer: root::gli::texture_size_type,
@@ -2988,12 +3000,12 @@ pub mod root {
             }
             extern "C" {
                 pub fn tex2darray_share_from(
-                    tex: *const root::gli::texture2d_array,
+                    tex: *const root::gli::texture,
                 ) -> root::gli::texture2d_array;
             }
             extern "C" {
                 pub fn tex2darray_share_from_detail(
-                    tex: *const root::gli::texture2d_array,
+                    tex: *const root::gli::texture,
                     format: root::gli::texture_format_type,
                     base_layer: root::gli::texture_size_type,
                     max_layer: root::gli::texture_size_type,
@@ -3039,11 +3051,11 @@ pub mod root {
                 ) -> root::gli::texture3d;
             }
             extern "C" {
-                pub fn tex3d_share_from(tex: *const root::gli::texture3d) -> root::gli::texture3d;
+                pub fn tex3d_share_from(tex: *const root::gli::texture) -> root::gli::texture3d;
             }
             extern "C" {
                 pub fn tex3d_share_from_detail(
-                    tex: *const root::gli::texture3d,
+                    tex: *const root::gli::texture,
                     format: root::gli::texture_format_type,
                     base_layer: root::gli::texture_size_type,
                     max_layer: root::gli::texture_size_type,
@@ -3088,12 +3100,12 @@ pub mod root {
             }
             extern "C" {
                 pub fn texcube_share_from(
-                    tex: *const root::gli::texture_cube,
+                    tex: *const root::gli::texture,
                 ) -> root::gli::texture_cube;
             }
             extern "C" {
                 pub fn texcube_share_from_detail(
-                    tex: *const root::gli::texture_cube,
+                    tex: *const root::gli::texture,
                     format: root::gli::texture_format_type,
                     base_layer: root::gli::texture_size_type,
                     max_layer: root::gli::texture_size_type,
@@ -3142,12 +3154,12 @@ pub mod root {
             }
             extern "C" {
                 pub fn texcubearray_share_from(
-                    tex: *const root::gli::texture_cube_array,
+                    tex: *const root::gli::texture,
                 ) -> root::gli::texture_cube_array;
             }
             extern "C" {
                 pub fn texcubearray_share_from_detail(
-                    tex: *const root::gli::texture_cube_array,
+                    tex: *const root::gli::texture,
                     format: root::gli::texture_format_type,
                     base_layer: root::gli::texture_size_type,
                     max_layer: root::gli::texture_size_type,

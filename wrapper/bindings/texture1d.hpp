@@ -82,12 +82,12 @@ extern "C" {
                 return texture1d(format, extent);
             }
 
-            texture1d tex1d_share_from(const texture1d & tex) {
+            texture1d tex1d_share_from(const gli::texture & tex) {
                 return texture1d(tex);
             }
 
             texture1d tex1d_share_from_detail(
-                const texture1d & tex,
+                const gli::texture & tex,
                 texture1d::format_type format,
                 texture1d::size_type base_layer, texture1d::size_type max_layer,
                 texture1d::size_type base_face,  texture1d::size_type  max_face,

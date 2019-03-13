@@ -84,12 +84,12 @@ namespace bindings {
             return texture_cube(format, extent);
         }
 
-        texture_cube texcube_share_from(const texture_cube & tex) {
+        texture_cube texcube_share_from(const gli::texture & tex) {
             return texture_cube(tex);
         }
 
         texture_cube texcube_share_from_detail(
-            const texture_cube & tex,
+            const gli::texture & tex,
             texture_cube::format_type format,
             texture_cube::size_type base_layer, texture_cube::size_type max_layer,
             texture_cube::size_type base_face,  texture_cube::size_type  max_face,

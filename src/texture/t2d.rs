@@ -1,6 +1,8 @@
 
 use crate::ffi::root::gli;
-use crate::format::{Format, Swizzle};
+use crate::ffi::root::bindings::Texture2D as bindings;
+
+use crate::format::Format;
 use crate::target::Target;
 use crate::image::GliImage;
 use crate::texture::GliTexture;
@@ -17,40 +19,41 @@ impl Texture2D {
     /// Create an empty texture 2D.
     #[inline]
     pub fn new_empty() -> Texture2D {
-        Texture2D { ffi: unsafe { gli::texture2d::new() } }
+        Texture2D { ffi: unsafe { bindings::tex2d_new_empty() } }
     }
 
     /// Create a texture2d and allocate a new storage_linear.
     #[inline]
     pub fn new(format: Format, extent: Extent2d, levels: usize) -> Texture2D {
-        let default_swizzles = [Swizzle::RED.0, Swizzle::GREEN.0, Swizzle::BLUE.0, Swizzle::ALPHA.0];
-        Texture2D { ffi: unsafe { gli::texture2d::new1(format.0, &extent.into(), levels, &default_swizzles) } }
+        Texture2D { ffi: unsafe { bindings::tex2d_new_(format.0, extent.into(), levels) } }
     }
 
     /// Create a texture2d and allocate a new storage_linear with a complete mipmap chain.
     #[inline]
     pub fn new_with_mipmap_chain(format: Format, extent: Extent2d) -> Texture2D {
-        let default_swizzles = [Swizzle::RED.0, Swizzle::GREEN.0, Swizzle::BLUE.0, Swizzle::ALPHA.0];
-        Texture2D { ffi: unsafe { gli::texture2d::new2(format.0, &extent.into(), &default_swizzles) } }
+        Texture2D { ffi: unsafe { bindings::tex2d_new_with_mipmap_chain(format.0, extent.into()) } }
     }
 
     /// Create a texture2d view with an existing storage_linear.
     #[inline]
-    pub fn new_from(texture: &impl GliTexture) -> Texture2D {
-        Texture2D { ffi: unsafe { gli::texture2d::new3(texture.raw_texture()) } }
+    pub fn share_from(texture: &impl GliTexture) -> Texture2D {
+        Texture2D { ffi: unsafe { bindings::tex2d_share_from(texture.raw_texture()) } }
     }
 
     /// Create a texture2d view with an existing storage_linear.
     #[inline]
-    pub fn new_detail(texture: &impl GliTexture, format: Format, base_layer: usize, max_layer: usize, base_face: usize, max_face: usize, base_level: usize, max_level: usize) -> Texture2D {
-        let default_swizzles = [Swizzle::RED.0, Swizzle::GREEN.0, Swizzle::BLUE.0, Swizzle::ALPHA.0];
-        Texture2D { ffi: unsafe { gli::texture2d::new4(texture.raw_texture(), format.0, base_layer, max_layer, base_face, max_face, base_level, max_level, &default_swizzles) } }
+    pub fn share_from_detail(texture: &impl GliTexture, format: Format, base_layer: usize, max_layer: usize, base_face: usize, max_face: usize, base_level: usize, max_level: usize) -> Texture2D {
+
+        Texture2D {
+            ffi: unsafe { bindings::tex2d_share_from_detail(texture.raw_texture(), format.0, base_layer, max_layer, base_face, max_face, base_level, max_level) }
+        }
     }
 
     /// Create a texture2d view, reference a subset of an existing texture2d instance.
     #[inline]
-    pub fn new_from_subset(texture: &Texture2D, base_level: usize, max_level: usize) -> Texture2D {
-        Texture2D { ffi: unsafe { gli::texture2d::new5(&texture.ffi, base_level, max_level) } }
+    pub fn share_from_subset(texture: &Texture2D, base_level: usize, max_level: usize) -> Texture2D {
+
+        Texture2D { ffi: unsafe { bindings::tex2d_share_from_subset(&texture.ffi, base_level, max_level) } }
     }
 
     /// Create a view of the image identified by Level in the mipmap chain of the texture.
@@ -60,7 +63,7 @@ impl Texture2D {
     pub fn get_level(&self, level: usize) -> GliImage {
 
         debug_assert!(level < self.levels());
-        GliImage::inner_new(self, self.format(), self.base_layer(), self.base_face(), self.base_level() + level)
+        GliImage::shared_from_texture(self, self.format(), self.base_layer(), self.base_face(), self.base_level() + level)
     }
 }
 
@@ -70,7 +73,7 @@ impl GliTexture for Texture2D {
 
     /// Return the dimensions of a texture instance: width and height.
     fn extent(&self, level: usize) -> Self::ExtentType {
-        unsafe { self.ffi.extent(level).into() }
+        unsafe { bindings::tex2d_extent(&self.ffi, level).into() }
     }
 }
 

@@ -1,6 +1,8 @@
 
 use crate::ffi::root::gli;
-use crate::format::{Format, Swizzle};
+use crate::ffi::root::bindings::Texture2DArray as bindings;
+
+use crate::format::Format;
 use crate::target::Target;
 use crate::texture::{GliTexture, Texture2D};
 use crate::texture::inner::TextureAccessible;
@@ -16,40 +18,43 @@ impl Texture2DArray {
     /// Create an empty texture 2D array.
     #[inline]
     pub fn new_empty() -> Texture2DArray {
-        Texture2DArray { ffi: unsafe { gli::texture2d_array::new() } }
+        Texture2DArray { ffi: unsafe { bindings::tex2darray_new_empty() } }
     }
 
     /// Create a texture2d_array and allocate a new storage_linear.
     #[inline]
     pub fn new(format: Format, extent: Extent2d, layers: usize, levels: usize) -> Texture2DArray {
-        let default_swizzles = [Swizzle::RED.0, Swizzle::GREEN.0, Swizzle::BLUE.0, Swizzle::ALPHA.0];
-        Texture2DArray { ffi: unsafe { gli::texture2d_array::new1(format.0, &extent.into(), layers, levels, &default_swizzles) } }
+        Texture2DArray { ffi: unsafe { bindings::tex2darray_new_(format.0, extent.into(), layers, levels) } }
     }
 
     /// Create a texture2d_array and allocate a new storage_linear with a complete mipmap chain.
     #[inline]
     pub fn new_with_mipmap_chain(format: Format, extent: Extent2d, layers: usize) -> Texture2DArray {
-        let default_swizzles = [Swizzle::RED.0, Swizzle::GREEN.0, Swizzle::BLUE.0, Swizzle::ALPHA.0];
-        Texture2DArray { ffi: unsafe { gli::texture2d_array::new2(format.0, &extent.into(), layers, &default_swizzles) } }
+        Texture2DArray { ffi: unsafe { bindings::tex2darray_new_with_mipmap_chain(format.0, extent.into(), layers) } }
     }
 
     /// Create a texture2d_array view with an existing storage_linear.
     #[inline]
-    pub fn new_from(texture: &impl GliTexture) -> Texture2DArray {
-        Texture2DArray { ffi: unsafe { gli::texture2d_array::new3(texture.raw_texture()) } }
+    pub fn share_from(texture: &impl GliTexture) -> Texture2DArray {
+        Texture2DArray { ffi: unsafe { bindings::tex2darray_share_from(texture.raw_texture()) } }
     }
 
     /// Create a texture2d_array view with an existing storage_linear.
     #[inline]
-    pub fn new_detail(texture: &impl GliTexture, format: Format, base_layer: usize, max_layer: usize, base_face: usize, max_face: usize, base_level: usize, max_level: usize) -> Texture2DArray {
-        let default_swizzles = [Swizzle::RED.0, Swizzle::GREEN.0, Swizzle::BLUE.0, Swizzle::ALPHA.0];
-        Texture2DArray { ffi: unsafe { gli::texture2d_array::new4(texture.raw_texture(), format.0, base_layer, max_layer, base_face, max_face, base_level, max_level, &default_swizzles) } }
+    pub fn share_from_detail(texture: &impl GliTexture, format: Format, base_layer: usize, max_layer: usize, base_face: usize, max_face: usize, base_level: usize, max_level: usize) -> Texture2DArray {
+
+        Texture2DArray {
+            ffi: unsafe { bindings::tex2darray_share_from_detail(texture.raw_texture(), format.0, base_layer, max_layer, base_face, max_face, base_level, max_level) }
+        }
     }
 
     /// Create a texture2d_array view, reference a subset of an existing texture2d_array instance.
     #[inline]
-    pub fn new_from_subset(texture: &Texture2DArray, base_layer: usize, max_layer: usize, base_level: usize, max_level: usize) -> Texture2DArray {
-        Texture2DArray { ffi: unsafe { gli::texture2d_array::new5(&texture.ffi, base_layer, max_layer, base_level, max_level) } }
+    pub fn share_from_subset(texture: &Texture2DArray, base_layer: usize, max_layer: usize, base_level: usize, max_level: usize) -> Texture2DArray {
+
+        Texture2DArray {
+            ffi: unsafe { bindings::tex2darray_share_from_subset(&texture.ffi, base_layer, max_layer, base_level, max_level) }
+        }
     }
 
     /// Create a view of the texture identified by Layer in the texture array.
@@ -60,7 +65,7 @@ impl Texture2DArray {
 
         debug_assert!(layer < self.layers());
 
-        Texture2D::new_detail(
+        Texture2D::share_from_detail(
             self, self.format(),
             self.base_layer() + layer, self.base_layer() + layer,
             self.base_face(), self.max_face(),
@@ -74,7 +79,7 @@ impl GliTexture for Texture2DArray {
 
     /// Return the dimensions of a texture instance: width and height.
     fn extent(&self, level: usize) -> Self::ExtentType {
-        unsafe { self.ffi.extent(level).into() }
+        unsafe { bindings::tex2darray_extent(&self.ffi, level).into() }
     }
 }
 

@@ -85,12 +85,12 @@ namespace bindings {
             return texture3d(format, extent);
         }
 
-        texture3d tex3d_share_from(const texture3d & tex) {
+        texture3d tex3d_share_from(const gli::texture & tex) {
             return texture3d(tex);
         }
 
         texture3d tex3d_share_from_detail(
-            const texture3d & tex,
+            const gli::texture & tex,
             texture3d::format_type format,
             texture3d::size_type base_layer, texture3d::size_type max_layer,
             texture3d::size_type base_face,  texture3d::size_type  max_face,

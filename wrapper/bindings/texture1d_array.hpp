@@ -86,12 +86,12 @@ extern "C" {
                 return texture1d_array(format, extent, layers);
             }
 
-            texture1d_array tex1darray_share_from(const texture1d_array & tex) {
+            texture1d_array tex1darray_share_from(const gli::texture & tex) {
                 return texture1d_array(tex);
             }
 
             texture1d_array tex1darray_share_from_detail(
-                const texture1d_array & tex,
+                const gli::texture & tex,
                 texture1d_array::format_type format,
                 texture1d_array::size_type base_layer, texture1d_array::size_type max_layer,
                 texture1d_array::size_type base_face,  texture1d_array::size_type  max_face,

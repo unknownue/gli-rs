@@ -1,6 +1,8 @@
 
 use crate::ffi::root::gli;
-use crate::format::{Format, Swizzle};
+use crate::ffi::root::bindings::TextureCubeArray as bindings;
+
+use crate::format::Format;
 use crate::target::Target;
 use crate::texture::{GliTexture, TextureCube};
 use crate::texture::inner::TextureAccessible;
@@ -16,40 +18,45 @@ impl TextureCubeArray {
     /// Create an empty texture cube array.
     #[inline]
     pub fn new_empty() -> TextureCubeArray {
-        TextureCubeArray { ffi: unsafe { gli::texture_cube_array::new() } }
+        TextureCubeArray { ffi: unsafe { bindings::texcubearray_new_empty() } }
     }
 
     /// Create a texture_cube_array and allocate a new storage_linear.
     #[inline]
     pub fn new(format: Format, extent: Extent2d, layers: usize, levels: usize) -> TextureCubeArray {
-        let default_swizzles = [Swizzle::RED.0, Swizzle::GREEN.0, Swizzle::BLUE.0, Swizzle::ALPHA.0];
-        TextureCubeArray { ffi: unsafe { gli::texture_cube_array::new1(format.0, &extent.into(), layers, levels, &default_swizzles) } }
+
+        TextureCubeArray { ffi: unsafe { bindings::texcubearray_new_(format.0, extent.into(), layers, levels) } }
     }
 
     /// Create a texture_cube_array and allocate a new storage_linear with a complete mipmap chain.
     #[inline]
     pub fn new_with_mipmap_chain(format: Format, extent: Extent2d, layers: usize) -> TextureCubeArray {
-        let default_swizzles = [Swizzle::RED.0, Swizzle::GREEN.0, Swizzle::BLUE.0, Swizzle::ALPHA.0];
-        TextureCubeArray { ffi: unsafe { gli::texture_cube_array::new2(format.0, &extent.into(), layers, &default_swizzles) } }
+
+        TextureCubeArray { ffi: unsafe { bindings::texcubearray_new_with_mipmap_chain(format.0, extent.into(), layers) } }
     }
 
     /// Create a texture_cube_array view with an existing storage_linear.
     #[inline]
     pub fn new_from(texture: &impl GliTexture) -> TextureCubeArray {
-        TextureCubeArray { ffi: unsafe { gli::texture_cube_array::new3(texture.raw_texture()) } }
+        TextureCubeArray { ffi: unsafe { bindings::texcubearray_share_from(texture.raw_texture()) } }
     }
 
     /// Create a texture_cube_array view with an existing storage_linear.
     #[inline]
     pub fn new_detail(texture: &impl GliTexture, format: Format, base_layer: usize, max_layer: usize, base_face: usize, max_face: usize, base_level: usize, max_level: usize) -> TextureCubeArray {
-        let default_swizzles = [Swizzle::RED.0, Swizzle::GREEN.0, Swizzle::BLUE.0, Swizzle::ALPHA.0];
-        TextureCubeArray { ffi: unsafe { gli::texture_cube_array::new4(texture.raw_texture(), format.0, base_layer, max_layer, base_face, max_face, base_level, max_level, &default_swizzles) } }
+
+        TextureCubeArray {
+            ffi: unsafe { bindings::texcubearray_share_from_detail(texture.raw_texture(), format.0, base_layer, max_layer, base_face, max_face, base_level, max_level) }
+        }
     }
 
     /// Create a texture_cube_array view, reference a subset of an existing texture_cube_array instance.
     #[inline]
     pub fn new_from_subset(texture: &TextureCubeArray, base_layer: usize, max_layer: usize, base_face: usize, max_face: usize, base_level: usize, max_level: usize) -> TextureCubeArray {
-        TextureCubeArray { ffi: unsafe { gli::texture_cube_array::new5(&texture.ffi, base_layer, max_layer, base_face, max_face, base_level, max_level) } }
+
+        TextureCubeArray {
+            ffi: unsafe { bindings::texcubearray_share_from_subset(&texture.ffi, base_layer, max_layer, base_face, max_face, base_level, max_level) }
+        }
     }
 
     /// Create a view of the texture identified by Layer in the texture array.
@@ -74,7 +81,7 @@ impl GliTexture for TextureCubeArray {
 
     /// Return the dimensions of a texture instance: width and height where both should be equal.
     fn extent(&self, level: usize) -> Self::ExtentType {
-        unsafe { self.ffi.extent(level).into() }
+        unsafe { bindings::texcubearray_extent(&self.ffi, level).into() }
     }
 }
 

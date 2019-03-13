@@ -26,15 +26,15 @@ mod texture {
         let texture_loaded: Texture2D = gli::load_dds(Path::new(TEST__DDS_PATH))
             .unwrap();
 
-//        if texture_loaded.empty() {
-//            assert!(true, "DDS texture is empty.");
-//        } else {
-//            let extent = texture_loaded.extent(0);
-//
-//            println!("DDS Texture info:");
-//            println!("\tExtent: ({}, {})", extent.width, extent.height);
-//            print_texture_info(&texture_loaded);
-//        }
+        if texture_loaded.empty() {
+            assert!(true, "DDS texture is empty.");
+        } else {
+            let extent = texture_loaded.extent(0);
+
+            println!("DDS Texture info:");
+            println!("\tExtent: ({}, {})", extent.width, extent.height);
+            print_texture_info(&texture_loaded);
+        }
 
         gli::save_dds(&texture_loaded, Path::new(FILE_SAVE_PATH))
             .unwrap();
@@ -49,15 +49,15 @@ mod texture {
         let texture_loaded: Texture2D = gli::load_ktx(Path::new(TEST__KTX_PATH))
             .unwrap();
 
-//        if texture_loaded.empty() {
-//            assert!(true, "KTX texture is empty.");
-//        } else {
-//            let extent = texture_loaded.extent(0);
-//
-//            println!("\tExtent: ({}, {})", extent.width, extent.height);
-//            println!("KTX Texture info:");
-//            print_texture_info(&texture_loaded);
-//        }
+        if texture_loaded.empty() {
+            assert!(true, "KTX texture is empty.");
+        } else {
+            let extent = texture_loaded.extent(0);
+
+            println!("\tExtent: ({}, {})", extent.width, extent.height);
+            println!("KTX Texture info:");
+            print_texture_info(&texture_loaded);
+        }
 
         gli::save_ktx(&texture_loaded, Path::new(FILE_SAVE_PATH))
             .unwrap();

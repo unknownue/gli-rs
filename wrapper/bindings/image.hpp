@@ -135,7 +135,7 @@ extern "C" {
                 return image();
             }
 
-            image image_new_(image::format_type format, const image::extent_type & extent) {
+            image image_new_(image::format_type format, image::extent_type extent) {
                 return image(format, extent);
             }
 

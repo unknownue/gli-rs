@@ -17,8 +17,7 @@ mod tcube_array;
 
 use std::os::raw::c_void;
 
-use crate::ffi::root::gli;
-use crate::ffi::root::bindings;
+use crate::ffi::root::bindings::Texture as bindings;
 use crate::format::{Format, Swizzles};
 use crate::target::Target;
 use crate::Extent3d;
@@ -47,24 +46,24 @@ pub trait GliTexture: inner::TextureAccessible + Sized {
     /// Return the base face of the texture instance, effectively a memory offset in the actual texture storage_type
     /// to identify where to start reading the faces.
     fn base_face(&self) -> usize {
-        unsafe { self.raw_texture().base_face() }
+        unsafe { bindings::texture_base_face(self.raw_texture()) }
     }
 
     /// Return the base layer of the texture instance, effectively a memory offset in the actual texture storage_type
     /// to identify where to start reading the layers.
     fn base_layer(&self) -> usize {
-        unsafe { self.raw_texture().base_layer() }
+        unsafe { bindings::texture_base_layer(self.raw_texture()) }
     }
 
     /// Return the base level of the texture instance, effectively a memory offset in the actual texture storage_type
     /// to identify where to start reading the levels.
     fn base_level(&self) -> usize {
-        unsafe { self.raw_texture().base_level() }
+        unsafe { bindings::texture_base_level(self.raw_texture()) }
     }
 
     /// Clear the entire texture storage_linear with zeros.
     fn clear(&mut self) {
-        unsafe { self.raw_texture_mut().clear() }
+        unsafe { bindings::texture_clear(self.raw_texture_mut()) }
     }
 
     // TODO: Other 3 clear methods is missing.
@@ -72,54 +71,55 @@ pub trait GliTexture: inner::TextureAccessible + Sized {
     /// Copy a specific image of a texture.
     fn copy(&mut self, src_texture: &Self, src_layer: usize, src_face: usize, src_level: usize, dst_layer: usize, dst_face: usize, dst_level: usize) {
         unsafe {
-            self.raw_texture_mut()
-                .copy(src_texture.raw_texture(), src_layer, src_face, src_level, dst_layer, dst_face, dst_level)
+            bindings::texture_copy(
+                self.raw_texture_mut(), src_texture.raw_texture(), src_layer, src_face, src_level, dst_layer, dst_face, dst_level)
         }
     }
 
     /// Copy a subset of a specific image of a texture.
     fn copy_subset(&mut self, src_texture: &Self, src_layer: usize, src_face: usize, src_level: usize, src_offset: Extent3d, dst_layer: usize, dst_face: usize, dst_level: usize, dst_offset: Extent3d, extent: Extent3d) {
+
         unsafe {
-            self.raw_texture_mut()
-                .copy1(src_texture.raw_texture(), src_layer, src_face, src_level, &src_offset.into(), dst_layer, dst_face, dst_level, &dst_offset.into(), &extent.into())
+            bindings::texture_copy_subset(
+                self.raw_texture_mut(), src_texture.raw_texture(), src_layer, src_face, src_level, &src_offset.into(), dst_layer, dst_face, dst_level, &dst_offset.into(), &extent.into())
         }
     }
 
     /// Return a pointer to the beginning of the texture instance data.
     fn data(&self) -> *const c_void {
-        unsafe { self.raw_texture().data1() }
+        unsafe { bindings::texture_data(self.raw_texture()) }
     }
 
     fn data_mut(&mut self) -> *mut c_void {
-        unsafe { self.raw_texture_mut().data() }
+        unsafe { bindings::texture_data_mut(self.raw_texture_mut()) }
     }
 
     // TODO: Other 6 data methods is missing.
 
     /// Return whether the texture instance is empty, no storage_type or description have been assigned to the instance.
     fn empty(&self) -> bool {
-        unsafe { bindings::Texture::texture_empty(self.raw_texture()) }
+        unsafe { bindings::texture_empty(self.raw_texture()) }
     }
 
     /// Return max_face() - base_face() + 1.
     fn faces(&self) -> usize {
-        unsafe { self.raw_texture().faces() }
+        unsafe { bindings::texture_faces(self.raw_texture()) }
     }
 
     /// Return the texture instance format.
     fn format(&self) -> Format {
-        let format = unsafe { self.raw_texture().format() };
+        let format = unsafe { bindings::texture_format(self.raw_texture()) };
         Format(format)
     }
 
     /// Return max_layer() - base_layer() + 1.
     fn layers(&self) -> usize {
-        unsafe { self.raw_texture().layers() }
+        unsafe { bindings::texture_layers(self.raw_texture()) }
     }
 
     /// Return max_level() - base_level() + 1.
     fn levels(&self) -> usize {
-        unsafe { self.raw_texture().levels() }
+        unsafe { bindings::texture_levels(self.raw_texture()) }
     }
 
     // TODO: load(..) method is missing, due to template specialization.
@@ -128,31 +128,31 @@ pub trait GliTexture: inner::TextureAccessible + Sized {
     /// Return the max face of the texture instance, effectively a memory offset to the beginning of the last face
     /// in the actual texture storage_type that the texture instance can access.
     fn max_face(&self) -> usize {
-        unsafe { self.raw_texture().max_face() }
+        unsafe { bindings::texture_max_face(self.raw_texture()) }
     }
 
     /// Return the max layer of the texture instance, effectively a memory offset to the beginning of the last layer
     /// in the actual texture storage_type that the texture instance can access.
     fn max_layer(&self) -> usize {
-        unsafe { self.raw_texture().max_layer() }
+        unsafe { bindings::texture_max_layer(self.raw_texture()) }
     }
 
     /// Return the max level of the texture instance, effectively a memory offset to the beginning of the last level
     /// in the actual texture storage_type that the texture instance can access.
     fn max_level(&self) -> usize {
-        unsafe { self.raw_texture().max_level() }
+        unsafe { bindings::texture_max_level(self.raw_texture()) }
     }
 
     /// Return the memory size of a texture instance storage_type in bytes.
     fn size(&self) -> usize {
-        unsafe { self.raw_texture().size() }
+        unsafe { bindings::texture_size(self.raw_texture()) }
     }
 
     // TODO: another size(&self) method is missing, due to template specialization.
 
     /// Return the memory size of a specific level identified by Level.
     fn size_at_level(&self, level: usize) -> usize {
-        unsafe { self.raw_texture().size1(level) }
+        unsafe { bindings::texture_size_level(self.raw_texture(), level) }
     }
 
     // TODO: another size_at_level(&self, level: usize) method is missing, due to template specialization.
@@ -167,7 +167,7 @@ pub trait GliTexture: inner::TextureAccessible + Sized {
     }
 }
 
-impl Drop for gli::texture {
+impl Drop for crate::ffi::root::gli::texture {
 
     fn drop(&mut self) {
 
@@ -177,7 +177,7 @@ impl Drop for gli::texture {
         // It does make sense since Rust can't dual with the class member with shared_ptr in texture class.
         // If you find better method to dual with this problem, welcome to create an issue on github.
         unsafe {
-            gli::destroy_texture(self)
+            bindings::destroy_texture(self)
         }
     }
 }

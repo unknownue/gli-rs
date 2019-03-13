@@ -88,12 +88,12 @@ extern "C" {
                 return texture_cube_array(format, extent, layers);
             }
 
-            texture_cube_array texcubearray_share_from(const texture_cube_array & tex) {
+            texture_cube_array texcubearray_share_from(const gli::texture & tex) {
                 return texture_cube_array(tex);
             }
 
             texture_cube_array texcubearray_share_from_detail(
-                const texture_cube_array & tex,
+                const gli::texture & tex,
                 texture_cube_array::format_type format,
                 texture_cube_array::size_type base_layer, texture_cube_array::size_type max_layer,
                 texture_cube_array::size_type base_face,  texture_cube_array::size_type  max_face,

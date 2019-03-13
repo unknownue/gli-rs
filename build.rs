@@ -24,6 +24,7 @@ fn build_gli_lib() {
     if target.contains("darwin") {
         build
             .flag("-std=c++11")
+            .flag("-Wno-return-type-c-linkage")
             .flag("-Wno-unused-variable")
             .flag("-Wno-unused-parameter")
             .flag("-Wno-unused-private-field")
@@ -34,10 +35,15 @@ fn build_gli_lib() {
     } else if target.contains("linux") {
         build
             .flag("-std=c++11")
+            //.flag("-Wno-return-type-c-linkage")
             .flag("-Wno-unused-variable")
             .flag("-Wno-unused-parameter")
             .flag("-Wno-unused-private-field")
             .cpp_link_stdlib("stdc++")
+            .cpp(true);
+    } else {
+        build
+            //.flag("-Wno-return-type-c-linkage")
             .cpp(true);
     }
 

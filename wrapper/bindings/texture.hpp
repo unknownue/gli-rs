@@ -35,13 +35,13 @@ namespace gli {
         /// @param Levels Number of images in the texture mipmap chain.
         /// @param Swizzles A mechanism to swizzle the components of a texture before they are applied according to the texture environment.
         texture(
-                target_type Target,
-                format_type Format,
-                extent_type const& Extent,
-                size_type Layers,
-                size_type Faces,
-                size_type Levels,
-                swizzles_type const& Swizzles = swizzles_type(SWIZZLE_RED, SWIZZLE_GREEN, SWIZZLE_BLUE, SWIZZLE_ALPHA));
+            target_type Target,
+            format_type Format,
+            extent_type const& Extent,
+            size_type Layers,
+            size_type Faces,
+            size_type Levels,
+            swizzles_type const& Swizzles = swizzles_type(SWIZZLE_RED, SWIZZLE_GREEN, SWIZZLE_BLUE, SWIZZLE_ALPHA));
 
         /// Create a texture object by sharing an existing texture storage_type from another texture instance.
         /// This texture object is effectively a texture view where the layer, the face and the level allows identifying
@@ -49,22 +49,22 @@ namespace gli {
         /// This texture object is effectively a texture view where the target and format can be reinterpreted
         /// with a different compatible texture target and texture format.
         texture(
-                texture const& Texture,
-                target_type Target,
-                format_type Format,
-                size_type BaseLayer, size_type MaxLayer,
-                size_type BaseFace, size_type MaxFace,
-                size_type BaseLevel, size_type MaxLevel,
-                swizzles_type const& Swizzles = swizzles_type(SWIZZLE_RED, SWIZZLE_GREEN, SWIZZLE_BLUE, SWIZZLE_ALPHA));
+            texture const& Texture,
+            target_type Target,
+            format_type Format,
+            size_type BaseLayer, size_type MaxLayer,
+            size_type BaseFace, size_type MaxFace,
+            size_type BaseLevel, size_type MaxLevel,
+            swizzles_type const& Swizzles = swizzles_type(SWIZZLE_RED, SWIZZLE_GREEN, SWIZZLE_BLUE, SWIZZLE_ALPHA));
 
         /// Create a texture object by sharing an existing texture storage_type from another texture instance.
         /// This texture object is effectively a texture view where the target and format can be reinterpreted
         /// with a different compatible texture target and texture format.
         texture(
-                texture const& Texture,
-                target_type Target,
-                format_type Format,
-                swizzles_type const& Swizzles = swizzles_type(SWIZZLE_RED, SWIZZLE_GREEN, SWIZZLE_BLUE, SWIZZLE_ALPHA));
+            texture const& Texture,
+            target_type Target,
+            format_type Format,
+            swizzles_type const& Swizzles = swizzles_type(SWIZZLE_RED, SWIZZLE_GREEN, SWIZZLE_BLUE, SWIZZLE_ALPHA));
 
         ~texture(){
 
@@ -225,15 +225,15 @@ namespace gli {
             explicit cache(ctor) {}
 
             cache
-                    (
-                            storage_type& Storage,
-                            format_type Format,
-                            size_type BaseLayer, size_type Layers,
-                            size_type BaseFace, size_type MaxFace,
-                            size_type BaseLevel, size_type MaxLevel
-                    )
-                    : Faces(MaxFace - BaseFace + 1)
-                    , Levels(MaxLevel - BaseLevel + 1)
+                (
+                    storage_type& Storage,
+                    format_type Format,
+                    size_type BaseLayer, size_type Layers,
+                    size_type BaseFace, size_type MaxFace,
+                    size_type BaseLevel, size_type MaxLevel
+                )
+                : Faces(MaxFace - BaseFace + 1)
+                , Levels(MaxLevel - BaseLevel + 1)
             {
                 GLI_ASSERT(static_cast<size_t>(gli::levels(Storage.extent(0))) < this->ImageMemorySize.size());
 
@@ -316,6 +316,10 @@ extern "C" {
                 return tex.empty();
             }
 
+            texture::format_type texture_format(const texture & tex) {
+                return tex.format();
+            }
+
             texture::target_type texture_target(const texture & tex) {
                 return tex.target();
             }
@@ -372,7 +376,11 @@ extern "C" {
                 return tex.size(level);
             }
 
-            void * texture_data(texture & tex) {
+            void const * texture_data(const texture & tex) {
+                return tex.data();
+            }
+
+            void * texture_data_mut(texture & tex) {
                 return tex.data();
             }
 
