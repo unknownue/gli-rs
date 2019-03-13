@@ -99,7 +99,7 @@ extern "C" {
                 texture_cube_array::size_type base_face,  texture_cube_array::size_type  max_face,
                 texture_cube_array::size_type base_level, texture_cube_array::size_type max_level) {
 
-                return texture_cube_array(tex, format, base_layer, max_level, base_face, max_face, base_level, max_level);
+                return texture_cube_array(tex, format, base_layer, max_layer, base_face, max_face, base_level, max_level);
             }
 
             texture_cube_array texcubearray_share_from_subset(

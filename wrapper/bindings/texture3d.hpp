@@ -96,7 +96,7 @@ namespace bindings {
             texture3d::size_type base_face,  texture3d::size_type  max_face,
             texture3d::size_type base_level, texture3d::size_type max_level) {
 
-            return texture3d(tex, format, base_layer, max_level, base_face, max_face, base_level, max_level);
+            return texture3d(tex, format, base_layer, max_layer, base_face, max_face, base_level, max_level);
         }
 
         texture3d tex3d_share_from_subset(const texture3d & tex, texture3d::size_type base_level, texture3d::size_type max_level) {

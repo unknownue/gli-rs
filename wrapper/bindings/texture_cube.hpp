@@ -95,7 +95,7 @@ namespace bindings {
             texture_cube::size_type base_face,  texture_cube::size_type  max_face,
             texture_cube::size_type base_level, texture_cube::size_type max_level) {
 
-            return texture_cube(tex, format, base_layer, max_level, base_face, max_face, base_level, max_level);
+            return texture_cube(tex, format, base_layer, max_layer, base_face, max_face, base_level, max_level);
         }
 
         texture_cube texcube_share_from_subset(

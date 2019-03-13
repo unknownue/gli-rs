@@ -97,7 +97,7 @@ extern "C" {
                 texture2d_array::size_type base_face,  texture2d_array::size_type  max_face,
                 texture2d_array::size_type base_level, texture2d_array::size_type max_level) {
 
-                return texture2d_array(tex, format, base_layer, max_level, base_face, max_face, base_level, max_level);
+                return texture2d_array(tex, format, base_layer, max_layer, base_face, max_face, base_level, max_level);
             }
 
             texture2d_array tex2darray_share_from_subset(

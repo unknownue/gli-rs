@@ -93,7 +93,7 @@ extern "C" {
                 texture1d::size_type base_face,  texture1d::size_type  max_face,
                 texture1d::size_type base_level, texture1d::size_type max_level) {
 
-                return texture1d(tex, format, base_layer, max_level, base_face, max_face, base_level, max_level);
+                return texture1d(tex, format, base_layer, max_layer, base_face, max_face, base_level, max_level);
             }
 
             texture1d tex1d_share_from_subset(const texture1d & tex, texture1d::size_type base_level, texture1d::size_type max_level) {

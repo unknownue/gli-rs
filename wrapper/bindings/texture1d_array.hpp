@@ -97,7 +97,7 @@ extern "C" {
                 texture1d_array::size_type base_face,  texture1d_array::size_type  max_face,
                 texture1d_array::size_type base_level, texture1d_array::size_type max_level) {
 
-                return texture1d_array(tex, format, base_layer, max_level, base_face, max_face, base_level, max_level);
+                return texture1d_array(tex, format, base_layer, max_layer, base_face, max_face, base_level, max_level);
             }
 
             texture1d_array tex1darray_share_from_subset(

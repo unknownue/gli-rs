@@ -93,7 +93,7 @@ extern "C" {
                 texture2d::size_type base_face,  texture2d::size_type  max_face,
                 texture2d::size_type base_level, texture2d::size_type max_level) {
 
-                return texture2d(tex, format, base_layer, max_level, base_face, max_face, base_level, max_level);
+                return texture2d(tex, format, base_layer, max_layer, base_face, max_face, base_level, max_level);
             }
 
             texture2d tex2d_share_from_subset(const texture2d & tex, texture2d::size_type base_level, texture2d::size_type max_level) {
