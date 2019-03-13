@@ -80,13 +80,21 @@ extern "C" {
 
         namespace Load {
 
-            Texture::texture load_load(char const* Data, std::size_t Size);
+            Texture::texture load_load(char const* Data, std::size_t Size) {
+                return gli::load(Data, Size);
+            }
 
-            Texture::texture load_load_dds(char const* Data, std::size_t Size);
+            Texture::texture load_load_dds(char const* Data, std::size_t Size) {
+                return gli::load_dds(Data, Size);
+            }
 
-            Texture::texture load_load_kmg(char const* Data, std::size_t Size);
+            Texture::texture load_load_kmg(char const* Data, std::size_t Size) {
+                return gli::load_kmg(Data, Size);
+            }
 
-            Texture::texture load_load_ktx(char const* Data, std::size_t Size);
+            Texture::texture load_load_ktx(char const* Data, std::size_t Size) {
+                return gli::load_ktx(Data, Size);
+            }
         }
     }//namespace gli
 }

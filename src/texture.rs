@@ -18,6 +18,7 @@ mod tcube_array;
 use std::os::raw::c_void;
 
 use crate::ffi::root::gli;
+use crate::ffi::root::bindings;
 use crate::format::{Format, Swizzles};
 use crate::target::Target;
 use crate::Extent3d;
@@ -97,7 +98,7 @@ pub trait GliTexture: inner::TextureAccessible + Sized {
 
     /// Return whether the texture instance is empty, no storage_type or description have been assigned to the instance.
     fn empty(&self) -> bool {
-        unsafe { self.raw_texture().empty() }
+        unsafe { bindings::Texture::texture_empty(self.raw_texture()) }
     }
 
     /// Return max_face() - base_face() + 1.

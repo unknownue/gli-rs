@@ -3,7 +3,8 @@ use std::fs;
 use std::path::Path;
 use std::ffi::CStr;
 
-use crate::ffi::root::gli;
+use crate::ffi::root::bindings;
+
 use crate::texture::GliTexture;
 use crate::error::{Result, Error, ErrorKind};
 
@@ -37,7 +38,7 @@ pub fn load_from_bytes<T>(data: &[u8]) -> Result<T>
     // let gli lib to handle the post-processing.
     // TODO: bytes_length may be invalid.
     let raw_texture = unsafe {
-        gli::load2(texture_data.as_ptr(), bytes_length)
+        bindings::Load::load_load(texture_data.as_ptr(), bytes_length)
     };
 
     let dst_texture = T::from(raw_texture);
@@ -75,7 +76,7 @@ pub fn load_dds_from_bytes<T>(data: &[u8]) -> Result<T>
     let texture_data = unsafe { CStr::from_bytes_with_nul_unchecked(data) };
 
     let raw_texture = unsafe {
-        gli::load_dds2(texture_data.as_ptr(), bytes_length)
+        bindings::Load::load_load_dds(texture_data.as_ptr(), bytes_length)
     };
 
     let dst_texture = T::from(raw_texture);
@@ -113,7 +114,7 @@ pub fn load_ktx_from_bytes<T>(data: &[u8]) -> Result<T>
     let texture_data = unsafe { CStr::from_bytes_with_nul_unchecked(data) };
 
     let raw_texture = unsafe {
-        gli::load_ktx2(texture_data.as_ptr(), bytes_length)
+        bindings::Load::load_load_ktx(texture_data.as_ptr(), bytes_length)
     };
 
     let dst_texture = T::from(raw_texture);
@@ -151,7 +152,7 @@ pub fn load_kmg_from_bytes<T>(data: &[u8]) -> Result<T>
     let texture_data = unsafe { CStr::from_bytes_with_nul_unchecked(data) };
 
     let raw_texture = unsafe {
-        gli::load_kmg2(texture_data.as_ptr(), bytes_length)
+        bindings::Load::load_load_kmg(texture_data.as_ptr(), bytes_length)
     };
 
     let dst_texture = T::from(raw_texture);

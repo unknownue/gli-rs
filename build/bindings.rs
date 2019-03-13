@@ -2500,6 +2500,42 @@ pub mod root {
             #[doc = " @param Path Path of the file to open including filaname and filename extension"]
             pub fn load_ktx(Path: *const ::std::os::raw::c_char) -> root::gli::texture;
         }
+        extern "C" {
+            #[doc = " Save a texture storage_linear to a DDS file."]
+            #[doc = ""]
+            #[doc = " @param Texture Source texture to save"]
+            #[doc = " @param Path Path for where to save the file. It must include the filaname and filename extension."]
+            #[doc = " This function ignores the filename extension in the path and save to DDS anyway but keep the requested filename extension."]
+            #[doc = " @return Returns false if the function fails to save the file."]
+            pub fn save_dds(
+                Texture: *const root::gli::texture,
+                Path: *const ::std::os::raw::c_char,
+            ) -> bool;
+        }
+        extern "C" {
+            #[doc = " Save a texture storage_linear to a KMG (Khronos Image) file."]
+            #[doc = ""]
+            #[doc = " @param Texture Source texture to save"]
+            #[doc = " @param Path Path for where to save the file. It must include the filaname and filename extension."]
+            #[doc = " This function ignores the filename extension in the path and save to KMG anyway but keep the requested filename extension."]
+            #[doc = " @return Returns false if the function fails to save the file."]
+            pub fn save_kmg(
+                Texture: *const root::gli::texture,
+                Path: *const ::std::os::raw::c_char,
+            ) -> bool;
+        }
+        extern "C" {
+            #[doc = " Save a texture storage_linear to a KTX file."]
+            #[doc = ""]
+            #[doc = " @param Texture Source texture to save"]
+            #[doc = " @param Path Path for where to save the file. It must include the filaname and filename extension."]
+            #[doc = " This function ignores the filename extension in the path and save to KTX anyway but keep the requested filename extension."]
+            #[doc = " @return Returns false if the function fails to save the file."]
+            pub fn save_ktx(
+                Texture: *const root::gli::texture,
+                Path: *const ::std::os::raw::c_char,
+            ) -> bool;
+        }
     }
     pub mod std {
         #[allow(unused_imports)]
@@ -3165,6 +3201,28 @@ pub mod root {
                     Data: *const ::std::os::raw::c_char,
                     Size: usize,
                 ) -> root::gli::texture;
+            }
+        }
+        pub mod Save {
+            #[allow(unused_imports)]
+            use self::super::super::super::root;
+            extern "C" {
+                pub fn save_save_dds(
+                    Texture: *const root::gli::texture,
+                    Path: *const ::std::os::raw::c_char,
+                ) -> bool;
+            }
+            extern "C" {
+                pub fn save_save_kmg(
+                    Texture: *const root::gli::texture,
+                    Path: *const ::std::os::raw::c_char,
+                ) -> bool;
+            }
+            extern "C" {
+                pub fn save_save_ktx(
+                    Texture: *const root::gli::texture,
+                    Path: *const ::std::os::raw::c_char,
+                ) -> bool;
             }
         }
     }

@@ -2,7 +2,7 @@
 use std::path::Path;
 use std::ffi::OsStr;
 
-use crate::ffi::root::gli;
+use crate::ffi::root::bindings;
 use crate::texture::GliTexture;
 use crate::error::{Result, Error};
 use std::ffi::CString;
@@ -43,7 +43,7 @@ pub fn save_dds(texture: &impl GliTexture, path: impl AsRef<Path>) -> Result<()>
         .and_then(|p| CString::new(p).ok())
         .ok_or(Error::save_texture("Invalid file path."))?;
 
-    if unsafe { gli::save_dds(texture.raw_texture(), dst_path.as_ptr()) } {
+    if unsafe { bindings::Save::save_save_dds(texture.raw_texture(), dst_path.as_ptr()) } {
         Ok(())
     } else {
         Err(Error::save_texture("Failed to save dds texture."))
@@ -63,7 +63,7 @@ pub fn save_ktx(texture: &impl GliTexture, path: impl AsRef<Path>) -> Result<()>
         .and_then(|p| CString::new(p).ok())
         .ok_or(Error::save_texture("Invalid file path."))?;
 
-    if unsafe { gli::save_ktx(texture.raw_texture(), dst_path.as_ptr()) } {
+    if unsafe { bindings::Save::save_save_ktx(texture.raw_texture(), dst_path.as_ptr()) } {
         Ok(())
     } else {
         Err(Error::save_texture("Failed to save ktx texture."))
@@ -83,7 +83,7 @@ pub fn save_kmg(texture: &impl GliTexture, path: impl AsRef<Path>) -> Result<()>
         .and_then(|p| CString::new(p).ok())
         .ok_or(Error::save_texture("Invalid file path."))?;
 
-    if unsafe { gli::save_kmg(texture.raw_texture(), dst_path.as_ptr()) } {
+    if unsafe { bindings::Save::save_save_kmg(texture.raw_texture(), dst_path.as_ptr()) } {
         Ok(())
     } else {
         Err(Error::save_texture("Failed to save kmg texture."))
