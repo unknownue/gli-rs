@@ -123,6 +123,66 @@ namespace gli {
     void destroy_image(image && Image);
 } //namespace gli
 
+extern "C" {
+
+    namespace bindings {
+
+        namespace Image {
+
+            using gli::image;
+
+            image image_new_empty() {
+                return image();
+            }
+
+            image image_new_(image::format_type format, const image::extent_type & extent) {
+                return image(format, extent);
+            }
+
+            image image_share_from(const image & img, image::format_type format) {
+                return image(img, format);
+            }
+
+            image image_share_from_texture(const gli::texture & tex, image::format_type format, image::size_type base_layer, image::size_type base_face, image::size_type base_level) {
+                return image(tex, format, base_layer, base_face, base_level);
+            }
+
+            bool image_empty(const image & img) {
+                return img.empty();
+            }
+
+            image::format_type image_format(const image & img) {
+                return img.format();
+            }
+
+            image::extent_type image_extent(const image & img) {
+                return img.extent();
+            }
+
+            image::size_type image_size(const image & img) {
+                return img.size();
+            }
+
+            void * image_data_mut(image & img) {
+                return img.data();
+            }
+
+            void const * image_data(const image & img) {
+                return img.data();
+            }
+
+            void image_clear(image & img) {
+                img.clear();
+            }
+
+            /// Manually Call destructor for image object. Helper function used in FFI.
+            void destroy_image(image && img) {
+                img.~image();
+            }
+        }
+    }
+}
+
 #ifdef GLI_IMPLEMENTATION
 #include "image.inl"
 #endif

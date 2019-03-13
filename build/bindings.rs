@@ -1394,62 +1394,84 @@ pub mod root {
             #[allow(unused_imports)]
             use self::super::super::super::root;
             extern "C" {
-                pub fn empty(tex: *const root::gli::texture) -> bool;
+                pub fn texture_empty(tex: *const root::gli::texture) -> bool;
             }
             extern "C" {
-                pub fn target(tex: *const root::gli::texture) -> root::gli::texture_target_type;
+                pub fn texture_target(
+                    tex: *const root::gli::texture,
+                ) -> root::gli::texture_target_type;
             }
             extern "C" {
-                pub fn swizzles(tex: *const root::gli::texture)
-                    -> root::gli::texture_swizzles_type;
+                pub fn texture_swizzles(
+                    tex: *const root::gli::texture,
+                ) -> root::gli::texture_swizzles_type;
             }
             extern "C" {
-                pub fn base_layer(tex: *const root::gli::texture) -> root::gli::texture_size_type;
+                pub fn texture_base_layer(
+                    tex: *const root::gli::texture,
+                ) -> root::gli::texture_size_type;
             }
             extern "C" {
-                pub fn max_layer(tex: *const root::gli::texture) -> root::gli::texture_size_type;
+                pub fn texture_max_layer(
+                    tex: *const root::gli::texture,
+                ) -> root::gli::texture_size_type;
             }
             extern "C" {
-                pub fn layers(tex: *const root::gli::texture) -> root::gli::texture_size_type;
+                pub fn texture_layers(
+                    tex: *const root::gli::texture,
+                ) -> root::gli::texture_size_type;
             }
             extern "C" {
-                pub fn base_face(tex: *const root::gli::texture) -> root::gli::texture_size_type;
+                pub fn texture_base_face(
+                    tex: *const root::gli::texture,
+                ) -> root::gli::texture_size_type;
             }
             extern "C" {
-                pub fn max_face(tex: *const root::gli::texture) -> root::gli::texture_size_type;
+                pub fn texture_max_face(
+                    tex: *const root::gli::texture,
+                ) -> root::gli::texture_size_type;
             }
             extern "C" {
-                pub fn faces(tex: *const root::gli::texture) -> root::gli::texture_size_type;
+                pub fn texture_faces(
+                    tex: *const root::gli::texture,
+                ) -> root::gli::texture_size_type;
             }
             extern "C" {
-                pub fn base_level(tex: *const root::gli::texture) -> root::gli::texture_size_type;
+                pub fn texture_base_level(
+                    tex: *const root::gli::texture,
+                ) -> root::gli::texture_size_type;
             }
             extern "C" {
-                pub fn max_level(tex: *const root::gli::texture) -> root::gli::texture_size_type;
+                pub fn texture_max_level(
+                    tex: *const root::gli::texture,
+                ) -> root::gli::texture_size_type;
             }
             extern "C" {
-                pub fn levels(tex: *const root::gli::texture) -> root::gli::texture_size_type;
+                pub fn texture_levels(
+                    tex: *const root::gli::texture,
+                ) -> root::gli::texture_size_type;
             }
             extern "C" {
-                pub fn extent(
+                pub fn texture_extent(
                     tex: *const root::gli::texture,
                     level: root::gli::texture_size_type,
                 ) -> root::gli::texture_extent_type;
             }
             extern "C" {
-                pub fn size(tex: *const root::gli::texture) -> root::gli::texture_size_type;
+                pub fn texture_size(tex: *const root::gli::texture)
+                    -> root::gli::texture_size_type;
             }
             extern "C" {
-                pub fn size_level(
+                pub fn texture_size_level(
                     tex: *const root::gli::texture,
                     level: root::gli::texture_size_type,
                 ) -> root::gli::texture_size_type;
             }
             extern "C" {
-                pub fn data(tex: *mut root::gli::texture) -> *mut ::std::os::raw::c_void;
+                pub fn texture_data(tex: *mut root::gli::texture) -> *mut ::std::os::raw::c_void;
             }
             extern "C" {
-                pub fn data_detail(
+                pub fn texture_data_detail(
                     tex: *const root::gli::texture,
                     layer: root::gli::texture_size_type,
                     face: root::gli::texture_size_type,
@@ -1457,7 +1479,7 @@ pub mod root {
                 ) -> *const ::std::os::raw::c_void;
             }
             extern "C" {
-                pub fn data_detail_mut(
+                pub fn texture_data_detail_mut(
                     tex: *mut root::gli::texture,
                     layer: root::gli::texture_size_type,
                     face: root::gli::texture_size_type,
@@ -1465,10 +1487,10 @@ pub mod root {
                 ) -> *mut ::std::os::raw::c_void;
             }
             extern "C" {
-                pub fn clear(tex: *mut root::gli::texture);
+                pub fn texture_clear(tex: *mut root::gli::texture);
             }
             extern "C" {
-                pub fn copy(
+                pub fn texture_copy(
                     tex: *mut root::gli::texture,
                     src: *const root::gli::texture,
                     src_layer: usize,
@@ -1480,7 +1502,7 @@ pub mod root {
                 );
             }
             extern "C" {
-                pub fn copy_subset(
+                pub fn texture_copy_subset(
                     tex: *mut root::gli::texture,
                     src: *const root::gli::texture,
                     src_layer: usize,
@@ -1493,6 +1515,63 @@ pub mod root {
                     dst_offset: *const root::gli::texture_extent_type,
                     extent: *const root::gli::texture_extent_type,
                 );
+            }
+            extern "C" {
+                #[doc = " Manually Call destructor for texture object. Helper function used in FFI."]
+                pub fn destroy_texture(tex: *mut root::gli::texture);
+            }
+        }
+        pub mod Image {
+            #[allow(unused_imports)]
+            use self::super::super::super::root;
+            extern "C" {
+                pub fn image_new_empty() -> root::gli::image;
+            }
+            extern "C" {
+                pub fn image_new_(
+                    format: root::gli::image_format_type,
+                    extent: *const root::gli::image_extent_type,
+                ) -> root::gli::image;
+            }
+            extern "C" {
+                pub fn image_share_from(
+                    img: *const root::gli::image,
+                    format: root::gli::image_format_type,
+                ) -> root::gli::image;
+            }
+            extern "C" {
+                pub fn image_share_from_texture(
+                    tex: *const root::gli::texture,
+                    format: root::gli::image_format_type,
+                    base_layer: root::gli::image_size_type,
+                    base_face: root::gli::image_size_type,
+                    base_level: root::gli::image_size_type,
+                ) -> root::gli::image;
+            }
+            extern "C" {
+                pub fn image_empty(img: *const root::gli::image) -> bool;
+            }
+            extern "C" {
+                pub fn image_format(img: *const root::gli::image) -> root::gli::image_format_type;
+            }
+            extern "C" {
+                pub fn image_extent(img: *const root::gli::image) -> root::gli::image_extent_type;
+            }
+            extern "C" {
+                pub fn image_size(img: *const root::gli::image) -> root::gli::image_size_type;
+            }
+            extern "C" {
+                pub fn image_data_mut(img: *mut root::gli::image) -> *mut ::std::os::raw::c_void;
+            }
+            extern "C" {
+                pub fn image_data(img: *const root::gli::image) -> *const ::std::os::raw::c_void;
+            }
+            extern "C" {
+                pub fn image_clear(img: *mut root::gli::image);
+            }
+            extern "C" {
+                #[doc = " Manually Call destructor for image object. Helper function used in FFI."]
+                pub fn destroy_image(img: *mut root::gli::image);
             }
         }
     }

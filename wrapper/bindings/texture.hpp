@@ -311,95 +311,102 @@ extern "C" {
 
             using gli::texture;
 
-            bool empty(const texture & tex) {
+            bool texture_empty(const texture & tex) {
                 return tex.empty();
             }
 
-            texture::target_type target(const texture & tex) {
+            texture::target_type texture_target(const texture & tex) {
                 return tex.target();
             }
 
-            texture::swizzles_type swizzles(const texture & tex) {
+            texture::swizzles_type texture_swizzles(const texture & tex) {
                 return tex.swizzles();
             }
 
-            texture::size_type base_layer(const texture & tex) {
+            texture::size_type texture_base_layer(const texture & tex) {
                 return tex.base_layer();
             }
 
-            texture::size_type max_layer(const texture & tex) {
+            texture::size_type texture_max_layer(const texture & tex) {
                 return tex.max_layer();
             }
 
-            texture::size_type layers(const texture & tex) {
+            texture::size_type texture_layers(const texture & tex) {
                 return tex.layers();
             }
 
-            texture::size_type base_face(const texture & tex) {
+            texture::size_type texture_base_face(const texture & tex) {
                 return tex.base_face();
             }
 
-            texture::size_type max_face(const texture & tex) {
+            texture::size_type texture_max_face(const texture & tex) {
                 return tex.max_face();
             }
 
-            texture::size_type faces(const texture & tex) {
+            texture::size_type texture_faces(const texture & tex) {
                 return tex.faces();
             }
 
-            texture::size_type base_level(const texture & tex) {
+            texture::size_type texture_base_level(const texture & tex) {
                 return tex.base_level();
             }
 
-            texture::size_type max_level(const texture & tex) {
+            texture::size_type texture_max_level(const texture & tex) {
                 return tex.max_level();
             }
 
-            texture::size_type levels(const texture & tex) {
+            texture::size_type texture_levels(const texture & tex) {
                 return tex.levels();
             }
 
-            texture::extent_type extent(const texture & tex, texture::size_type level = 0) {
+            texture::extent_type texture_extent(const texture & tex, texture::size_type level = 0) {
                 return tex.extent(level);
             }
 
-            texture::size_type size(const texture & tex) {
+            texture::size_type texture_size(const texture & tex) {
                 return tex.size();
             }
 
-            texture::size_type size_level(const texture & tex, texture::size_type level) {
+            texture::size_type texture_size_level(const texture & tex, texture::size_type level) {
                 return tex.size(level);
             }
 
-            void * data(texture & tex) {
+            void * texture_data(texture & tex) {
                 return tex.data();
             }
 
-            void const * const data_detail(const texture & tex, texture::size_type layer, texture::size_type face, texture::size_type level) {
+            void const * const texture_data_detail(const texture & tex, texture::size_type layer, texture::size_type face, texture::size_type level) {
                 return tex.data(layer, face, level);
             }
 
-            void * data_detail_mut(texture & tex, texture::size_type layer, texture::size_type face, texture::size_type level) {
+            void * texture_data_detail_mut(texture & tex, texture::size_type layer, texture::size_type face, texture::size_type level) {
                 return tex.data(layer, face, level);
             }
 
-            void clear(texture & tex) {
+            void texture_clear(texture & tex) {
                 tex.clear();
             }
 
-            void copy(
+            void texture_copy(
                 texture & tex, const texture & src,
                 size_t src_layer, size_t src_face, size_t src_level,
                 size_t dst_layer, size_t dst_face, size_t dst_level) {
+
                 tex.copy(src, src_layer, src_face, src_level, dst_layer, dst_face, dst_level);
             }
 
-            void copy_subset(
+            void texture_copy_subset(
                 texture & tex, const texture & src,
                 size_t src_layer, size_t src_face, size_t src_level, const texture::extent_type & src_offset,
                 size_t dst_layer, size_t dst_face, size_t dst_level, const texture::extent_type & dst_offset,
                 const texture::extent_type & extent) {
+
                 tex.copy(src, src_layer, src_face, src_level, src_offset, dst_layer, dst_face, dst_level, dst_offset, extent);
+            }
+
+            /// Manually Call destructor for texture object. Helper function used in FFI.
+            void destroy_texture(texture && tex) {
+                tex.~texture();
             }
         }
     }
