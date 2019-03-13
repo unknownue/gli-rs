@@ -47,31 +47,40 @@ fn build_gli_lib() {
 #[cfg(feature = "bindings")]
 fn generate_bindings() {
 
-    bindgen::Builder::default()
+    let mut builder = bindgen::Builder::default()
         .header("./wrapper/gli_lib.cpp")
         .clang_args(&[
             "-I./vendors/gli/external",
             "-I./vendors/gli/gli/core",
             "-I./wrapper/bindings/",
             "-std=c++11",
-        ])
+        ]);
+
+    builder = builder
         .whitelist_type("gli::texture.*")
         .whitelist_type("gli::image.*")
+        .whitelist_type(".*target.*") // redundancy
+        .whitelist_type("gli::swizzle.*") // redundancy
         .whitelist_function("gli::is_.*")
         .whitelist_function("gli::load.*")
         .whitelist_function("gli::save.*")
-        .whitelist_type("gli::swizzle.*")
-        .whitelist_function("gli::destroy_.*")
+        .whitelist_function("gli::destroy_.*");
+
+    builder = builder
         .opaque_type("__darwin_.*")
         .opaque_type("glm::.*")
-        .opaque_type("std::.*")
+        .opaque_type("std::.*");
+
+    builder = builder
         .enable_cxx_namespaces()
         .disable_untagged_union()
         .derive_debug(true)
         .derive_copy(false)
         .rustfmt_bindings(true)
         .trust_clang_mangling(false)
-        .layout_tests(false)
+        .layout_tests(false);
+
+    builder
         .generate().expect("Failed to generate bindings!")
         .write_to_file(::std::path::Path::new(OUTPUT_LOCATION))
         .expect("Failed to write bindings!");

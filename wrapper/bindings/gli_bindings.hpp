@@ -13,4 +13,5 @@ namespace gli {
 } //namespace gli
 
 #include "type.hpp"
+#include "target.hpp"
 #include "format.hpp"

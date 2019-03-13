@@ -7,6 +7,19 @@ pub mod root {
     pub mod gli {
         #[allow(unused_imports)]
         use self::super::super::root;
+        pub const target_TARGET_1D: root::gli::target = 0;
+        pub const target_TARGET_FIRST: root::gli::target = 0;
+        pub const target_TARGET_1D_ARRAY: root::gli::target = 1;
+        pub const target_TARGET_2D: root::gli::target = 2;
+        pub const target_TARGET_2D_ARRAY: root::gli::target = 3;
+        pub const target_TARGET_3D: root::gli::target = 4;
+        pub const target_TARGET_RECT: root::gli::target = 5;
+        pub const target_TARGET_RECT_ARRAY: root::gli::target = 6;
+        pub const target_TARGET_CUBE: root::gli::target = 7;
+        pub const target_TARGET_CUBE_ARRAY: root::gli::target = 8;
+        pub const target_TARGET_LAST: root::gli::target = 8;
+        #[doc = " Texture target: type/shape of the texture storage_linear"]
+        pub type target = u32;
         pub const format_FORMAT_UNDEFINED: root::gli::format = 0;
         pub const format_FORMAT_RG4_UNORM_PACK8: root::gli::format = 1;
         pub const format_FORMAT_FIRST: root::gli::format = 1;

@@ -1,5 +1,5 @@
 
-//pub use self::target::Target;
+pub use self::target::Target;
 pub use self::format::{Format, Swizzle, Swizzles};
 pub use self::extent::*;
 
@@ -11,7 +11,7 @@ pub use self::extent::*;
 
 pub use self::error::{Result, Error};
 
-//mod target;
+mod target;
 //mod load;
 //mod save;
 //mod texture;
