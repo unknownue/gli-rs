@@ -26,3 +26,6 @@ namespace gli {
 #include "texture3d.hpp"
 #include "texture_cube.hpp"
 #include "texture_cube_array.hpp"
+
+#include "load.hpp"
+#include "save.hpp"

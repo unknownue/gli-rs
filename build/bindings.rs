@@ -315,6 +315,10 @@ pub mod root {
             #[doc = " Evaluate whether the format has depth and stencil components"]
             pub fn is_depth_stencil(Format: root::gli::format) -> bool;
         }
+        pub mod detail {
+            #[allow(unused_imports)]
+            use self::super::super::super::root;
+        }
         #[repr(C)]
         #[derive(Debug)]
         pub struct storage_linear {
@@ -2468,10 +2472,39 @@ pub mod root {
                 __bindgen_tmp
             }
         }
+        extern "C" {
+            #[doc = " Evaluate whether a target and format combinaison is only supported by the DDS container through GLI DDS extension."]
+            pub fn is_dds_ext(Target: root::gli::target, Format: root::gli::format) -> bool;
+        }
+        extern "C" {
+            #[doc = " Loads a texture storage_linear from file. Returns an empty storage_linear in case of failure."]
+            #[doc = ""]
+            #[doc = " @param Path Path of the file to open including filaname and filename extension"]
+            pub fn load(Path: *const ::std::os::raw::c_char) -> root::gli::texture;
+        }
+        extern "C" {
+            #[doc = " Loads a texture storage_linear from DDS file. Returns an empty storage_linear in case of failure."]
+            #[doc = ""]
+            #[doc = " @param Path Path of the file to open including filaname and filename extension"]
+            pub fn load_dds(Path: *const ::std::os::raw::c_char) -> root::gli::texture;
+        }
+        extern "C" {
+            #[doc = " Loads a texture storage_linear from KMG (Khronos Image) file. Returns an empty storage_linear in case of failure."]
+            #[doc = ""]
+            #[doc = " @param Path Path of the file to open including filaname and filename extension"]
+            pub fn load_kmg(Path: *const ::std::os::raw::c_char) -> root::gli::texture;
+        }
+        extern "C" {
+            #[doc = " Loads a texture storage_linear from KTX file. Returns an empty storage_linear in case of failure."]
+            #[doc = ""]
+            #[doc = " @param Path Path of the file to open including filaname and filename extension"]
+            pub fn load_ktx(Path: *const ::std::os::raw::c_char) -> root::gli::texture;
+        }
     }
     pub mod std {
         #[allow(unused_imports)]
         use self::super::super::root;
+        pub type string = [u64; 3usize];
         #[repr(C)]
         #[derive(Debug)]
         pub struct allocator {
@@ -3104,6 +3137,34 @@ pub mod root {
                     tex: *const root::gli::texture_cube_array,
                     level: root::gli::texture_size_type,
                 ) -> root::gli::texture_cube_array_extent_type;
+            }
+        }
+        pub mod Load {
+            #[allow(unused_imports)]
+            use self::super::super::super::root;
+            extern "C" {
+                pub fn load_load(
+                    Data: *const ::std::os::raw::c_char,
+                    Size: usize,
+                ) -> root::gli::texture;
+            }
+            extern "C" {
+                pub fn load_load_dds(
+                    Data: *const ::std::os::raw::c_char,
+                    Size: usize,
+                ) -> root::gli::texture;
+            }
+            extern "C" {
+                pub fn load_load_kmg(
+                    Data: *const ::std::os::raw::c_char,
+                    Size: usize,
+                ) -> root::gli::texture;
+            }
+            extern "C" {
+                pub fn load_load_ktx(
+                    Data: *const ::std::os::raw::c_char,
+                    Size: usize,
+                ) -> root::gli::texture;
             }
         }
     }
