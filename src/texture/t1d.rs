@@ -68,10 +68,6 @@ impl Texture1D {
 impl GliTexture for Texture1D {
     const TARGET_TYPE: Target = Target::TARGET_1D;
     type ExtentType = Extent1d; // equivalent to gli::texture1d_extent_type.
-
-    fn extent(&self, level: usize) -> Self::ExtentType {
-        unsafe { bindings::tex1d_extent(&self.ffi, level).into() }
-    }
 }
 
 impl TextureAccessible for Texture1D {

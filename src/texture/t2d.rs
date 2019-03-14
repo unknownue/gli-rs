@@ -70,11 +70,6 @@ impl Texture2D {
 impl GliTexture for Texture2D {
     const TARGET_TYPE: Target = Target::TARGET_2D;
     type ExtentType = Extent2d; // equivalent to gli::texture2d_extent_type.
-
-    /// Return the dimensions of a texture instance: width and height.
-    fn extent(&self, level: usize) -> Self::ExtentType {
-        unsafe { bindings::tex2d_extent(&self.ffi, level).into() }
-    }
 }
 
 impl TextureAccessible for Texture2D {

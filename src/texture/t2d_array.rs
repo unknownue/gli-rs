@@ -76,11 +76,6 @@ impl Texture2DArray {
 impl GliTexture for Texture2DArray {
     const TARGET_TYPE: Target = Target::TARGET_2D_ARRAY;
     type ExtentType = Extent2d; // equivalent to gli::texture2d_extent_type.
-
-    /// Return the dimensions of a texture instance: width and height.
-    fn extent(&self, level: usize) -> Self::ExtentType {
-        unsafe { bindings::tex2darray_extent(&self.ffi, level).into() }
-    }
 }
 
 impl TextureAccessible for Texture2DArray {

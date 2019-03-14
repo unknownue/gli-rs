@@ -34,10 +34,13 @@ pub(crate) mod inner {
 
 pub trait GliTexture: inner::TextureAccessible + Sized {
     const TARGET_TYPE: Target;
-    type ExtentType;
+    type ExtentType: From<[u32; 3]>;
 
-    /// Return the size of a texture instance: width, height and depth.
-    fn extent(&self, level: usize) -> Self::ExtentType;
+    /// Return the corresponding extent type of the texture instance,
+    /// which represents the size of a specific mip-level of this texture(width, height and depth).
+    fn extent(&self, level: usize) -> Self::ExtentType {
+        unsafe { bindings::texture_extent(self.raw_texture(), level).into() }
+    }
 
     fn set_swizzles(&mut self, swizzles: Swizzles) {
         self.raw_texture_mut().Swizzles = swizzles;

@@ -76,11 +76,6 @@ impl TextureCube {
 impl GliTexture for TextureCube {
     const TARGET_TYPE: Target = Target::TARGET_CUBE;
     type ExtentType = Extent2d; // equivalent to gli::texture2d_extent_type.
-
-    /// Return the dimensions of a texture instance: width and height where both should be equal.
-    fn extent(&self, level: usize) -> Self::ExtentType {
-        unsafe { bindings::texcube_extent(&self.ffi, level).into() }
-    }
 }
 
 impl TextureAccessible for TextureCube {

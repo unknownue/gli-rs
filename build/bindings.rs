@@ -3108,28 +3108,40 @@ pub mod root {
             #[allow(unused_imports)]
             use self::super::super::super::root;
             extern "C" {
-                pub fn load_load(
+                pub fn load_memory(
                     Data: *const ::std::os::raw::c_char,
                     Size: usize,
                 ) -> root::gli::texture;
             }
             extern "C" {
-                pub fn load_load_dds(
+                pub fn load_by_path(Path: *const ::std::os::raw::c_char) -> root::gli::texture;
+            }
+            extern "C" {
+                pub fn load_dds_memory(
                     Data: *const ::std::os::raw::c_char,
                     Size: usize,
                 ) -> root::gli::texture;
             }
             extern "C" {
-                pub fn load_load_kmg(
+                pub fn load_dds_by_path(Path: *const ::std::os::raw::c_char) -> root::gli::texture;
+            }
+            extern "C" {
+                pub fn load_kmg_memory(
                     Data: *const ::std::os::raw::c_char,
                     Size: usize,
                 ) -> root::gli::texture;
             }
             extern "C" {
-                pub fn load_load_ktx(
+                pub fn load_kmg_by_path(Path: *const ::std::os::raw::c_char) -> root::gli::texture;
+            }
+            extern "C" {
+                pub fn load_ktx_memory(
                     Data: *const ::std::os::raw::c_char,
                     Size: usize,
                 ) -> root::gli::texture;
+            }
+            extern "C" {
+                pub fn load_ktx_by_path(Path: *const ::std::os::raw::c_char) -> root::gli::texture;
             }
         }
         pub mod Save {

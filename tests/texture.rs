@@ -54,8 +54,8 @@ mod texture {
         } else {
             let extent = texture_loaded.extent(0);
 
-            println!("\tExtent: ({}, {})", extent.width, extent.height);
             println!("KTX Texture info:");
+            println!("\tExtent: ({}, {})", extent.width, extent.height);
             print_texture_info(&texture_loaded);
         }
 

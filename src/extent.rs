@@ -18,6 +18,20 @@ impl From<u32> for Extent1d {
     }
 }
 
+impl From<[u32; 2]> for Extent1d {
+
+    fn from(v: [u32; 2]) -> Extent1d {
+        Extent1d { width: v[0] }
+    }
+}
+
+impl From<[u32; 3]> for Extent1d {
+
+    fn from(v: [u32; 3]) -> Extent1d {
+        Extent1d { width: v[0] }
+    }
+}
+
 #[derive(Debug, Clone, Copy, Default)]
 pub struct Extent2d {
     pub width : u32,
@@ -34,6 +48,13 @@ impl From<Extent2d> for [u32; 2] {
 impl From<[u32; 2]> for Extent2d {
 
     fn from(v: [u32; 2]) -> Extent2d {
+        Extent2d { width : v[0], height: v[1] }
+    }
+}
+
+impl From<[u32; 3]> for Extent2d {
+
+    fn from(v: [u32; 3]) -> Extent2d {
         Extent2d { width : v[0], height: v[1] }
     }
 }
