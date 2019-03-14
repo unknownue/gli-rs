@@ -1,7 +1,7 @@
 
 [package]
 name    = "gli-rs"
-version = "0.2.0"
+version = "0.2.1"
 authors = ["usami-renko <usami-ssc@protonmail.com>"]
 edition = "2018"
 build   = "build.rs"
@@ -30,10 +30,10 @@ travis-ci = { repository = "Usami-Renko/gli-rs" }
 failure = "0.1.5"
 
 [build-dependencies]
-cc = { version = "1.0.30", features = ["parallel"] }
+cc = { version = "1.0.31", features = ["parallel"] }
 
 [build-dependencies.bindgen]
-version = "0.48.0"
+version = "0.48.1"
 optional = true
 
 [features]
