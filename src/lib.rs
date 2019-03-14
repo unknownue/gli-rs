@@ -21,3 +21,10 @@ mod extent;
 
 mod ffi;
 mod error;
+
+
+pub enum TexFormatType {
+    DDS,
+    KTX,
+    KMG,
+}
