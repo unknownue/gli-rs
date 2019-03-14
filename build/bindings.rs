@@ -852,12 +852,6 @@ pub mod root {
             );
         }
         extern "C" {
-            #[link_name = "\u{1}get_shared_storage_count"]
-            pub fn texture_get_shared_storage_count(
-                this: *const root::gli::texture,
-            ) -> ::std::os::raw::c_int;
-        }
-        extern "C" {
             #[doc = " Create an empty texture instance"]
             #[link_name = "\u{1}texture"]
             pub fn texture_texture(this: *mut root::gli::texture);
@@ -1049,10 +1043,6 @@ pub mod root {
                 )
             }
             #[inline]
-            pub unsafe fn get_shared_storage_count(&self) -> ::std::os::raw::c_int {
-                texture_get_shared_storage_count(self)
-            }
-            #[inline]
             pub unsafe fn new() -> Self {
                 let mut __bindgen_tmp = ::std::mem::uninitialized();
                 texture_texture(&mut __bindgen_tmp);
@@ -1177,12 +1167,6 @@ pub mod root {
             pub fn image_clear(this: *mut root::gli::image);
         }
         extern "C" {
-            #[link_name = "\u{1}get_shared_storage_count"]
-            pub fn image_get_shared_storage_count(
-                this: *const root::gli::image,
-            ) -> ::std::os::raw::c_int;
-        }
-        extern "C" {
             #[doc = " Create an empty image instance"]
             #[link_name = "\u{1}image"]
             pub fn image_image(this: *mut root::gli::image);
@@ -1247,10 +1231,6 @@ pub mod root {
             #[inline]
             pub unsafe fn clear(&mut self) {
                 image_clear(self)
-            }
-            #[inline]
-            pub unsafe fn get_shared_storage_count(&self) -> ::std::os::raw::c_int {
-                image_get_shared_storage_count(self)
             }
             #[inline]
             pub unsafe fn new() -> Self {
@@ -2773,6 +2753,11 @@ pub mod root {
                 #[doc = " Manually Call destructor for texture object. Helper function used in FFI."]
                 pub fn destroy_texture(tex: *mut root::gli::texture);
             }
+            extern "C" {
+                pub fn get_texture_shared_storage_count(
+                    tex: *const root::gli::texture,
+                ) -> ::std::os::raw::c_int;
+            }
         }
         pub mod Image {
             #[allow(unused_imports)]
@@ -2825,6 +2810,11 @@ pub mod root {
             extern "C" {
                 #[doc = " Manually Call destructor for image object. Helper function used in FFI."]
                 pub fn destroy_image(img: *mut root::gli::image);
+            }
+            extern "C" {
+                pub fn get_image_shared_storage_count(
+                    img: *const root::gli::image,
+                ) -> ::std::os::raw::c_int;
             }
         }
         pub mod Texture1D {

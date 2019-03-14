@@ -95,7 +95,7 @@ namespace gli {
         void store(extent_type const& TexelCoord, genType const& Data);
 
         bool is_print_shared_storage_count = false;
-        int get_shared_storage_count() const;
+        std::shared_ptr<storage_linear> Storage;
     private:
         /// Create an image object by sharing an existing image storage_linear from another image instance.
         /// This image object is effectively an image view where the layer, the face and the level allows identifying
@@ -109,7 +109,6 @@ namespace gli {
                 size_type BaseFace,
                 size_type BaseLevel);
 
-        std::shared_ptr<storage_linear> Storage;
         format_type const Format;
         size_type const BaseLevel;
         data_type* Data;
@@ -121,6 +120,8 @@ namespace gli {
 
     /// Manually Call destructor for image object. Helper function used in FFI.
     void destroy_image(image && Image);
+
+    int get_image_shared_storage_count(const image & img);
 } //namespace gli
 
 extern "C" {
@@ -178,6 +179,10 @@ extern "C" {
             /// Manually Call destructor for image object. Helper function used in FFI.
             void destroy_image(image && img) {
                 img.~image();
+            }
+
+            int get_image_shared_storage_count(const image & img) {
+                return gli::get_image_shared_storage_count(img);
             }
         }
     }

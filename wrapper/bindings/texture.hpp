@@ -202,8 +202,6 @@ namespace gli {
         std::shared_ptr<storage_type> Storage;
 
         bool is_print_shared_storage_count = false;
-        int get_shared_storage_count() const;
-
     protected:
         target_type Target;
         format_type Format;
@@ -301,6 +299,8 @@ namespace gli {
 
     /// Manually Call destructor for texture object. Helper function used in FFI.
     void destroy_texture(texture && Texture);
+
+    int get_texture_shared_storage_count(const texture & tex);
 } //namespace gli
 
 
@@ -416,6 +416,10 @@ extern "C" {
             /// Manually Call destructor for texture object. Helper function used in FFI.
             void destroy_texture(texture && tex) {
                 tex.~texture();
+            }
+
+            int get_texture_shared_storage_count(const texture & tex) {
+                return gli::get_texture_shared_storage_count(tex);
             }
         }
     }
