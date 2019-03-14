@@ -1,9 +1,8 @@
 
-use std::fs;
 use std::path::Path;
-use std::ffi::CStr;
+use std::ffi::CString;
 
-use crate::ffi::root::bindings;
+use crate::ffi::root::bindings::Load as bindings;
 
 use crate::texture::GliTexture;
 use crate::error::{Result, Error, ErrorKind};
@@ -18,38 +17,21 @@ pub fn load<T>(path: impl AsRef<Path>) -> Result<T>
     where
         T: GliTexture {
 
-    // Read the texture file content into bytes in Rust.
-    let texture_data = fs::read(path)
-        .map_err(|_| ErrorKind::Io)?;
-    load_from_bytes(&texture_data)
-}
+    let c_path = path_to_cstring(path)?;
 
-/// Loads a texture(DDS, KTX or KMG) storage_linear from memory.
-///
-/// Return an error in case of failure.
-pub fn load_from_bytes<T>(data: &[u8]) -> Result<T>
-    where
-        T: GliTexture {
-
-    // Read the texture file content into bytes in Rust.
-    let bytes_length = data.len();
-    let texture_data = unsafe { CStr::from_bytes_with_nul_unchecked(data) };
-
-    // let gli lib to handle the post-processing.
-    // TODO: bytes_length may be invalid.
     let raw_texture = unsafe {
-        bindings::Load::load_load(texture_data.as_ptr(), bytes_length)
+        bindings::load_by_path(c_path.as_ptr())
     };
 
     let dst_texture = T::from(raw_texture);
+
+    // gli failed to load the texture, if its return variable is empty.
     if dst_texture.empty() {
         Err(Error::load_texture("Failed to load."))
     } else {
         Ok(dst_texture)
     }
 }
-
-
 
 /// Loads a texture storage_linear from DDS file.
 ///
@@ -60,34 +42,20 @@ pub fn load_dds<T>(path: impl AsRef<Path>) -> Result<T>
     where
         T: GliTexture {
 
-    let texture_data = fs::read(path)
-        .map_err(|_| ErrorKind::Io)?;
-    load_dds_from_bytes(&texture_data)
-}
-
-/// Loads a texture storage_linear from DDS memory.
-///
-/// Return an error in case of failure.
-pub fn load_dds_from_bytes<T>(data: &[u8]) -> Result<T>
-    where
-        T: GliTexture {
-
-    let bytes_length = data.len();
-    let texture_data = unsafe { CStr::from_bytes_with_nul_unchecked(data) };
+    let c_path = path_to_cstring(path)?;
 
     let raw_texture = unsafe {
-        bindings::Load::load_load_dds(texture_data.as_ptr(), bytes_length)
+        bindings::load_dds_by_path(c_path.as_ptr())
     };
 
     let dst_texture = T::from(raw_texture);
+
     if dst_texture.empty() {
-        Err(Error::load_texture("Failed to load dds texture."))
+        Err(Error::load_texture("Failed to load."))
     } else {
         Ok(dst_texture)
     }
 }
-
-
 
 /// Loads a texture storage_linear from KTX file.
 ///
@@ -98,34 +66,20 @@ pub fn load_ktx<T>(path: impl AsRef<Path>) -> Result<T>
     where
         T: GliTexture {
 
-    let texture_data = fs::read(path)
-        .map_err(|_| ErrorKind::Io)?;
-    load_ktx_from_bytes(&texture_data)
-}
-
-/// Loads a texture storage_linear from KTX memory.
-///
-/// Return an error in case of failure.
-pub fn load_ktx_from_bytes<T>(data: &[u8]) -> Result<T>
-    where
-        T: GliTexture {
-
-    let bytes_length = data.len();
-    let texture_data = unsafe { CStr::from_bytes_with_nul_unchecked(data) };
+    let c_path = path_to_cstring(path)?;
 
     let raw_texture = unsafe {
-        bindings::Load::load_load_ktx(texture_data.as_ptr(), bytes_length)
+        bindings::load_ktx_by_path(c_path.as_ptr())
     };
 
     let dst_texture = T::from(raw_texture);
+
     if dst_texture.empty() {
-        Err(Error::load_texture("Failed to load ktx texture."))
+        Err(Error::load_texture("Failed to load."))
     } else {
         Ok(dst_texture)
     }
 }
-
-
 
 /// Loads a texture storage_linear from KMG (Khronos Image) file.
 ///
@@ -136,29 +90,29 @@ pub fn load_kmg<T>(path: impl AsRef<Path>) -> Result<T>
     where
         T: GliTexture {
 
-    let texture_data = fs::read(path)
-        .map_err(|_| ErrorKind::Io)?;
-    load_kmg_from_bytes(&texture_data)
-}
-
-/// Loads a texture storage_linear from KMG (Khronos Image) memory.
-///
-/// Return an error in case of failure.
-pub fn load_kmg_from_bytes<T>(data: &[u8]) -> Result<T>
-    where
-        T: GliTexture {
-
-    let bytes_length = data.len();
-    let texture_data = unsafe { CStr::from_bytes_with_nul_unchecked(data) };
+    let c_path = path_to_cstring(path)?;
 
     let raw_texture = unsafe {
-        bindings::Load::load_load_kmg(texture_data.as_ptr(), bytes_length)
+        bindings::load_kmg_by_path(c_path.as_ptr())
     };
 
     let dst_texture = T::from(raw_texture);
+
     if dst_texture.empty() {
-        Err(Error::load_texture("Failed to load kmg texture."))
+        Err(Error::load_texture("Failed to load."))
     } else {
         Ok(dst_texture)
     }
+}
+
+fn path_to_cstring(path: impl AsRef<Path>) -> Result<CString> {
+
+    // Some conversion from Path to CString.
+    // If you find better way to do this, welcome to create a pull request.
+
+    let path_str = path.as_ref().to_str()
+        .ok_or(ErrorKind::Io)?;
+
+    CString::new(path_str)
+        .map_err(|_| ErrorKind::Io.into())
 }
