@@ -36,9 +36,10 @@ fn build_gli_lib() {
         build
             .flag("-std=c++11")
             .flag("-Wno-return-type-c-linkage")
-            .flag("-Wno-unused-variable")
             .flag("-Wno-unused-parameter")
-            .flag("-Wno-unused-private-field")
+            .flag("-Wno-return-type-c-linkage")
+            .flag("-Wno-ignored-qualifiers")
+            .flag("-Wno-type-limits")
             .cpp_link_stdlib("stdc++")
             .cpp(true);
     } else {
