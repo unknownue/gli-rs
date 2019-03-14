@@ -315,10 +315,6 @@ pub mod root {
             #[doc = " Evaluate whether the format has depth and stencil components"]
             pub fn is_depth_stencil(Format: root::gli::format) -> bool;
         }
-        pub mod detail {
-            #[allow(unused_imports)]
-            use self::super::super::super::root;
-        }
         #[repr(C)]
         #[derive(Debug)]
         pub struct storage_linear {
@@ -1112,10 +1108,6 @@ pub mod root {
                 __bindgen_tmp
             }
         }
-        extern "C" {
-            #[doc = " Manually Call destructor for texture object. Helper function used in FFI."]
-            pub fn destroy_texture(Texture: *mut root::gli::texture);
-        }
         #[doc = " Image, representation for a single texture level"]
         #[repr(C)]
         #[derive(Debug)]
@@ -1275,10 +1267,6 @@ pub mod root {
                 );
                 __bindgen_tmp
             }
-        }
-        extern "C" {
-            #[doc = " Manually Call destructor for image object. Helper function used in FFI."]
-            pub fn destroy_image(Image: *mut root::gli::image);
         }
         #[doc = " 1d texture"]
         #[repr(C)]
@@ -2456,71 +2444,10 @@ pub mod root {
             #[doc = " Evaluate whether a target and format combinaison is only supported by the DDS container through GLI DDS extension."]
             pub fn is_dds_ext(Target: root::gli::target, Format: root::gli::format) -> bool;
         }
-        extern "C" {
-            #[doc = " Loads a texture storage_linear from file. Returns an empty storage_linear in case of failure."]
-            #[doc = ""]
-            #[doc = " @param Path Path of the file to open including filaname and filename extension"]
-            pub fn load(Path: *const ::std::os::raw::c_char) -> root::gli::texture;
-        }
-        extern "C" {
-            #[doc = " Loads a texture storage_linear from DDS file. Returns an empty storage_linear in case of failure."]
-            #[doc = ""]
-            #[doc = " @param Path Path of the file to open including filaname and filename extension"]
-            pub fn load_dds(Path: *const ::std::os::raw::c_char) -> root::gli::texture;
-        }
-        extern "C" {
-            #[doc = " Loads a texture storage_linear from KMG (Khronos Image) file. Returns an empty storage_linear in case of failure."]
-            #[doc = ""]
-            #[doc = " @param Path Path of the file to open including filaname and filename extension"]
-            pub fn load_kmg(Path: *const ::std::os::raw::c_char) -> root::gli::texture;
-        }
-        extern "C" {
-            #[doc = " Loads a texture storage_linear from KTX file. Returns an empty storage_linear in case of failure."]
-            #[doc = ""]
-            #[doc = " @param Path Path of the file to open including filaname and filename extension"]
-            pub fn load_ktx(Path: *const ::std::os::raw::c_char) -> root::gli::texture;
-        }
-        extern "C" {
-            #[doc = " Save a texture storage_linear to a DDS file."]
-            #[doc = ""]
-            #[doc = " @param Texture Source texture to save"]
-            #[doc = " @param Path Path for where to save the file. It must include the filaname and filename extension."]
-            #[doc = " This function ignores the filename extension in the path and save to DDS anyway but keep the requested filename extension."]
-            #[doc = " @return Returns false if the function fails to save the file."]
-            pub fn save_dds(
-                Texture: *const root::gli::texture,
-                Path: *const ::std::os::raw::c_char,
-            ) -> bool;
-        }
-        extern "C" {
-            #[doc = " Save a texture storage_linear to a KMG (Khronos Image) file."]
-            #[doc = ""]
-            #[doc = " @param Texture Source texture to save"]
-            #[doc = " @param Path Path for where to save the file. It must include the filaname and filename extension."]
-            #[doc = " This function ignores the filename extension in the path and save to KMG anyway but keep the requested filename extension."]
-            #[doc = " @return Returns false if the function fails to save the file."]
-            pub fn save_kmg(
-                Texture: *const root::gli::texture,
-                Path: *const ::std::os::raw::c_char,
-            ) -> bool;
-        }
-        extern "C" {
-            #[doc = " Save a texture storage_linear to a KTX file."]
-            #[doc = ""]
-            #[doc = " @param Texture Source texture to save"]
-            #[doc = " @param Path Path for where to save the file. It must include the filaname and filename extension."]
-            #[doc = " This function ignores the filename extension in the path and save to KTX anyway but keep the requested filename extension."]
-            #[doc = " @return Returns false if the function fails to save the file."]
-            pub fn save_ktx(
-                Texture: *const root::gli::texture,
-                Path: *const ::std::os::raw::c_char,
-            ) -> bool;
-        }
     }
     pub mod std {
         #[allow(unused_imports)]
         use self::super::super::root;
-        pub type string = [u64; 3usize];
         #[repr(C)]
         #[derive(Debug)]
         pub struct allocator {

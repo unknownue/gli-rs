@@ -35,7 +35,7 @@ fn build_gli_lib() {
     } else if target.contains("linux") {
         build
             .flag("-std=c++11")
-            //.flag("-Wno-return-type-c-linkage")
+            .flag("-Wno-return-type-c-linkage")
             .flag("-Wno-unused-variable")
             .flag("-Wno-unused-parameter")
             .flag("-Wno-unused-private-field")
@@ -64,12 +64,7 @@ fn generate_bindings() {
 
     builder = builder
         .whitelist_function("bindings::.*")
-        .whitelist_type("gli::texture.*")
-        .whitelist_type("gli::image.*")
-        .whitelist_function("gli::is_.*")
-        .whitelist_function("gli::load.*")
-        .whitelist_function("gli::save.*")
-        .whitelist_function("gli::destroy_.*");
+        .whitelist_function("gli::is_.*");
 
     builder = builder
         .opaque_type("__darwin_.*")
