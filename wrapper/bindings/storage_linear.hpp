@@ -37,11 +37,11 @@ namespace gli {
         storage_linear();
 
         storage_linear(
-                format_type Format,
-                extent_type const & Extent,
-                size_type Layers,
-                size_type Faces,
-                size_type Levels);
+            format_type Format,
+            extent_type const & Extent,
+            size_type Layers,
+            size_type Faces,
+            size_type Levels);
 
         bool empty() const;
         size_type size() const; // Express is bytes
@@ -59,9 +59,9 @@ namespace gli {
 
         /// Compute the relative memory offset to access the data for a specific layer, face and level
         size_type base_offset(
-                size_type Layer,
-                size_type Face,
-                size_type Level) const;
+            size_type Layer,
+            size_type Face,
+            size_type Level) const;
 
         size_type image_offset(extent1d const& Coord, extent1d const& Extent) const;
 
@@ -71,18 +71,18 @@ namespace gli {
 
         /// Copy a subset of a specific image of a texture
         void copy(
-                storage_linear const& StorageSrc,
-                size_t LayerSrc, size_t FaceSrc, size_t LevelSrc, extent_type const& BlockIndexSrc,
-                size_t LayerDst, size_t FaceDst, size_t LevelDst, extent_type const& BlockIndexDst,
-                extent_type const& BlockCount);
+            storage_linear const& StorageSrc,
+            size_t LayerSrc, size_t FaceSrc, size_t LevelSrc, extent_type const& BlockIndexSrc,
+            size_t LayerDst, size_t FaceDst, size_t LevelDst, extent_type const& BlockIndexDst,
+            extent_type const& BlockCount);
 
         size_type level_size(
-                size_type Level) const;
+            size_type Level) const;
         size_type face_size(
-                size_type BaseLevel, size_type MaxLevel) const;
+            size_type BaseLevel, size_type MaxLevel) const;
         size_type layer_size(
-                size_type BaseFace, size_type MaxFace,
-                size_type BaseLevel, size_type MaxLevel) const;
+            size_type BaseFace, size_type MaxFace,
+            size_type BaseLevel, size_type MaxLevel) const;
 
     private:
         size_type const Layers;

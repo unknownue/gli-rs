@@ -69,11 +69,6 @@ impl Texture3D {
 impl GliTexture for Texture3D {
     const TARGET_TYPE: Target = Target::TARGET_3D;
     type ExtentType = Extent3d; // equivalent to gli::texture3d_extent_type.
-
-    /// Return the dimensions of a texture instance: width, height and depth
-    fn extent(&self, level: usize) -> Self::ExtentType {
-        unsafe { bindings::tex3d_extent(&self.ffi, level).into() }
-    }
 }
 
 impl TextureAccessible for Texture3D {

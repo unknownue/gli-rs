@@ -77,10 +77,6 @@ impl Texture1DArray {
 impl GliTexture for Texture1DArray {
     const TARGET_TYPE: Target = Target::TARGET_1D_ARRAY;
     type ExtentType = Extent1d; // equivalent to gli::texture1d_extent_type.
-
-    fn extent(&self, level: usize) -> Self::ExtentType {
-        unsafe { bindings::tex1darray_extent(&self.ffi, level).into() }
-    }
 }
 
 impl TextureAccessible for Texture1DArray {
