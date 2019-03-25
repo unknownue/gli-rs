@@ -2,6 +2,49 @@
 
 #[allow(non_snake_case, non_camel_case_types, non_upper_case_globals)]
 pub mod root {
+    #[repr(C)]
+    pub struct __BindgenUnionField<T>(::std::marker::PhantomData<T>);
+    impl<T> __BindgenUnionField<T> {
+        #[inline]
+        pub fn new() -> Self {
+            __BindgenUnionField(::std::marker::PhantomData)
+        }
+        #[inline]
+        pub unsafe fn as_ref(&self) -> &T {
+            ::std::mem::transmute(self)
+        }
+        #[inline]
+        pub unsafe fn as_mut(&mut self) -> &mut T {
+            ::std::mem::transmute(self)
+        }
+    }
+    impl<T> ::std::default::Default for __BindgenUnionField<T> {
+        #[inline]
+        fn default() -> Self {
+            Self::new()
+        }
+    }
+    impl<T> ::std::clone::Clone for __BindgenUnionField<T> {
+        #[inline]
+        fn clone(&self) -> Self {
+            Self::new()
+        }
+    }
+    impl<T> ::std::marker::Copy for __BindgenUnionField<T> {}
+    impl<T> ::std::fmt::Debug for __BindgenUnionField<T> {
+        fn fmt(&self, fmt: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            fmt.write_str("__BindgenUnionField")
+        }
+    }
+    impl<T> ::std::hash::Hash for __BindgenUnionField<T> {
+        fn hash<H: ::std::hash::Hasher>(&self, _state: &mut H) {}
+    }
+    impl<T> ::std::cmp::PartialEq for __BindgenUnionField<T> {
+        fn eq(&self, _other: &__BindgenUnionField<T>) -> bool {
+            true
+        }
+    }
+    impl<T> ::std::cmp::Eq for __BindgenUnionField<T> {}
     #[allow(unused_imports)]
     use self::super::root;
     pub mod gli {
@@ -2440,6 +2483,620 @@ pub mod root {
                 __bindgen_tmp
             }
         }
+        #[doc = " Translation class to convert GLI enums into DirectX enums"]
+        #[repr(C)]
+        pub struct dx {
+            pub Translation: [u32; 1463usize],
+        }
+        pub const dx_d3dfmt_D3DFMT_UNKNOWN: root::gli::dx_d3dfmt = 0;
+        pub const dx_d3dfmt_D3DFMT_R8G8B8: root::gli::dx_d3dfmt = 20;
+        pub const dx_d3dfmt_D3DFMT_A8R8G8B8: root::gli::dx_d3dfmt = 21;
+        pub const dx_d3dfmt_D3DFMT_X8R8G8B8: root::gli::dx_d3dfmt = 22;
+        pub const dx_d3dfmt_D3DFMT_R5G6B5: root::gli::dx_d3dfmt = 23;
+        pub const dx_d3dfmt_D3DFMT_X1R5G5B5: root::gli::dx_d3dfmt = 24;
+        pub const dx_d3dfmt_D3DFMT_A1R5G5B5: root::gli::dx_d3dfmt = 25;
+        pub const dx_d3dfmt_D3DFMT_A4R4G4B4: root::gli::dx_d3dfmt = 26;
+        pub const dx_d3dfmt_D3DFMT_R3G3B2: root::gli::dx_d3dfmt = 27;
+        pub const dx_d3dfmt_D3DFMT_A8: root::gli::dx_d3dfmt = 28;
+        pub const dx_d3dfmt_D3DFMT_A8R3G3B2: root::gli::dx_d3dfmt = 29;
+        pub const dx_d3dfmt_D3DFMT_X4R4G4B4: root::gli::dx_d3dfmt = 30;
+        pub const dx_d3dfmt_D3DFMT_A2B10G10R10: root::gli::dx_d3dfmt = 31;
+        pub const dx_d3dfmt_D3DFMT_A8B8G8R8: root::gli::dx_d3dfmt = 32;
+        pub const dx_d3dfmt_D3DFMT_X8B8G8R8: root::gli::dx_d3dfmt = 33;
+        pub const dx_d3dfmt_D3DFMT_G16R16: root::gli::dx_d3dfmt = 34;
+        pub const dx_d3dfmt_D3DFMT_A2R10G10B10: root::gli::dx_d3dfmt = 35;
+        pub const dx_d3dfmt_D3DFMT_A16B16G16R16: root::gli::dx_d3dfmt = 36;
+        pub const dx_d3dfmt_D3DFMT_A8P8: root::gli::dx_d3dfmt = 40;
+        pub const dx_d3dfmt_D3DFMT_P8: root::gli::dx_d3dfmt = 41;
+        pub const dx_d3dfmt_D3DFMT_L8: root::gli::dx_d3dfmt = 50;
+        pub const dx_d3dfmt_D3DFMT_A8L8: root::gli::dx_d3dfmt = 51;
+        pub const dx_d3dfmt_D3DFMT_A4L4: root::gli::dx_d3dfmt = 52;
+        pub const dx_d3dfmt_D3DFMT_V8U8: root::gli::dx_d3dfmt = 60;
+        pub const dx_d3dfmt_D3DFMT_L6V5U5: root::gli::dx_d3dfmt = 61;
+        pub const dx_d3dfmt_D3DFMT_X8L8V8U8: root::gli::dx_d3dfmt = 62;
+        pub const dx_d3dfmt_D3DFMT_Q8W8V8U8: root::gli::dx_d3dfmt = 63;
+        pub const dx_d3dfmt_D3DFMT_V16U16: root::gli::dx_d3dfmt = 64;
+        pub const dx_d3dfmt_D3DFMT_A2W10V10U10: root::gli::dx_d3dfmt = 67;
+        pub const dx_d3dfmt_D3DFMT_UYVY: root::gli::dx_d3dfmt = 1498831189;
+        pub const dx_d3dfmt_D3DFMT_R8G8_B8G8: root::gli::dx_d3dfmt = 1195525970;
+        pub const dx_d3dfmt_D3DFMT_YUY2: root::gli::dx_d3dfmt = 844715353;
+        pub const dx_d3dfmt_D3DFMT_G8R8_G8B8: root::gli::dx_d3dfmt = 1111970375;
+        pub const dx_d3dfmt_D3DFMT_DXT1: root::gli::dx_d3dfmt = 827611204;
+        pub const dx_d3dfmt_D3DFMT_DXT2: root::gli::dx_d3dfmt = 844388420;
+        pub const dx_d3dfmt_D3DFMT_DXT3: root::gli::dx_d3dfmt = 861165636;
+        pub const dx_d3dfmt_D3DFMT_DXT4: root::gli::dx_d3dfmt = 877942852;
+        pub const dx_d3dfmt_D3DFMT_DXT5: root::gli::dx_d3dfmt = 894720068;
+        pub const dx_d3dfmt_D3DFMT_ATI1: root::gli::dx_d3dfmt = 826889281;
+        pub const dx_d3dfmt_D3DFMT_AT1N: root::gli::dx_d3dfmt = 1311855681;
+        pub const dx_d3dfmt_D3DFMT_ATI2: root::gli::dx_d3dfmt = 843666497;
+        pub const dx_d3dfmt_D3DFMT_AT2N: root::gli::dx_d3dfmt = 1311921217;
+        pub const dx_d3dfmt_D3DFMT_BC4U: root::gli::dx_d3dfmt = 1429488450;
+        pub const dx_d3dfmt_D3DFMT_BC4S: root::gli::dx_d3dfmt = 1395934018;
+        pub const dx_d3dfmt_D3DFMT_BC5U: root::gli::dx_d3dfmt = 1429553986;
+        pub const dx_d3dfmt_D3DFMT_BC5S: root::gli::dx_d3dfmt = 1395999554;
+        pub const dx_d3dfmt_D3DFMT_ETC: root::gli::dx_d3dfmt = 541283397;
+        pub const dx_d3dfmt_D3DFMT_ETC1: root::gli::dx_d3dfmt = 826496069;
+        pub const dx_d3dfmt_D3DFMT_ATC: root::gli::dx_d3dfmt = 541283393;
+        pub const dx_d3dfmt_D3DFMT_ATCA: root::gli::dx_d3dfmt = 1094931521;
+        pub const dx_d3dfmt_D3DFMT_ATCI: root::gli::dx_d3dfmt = 1229149249;
+        pub const dx_d3dfmt_D3DFMT_POWERVR_2BPP: root::gli::dx_d3dfmt = 843273296;
+        pub const dx_d3dfmt_D3DFMT_POWERVR_4BPP: root::gli::dx_d3dfmt = 876827728;
+        pub const dx_d3dfmt_D3DFMT_D16_LOCKABLE: root::gli::dx_d3dfmt = 70;
+        pub const dx_d3dfmt_D3DFMT_D32: root::gli::dx_d3dfmt = 71;
+        pub const dx_d3dfmt_D3DFMT_D15S1: root::gli::dx_d3dfmt = 73;
+        pub const dx_d3dfmt_D3DFMT_D24S8: root::gli::dx_d3dfmt = 75;
+        pub const dx_d3dfmt_D3DFMT_D24X8: root::gli::dx_d3dfmt = 77;
+        pub const dx_d3dfmt_D3DFMT_D24X4S4: root::gli::dx_d3dfmt = 79;
+        pub const dx_d3dfmt_D3DFMT_D16: root::gli::dx_d3dfmt = 80;
+        pub const dx_d3dfmt_D3DFMT_D32F_LOCKABLE: root::gli::dx_d3dfmt = 82;
+        pub const dx_d3dfmt_D3DFMT_D24FS8: root::gli::dx_d3dfmt = 83;
+        pub const dx_d3dfmt_D3DFMT_L16: root::gli::dx_d3dfmt = 81;
+        pub const dx_d3dfmt_D3DFMT_VERTEXDATA: root::gli::dx_d3dfmt = 100;
+        pub const dx_d3dfmt_D3DFMT_INDEX16: root::gli::dx_d3dfmt = 101;
+        pub const dx_d3dfmt_D3DFMT_INDEX32: root::gli::dx_d3dfmt = 102;
+        pub const dx_d3dfmt_D3DFMT_Q16W16V16U16: root::gli::dx_d3dfmt = 110;
+        pub const dx_d3dfmt_D3DFMT_MULTI2_ARGB8: root::gli::dx_d3dfmt = 827606349;
+        pub const dx_d3dfmt_D3DFMT_R16F: root::gli::dx_d3dfmt = 111;
+        pub const dx_d3dfmt_D3DFMT_G16R16F: root::gli::dx_d3dfmt = 112;
+        pub const dx_d3dfmt_D3DFMT_A16B16G16R16F: root::gli::dx_d3dfmt = 113;
+        pub const dx_d3dfmt_D3DFMT_R32F: root::gli::dx_d3dfmt = 114;
+        pub const dx_d3dfmt_D3DFMT_G32R32F: root::gli::dx_d3dfmt = 115;
+        pub const dx_d3dfmt_D3DFMT_A32B32G32R32F: root::gli::dx_d3dfmt = 116;
+        pub const dx_d3dfmt_D3DFMT_CxV8U8: root::gli::dx_d3dfmt = 117;
+        pub const dx_d3dfmt_D3DFMT_DX10: root::gli::dx_d3dfmt = 808540228;
+        pub const dx_d3dfmt_D3DFMT_GLI1: root::gli::dx_d3dfmt = 826887239;
+        pub const dx_d3dfmt_D3DFMT_FORCE_DWORD: root::gli::dx_d3dfmt = 2147483647;
+        pub type dx_d3dfmt = u32;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_UNKNOWN: root::gli::dx_dxgi_format_dds = 0;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R32G32B32A32_TYPELESS:
+            root::gli::dx_dxgi_format_dds = 1;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R32G32B32A32_FLOAT: root::gli::dx_dxgi_format_dds =
+            2;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R32G32B32A32_UINT: root::gli::dx_dxgi_format_dds =
+            3;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R32G32B32A32_SINT: root::gli::dx_dxgi_format_dds =
+            4;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R32G32B32_TYPELESS: root::gli::dx_dxgi_format_dds =
+            5;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R32G32B32_FLOAT: root::gli::dx_dxgi_format_dds = 6;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R32G32B32_UINT: root::gli::dx_dxgi_format_dds = 7;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R32G32B32_SINT: root::gli::dx_dxgi_format_dds = 8;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R16G16B16A16_TYPELESS:
+            root::gli::dx_dxgi_format_dds = 9;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R16G16B16A16_FLOAT: root::gli::dx_dxgi_format_dds =
+            10;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R16G16B16A16_UNORM: root::gli::dx_dxgi_format_dds =
+            11;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R16G16B16A16_UINT: root::gli::dx_dxgi_format_dds =
+            12;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R16G16B16A16_SNORM: root::gli::dx_dxgi_format_dds =
+            13;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R16G16B16A16_SINT: root::gli::dx_dxgi_format_dds =
+            14;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R32G32_TYPELESS: root::gli::dx_dxgi_format_dds =
+            15;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R32G32_FLOAT: root::gli::dx_dxgi_format_dds = 16;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R32G32_UINT: root::gli::dx_dxgi_format_dds = 17;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R32G32_SINT: root::gli::dx_dxgi_format_dds = 18;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R32G8X24_TYPELESS: root::gli::dx_dxgi_format_dds =
+            19;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_D32_FLOAT_S8X24_UINT:
+            root::gli::dx_dxgi_format_dds = 20;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R32_FLOAT_X8X24_TYPELESS:
+            root::gli::dx_dxgi_format_dds = 21;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_X32_TYPELESS_G8X24_UINT:
+            root::gli::dx_dxgi_format_dds = 22;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R10G10B10A2_TYPELESS:
+            root::gli::dx_dxgi_format_dds = 23;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R10G10B10A2_UNORM: root::gli::dx_dxgi_format_dds =
+            24;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R10G10B10A2_UINT: root::gli::dx_dxgi_format_dds =
+            25;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R11G11B10_FLOAT: root::gli::dx_dxgi_format_dds =
+            26;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R8G8B8A8_TYPELESS: root::gli::dx_dxgi_format_dds =
+            27;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R8G8B8A8_UNORM: root::gli::dx_dxgi_format_dds = 28;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R8G8B8A8_UNORM_SRGB:
+            root::gli::dx_dxgi_format_dds = 29;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R8G8B8A8_UINT: root::gli::dx_dxgi_format_dds = 30;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R8G8B8A8_SNORM: root::gli::dx_dxgi_format_dds = 31;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R8G8B8A8_SINT: root::gli::dx_dxgi_format_dds = 32;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R16G16_TYPELESS: root::gli::dx_dxgi_format_dds =
+            33;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R16G16_FLOAT: root::gli::dx_dxgi_format_dds = 34;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R16G16_UNORM: root::gli::dx_dxgi_format_dds = 35;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R16G16_UINT: root::gli::dx_dxgi_format_dds = 36;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R16G16_SNORM: root::gli::dx_dxgi_format_dds = 37;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R16G16_SINT: root::gli::dx_dxgi_format_dds = 38;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R32_TYPELESS: root::gli::dx_dxgi_format_dds = 39;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_D32_FLOAT: root::gli::dx_dxgi_format_dds = 40;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R32_FLOAT: root::gli::dx_dxgi_format_dds = 41;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R32_UINT: root::gli::dx_dxgi_format_dds = 42;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R32_SINT: root::gli::dx_dxgi_format_dds = 43;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R24G8_TYPELESS: root::gli::dx_dxgi_format_dds = 44;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_D24_UNORM_S8_UINT: root::gli::dx_dxgi_format_dds =
+            45;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R24_UNORM_X8_TYPELESS:
+            root::gli::dx_dxgi_format_dds = 46;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_X24_TYPELESS_G8_UINT:
+            root::gli::dx_dxgi_format_dds = 47;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R8G8_TYPELESS: root::gli::dx_dxgi_format_dds = 48;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R8G8_UNORM: root::gli::dx_dxgi_format_dds = 49;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R8G8_UINT: root::gli::dx_dxgi_format_dds = 50;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R8G8_SNORM: root::gli::dx_dxgi_format_dds = 51;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R8G8_SINT: root::gli::dx_dxgi_format_dds = 52;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R16_TYPELESS: root::gli::dx_dxgi_format_dds = 53;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R16_FLOAT: root::gli::dx_dxgi_format_dds = 54;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_D16_UNORM: root::gli::dx_dxgi_format_dds = 55;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R16_UNORM: root::gli::dx_dxgi_format_dds = 56;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R16_UINT: root::gli::dx_dxgi_format_dds = 57;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R16_SNORM: root::gli::dx_dxgi_format_dds = 58;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R16_SINT: root::gli::dx_dxgi_format_dds = 59;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R8_TYPELESS: root::gli::dx_dxgi_format_dds = 60;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R8_UNORM: root::gli::dx_dxgi_format_dds = 61;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R8_UINT: root::gli::dx_dxgi_format_dds = 62;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R8_SNORM: root::gli::dx_dxgi_format_dds = 63;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R8_SINT: root::gli::dx_dxgi_format_dds = 64;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_A8_UNORM: root::gli::dx_dxgi_format_dds = 65;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R1_UNORM: root::gli::dx_dxgi_format_dds = 66;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R9G9B9E5_SHAREDEXP: root::gli::dx_dxgi_format_dds =
+            67;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R8G8_B8G8_UNORM: root::gli::dx_dxgi_format_dds =
+            68;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_G8R8_G8B8_UNORM: root::gli::dx_dxgi_format_dds =
+            69;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_BC1_TYPELESS: root::gli::dx_dxgi_format_dds = 70;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_BC1_UNORM: root::gli::dx_dxgi_format_dds = 71;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_BC1_UNORM_SRGB: root::gli::dx_dxgi_format_dds = 72;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_BC2_TYPELESS: root::gli::dx_dxgi_format_dds = 73;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_BC2_UNORM: root::gli::dx_dxgi_format_dds = 74;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_BC2_UNORM_SRGB: root::gli::dx_dxgi_format_dds = 75;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_BC3_TYPELESS: root::gli::dx_dxgi_format_dds = 76;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_BC3_UNORM: root::gli::dx_dxgi_format_dds = 77;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_BC3_UNORM_SRGB: root::gli::dx_dxgi_format_dds = 78;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_BC4_TYPELESS: root::gli::dx_dxgi_format_dds = 79;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_BC4_UNORM: root::gli::dx_dxgi_format_dds = 80;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_BC4_SNORM: root::gli::dx_dxgi_format_dds = 81;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_BC5_TYPELESS: root::gli::dx_dxgi_format_dds = 82;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_BC5_UNORM: root::gli::dx_dxgi_format_dds = 83;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_BC5_SNORM: root::gli::dx_dxgi_format_dds = 84;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_B5G6R5_UNORM: root::gli::dx_dxgi_format_dds = 85;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_B5G5R5A1_UNORM: root::gli::dx_dxgi_format_dds = 86;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_B8G8R8A8_UNORM: root::gli::dx_dxgi_format_dds = 87;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_B8G8R8X8_UNORM: root::gli::dx_dxgi_format_dds = 88;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_R10G10B10_XR_BIAS_A2_UNORM:
+            root::gli::dx_dxgi_format_dds = 89;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_B8G8R8A8_TYPELESS: root::gli::dx_dxgi_format_dds =
+            90;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_B8G8R8A8_UNORM_SRGB:
+            root::gli::dx_dxgi_format_dds = 91;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_B8G8R8X8_TYPELESS: root::gli::dx_dxgi_format_dds =
+            92;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_B8G8R8X8_UNORM_SRGB:
+            root::gli::dx_dxgi_format_dds = 93;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_BC6H_TYPELESS: root::gli::dx_dxgi_format_dds = 94;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_BC6H_UF16: root::gli::dx_dxgi_format_dds = 95;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_BC6H_SF16: root::gli::dx_dxgi_format_dds = 96;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_BC7_TYPELESS: root::gli::dx_dxgi_format_dds = 97;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_BC7_UNORM: root::gli::dx_dxgi_format_dds = 98;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_BC7_UNORM_SRGB: root::gli::dx_dxgi_format_dds = 99;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_AYUV: root::gli::dx_dxgi_format_dds = 100;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_Y410: root::gli::dx_dxgi_format_dds = 101;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_Y416: root::gli::dx_dxgi_format_dds = 102;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_NV12: root::gli::dx_dxgi_format_dds = 103;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_P010: root::gli::dx_dxgi_format_dds = 104;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_P016: root::gli::dx_dxgi_format_dds = 105;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_420_OPAQUE: root::gli::dx_dxgi_format_dds = 106;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_YUY2: root::gli::dx_dxgi_format_dds = 107;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_Y210: root::gli::dx_dxgi_format_dds = 108;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_Y216: root::gli::dx_dxgi_format_dds = 109;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_NV11: root::gli::dx_dxgi_format_dds = 110;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_AI44: root::gli::dx_dxgi_format_dds = 111;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_IA44: root::gli::dx_dxgi_format_dds = 112;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_P8: root::gli::dx_dxgi_format_dds = 113;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_A8P8: root::gli::dx_dxgi_format_dds = 114;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_B4G4R4A4_UNORM: root::gli::dx_dxgi_format_dds =
+            115;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_P208: root::gli::dx_dxgi_format_dds = 130;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_V208: root::gli::dx_dxgi_format_dds = 131;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_V408: root::gli::dx_dxgi_format_dds = 132;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_4X4_TYPELESS: root::gli::dx_dxgi_format_dds =
+            133;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_4X4_UNORM: root::gli::dx_dxgi_format_dds =
+            134;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_4X4_UNORM_SRGB:
+            root::gli::dx_dxgi_format_dds = 135;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_5X4_TYPELESS: root::gli::dx_dxgi_format_dds =
+            137;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_5X4_UNORM: root::gli::dx_dxgi_format_dds =
+            138;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_5X4_UNORM_SRGB:
+            root::gli::dx_dxgi_format_dds = 139;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_5X5_TYPELESS: root::gli::dx_dxgi_format_dds =
+            141;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_5X5_UNORM: root::gli::dx_dxgi_format_dds =
+            142;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_5X5_UNORM_SRGB:
+            root::gli::dx_dxgi_format_dds = 143;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_6X5_TYPELESS: root::gli::dx_dxgi_format_dds =
+            145;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_6X5_UNORM: root::gli::dx_dxgi_format_dds =
+            146;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_6X5_UNORM_SRGB:
+            root::gli::dx_dxgi_format_dds = 147;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_6X6_TYPELESS: root::gli::dx_dxgi_format_dds =
+            149;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_6X6_UNORM: root::gli::dx_dxgi_format_dds =
+            150;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_6X6_UNORM_SRGB:
+            root::gli::dx_dxgi_format_dds = 151;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_8X5_TYPELESS: root::gli::dx_dxgi_format_dds =
+            153;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_8X5_UNORM: root::gli::dx_dxgi_format_dds =
+            154;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_8X5_UNORM_SRGB:
+            root::gli::dx_dxgi_format_dds = 155;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_8X6_TYPELESS: root::gli::dx_dxgi_format_dds =
+            157;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_8X6_UNORM: root::gli::dx_dxgi_format_dds =
+            158;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_8X6_UNORM_SRGB:
+            root::gli::dx_dxgi_format_dds = 159;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_8X8_TYPELESS: root::gli::dx_dxgi_format_dds =
+            161;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_8X8_UNORM: root::gli::dx_dxgi_format_dds =
+            162;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_8X8_UNORM_SRGB:
+            root::gli::dx_dxgi_format_dds = 163;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_10X5_TYPELESS: root::gli::dx_dxgi_format_dds =
+            165;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_10X5_UNORM: root::gli::dx_dxgi_format_dds =
+            166;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_10X5_UNORM_SRGB:
+            root::gli::dx_dxgi_format_dds = 167;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_10X6_TYPELESS: root::gli::dx_dxgi_format_dds =
+            169;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_10X6_UNORM: root::gli::dx_dxgi_format_dds =
+            170;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_10X6_UNORM_SRGB:
+            root::gli::dx_dxgi_format_dds = 171;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_10X8_TYPELESS: root::gli::dx_dxgi_format_dds =
+            173;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_10X8_UNORM: root::gli::dx_dxgi_format_dds =
+            174;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_10X8_UNORM_SRGB:
+            root::gli::dx_dxgi_format_dds = 175;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_10X10_TYPELESS:
+            root::gli::dx_dxgi_format_dds = 177;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_10X10_UNORM: root::gli::dx_dxgi_format_dds =
+            178;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_10X10_UNORM_SRGB:
+            root::gli::dx_dxgi_format_dds = 179;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_12X10_TYPELESS:
+            root::gli::dx_dxgi_format_dds = 181;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_12X10_UNORM: root::gli::dx_dxgi_format_dds =
+            182;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_12X10_UNORM_SRGB:
+            root::gli::dx_dxgi_format_dds = 183;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_12X12_TYPELESS:
+            root::gli::dx_dxgi_format_dds = 185;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_12X12_UNORM: root::gli::dx_dxgi_format_dds =
+            186;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_ASTC_12X12_UNORM_SRGB:
+            root::gli::dx_dxgi_format_dds = 187;
+        pub const dx_dxgi_format_dds_DXGI_FORMAT_FORCE_UINT: root::gli::dx_dxgi_format_dds =
+            4294967295;
+        pub type dx_dxgi_format_dds = u32;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R64_UINT_GLI: root::gli::dx_dxgi_format_gli = 1;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R64_SINT_GLI: root::gli::dx_dxgi_format_gli = 2;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R64_FLOAT_GLI: root::gli::dx_dxgi_format_gli = 3;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R64G64_UINT_GLI: root::gli::dx_dxgi_format_gli = 4;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R64G64_SINT_GLI: root::gli::dx_dxgi_format_gli = 5;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R64G64_FLOAT_GLI: root::gli::dx_dxgi_format_gli =
+            6;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R64G64B64_UINT_GLI: root::gli::dx_dxgi_format_gli =
+            7;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R64G64B64_SINT_GLI: root::gli::dx_dxgi_format_gli =
+            8;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R64G64B64_FLOAT_GLI:
+            root::gli::dx_dxgi_format_gli = 9;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R64G64B64A64_UINT_GLI:
+            root::gli::dx_dxgi_format_gli = 10;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R64G64B64A64_SINT_GLI:
+            root::gli::dx_dxgi_format_gli = 11;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R64G64B64A64_FLOAT_GLI:
+            root::gli::dx_dxgi_format_gli = 12;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_RG4_UNORM_GLI: root::gli::dx_dxgi_format_gli = 13;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_RGBA4_UNORM_GLI: root::gli::dx_dxgi_format_gli =
+            14;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R5G6B5_UNORM_GLI: root::gli::dx_dxgi_format_gli =
+            15;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R5G5B5A1_UNORM_GLI: root::gli::dx_dxgi_format_gli =
+            16;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_A1B5G5R5_UNORM_GLI: root::gli::dx_dxgi_format_gli =
+            17;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R8_SRGB_GLI: root::gli::dx_dxgi_format_gli = 18;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R8_USCALED_GLI: root::gli::dx_dxgi_format_gli = 19;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R8_SSCALED_GLI: root::gli::dx_dxgi_format_gli = 20;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R8G8_SRGB_GLI: root::gli::dx_dxgi_format_gli = 21;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R8G8_USCALED_GLI: root::gli::dx_dxgi_format_gli =
+            22;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R8G8_SSCALED_GLI: root::gli::dx_dxgi_format_gli =
+            23;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R8G8B8_UNORM_GLI: root::gli::dx_dxgi_format_gli =
+            24;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R8G8B8_SNORM_GLI: root::gli::dx_dxgi_format_gli =
+            25;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R8G8B8_USCALED_GLI: root::gli::dx_dxgi_format_gli =
+            26;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R8G8B8_SSCALED_GLI: root::gli::dx_dxgi_format_gli =
+            27;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R8G8B8_UINT_GLI: root::gli::dx_dxgi_format_gli =
+            28;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R8G8B8_SINT_GLI: root::gli::dx_dxgi_format_gli =
+            29;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R8G8B8_SRGB_GLI: root::gli::dx_dxgi_format_gli =
+            30;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_B8G8R8_UNORM_GLI: root::gli::dx_dxgi_format_gli =
+            31;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_B8G8R8_SNORM_GLI: root::gli::dx_dxgi_format_gli =
+            32;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_B8G8R8_USCALED_GLI: root::gli::dx_dxgi_format_gli =
+            33;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_B8G8R8_SSCALED_GLI: root::gli::dx_dxgi_format_gli =
+            34;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_B8G8R8_UINT_GLI: root::gli::dx_dxgi_format_gli =
+            35;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_B8G8R8_SINT_GLI: root::gli::dx_dxgi_format_gli =
+            36;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_B8G8R8_SRGB_GLI: root::gli::dx_dxgi_format_gli =
+            37;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R8G8B8A8_USCALED_GLI:
+            root::gli::dx_dxgi_format_gli = 38;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R8G8B8A8_SSCALED_GLI:
+            root::gli::dx_dxgi_format_gli = 39;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_B8G8R8A8_SNORM_GLI: root::gli::dx_dxgi_format_gli =
+            40;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_B8G8R8A8_USCALED_GLI:
+            root::gli::dx_dxgi_format_gli = 41;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_B8G8R8A8_SSCALED_GLI:
+            root::gli::dx_dxgi_format_gli = 42;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_B8G8R8A8_UINT_GLI: root::gli::dx_dxgi_format_gli =
+            43;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_B8G8R8A8_SINT_GLI: root::gli::dx_dxgi_format_gli =
+            44;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R8G8B8A8_PACK_UNORM_GLI:
+            root::gli::dx_dxgi_format_gli = 45;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R8G8B8A8_PACK_SNORM_GLI:
+            root::gli::dx_dxgi_format_gli = 46;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R8G8B8A8_PACK_USCALED_GLI:
+            root::gli::dx_dxgi_format_gli = 47;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R8G8B8A8_PACK_SSCALED_GLI:
+            root::gli::dx_dxgi_format_gli = 48;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R8G8B8A8_PACK_UINT_GLI:
+            root::gli::dx_dxgi_format_gli = 49;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R8G8B8A8_PACK_SINT_GLI:
+            root::gli::dx_dxgi_format_gli = 50;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R8G8B8A8_PACK_SRGB_GLI:
+            root::gli::dx_dxgi_format_gli = 51;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R10G10B10A2_SNORM_GLI:
+            root::gli::dx_dxgi_format_gli = 52;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R10G10B10A2_USCALED_GLI:
+            root::gli::dx_dxgi_format_gli = 53;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R10G10B10A2_SSCALED_GLI:
+            root::gli::dx_dxgi_format_gli = 54;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R10G10B10A2_SINT_GLI:
+            root::gli::dx_dxgi_format_gli = 55;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_B10G10R10A2_UNORM_GLI:
+            root::gli::dx_dxgi_format_gli = 56;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_B10G10R10A2_SNORM_GLI:
+            root::gli::dx_dxgi_format_gli = 57;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_B10G10R10A2_USCALED_GLI:
+            root::gli::dx_dxgi_format_gli = 58;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_B10G10R10A2_SSCALED_GLI:
+            root::gli::dx_dxgi_format_gli = 59;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_B10G10R10A2_UINT_GLI:
+            root::gli::dx_dxgi_format_gli = 60;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_B10G10R10A2_SINT_GLI:
+            root::gli::dx_dxgi_format_gli = 61;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R16_USCALED_GLI: root::gli::dx_dxgi_format_gli =
+            62;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R16_SSCALED_GLI: root::gli::dx_dxgi_format_gli =
+            63;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R16G16_USCALED_GLI: root::gli::dx_dxgi_format_gli =
+            64;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R16G16_SSCALED_GLI: root::gli::dx_dxgi_format_gli =
+            65;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R16G16B16_UNORM_GLI:
+            root::gli::dx_dxgi_format_gli = 66;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R16G16B16_SNORM_GLI:
+            root::gli::dx_dxgi_format_gli = 67;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R16G16B16_USCALED_GLI:
+            root::gli::dx_dxgi_format_gli = 68;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R16G16B16_SSCALED_GLI:
+            root::gli::dx_dxgi_format_gli = 69;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R16G16B16_UINT_GLI: root::gli::dx_dxgi_format_gli =
+            70;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R16G16B16_SINT_GLI: root::gli::dx_dxgi_format_gli =
+            71;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R16G16B16_FLOAT_GLI:
+            root::gli::dx_dxgi_format_gli = 72;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R16G16B16A16_USCALED_GLI:
+            root::gli::dx_dxgi_format_gli = 73;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R16G16B16A16_SSCALED_GLI:
+            root::gli::dx_dxgi_format_gli = 74;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_S8_UINT_GLI: root::gli::dx_dxgi_format_gli = 75;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_D16_UNORM_S8_UINT_GLI:
+            root::gli::dx_dxgi_format_gli = 76;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_D24_UNORM_GLI: root::gli::dx_dxgi_format_gli = 77;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_L8_UNORM_GLI: root::gli::dx_dxgi_format_gli = 78;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_A8_UNORM_GLI: root::gli::dx_dxgi_format_gli = 79;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_LA8_UNORM_GLI: root::gli::dx_dxgi_format_gli = 80;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_L16_UNORM_GLI: root::gli::dx_dxgi_format_gli = 81;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_A16_UNORM_GLI: root::gli::dx_dxgi_format_gli = 82;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_LA16_UNORM_GLI: root::gli::dx_dxgi_format_gli = 83;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R3G3B2_UNORM_GLI: root::gli::dx_dxgi_format_gli =
+            84;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_BC1_RGB_UNORM_GLI: root::gli::dx_dxgi_format_gli =
+            85;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_BC1_RGB_SRGB_GLI: root::gli::dx_dxgi_format_gli =
+            86;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_RGB_ETC2_UNORM_GLI: root::gli::dx_dxgi_format_gli =
+            87;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_RGB_ETC2_SRGB_GLI: root::gli::dx_dxgi_format_gli =
+            88;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_RGBA_ETC2_A1_UNORM_GLI:
+            root::gli::dx_dxgi_format_gli = 89;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_RGBA_ETC2_A1_SRGB_GLI:
+            root::gli::dx_dxgi_format_gli = 90;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_RGBA_ETC2_UNORM_GLI:
+            root::gli::dx_dxgi_format_gli = 91;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_RGBA_ETC2_SRGB_GLI: root::gli::dx_dxgi_format_gli =
+            92;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R11_EAC_UNORM_GLI: root::gli::dx_dxgi_format_gli =
+            93;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_R11_EAC_SNORM_GLI: root::gli::dx_dxgi_format_gli =
+            94;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_RG11_EAC_UNORM_GLI: root::gli::dx_dxgi_format_gli =
+            95;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_RG11_EAC_SNORM_GLI: root::gli::dx_dxgi_format_gli =
+            96;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_RGB_PVRTC1_8X8_UNORM_GLI:
+            root::gli::dx_dxgi_format_gli = 97;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_RGB_PVRTC1_8X8_SRGB_GLI:
+            root::gli::dx_dxgi_format_gli = 98;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_RGB_PVRTC1_16X8_UNORM_GLI:
+            root::gli::dx_dxgi_format_gli = 99;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_RGB_PVRTC1_16X8_SRGB_GLI:
+            root::gli::dx_dxgi_format_gli = 100;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_RGBA_PVRTC1_8X8_UNORM_GLI:
+            root::gli::dx_dxgi_format_gli = 101;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_RGBA_PVRTC1_8X8_SRGB_GLI:
+            root::gli::dx_dxgi_format_gli = 102;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_RGBA_PVRTC1_16X8_UNORM_GLI:
+            root::gli::dx_dxgi_format_gli = 103;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_RGBA_PVRTC1_16X8_SRGB_GLI:
+            root::gli::dx_dxgi_format_gli = 104;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_RGBA_PVRTC2_8X8_UNORM_GLI:
+            root::gli::dx_dxgi_format_gli = 105;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_RGBA_PVRTC2_8X8_SRGB_GLI:
+            root::gli::dx_dxgi_format_gli = 106;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_RGBA_PVRTC2_16X8_UNORM_GLI:
+            root::gli::dx_dxgi_format_gli = 107;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_RGBA_PVRTC2_16X8_SRGB_GLI:
+            root::gli::dx_dxgi_format_gli = 108;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_RGB_ETC_UNORM_GLI: root::gli::dx_dxgi_format_gli =
+            109;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_RGB_ATC_UNORM_GLI: root::gli::dx_dxgi_format_gli =
+            110;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_RGBA_ATCA_UNORM_GLI:
+            root::gli::dx_dxgi_format_gli = 111;
+        pub const dx_dxgi_format_gli_DXGI_FORMAT_RGBA_ATCI_UNORM_GLI:
+            root::gli::dx_dxgi_format_gli = 112;
+        pub type dx_dxgi_format_gli = u32;
+        #[repr(C)]
+        #[derive(Debug)]
+        pub struct dx_dxgiFormat {
+            pub DDS: root::__BindgenUnionField<root::gli::dx_dxgi_format_dds>,
+            pub GLI: root::__BindgenUnionField<root::gli::dx_dxgi_format_gli>,
+            pub bindgen_union_field: u32,
+        }
+        pub const dx_ddpf_DDPF_ALPHAPIXELS: root::gli::dx_ddpf = 1;
+        pub const dx_ddpf_DDPF_ALPHA: root::gli::dx_ddpf = 2;
+        pub const dx_ddpf_DDPF_FOURCC: root::gli::dx_ddpf = 4;
+        pub const dx_ddpf_DDPF_RGB: root::gli::dx_ddpf = 64;
+        pub const dx_ddpf_DDPF_YUV: root::gli::dx_ddpf = 512;
+        pub const dx_ddpf_DDPF_LUMINANCE: root::gli::dx_ddpf = 131072;
+        pub const dx_ddpf_DDPF_LUMINANCE_ALPHA: root::gli::dx_ddpf = 131074;
+        pub const dx_ddpf_DDPF_RGBAPIXELS: root::gli::dx_ddpf = 65;
+        pub const dx_ddpf_DDPF_RGBA: root::gli::dx_ddpf = 66;
+        pub const dx_ddpf_DDPF_LUMINANCE_ALPHAPIXELS: root::gli::dx_ddpf = 131073;
+        pub type dx_ddpf = u32;
+        #[repr(C)]
+        #[derive(Debug)]
+        pub struct dx_format {
+            pub DDPixelFormat: root::gli::dx_ddpf,
+            pub D3DFormat: root::gli::dx_d3dfmt,
+            pub DXGIFormat: root::gli::dx_dxgiFormat,
+            pub Mask: root::glm::u32vec4,
+        }
+        extern "C" {
+            #[doc = " Convert GLI formats into Direct3D formats"]
+            #[link_name = "\u{1}translate"]
+            pub fn dx_translate(
+                this: *const root::gli::dx,
+                Format: root::gli::format,
+            ) -> *const root::gli::dx_format;
+        }
+        extern "C" {
+            #[doc = " Convert a Direct3D 9 format into a GLI format"]
+            #[link_name = "\u{1}find"]
+            pub fn dx_find(
+                this: *const root::gli::dx,
+                FourCC: root::gli::dx_d3dfmt,
+            ) -> root::gli::format;
+        }
+        extern "C" {
+            #[doc = " Convert a Direct3D 10 format into a GLI format"]
+            #[link_name = "\u{1}find"]
+            pub fn dx_find1(
+                this: *const root::gli::dx,
+                FourCC: root::gli::dx_d3dfmt,
+                Format: root::gli::dx_dxgiFormat,
+            ) -> root::gli::format;
+        }
+        extern "C" {
+            #[link_name = "\u{1}dx"]
+            pub fn dx_dx(this: *mut root::gli::dx);
+        }
+        impl dx {
+            #[inline]
+            pub unsafe fn translate(
+                &self,
+                Format: root::gli::format,
+            ) -> *const root::gli::dx_format {
+                dx_translate(self, Format)
+            }
+            #[inline]
+            pub unsafe fn find(&self, FourCC: root::gli::dx_d3dfmt) -> root::gli::format {
+                dx_find(self, FourCC)
+            }
+            #[inline]
+            pub unsafe fn find1(
+                &self,
+                FourCC: root::gli::dx_d3dfmt,
+                Format: root::gli::dx_dxgiFormat,
+            ) -> root::gli::format {
+                dx_find1(self, FourCC, Format)
+            }
+            #[inline]
+            pub unsafe fn new() -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                dx_dx(&mut __bindgen_tmp);
+                __bindgen_tmp
+            }
+        }
         extern "C" {
             #[doc = " Evaluate whether a target and format combinaison is only supported by the DDS container through GLI DDS extension."]
             pub fn is_dds_ext(Target: root::gli::target, Format: root::gli::format) -> bool;
@@ -2534,6 +3191,9 @@ pub mod root {
         #[doc = ""]
         #[doc = " @see <a href=\"http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf\">GLSL 4.20.8 specification, section 4.1.5 Vectors</a>"]
         pub type ivec3 = [u32; 3usize];
+        #[doc = " Default qualifier 32 bit unsigned integer vector of 4 components type."]
+        #[doc = " @see gtc_type_precision"]
+        pub type u32vec4 = [u32; 4usize];
     }
     pub mod bindings {
         #[allow(unused_imports)]
@@ -3102,6 +3762,32 @@ pub mod root {
                     tex: *const root::gli::texture_cube_array,
                     level: root::gli::texture_size_type,
                 ) -> root::gli::texture_cube_array_extent_type;
+            }
+        }
+        pub mod DX {
+            #[allow(unused_imports)]
+            use self::super::super::super::root;
+            extern "C" {
+                pub fn translate(
+                    converter: *const root::gli::dx,
+                    Format: root::gli::format,
+                ) -> root::gli::dx_format;
+            }
+            extern "C" {
+                pub fn find(
+                    converter: *const root::gli::dx,
+                    FourCC: root::gli::dx_d3dfmt,
+                ) -> root::gli::format;
+            }
+            extern "C" {
+                pub fn find2(
+                    converter: *const root::gli::dx,
+                    FourCC: root::gli::dx_d3dfmt,
+                    Format: root::gli::dx_dxgiFormat,
+                ) -> root::gli::format;
+            }
+            extern "C" {
+                pub fn is_dds_ext(Target: root::gli::target, Format: root::gli::format) -> bool;
             }
         }
         pub mod Load {

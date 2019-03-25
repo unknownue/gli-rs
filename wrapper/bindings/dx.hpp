@@ -7,11 +7,9 @@
 #include "target.hpp"
 #include <array>
 
-namespace gli
-{
+namespace gli {
 	/// Translation class to convert GLI enums into DirectX enums
-	class dx
-	{
+	class dx {
 	public:
 		#define GLI_MAKEFOURCC(ch0, ch1, ch2, ch3) \
 			(std::uint32_t)( \
@@ -487,8 +485,31 @@ namespace gli
 	bool is_dds_ext(target Target, format Format);
 }//namespace gli
 
+extern "C" {
+
+	namespace bindings {
+
+		namespace DX {
+
+			gli::dx::format translate(const gli::dx & converter, gli::format Format) {
+				return converter.translate(Format);
+			}
+
+			gli::format find(const gli::dx & converter, gli::dx::d3dfmt FourCC) {
+				return converter.find(FourCC);
+			}
+
+			gli::format find2(const gli::dx & converter, gli::dx::d3dfmt FourCC, gli::dx::dxgiFormat Format) {
+				return converter.find(FourCC, Format);
+			}
+
+			bool is_dds_ext(gli::target Target, gli::format Format) {
+				return gli::is_dds_ext(Target, Format);
+			}
+		}
+	}
+}
 
 #ifdef GLI_IMPLEMENTATION
 #include "dx.inl"
 #endif
-
