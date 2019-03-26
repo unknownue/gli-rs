@@ -495,15 +495,15 @@ extern "C" {
 		        return gli::dx();
 		    }
 
-			gli::dx::format translate(const gli::dx & converter, gli::format Format) {
+			gli::dx::format dx_translate(const gli::dx & converter, gli::format Format) {
 				return converter.translate(Format);
 			}
 
-			gli::format find(const gli::dx & converter, gli::dx::d3dfmt FourCC) {
+			gli::format dx_find(const gli::dx & converter, gli::dx::d3dfmt FourCC) {
 				return converter.find(FourCC);
 			}
 
-			gli::format find2(const gli::dx & converter, gli::dx::d3dfmt FourCC, gli::dx::dxgiFormat Format) {
+			gli::format dx_find2(const gli::dx & converter, gli::dx::d3dfmt FourCC, gli::dx::dxgiFormat Format) {
 				return converter.find(FourCC, Format);
 			}
 

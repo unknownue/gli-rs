@@ -2533,6 +2533,423 @@ pub mod root {
                 __bindgen_tmp
             }
         }
+        #[doc = " Translation class to convert GLI enums into OpenGL values"]
+        #[repr(C)]
+        pub struct gl {
+            pub FormatDesc: [u32; 836usize],
+            pub Profile: root::gli::gl_profile,
+        }
+        pub const gl_internal_format_INTERNAL_RGB_UNORM: root::gli::gl_internal_format = 6407;
+        pub const gl_internal_format_INTERNAL_BGR_UNORM: root::gli::gl_internal_format = 32992;
+        pub const gl_internal_format_INTERNAL_RGBA_UNORM: root::gli::gl_internal_format = 6408;
+        pub const gl_internal_format_INTERNAL_BGRA_UNORM: root::gli::gl_internal_format = 32993;
+        pub const gl_internal_format_INTERNAL_BGRA8_UNORM: root::gli::gl_internal_format = 37793;
+        pub const gl_internal_format_INTERNAL_R8_UNORM: root::gli::gl_internal_format = 33321;
+        pub const gl_internal_format_INTERNAL_RG8_UNORM: root::gli::gl_internal_format = 33323;
+        pub const gl_internal_format_INTERNAL_RGB8_UNORM: root::gli::gl_internal_format = 32849;
+        pub const gl_internal_format_INTERNAL_RGBA8_UNORM: root::gli::gl_internal_format = 32856;
+        pub const gl_internal_format_INTERNAL_R16_UNORM: root::gli::gl_internal_format = 33322;
+        pub const gl_internal_format_INTERNAL_RG16_UNORM: root::gli::gl_internal_format = 33324;
+        pub const gl_internal_format_INTERNAL_RGB16_UNORM: root::gli::gl_internal_format = 32852;
+        pub const gl_internal_format_INTERNAL_RGBA16_UNORM: root::gli::gl_internal_format = 32859;
+        pub const gl_internal_format_INTERNAL_RGB10A2_UNORM: root::gli::gl_internal_format = 32857;
+        pub const gl_internal_format_INTERNAL_RGB10A2_SNORM_EXT: root::gli::gl_internal_format =
+            65532;
+        pub const gl_internal_format_INTERNAL_R8_SNORM: root::gli::gl_internal_format = 36756;
+        pub const gl_internal_format_INTERNAL_RG8_SNORM: root::gli::gl_internal_format = 36757;
+        pub const gl_internal_format_INTERNAL_RGB8_SNORM: root::gli::gl_internal_format = 36758;
+        pub const gl_internal_format_INTERNAL_RGBA8_SNORM: root::gli::gl_internal_format = 36759;
+        pub const gl_internal_format_INTERNAL_R16_SNORM: root::gli::gl_internal_format = 36760;
+        pub const gl_internal_format_INTERNAL_RG16_SNORM: root::gli::gl_internal_format = 36761;
+        pub const gl_internal_format_INTERNAL_RGB16_SNORM: root::gli::gl_internal_format = 36762;
+        pub const gl_internal_format_INTERNAL_RGBA16_SNORM: root::gli::gl_internal_format = 36763;
+        pub const gl_internal_format_INTERNAL_R8U: root::gli::gl_internal_format = 33330;
+        pub const gl_internal_format_INTERNAL_RG8U: root::gli::gl_internal_format = 33336;
+        pub const gl_internal_format_INTERNAL_RGB8U: root::gli::gl_internal_format = 36221;
+        pub const gl_internal_format_INTERNAL_RGBA8U: root::gli::gl_internal_format = 36220;
+        pub const gl_internal_format_INTERNAL_R16U: root::gli::gl_internal_format = 33332;
+        pub const gl_internal_format_INTERNAL_RG16U: root::gli::gl_internal_format = 33338;
+        pub const gl_internal_format_INTERNAL_RGB16U: root::gli::gl_internal_format = 36215;
+        pub const gl_internal_format_INTERNAL_RGBA16U: root::gli::gl_internal_format = 36214;
+        pub const gl_internal_format_INTERNAL_R32U: root::gli::gl_internal_format = 33334;
+        pub const gl_internal_format_INTERNAL_RG32U: root::gli::gl_internal_format = 33340;
+        pub const gl_internal_format_INTERNAL_RGB32U: root::gli::gl_internal_format = 36209;
+        pub const gl_internal_format_INTERNAL_RGBA32U: root::gli::gl_internal_format = 36208;
+        pub const gl_internal_format_INTERNAL_RGB10A2U: root::gli::gl_internal_format = 36975;
+        pub const gl_internal_format_INTERNAL_RGB10A2I_EXT: root::gli::gl_internal_format = 65531;
+        pub const gl_internal_format_INTERNAL_R8I: root::gli::gl_internal_format = 33329;
+        pub const gl_internal_format_INTERNAL_RG8I: root::gli::gl_internal_format = 33335;
+        pub const gl_internal_format_INTERNAL_RGB8I: root::gli::gl_internal_format = 36239;
+        pub const gl_internal_format_INTERNAL_RGBA8I: root::gli::gl_internal_format = 36238;
+        pub const gl_internal_format_INTERNAL_R16I: root::gli::gl_internal_format = 33331;
+        pub const gl_internal_format_INTERNAL_RG16I: root::gli::gl_internal_format = 33337;
+        pub const gl_internal_format_INTERNAL_RGB16I: root::gli::gl_internal_format = 36233;
+        pub const gl_internal_format_INTERNAL_RGBA16I: root::gli::gl_internal_format = 36232;
+        pub const gl_internal_format_INTERNAL_R32I: root::gli::gl_internal_format = 33333;
+        pub const gl_internal_format_INTERNAL_RG32I: root::gli::gl_internal_format = 33339;
+        pub const gl_internal_format_INTERNAL_RGB32I: root::gli::gl_internal_format = 36227;
+        pub const gl_internal_format_INTERNAL_RGBA32I: root::gli::gl_internal_format = 36226;
+        pub const gl_internal_format_INTERNAL_R16F: root::gli::gl_internal_format = 33325;
+        pub const gl_internal_format_INTERNAL_RG16F: root::gli::gl_internal_format = 33327;
+        pub const gl_internal_format_INTERNAL_RGB16F: root::gli::gl_internal_format = 34843;
+        pub const gl_internal_format_INTERNAL_RGBA16F: root::gli::gl_internal_format = 34842;
+        pub const gl_internal_format_INTERNAL_R32F: root::gli::gl_internal_format = 33326;
+        pub const gl_internal_format_INTERNAL_RG32F: root::gli::gl_internal_format = 33328;
+        pub const gl_internal_format_INTERNAL_RGB32F: root::gli::gl_internal_format = 34837;
+        pub const gl_internal_format_INTERNAL_RGBA32F: root::gli::gl_internal_format = 34836;
+        pub const gl_internal_format_INTERNAL_R64F_EXT: root::gli::gl_internal_format = 65530;
+        pub const gl_internal_format_INTERNAL_RG64F_EXT: root::gli::gl_internal_format = 65529;
+        pub const gl_internal_format_INTERNAL_RGB64F_EXT: root::gli::gl_internal_format = 65528;
+        pub const gl_internal_format_INTERNAL_RGBA64F_EXT: root::gli::gl_internal_format = 65527;
+        pub const gl_internal_format_INTERNAL_SR8: root::gli::gl_internal_format = 36797;
+        pub const gl_internal_format_INTERNAL_SRG8: root::gli::gl_internal_format = 36798;
+        pub const gl_internal_format_INTERNAL_SRGB8: root::gli::gl_internal_format = 35905;
+        pub const gl_internal_format_INTERNAL_SRGB8_ALPHA8: root::gli::gl_internal_format = 35907;
+        pub const gl_internal_format_INTERNAL_RGB9E5: root::gli::gl_internal_format = 35901;
+        pub const gl_internal_format_INTERNAL_RG11B10F: root::gli::gl_internal_format = 35898;
+        pub const gl_internal_format_INTERNAL_RG3B2: root::gli::gl_internal_format = 10768;
+        pub const gl_internal_format_INTERNAL_R5G6B5: root::gli::gl_internal_format = 36194;
+        pub const gl_internal_format_INTERNAL_RGB5A1: root::gli::gl_internal_format = 32855;
+        pub const gl_internal_format_INTERNAL_RGBA4: root::gli::gl_internal_format = 32854;
+        pub const gl_internal_format_INTERNAL_RG4_EXT: root::gli::gl_internal_format = 65534;
+        pub const gl_internal_format_INTERNAL_LA4: root::gli::gl_internal_format = 32835;
+        pub const gl_internal_format_INTERNAL_L8: root::gli::gl_internal_format = 32832;
+        pub const gl_internal_format_INTERNAL_A8: root::gli::gl_internal_format = 32828;
+        pub const gl_internal_format_INTERNAL_LA8: root::gli::gl_internal_format = 32837;
+        pub const gl_internal_format_INTERNAL_L16: root::gli::gl_internal_format = 32834;
+        pub const gl_internal_format_INTERNAL_A16: root::gli::gl_internal_format = 32830;
+        pub const gl_internal_format_INTERNAL_LA16: root::gli::gl_internal_format = 32840;
+        pub const gl_internal_format_INTERNAL_D16: root::gli::gl_internal_format = 33189;
+        pub const gl_internal_format_INTERNAL_D24: root::gli::gl_internal_format = 33190;
+        pub const gl_internal_format_INTERNAL_D16S8_EXT: root::gli::gl_internal_format = 65526;
+        pub const gl_internal_format_INTERNAL_D24S8: root::gli::gl_internal_format = 35056;
+        pub const gl_internal_format_INTERNAL_D32: root::gli::gl_internal_format = 33191;
+        pub const gl_internal_format_INTERNAL_D32F: root::gli::gl_internal_format = 36012;
+        pub const gl_internal_format_INTERNAL_D32FS8X24: root::gli::gl_internal_format = 36013;
+        pub const gl_internal_format_INTERNAL_S8_EXT: root::gli::gl_internal_format = 36168;
+        pub const gl_internal_format_INTERNAL_RGB_DXT1: root::gli::gl_internal_format = 33776;
+        pub const gl_internal_format_INTERNAL_RGBA_DXT1: root::gli::gl_internal_format = 33777;
+        pub const gl_internal_format_INTERNAL_RGBA_DXT3: root::gli::gl_internal_format = 33778;
+        pub const gl_internal_format_INTERNAL_RGBA_DXT5: root::gli::gl_internal_format = 33779;
+        pub const gl_internal_format_INTERNAL_R_ATI1N_UNORM: root::gli::gl_internal_format = 36283;
+        pub const gl_internal_format_INTERNAL_R_ATI1N_SNORM: root::gli::gl_internal_format = 36284;
+        pub const gl_internal_format_INTERNAL_RG_ATI2N_UNORM: root::gli::gl_internal_format = 36285;
+        pub const gl_internal_format_INTERNAL_RG_ATI2N_SNORM: root::gli::gl_internal_format = 36286;
+        pub const gl_internal_format_INTERNAL_RGB_BP_UNSIGNED_FLOAT: root::gli::gl_internal_format =
+            36495;
+        pub const gl_internal_format_INTERNAL_RGB_BP_SIGNED_FLOAT: root::gli::gl_internal_format =
+            36494;
+        pub const gl_internal_format_INTERNAL_RGB_BP_UNORM: root::gli::gl_internal_format = 36492;
+        pub const gl_internal_format_INTERNAL_RGB_PVRTC_4BPPV1: root::gli::gl_internal_format =
+            35840;
+        pub const gl_internal_format_INTERNAL_RGB_PVRTC_2BPPV1: root::gli::gl_internal_format =
+            35841;
+        pub const gl_internal_format_INTERNAL_RGBA_PVRTC_4BPPV1: root::gli::gl_internal_format =
+            35842;
+        pub const gl_internal_format_INTERNAL_RGBA_PVRTC_2BPPV1: root::gli::gl_internal_format =
+            35843;
+        pub const gl_internal_format_INTERNAL_RGBA_PVRTC_4BPPV2: root::gli::gl_internal_format =
+            37175;
+        pub const gl_internal_format_INTERNAL_RGBA_PVRTC_2BPPV2: root::gli::gl_internal_format =
+            37176;
+        pub const gl_internal_format_INTERNAL_ATC_RGB: root::gli::gl_internal_format = 35986;
+        pub const gl_internal_format_INTERNAL_ATC_RGBA_EXPLICIT_ALPHA:
+            root::gli::gl_internal_format = 35987;
+        pub const gl_internal_format_INTERNAL_ATC_RGBA_INTERPOLATED_ALPHA:
+            root::gli::gl_internal_format = 34798;
+        pub const gl_internal_format_INTERNAL_RGB_ETC: root::gli::gl_internal_format = 36196;
+        pub const gl_internal_format_INTERNAL_RGB_ETC2: root::gli::gl_internal_format = 37492;
+        pub const gl_internal_format_INTERNAL_RGBA_PUNCHTHROUGH_ETC2:
+            root::gli::gl_internal_format = 37494;
+        pub const gl_internal_format_INTERNAL_RGBA_ETC2: root::gli::gl_internal_format = 37496;
+        pub const gl_internal_format_INTERNAL_R11_EAC: root::gli::gl_internal_format = 37488;
+        pub const gl_internal_format_INTERNAL_SIGNED_R11_EAC: root::gli::gl_internal_format = 37489;
+        pub const gl_internal_format_INTERNAL_RG11_EAC: root::gli::gl_internal_format = 37490;
+        pub const gl_internal_format_INTERNAL_SIGNED_RG11_EAC: root::gli::gl_internal_format =
+            37491;
+        pub const gl_internal_format_INTERNAL_RGBA_ASTC_4x4: root::gli::gl_internal_format = 37808;
+        pub const gl_internal_format_INTERNAL_RGBA_ASTC_5x4: root::gli::gl_internal_format = 37809;
+        pub const gl_internal_format_INTERNAL_RGBA_ASTC_5x5: root::gli::gl_internal_format = 37810;
+        pub const gl_internal_format_INTERNAL_RGBA_ASTC_6x5: root::gli::gl_internal_format = 37811;
+        pub const gl_internal_format_INTERNAL_RGBA_ASTC_6x6: root::gli::gl_internal_format = 37812;
+        pub const gl_internal_format_INTERNAL_RGBA_ASTC_8x5: root::gli::gl_internal_format = 37813;
+        pub const gl_internal_format_INTERNAL_RGBA_ASTC_8x6: root::gli::gl_internal_format = 37814;
+        pub const gl_internal_format_INTERNAL_RGBA_ASTC_8x8: root::gli::gl_internal_format = 37815;
+        pub const gl_internal_format_INTERNAL_RGBA_ASTC_10x5: root::gli::gl_internal_format = 37816;
+        pub const gl_internal_format_INTERNAL_RGBA_ASTC_10x6: root::gli::gl_internal_format = 37817;
+        pub const gl_internal_format_INTERNAL_RGBA_ASTC_10x8: root::gli::gl_internal_format = 37818;
+        pub const gl_internal_format_INTERNAL_RGBA_ASTC_10x10: root::gli::gl_internal_format =
+            37819;
+        pub const gl_internal_format_INTERNAL_RGBA_ASTC_12x10: root::gli::gl_internal_format =
+            37820;
+        pub const gl_internal_format_INTERNAL_RGBA_ASTC_12x12: root::gli::gl_internal_format =
+            37821;
+        pub const gl_internal_format_INTERNAL_SRGB_DXT1: root::gli::gl_internal_format = 35916;
+        pub const gl_internal_format_INTERNAL_SRGB_ALPHA_DXT1: root::gli::gl_internal_format =
+            35917;
+        pub const gl_internal_format_INTERNAL_SRGB_ALPHA_DXT3: root::gli::gl_internal_format =
+            35918;
+        pub const gl_internal_format_INTERNAL_SRGB_ALPHA_DXT5: root::gli::gl_internal_format =
+            35919;
+        pub const gl_internal_format_INTERNAL_SRGB_BP_UNORM: root::gli::gl_internal_format = 36493;
+        pub const gl_internal_format_INTERNAL_SRGB_PVRTC_2BPPV1: root::gli::gl_internal_format =
+            35412;
+        pub const gl_internal_format_INTERNAL_SRGB_PVRTC_4BPPV1: root::gli::gl_internal_format =
+            35413;
+        pub const gl_internal_format_INTERNAL_SRGB_ALPHA_PVRTC_2BPPV1:
+            root::gli::gl_internal_format = 35414;
+        pub const gl_internal_format_INTERNAL_SRGB_ALPHA_PVRTC_4BPPV1:
+            root::gli::gl_internal_format = 35415;
+        pub const gl_internal_format_INTERNAL_SRGB_ALPHA_PVRTC_2BPPV2:
+            root::gli::gl_internal_format = 37872;
+        pub const gl_internal_format_INTERNAL_SRGB_ALPHA_PVRTC_4BPPV2:
+            root::gli::gl_internal_format = 37873;
+        pub const gl_internal_format_INTERNAL_SRGB8_ETC2: root::gli::gl_internal_format = 37493;
+        pub const gl_internal_format_INTERNAL_SRGB8_PUNCHTHROUGH_ALPHA1_ETC2:
+            root::gli::gl_internal_format = 37495;
+        pub const gl_internal_format_INTERNAL_SRGB8_ALPHA8_ETC2_EAC: root::gli::gl_internal_format =
+            37497;
+        pub const gl_internal_format_INTERNAL_SRGB8_ALPHA8_ASTC_4x4: root::gli::gl_internal_format =
+            37840;
+        pub const gl_internal_format_INTERNAL_SRGB8_ALPHA8_ASTC_5x4: root::gli::gl_internal_format =
+            37841;
+        pub const gl_internal_format_INTERNAL_SRGB8_ALPHA8_ASTC_5x5: root::gli::gl_internal_format =
+            37842;
+        pub const gl_internal_format_INTERNAL_SRGB8_ALPHA8_ASTC_6x5: root::gli::gl_internal_format =
+            37843;
+        pub const gl_internal_format_INTERNAL_SRGB8_ALPHA8_ASTC_6x6: root::gli::gl_internal_format =
+            37844;
+        pub const gl_internal_format_INTERNAL_SRGB8_ALPHA8_ASTC_8x5: root::gli::gl_internal_format =
+            37845;
+        pub const gl_internal_format_INTERNAL_SRGB8_ALPHA8_ASTC_8x6: root::gli::gl_internal_format =
+            37846;
+        pub const gl_internal_format_INTERNAL_SRGB8_ALPHA8_ASTC_8x8: root::gli::gl_internal_format =
+            37847;
+        pub const gl_internal_format_INTERNAL_SRGB8_ALPHA8_ASTC_10x5:
+            root::gli::gl_internal_format = 37848;
+        pub const gl_internal_format_INTERNAL_SRGB8_ALPHA8_ASTC_10x6:
+            root::gli::gl_internal_format = 37849;
+        pub const gl_internal_format_INTERNAL_SRGB8_ALPHA8_ASTC_10x8:
+            root::gli::gl_internal_format = 37850;
+        pub const gl_internal_format_INTERNAL_SRGB8_ALPHA8_ASTC_10x10:
+            root::gli::gl_internal_format = 37851;
+        pub const gl_internal_format_INTERNAL_SRGB8_ALPHA8_ASTC_12x10:
+            root::gli::gl_internal_format = 37852;
+        pub const gl_internal_format_INTERNAL_SRGB8_ALPHA8_ASTC_12x12:
+            root::gli::gl_internal_format = 37853;
+        pub const gl_internal_format_INTERNAL_ALPHA8: root::gli::gl_internal_format = 32828;
+        pub const gl_internal_format_INTERNAL_ALPHA16: root::gli::gl_internal_format = 32830;
+        pub const gl_internal_format_INTERNAL_LUMINANCE8: root::gli::gl_internal_format = 32832;
+        pub const gl_internal_format_INTERNAL_LUMINANCE16: root::gli::gl_internal_format = 32834;
+        pub const gl_internal_format_INTERNAL_LUMINANCE8_ALPHA8: root::gli::gl_internal_format =
+            32837;
+        pub const gl_internal_format_INTERNAL_LUMINANCE16_ALPHA16: root::gli::gl_internal_format =
+            32840;
+        pub const gl_internal_format_INTERNAL_R8_USCALED_GTC: root::gli::gl_internal_format = 61440;
+        pub const gl_internal_format_INTERNAL_R8_SSCALED_GTC: root::gli::gl_internal_format = 61441;
+        pub const gl_internal_format_INTERNAL_RG8_USCALED_GTC: root::gli::gl_internal_format =
+            61442;
+        pub const gl_internal_format_INTERNAL_RG8_SSCALED_GTC: root::gli::gl_internal_format =
+            61443;
+        pub const gl_internal_format_INTERNAL_RGB8_USCALED_GTC: root::gli::gl_internal_format =
+            61444;
+        pub const gl_internal_format_INTERNAL_RGB8_SSCALED_GTC: root::gli::gl_internal_format =
+            61445;
+        pub const gl_internal_format_INTERNAL_RGBA8_USCALED_GTC: root::gli::gl_internal_format =
+            61446;
+        pub const gl_internal_format_INTERNAL_RGBA8_SSCALED_GTC: root::gli::gl_internal_format =
+            61447;
+        pub const gl_internal_format_INTERNAL_RGB10A2_USCALED_GTC: root::gli::gl_internal_format =
+            61448;
+        pub const gl_internal_format_INTERNAL_RGB10A2_SSCALED_GTC: root::gli::gl_internal_format =
+            61449;
+        pub const gl_internal_format_INTERNAL_R16_USCALED_GTC: root::gli::gl_internal_format =
+            61450;
+        pub const gl_internal_format_INTERNAL_R16_SSCALED_GTC: root::gli::gl_internal_format =
+            61451;
+        pub const gl_internal_format_INTERNAL_RG16_USCALED_GTC: root::gli::gl_internal_format =
+            61452;
+        pub const gl_internal_format_INTERNAL_RG16_SSCALED_GTC: root::gli::gl_internal_format =
+            61453;
+        pub const gl_internal_format_INTERNAL_RGB16_USCALED_GTC: root::gli::gl_internal_format =
+            61454;
+        pub const gl_internal_format_INTERNAL_RGB16_SSCALED_GTC: root::gli::gl_internal_format =
+            61455;
+        pub const gl_internal_format_INTERNAL_RGBA16_USCALED_GTC: root::gli::gl_internal_format =
+            61456;
+        pub const gl_internal_format_INTERNAL_RGBA16_SSCALED_GTC: root::gli::gl_internal_format =
+            61457;
+        pub type gl_internal_format = u32;
+        pub const gl_external_format_EXTERNAL_NONE: root::gli::gl_external_format = 0;
+        pub const gl_external_format_EXTERNAL_RED: root::gli::gl_external_format = 6403;
+        pub const gl_external_format_EXTERNAL_RG: root::gli::gl_external_format = 33319;
+        pub const gl_external_format_EXTERNAL_RGB: root::gli::gl_external_format = 6407;
+        pub const gl_external_format_EXTERNAL_BGR: root::gli::gl_external_format = 32992;
+        pub const gl_external_format_EXTERNAL_RGBA: root::gli::gl_external_format = 6408;
+        pub const gl_external_format_EXTERNAL_BGRA: root::gli::gl_external_format = 32993;
+        pub const gl_external_format_EXTERNAL_RED_INTEGER: root::gli::gl_external_format = 36244;
+        pub const gl_external_format_EXTERNAL_RG_INTEGER: root::gli::gl_external_format = 33320;
+        pub const gl_external_format_EXTERNAL_RGB_INTEGER: root::gli::gl_external_format = 36248;
+        pub const gl_external_format_EXTERNAL_BGR_INTEGER: root::gli::gl_external_format = 36250;
+        pub const gl_external_format_EXTERNAL_RGBA_INTEGER: root::gli::gl_external_format = 36249;
+        pub const gl_external_format_EXTERNAL_BGRA_INTEGER: root::gli::gl_external_format = 36251;
+        pub const gl_external_format_EXTERNAL_DEPTH: root::gli::gl_external_format = 6402;
+        pub const gl_external_format_EXTERNAL_DEPTH_STENCIL: root::gli::gl_external_format = 34041;
+        pub const gl_external_format_EXTERNAL_STENCIL: root::gli::gl_external_format = 6401;
+        pub const gl_external_format_EXTERNAL_LUMINANCE: root::gli::gl_external_format = 6409;
+        pub const gl_external_format_EXTERNAL_ALPHA: root::gli::gl_external_format = 6406;
+        pub const gl_external_format_EXTERNAL_LUMINANCE_ALPHA: root::gli::gl_external_format = 6410;
+        pub const gl_external_format_EXTERNAL_SRGB_EXT: root::gli::gl_external_format = 35904;
+        pub const gl_external_format_EXTERNAL_SRGB_ALPHA_EXT: root::gli::gl_external_format = 35906;
+        pub type gl_external_format = u32;
+        pub const gl_type_format_TYPE_NONE: root::gli::gl_type_format = 0;
+        pub const gl_type_format_TYPE_I8: root::gli::gl_type_format = 5120;
+        pub const gl_type_format_TYPE_U8: root::gli::gl_type_format = 5121;
+        pub const gl_type_format_TYPE_I16: root::gli::gl_type_format = 5122;
+        pub const gl_type_format_TYPE_U16: root::gli::gl_type_format = 5123;
+        pub const gl_type_format_TYPE_I32: root::gli::gl_type_format = 5124;
+        pub const gl_type_format_TYPE_U32: root::gli::gl_type_format = 5125;
+        pub const gl_type_format_TYPE_I64: root::gli::gl_type_format = 5134;
+        pub const gl_type_format_TYPE_U64: root::gli::gl_type_format = 5135;
+        pub const gl_type_format_TYPE_F16: root::gli::gl_type_format = 5131;
+        pub const gl_type_format_TYPE_F16_OES: root::gli::gl_type_format = 36193;
+        pub const gl_type_format_TYPE_F32: root::gli::gl_type_format = 5126;
+        pub const gl_type_format_TYPE_F64: root::gli::gl_type_format = 5130;
+        pub const gl_type_format_TYPE_UINT32_RGB9_E5_REV: root::gli::gl_type_format = 35902;
+        pub const gl_type_format_TYPE_UINT32_RG11B10F_REV: root::gli::gl_type_format = 35899;
+        pub const gl_type_format_TYPE_UINT8_RG3B2: root::gli::gl_type_format = 32818;
+        pub const gl_type_format_TYPE_UINT8_RG3B2_REV: root::gli::gl_type_format = 33634;
+        pub const gl_type_format_TYPE_UINT16_RGB5A1: root::gli::gl_type_format = 32820;
+        pub const gl_type_format_TYPE_UINT16_RGB5A1_REV: root::gli::gl_type_format = 33638;
+        pub const gl_type_format_TYPE_UINT16_R5G6B5: root::gli::gl_type_format = 33635;
+        pub const gl_type_format_TYPE_UINT16_R5G6B5_REV: root::gli::gl_type_format = 33636;
+        pub const gl_type_format_TYPE_UINT16_RGBA4: root::gli::gl_type_format = 32819;
+        pub const gl_type_format_TYPE_UINT16_RGBA4_REV: root::gli::gl_type_format = 33637;
+        pub const gl_type_format_TYPE_UINT32_RGBA8: root::gli::gl_type_format = 32821;
+        pub const gl_type_format_TYPE_UINT32_RGBA8_REV: root::gli::gl_type_format = 33639;
+        pub const gl_type_format_TYPE_UINT32_RGB10A2: root::gli::gl_type_format = 32822;
+        pub const gl_type_format_TYPE_UINT32_RGB10A2_REV: root::gli::gl_type_format = 33640;
+        pub const gl_type_format_TYPE_UINT8_RG4_REV_GTC: root::gli::gl_type_format = 65533;
+        pub const gl_type_format_TYPE_UINT16_A1RGB5_GTC: root::gli::gl_type_format = 65532;
+        pub type gl_type_format = u32;
+        pub const gl_target_TARGET_1D: root::gli::gl_target = 3552;
+        pub const gl_target_TARGET_1D_ARRAY: root::gli::gl_target = 35864;
+        pub const gl_target_TARGET_2D: root::gli::gl_target = 3553;
+        pub const gl_target_TARGET_2D_ARRAY: root::gli::gl_target = 35866;
+        pub const gl_target_TARGET_3D: root::gli::gl_target = 32879;
+        pub const gl_target_TARGET_RECT: root::gli::gl_target = 34037;
+        pub const gl_target_TARGET_RECT_ARRAY: root::gli::gl_target = 34037;
+        pub const gl_target_TARGET_CUBE: root::gli::gl_target = 34067;
+        pub const gl_target_TARGET_CUBE_ARRAY: root::gli::gl_target = 36873;
+        pub type gl_target = u32;
+        pub const gl_swizzle_SWIZZLE_RED: root::gli::gl_swizzle = 6403;
+        pub const gl_swizzle_SWIZZLE_GREEN: root::gli::gl_swizzle = 6404;
+        pub const gl_swizzle_SWIZZLE_BLUE: root::gli::gl_swizzle = 6405;
+        pub const gl_swizzle_SWIZZLE_ALPHA: root::gli::gl_swizzle = 6406;
+        pub const gl_swizzle_SWIZZLE_ZERO: root::gli::gl_swizzle = 0;
+        pub const gl_swizzle_SWIZZLE_ONE: root::gli::gl_swizzle = 1;
+        pub type gl_swizzle = u32;
+        pub const gl_profile_PROFILE_ES20: root::gli::gl_profile = 0;
+        pub const gl_profile_PROFILE_ES30: root::gli::gl_profile = 1;
+        pub const gl_profile_PROFILE_GL32: root::gli::gl_profile = 2;
+        pub const gl_profile_PROFILE_GL33: root::gli::gl_profile = 3;
+        pub const gl_profile_PROFILE_KTX: root::gli::gl_profile = 4;
+        pub type gl_profile = u32;
+        pub type gl_swizzles = [u32; 4usize];
+        #[repr(C)]
+        #[derive(Debug)]
+        pub struct gl_format {
+            pub Internal: root::gli::gl_internal_format,
+            pub External: root::gli::gl_external_format,
+            pub Type: root::gli::gl_type_format,
+            pub Swizzles: root::gli::gl_swizzles,
+        }
+        impl Default for gl_format {
+            fn default() -> Self {
+                unsafe { ::std::mem::zeroed() }
+            }
+        }
+        #[repr(C)]
+        #[derive(Debug)]
+        pub struct gl_format_desc {
+            pub Internal: root::gli::gl_internal_format,
+            pub External: root::gli::gl_external_format,
+            pub Type: root::gli::gl_type_format,
+            pub Properties: ::std::os::raw::c_uint,
+        }
+        impl Default for gl_format_desc {
+            fn default() -> Self {
+                unsafe { ::std::mem::zeroed() }
+            }
+        }
+        extern "C" {
+            #[doc = " Convert GLI targets into OpenGL texture targets"]
+            #[link_name = "\u{1}translate"]
+            pub fn gl_translate(
+                this: *const root::gli::gl,
+                Target: root::gli::target,
+            ) -> *const root::gli::gl_target;
+        }
+        extern "C" {
+            #[doc = " Convert GLI formats into OpenGL texture formats"]
+            #[link_name = "\u{1}translate"]
+            pub fn gl_translate1(
+                this: *const root::gli::gl,
+                Format: root::gli::format,
+                Swizzle: *const root::gli::swizzles,
+            ) -> root::gli::gl_format;
+        }
+        extern "C" {
+            #[doc = " Convert an OpenGL format into a GLI format"]
+            #[link_name = "\u{1}find"]
+            pub fn gl_find(
+                this: *mut root::gli::gl,
+                InternalFormat: root::gli::gl_internal_format,
+                ExternalFormat: root::gli::gl_external_format,
+                Type: root::gli::gl_type_format,
+            ) -> root::gli::format;
+        }
+        extern "C" {
+            #[link_name = "\u{1}gl"]
+            pub fn gl_gl(this: *mut root::gli::gl, Profile: root::gli::gl_profile);
+        }
+        impl Default for gl {
+            fn default() -> Self {
+                unsafe { ::std::mem::zeroed() }
+            }
+        }
+        impl gl {
+            #[inline]
+            pub unsafe fn translate(
+                &self,
+                Target: root::gli::target,
+            ) -> *const root::gli::gl_target {
+                gl_translate(self, Target)
+            }
+            #[inline]
+            pub unsafe fn translate1(
+                &self,
+                Format: root::gli::format,
+                Swizzle: *const root::gli::swizzles,
+            ) -> root::gli::gl_format {
+                gl_translate1(self, Format, Swizzle)
+            }
+            #[inline]
+            pub unsafe fn find(
+                &mut self,
+                InternalFormat: root::gli::gl_internal_format,
+                ExternalFormat: root::gli::gl_external_format,
+                Type: root::gli::gl_type_format,
+            ) -> root::gli::format {
+                gl_find(self, InternalFormat, ExternalFormat, Type)
+            }
+            #[inline]
+            pub unsafe fn new(Profile: root::gli::gl_profile) -> Self {
+                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                gl_gl(&mut __bindgen_tmp, Profile);
+                __bindgen_tmp
+            }
+        }
         #[doc = " Translation class to convert GLI enums into DirectX enums"]
         #[repr(C)]
         pub struct dx {
@@ -3824,6 +4241,34 @@ pub mod root {
                 ) -> root::gli::texture_cube_array_extent_type;
             }
         }
+        pub mod GL {
+            #[allow(unused_imports)]
+            use self::super::super::super::root;
+            extern "C" {
+                pub fn new_gl_converter(Profile: root::gli::gl_profile) -> root::gli::gl;
+            }
+            extern "C" {
+                pub fn gl_translate(
+                    converter: *const root::gli::gl,
+                    Target: root::gli::target,
+                ) -> root::gli::gl_target;
+            }
+            extern "C" {
+                pub fn gl_translate2(
+                    converter: *const root::gli::gl,
+                    Format: root::gli::format,
+                    Swizzle: *const root::gli::swizzles,
+                ) -> root::gli::gl_format;
+            }
+            extern "C" {
+                pub fn gl_find(
+                    converter: *mut root::gli::gl,
+                    InternalFormat: root::gli::gl_internal_format,
+                    ExternalFormat: root::gli::gl_external_format,
+                    Type: root::gli::gl_type_format,
+                ) -> root::gli::format;
+            }
+        }
         pub mod DX {
             #[allow(unused_imports)]
             use self::super::super::super::root;
@@ -3831,19 +4276,19 @@ pub mod root {
                 pub fn new_dx_converter() -> root::gli::dx;
             }
             extern "C" {
-                pub fn translate(
+                pub fn dx_translate(
                     converter: *const root::gli::dx,
                     Format: root::gli::format,
                 ) -> root::gli::dx_format;
             }
             extern "C" {
-                pub fn find(
+                pub fn dx_find(
                     converter: *const root::gli::dx,
                     FourCC: root::gli::dx_d3dfmt,
                 ) -> root::gli::format;
             }
             extern "C" {
-                pub fn find2(
+                pub fn dx_find2(
                     converter: *const root::gli::dx,
                     FourCC: root::gli::dx_d3dfmt,
                     Format: root::gli::dx_dxgiFormat,

@@ -16,19 +16,19 @@ impl DxConverter {
     /// Convert GLI formats into Direct3D formats.
     pub fn translate(&self, format: crate::format::Format) -> DxFormat {
 
-        let raw = unsafe { bindings::translate(&self.inner, format.0) };
+        let raw = unsafe { bindings::dx_translate(&self.inner, format.0) };
         DxFormat::from(raw)
     }
 
     /// Convert a Direct3D 9 format into a GLI format.
     pub fn find_dx9(&self, d3d_fmt: D3DFormat) -> crate::format::Format {
-        let raw = unsafe { bindings::find(&self.inner, d3d_fmt.0) };
+        let raw = unsafe { bindings::dx_find(&self.inner, d3d_fmt.0) };
         crate::format::Format(raw)
     }
 
     /// Convert a Direct3D 10 format into a GLI format.
     pub fn find_dx10(&self, d3d_fmt: D3DFormat, dxgi_fmt: DXGIFormat) -> crate::format::Format {
-        let raw = unsafe { bindings::find2(&self.inner, d3d_fmt.0, dxgi_fmt.into()) };
+        let raw = unsafe { bindings::dx_find2(&self.inner, d3d_fmt.0, dxgi_fmt.into()) };
         crate::format::Format(raw)
     }
 }

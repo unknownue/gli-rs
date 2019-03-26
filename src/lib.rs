@@ -10,8 +10,9 @@ pub use self::save::*;
 
 pub use self::error::{Result, Error};
 
-pub mod dx;
 pub mod target;
+pub mod dx;
+pub mod gl;
 
 mod load;
 mod save;

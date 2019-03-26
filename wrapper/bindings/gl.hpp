@@ -371,6 +371,33 @@ namespace gli
 }//namespace gli
 
 
+extern "C" {
+
+    namespace bindings {
+
+        namespace GL {
+
+            gli::gl new_gl_converter(gli::gl::profile Profile) {
+                return gli::gl(Profile);
+            }
+
+            gli::gl::target gl_translate(const gli::gl & converter, gli::target Target) {
+                return converter.translate(Target);
+            }
+
+            gli::gl::format gl_translate2(const gli::gl & converter, gli::format Format, const gli::swizzles & Swizzle) {
+                return converter.translate(Format, Swizzle);
+            }
+
+            gli::format gl_find(gli::gl & converter, gli::gl::internal_format InternalFormat, gli::gl::external_format ExternalFormat, gli::gl::type_format Type) {
+
+                return converter.find(InternalFormat, ExternalFormat, Type);
+            }
+        }
+    }
+}
+
+
 #ifdef GLI_IMPLEMENTATION
 #include "gl.inl"
 #endif
