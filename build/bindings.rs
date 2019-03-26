@@ -359,7 +359,7 @@ pub mod root {
             pub fn is_depth_stencil(Format: root::gli::format) -> bool;
         }
         #[repr(C)]
-        #[derive(Debug)]
+        #[derive(Debug, Default)]
         pub struct storage_linear {
             pub Layers: root::gli::storage_linear_size_type,
             pub Faces: root::gli::storage_linear_size_type,
@@ -728,6 +728,11 @@ pub mod root {
         }
         pub const texture_cache_ctor_DEFAULT: root::gli::texture_cache_ctor = 0;
         pub type texture_cache_ctor = u32;
+        impl Default for texture_cache {
+            fn default() -> Self {
+                unsafe { ::std::mem::zeroed() }
+            }
+        }
         extern "C" {
             #[doc = " Return whether the texture instance is empty, no storage_type or description have been assigned to the instance."]
             #[link_name = "\u{1}empty"]
@@ -949,6 +954,11 @@ pub mod root {
                 Format: root::gli::texture_format_type,
                 Swizzles: *const root::gli::texture_swizzles_type,
             );
+        }
+        impl Default for texture {
+            fn default() -> Self {
+                unsafe { ::std::mem::zeroed() }
+            }
         }
         impl texture {
             #[inline]
@@ -1238,6 +1248,11 @@ pub mod root {
                 BaseLevel: root::gli::image_size_type,
             );
         }
+        impl Default for image {
+            fn default() -> Self {
+                unsafe { ::std::mem::zeroed() }
+            }
+        }
         impl image {
             #[inline]
             pub unsafe fn empty(&self) -> bool {
@@ -1384,6 +1399,11 @@ pub mod root {
                 BaseLevel: root::gli::texture_size_type,
                 MaxLevel: root::gli::texture_size_type,
             );
+        }
+        impl Default for texture1d {
+            fn default() -> Self {
+                unsafe { ::std::mem::zeroed() }
+            }
         }
         impl texture1d {
             #[inline]
@@ -1541,6 +1561,11 @@ pub mod root {
                 BaseLevel: root::gli::texture_size_type,
                 MaxLevel: root::gli::texture_size_type,
             );
+        }
+        impl Default for texture1d_array {
+            fn default() -> Self {
+                unsafe { ::std::mem::zeroed() }
+            }
         }
         impl texture1d_array {
             #[inline]
@@ -1719,6 +1744,11 @@ pub mod root {
                 MaxLevel: root::gli::texture_size_type,
             );
         }
+        impl Default for texture2d {
+            fn default() -> Self {
+                unsafe { ::std::mem::zeroed() }
+            }
+        }
         impl texture2d {
             #[inline]
             pub unsafe fn extent(
@@ -1875,6 +1905,11 @@ pub mod root {
                 BaseLevel: root::gli::texture_size_type,
                 MaxLevel: root::gli::texture_size_type,
             );
+        }
+        impl Default for texture2d_array {
+            fn default() -> Self {
+                unsafe { ::std::mem::zeroed() }
+            }
         }
         impl texture2d_array {
             #[inline]
@@ -2053,6 +2088,11 @@ pub mod root {
                 MaxLevel: root::gli::texture_size_type,
             );
         }
+        impl Default for texture3d {
+            fn default() -> Self {
+                unsafe { ::std::mem::zeroed() }
+            }
+        }
         impl texture3d {
             #[inline]
             pub unsafe fn extent(
@@ -2207,6 +2247,11 @@ pub mod root {
                 BaseLevel: root::gli::texture_size_type,
                 MaxLevel: root::gli::texture_size_type,
             );
+        }
+        impl Default for texture_cube {
+            fn default() -> Self {
+                unsafe { ::std::mem::zeroed() }
+            }
         }
         impl texture_cube {
             #[inline]
@@ -2375,6 +2420,11 @@ pub mod root {
                 BaseLevel: root::gli::texture_size_type,
                 MaxLevel: root::gli::texture_size_type,
             );
+        }
+        impl Default for texture_cube_array {
+            fn default() -> Self {
+                unsafe { ::std::mem::zeroed() }
+            }
         }
         impl texture_cube_array {
             #[inline]
@@ -3016,7 +3066,7 @@ pub mod root {
             root::gli::dx_dxgi_format_gli = 112;
         pub type dx_dxgi_format_gli = u32;
         #[repr(C)]
-        #[derive(Debug)]
+        #[derive(Debug, Default)]
         pub struct dx_dxgiFormat {
             pub DDS: root::__BindgenUnionField<root::gli::dx_dxgi_format_dds>,
             pub GLI: root::__BindgenUnionField<root::gli::dx_dxgi_format_gli>,
@@ -3040,6 +3090,11 @@ pub mod root {
             pub D3DFormat: root::gli::dx_d3dfmt,
             pub DXGIFormat: root::gli::dx_dxgiFormat,
             pub Mask: root::glm::u32vec4,
+        }
+        impl Default for dx_format {
+            fn default() -> Self {
+                unsafe { ::std::mem::zeroed() }
+            }
         }
         extern "C" {
             #[doc = " Convert GLI formats into Direct3D formats"]
@@ -3069,6 +3124,11 @@ pub mod root {
         extern "C" {
             #[link_name = "\u{1}dx"]
             pub fn dx_dx(this: *mut root::gli::dx);
+        }
+        impl Default for dx {
+            fn default() -> Self {
+                unsafe { ::std::mem::zeroed() }
+            }
         }
         impl dx {
             #[inline]
@@ -3106,7 +3166,7 @@ pub mod root {
         #[allow(unused_imports)]
         use self::super::super::root;
         #[repr(C)]
-        #[derive(Debug)]
+        #[derive(Debug, Default)]
         pub struct allocator {
             pub _address: u8,
         }
@@ -3120,25 +3180,25 @@ pub mod root {
         pub type allocator_propagate_on_container_move_assignment = u8;
         pub type allocator_is_always_equal = u8;
         #[repr(C)]
-        #[derive(Debug)]
+        #[derive(Debug, Default)]
         pub struct allocator_rebind {
             pub _address: u8,
         }
         pub type allocator_rebind_other = u8;
         #[repr(C)]
-        #[derive(Debug)]
+        #[derive(Debug, Default)]
         pub struct shared_ptr {
             pub _address: u8,
         }
         pub type shared_ptr_element_type = u8;
         #[repr(C)]
-        #[derive(Debug)]
+        #[derive(Debug, Default)]
         pub struct shared_ptr___nat {
             pub _address: u8,
         }
         pub type shared_ptr___shared_ptr_default_allocator_type = u8;
         #[repr(C)]
-        #[derive(Debug)]
+        #[derive(Debug, Default)]
         pub struct vector {
             pub _address: u8,
         }
@@ -3159,7 +3219,7 @@ pub mod root {
         pub type vector_reverse_iterator = u8;
         pub type vector_const_reverse_iterator = u8;
         #[repr(C)]
-        #[derive(Debug)]
+        #[derive(Debug, Default)]
         pub struct vector___RAII_IncreaseAnnotator {
             pub _address: u8,
         }
@@ -3767,6 +3827,9 @@ pub mod root {
         pub mod DX {
             #[allow(unused_imports)]
             use self::super::super::super::root;
+            extern "C" {
+                pub fn new_dx_converter() -> root::gli::dx;
+            }
             extern "C" {
                 pub fn translate(
                     converter: *const root::gli::dx,

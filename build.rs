@@ -77,6 +77,7 @@ fn generate_bindings() {
         .disable_untagged_union()
         .derive_debug(true)
         .derive_copy(false)
+        .derive_default(true)
         .rustfmt_bindings(true)
         .trust_clang_mangling(false)
         .layout_tests(false);

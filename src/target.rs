@@ -1,5 +1,6 @@
 
 use crate::ffi::root::gli;
+use crate::format::Format;
 
 use std::fmt;
 
@@ -80,5 +81,12 @@ impl fmt::Display for Target {
             | Target::TARGET_CUBE_ARRAY => write!(f, stringify!(Target::TARGET_CUBE_ARRAY)),
             | _ => write!(f, "Unknown target"),
         }
+    }
+}
+
+/// Evaluate whether a target and format combinaison is only supported by the DDS container through GLI DDS extension.
+pub fn is_dds_ext(target: Target, fmt: Format) -> bool {
+    unsafe {
+        crate::ffi::root::bindings::DX::is_dds_ext(target.0, fmt.0)
     }
 }

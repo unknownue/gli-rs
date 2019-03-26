@@ -491,6 +491,10 @@ extern "C" {
 
 		namespace DX {
 
+		    gli::dx new_dx_converter() {
+		        return gli::dx();
+		    }
+
 			gli::dx::format translate(const gli::dx & converter, gli::format Format) {
 				return converter.translate(Format);
 			}
