@@ -109,3 +109,18 @@ impl Drop for gli::image {
         }
     }
 }
+
+impl std::cmp::PartialEq for GliImage {
+
+    /// Compare two images. Two images are equal when the data is the same.
+    fn eq(&self, other: &GliImage) -> bool {
+
+        use crate::ffi::root::bindings::Comparison::is_image_equal;
+
+        unsafe {
+            is_image_equal(&self.ffi, &other.ffi)
+        }
+    }
+}
+
+impl std::cmp::Eq for GliImage {}

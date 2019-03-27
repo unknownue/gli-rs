@@ -32,7 +32,7 @@ pub(crate) mod inner {
     }
 }
 
-pub trait GliTexture: inner::TextureAccessible + Sized {
+pub trait GliTexture: inner::TextureAccessible + Sized + PartialEq + Eq {
     const TARGET_TYPE: Target;
     type ExtentType: From<[u32; 3]>;
 
@@ -184,3 +184,4 @@ impl Drop for crate::ffi::root::gli::texture {
         }
     }
 }
+

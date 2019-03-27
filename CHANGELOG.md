@@ -1,3 +1,10 @@
+# Version 0.3.0 (2019-3-27)
+
+- Implement API in gli::dx and gli::gl namespace.
+- 
+
+
+
 # Version 0.2.1 (2019-3-14)
 
 - Now gli-rs is able to build on main desktop platforms(By manually implement link header files).

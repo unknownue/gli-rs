@@ -16,8 +16,10 @@ pub mod gl;
 
 mod load;
 mod save;
+
 mod texture;
 mod image;
+
 mod format;
 mod extent;
 

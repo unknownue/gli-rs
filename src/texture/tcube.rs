@@ -95,3 +95,18 @@ impl From<gli::texture> for TextureCube {
         TextureCube { ffi: gli::texture_cube { _base: ffi } }
     }
 }
+
+impl std::cmp::PartialEq for TextureCube {
+
+    /// Compare two textures. Two textures are the same when the data, the format and the targets are the same.
+    fn eq(&self, other: &TextureCube) -> bool {
+
+        use crate::ffi::root::bindings::Comparison::is_texture_equal;
+
+        unsafe {
+            is_texture_equal(self.raw_texture(), other.raw_texture())
+        }
+    }
+}
+
+impl std::cmp::Eq for TextureCube {}

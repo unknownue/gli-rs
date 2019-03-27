@@ -88,3 +88,18 @@ impl From<gli::texture> for Texture3D {
         Texture3D { ffi: gli::texture3d { _base: ffi } }
     }
 }
+
+impl std::cmp::PartialEq for Texture3D {
+
+    /// Compare two textures. Two textures are the same when the data, the format and the targets are the same.
+    fn eq(&self, other: &Texture3D) -> bool {
+
+        use crate::ffi::root::bindings::Comparison::is_texture_equal;
+
+        unsafe {
+            is_texture_equal(self.raw_texture(), other.raw_texture())
+        }
+    }
+}
+
+impl std::cmp::Eq for Texture3D {}

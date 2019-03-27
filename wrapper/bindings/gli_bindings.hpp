@@ -29,3 +29,5 @@ namespace gli {
 
 #include "load.hpp"
 #include "save.hpp"
+
+#include "comparison.hpp"
