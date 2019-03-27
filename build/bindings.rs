@@ -4254,7 +4254,7 @@ pub mod root {
                 ) -> root::gli::gl_target;
             }
             extern "C" {
-                pub fn gl_translate2(
+                pub fn gl_translate1(
                     converter: *const root::gli::gl,
                     Format: root::gli::format,
                     Swizzle: *const root::gli::swizzles,

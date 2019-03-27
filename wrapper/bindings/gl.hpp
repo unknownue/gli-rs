@@ -385,7 +385,7 @@ extern "C" {
                 return converter.translate(Target);
             }
 
-            gli::gl::format gl_translate2(const gli::gl & converter, gli::format Format, const gli::swizzles & Swizzle) {
+            gli::gl::format gl_translate1(const gli::gl & converter, gli::format Format, const gli::swizzles & Swizzle) {
                 return converter.translate(Format, Swizzle);
             }
 
