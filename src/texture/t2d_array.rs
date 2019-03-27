@@ -107,6 +107,16 @@ impl std::cmp::PartialEq for Texture2DArray {
             is_texture_equal(self.raw_texture(), other.raw_texture())
         }
     }
+
+    /// Compare two textures. Two textures are the same when the data, the format and the targets are the same.
+    fn ne(&self, other: &Texture2DArray) -> bool {
+
+        use crate::ffi::root::bindings::Comparison::is_texture_unequal;
+
+        unsafe {
+            is_texture_unequal(self.raw_texture(), other.raw_texture())
+        }
+    }
 }
 
 impl std::cmp::Eq for Texture2DArray {}

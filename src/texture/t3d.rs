@@ -100,6 +100,16 @@ impl std::cmp::PartialEq for Texture3D {
             is_texture_equal(self.raw_texture(), other.raw_texture())
         }
     }
+
+    /// Compare two textures. Two textures are the same when the data, the format and the targets are the same.
+    fn ne(&self, other: &Texture3D) -> bool {
+
+        use crate::ffi::root::bindings::Comparison::is_texture_unequal;
+
+        unsafe {
+            is_texture_unequal(self.raw_texture(), other.raw_texture())
+        }
+    }
 }
 
 impl std::cmp::Eq for Texture3D {}

@@ -121,6 +121,16 @@ impl std::cmp::PartialEq for GliImage {
             is_image_equal(&self.ffi, &other.ffi)
         }
     }
+
+    /// Compare two images. Two images are equal when the date is the same.
+    fn ne(&self, other: &GliImage) -> bool {
+
+        use crate::ffi::root::bindings::Comparison::is_image_unequal;
+
+        unsafe {
+            is_image_unequal(&self.ffi, &other.ffi)
+        }
+    }
 }
 
 impl std::cmp::Eq for GliImage {}
