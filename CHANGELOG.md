@@ -1,7 +1,7 @@
 # Version 0.3.0 (2019-3-27)
 
 - Implement API in gli::dx and gli::gl namespace.
-- 
+- Implement `ParticalEq` and `Eq` for `GliImage` and `Texture*` structs.
 
 
 

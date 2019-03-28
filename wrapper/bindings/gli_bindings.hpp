@@ -15,6 +15,7 @@ namespace gli {
 #include "type.hpp"
 #include "target.hpp"
 #include "format.hpp"
+#include "comparison.hpp"
 
 #include "storage_linear.hpp"
 #include "image.hpp"
@@ -30,4 +31,11 @@ namespace gli {
 #include "load.hpp"
 #include "save.hpp"
 
-#include "comparison.hpp"
+#include "sampler.hpp"
+#include "sampler1d.hpp"
+#include "sampler1d_array.hpp"
+#include "sampler2d.hpp"
+#include "sampler2d_array.hpp"
+#include "sampler3d.hpp"
+#include "sampler_cube.hpp"
+#include "sampler_cube_array.hpp"

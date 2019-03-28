@@ -4241,6 +4241,34 @@ pub mod root {
                 ) -> root::gli::texture_cube_array_extent_type;
             }
         }
+        pub mod Comparison {
+            #[allow(unused_imports)]
+            use self::super::super::super::root;
+            extern "C" {
+                pub fn is_image_equal(
+                    image_a: *const root::gli::image,
+                    image_b: *const root::gli::image,
+                ) -> bool;
+            }
+            extern "C" {
+                pub fn is_image_unequal(
+                    image_a: *const root::gli::image,
+                    image_b: *const root::gli::image,
+                ) -> bool;
+            }
+            extern "C" {
+                pub fn is_texture_equal(
+                    a: *const root::gli::texture,
+                    b: *const root::gli::texture,
+                ) -> bool;
+            }
+            extern "C" {
+                pub fn is_texture_unequal(
+                    a: *const root::gli::texture,
+                    b: *const root::gli::texture,
+                ) -> bool;
+            }
+        }
         pub mod GL {
             #[allow(unused_imports)]
             use self::super::super::super::root;
@@ -4357,34 +4385,6 @@ pub mod root {
                 pub fn save_save_ktx(
                     Texture: *const root::gli::texture,
                     Path: *const ::std::os::raw::c_char,
-                ) -> bool;
-            }
-        }
-        pub mod Comparison {
-            #[allow(unused_imports)]
-            use self::super::super::super::root;
-            extern "C" {
-                pub fn is_image_equal(
-                    image_a: *const root::gli::image,
-                    image_b: *const root::gli::image,
-                ) -> bool;
-            }
-            extern "C" {
-                pub fn is_image_unequal(
-                    image_a: *const root::gli::image,
-                    image_b: *const root::gli::image,
-                ) -> bool;
-            }
-            extern "C" {
-                pub fn is_texture_equal(
-                    a: *const root::gli::texture,
-                    b: *const root::gli::texture,
-                ) -> bool;
-            }
-            extern "C" {
-                pub fn is_texture_unequal(
-                    a: *const root::gli::texture,
-                    b: *const root::gli::texture,
                 ) -> bool;
             }
         }
