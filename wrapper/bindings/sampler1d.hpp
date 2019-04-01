@@ -33,6 +33,10 @@ namespace gli
 		/// Access the sampler texture object
 		texture_type const& operator()() const;
 
+		void set_border_color(texel_type BorderColor) {
+		    this->BorderColor = BorderColor;
+		}
+
 		/// Fetch a texel from the sampler texture
 		texel_type texel_fetch(extent_type const& TexelCoord, size_type const& Level) const;
 
@@ -69,6 +73,128 @@ namespace gli
 	typedef sampler1d<int> isampler1D;
 }//namespace gli
 
+extern "C" {
+
+    namespace bindings {
+
+        namespace FSampler1D {
+            
+            gli::fsampler1D fsampler1d_new(const gli::texture1d & Texture, gli::wrap Wrap, gli::filter Mip, gli::filter Min) {
+                return gli::fsampler1D(Texture, Wrap, Mip, Min);
+            }
+
+            void fsampler1d_set_border_color(gli::fsampler1D & Sampler, gli::fsampler1D::texel_type BorderColor) {
+                Sampler.set_border_color(BorderColor);
+            }
+
+            void fsampler1d_clear(gli::fsampler1D & Sampler, gli::fsampler1D::texel_type Texel) {
+                Sampler.clear(Texel);
+            }
+
+            void fsampler1d_generate_mipmaps1(gli::fsampler1D & Sampler, gli::filter Minification) {
+                Sampler.generate_mipmaps(Minification);
+            }
+
+            void fsampler1d_generate_mipmaps2(gli::fsampler1D & Sampler, gli::texture::size_type BaseLevel, gli::texture::size_type  MaxLevel, gli::filter Minification) {
+                Sampler.generate_mipmaps(BaseLevel, MaxLevel, Minification);
+            }
+
+            gli::fsampler1D::texel_type fsampler1d_texel_fetch(const gli::fsampler1D & Sampler, gli::fsampler1D::extent_type TexelCoord, gli::texture::size_type Level) {
+                return Sampler.texel_fetch(TexelCoord, Level);
+            }
+
+            void fsampler1d_texel_write(gli::fsampler1D & Sampler, gli::fsampler1D::extent_type TexelCoord, gli::texture::size_type Level, gli::fsampler1D::texel_type Texel) {
+                return Sampler.texel_write(TexelCoord, Level, Texel);
+            }
+
+            gli::fsampler1D::texel_type fsampler1d_texel_lod(const gli::fsampler1D & Sampler, gli::vec<1, float, (glm::qualifier)0U> SampleCoord, gli::texture::size_type Level) {
+                return Sampler.texture_lod(SampleCoord, Level);
+            }
+
+            const gli::texture1d & fsampler1d_target_texture(const gli::fsampler1D & Sampler) {
+                return Sampler.operator()();
+            }
+        }
+
+//        namespace DSampler1D {
+//
+//            gli::dsampler1D dsampler1D_new(const gli::texture1d & Texture, gli::wrap Wrap, gli::filter Mip, gli::filter Min) {
+//                return gli::dsampler1D(Texture, Wrap, Mip, Min);
+//            }
+//
+//            void dsampler1D_set_border_color(gli::dsampler1D & Sampler, gli::dsampler1D::texel_type BorderColor) {
+//                Sampler.set_border_color(BorderColor);
+//            }
+//
+//            void dsampler1D_clear(gli::dsampler1D & Sampler, gli::dsampler1D::texel_type & Texel) {
+//                Sampler.clear(Texel);
+//            }
+//
+//            void dsampler1D_generate_mipmaps1(gli::dsampler1D & Sampler, gli::filter Minification) {
+//                Sampler.generate_mipmaps(Minification);
+//            }
+//
+//            void dsampler1D_generate_mipmaps2(gli::dsampler1D & Sampler, gli::texture::size_type BaseLevel, gli::texture::size_type MaxLevel, gli::filter Minification) {
+//                Sampler.generate_mipmaps(BaseLevel, MaxLevel, Minification);
+//            }
+//
+//            gli::dsampler1D::texel_type dsampler1D_texel_fetch(const gli::dsampler1D & Sampler, const gli::dsampler1D::extent_type & TexelCoord, const gli::texture::size_type & Level) {
+//                return Sampler.texel_fetch(TexelCoord, Level);
+//            }
+//
+//            void dsampler1D_texel_write(gli::dsampler1D & Sampler, const gli::dsampler1D::extent_type & TexelCoord, const gli::texture::size_type & Level, const gli::dsampler1D::texel_type & Texel) {
+//                return Sampler.texel_write(TexelCoord, Level, Texel);
+//            }
+//
+//            gli::dsampler1D::texel_type dsampler1D_texel_lod(const gli::dsampler1D & Sampler, const gli::vec<1, double, (glm::qualifier)0U> SampleCoord, const gli::texture::size_type & Level) {
+//                return Sampler.texture_lod(SampleCoord, Level);
+//            }
+//
+//            const gli::texture1d & dsampler1D_target_texture(const gli::dsampler1D & Sampler) {
+//                return Sampler.operator()();
+//            }
+//        }
+//
+//        namespace USampler1D {
+//
+//            gli::usampler1D usampler1d_new(const gli::texture1d & Texture, gli::wrap Wrap, gli::filter Mip, gli::filter Min) {
+//                return gli::usampler1D(Texture, Wrap, Mip, Min, gli::usampler1D::texel_type(0, 0, 0, 1));
+//            }
+//
+//            void usampler1D_set_border_color(gli::usampler1D & Sampler, gli::usampler1D::texel_type BorderColor) {
+//                Sampler.set_border_color(BorderColor);
+//            }
+//
+//            void usampler1D_clear(gli::usampler1D & Sampler, gli::usampler1D::texel_type & Texel) {
+//                Sampler.clear(Texel);
+//            }
+//
+//            void usampler1D_generate_mipmaps1(gli::usampler1D & Sampler, gli::filter Minification) {
+//                Sampler.generate_mipmaps(Minification);
+//            }
+//
+//            void usampler1D_generate_mipmaps2(gli::usampler1D & Sampler, gli::texture::size_type BaseLevel, gli::texture::size_type MaxLevel, gli::filter Minification) {
+//                Sampler.generate_mipmaps(BaseLevel, MaxLevel, Minification);
+//            }
+//
+//            gli::usampler1D::texel_type usampler1D_texel_fetch(const gli::usampler1D & Sampler, const gli::usampler1D::extent_type & TexelCoord, const gli::texture::size_type & Level) {
+//                return Sampler.texel_fetch(TexelCoord, Level);
+//            }
+//
+//            void usampler1D_texel_write(gli::usampler1D & Sampler, const gli::usampler1D::extent_type & TexelCoord, const gli::texture::size_type & Level, const gli::usampler1D::texel_type & Texel) {
+//                return Sampler.texel_write(TexelCoord, Level, Texel);
+//            }
+//
+//            gli::usampler1D::texel_type usampler1D_texel_lod(const gli::usampler1D & Sampler, const gli::vec<1, float, (glm::qualifier)0U> SampleCoord, const gli::texture::size_type & Level) {
+//                return Sampler.texture_lod(SampleCoord, Level);
+//            }
+//
+//            const gli::texture1d & usampler1D_target_texture(const gli::usampler1D & Sampler) {
+//                return Sampler.operator()();
+//            }
+//        }
+    }
+}
 
 #ifdef GLI_IMPLEMENTATION
 #include "sampler1d.inl"

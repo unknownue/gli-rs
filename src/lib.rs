@@ -13,16 +13,14 @@ pub use self::error::{Result, Error};
 pub mod target;
 pub mod dx;
 pub mod gl;
+pub mod sampler;
 
 mod load;
 mod save;
-
 mod texture;
 mod image;
-
 mod format;
 mod extent;
-
 mod ffi;
 mod error;
 

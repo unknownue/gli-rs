@@ -63,6 +63,12 @@ impl Texture1D {
         debug_assert!(level < self.levels());
         GliImage::shared_from_texture(self, self.format(), self.base_layer(), self.base_face(), self.base_level() + level)
     }
+
+    #[doc(hidden)]
+    #[inline]
+    pub(crate) fn raw_ffi(&self) -> &gli::texture1d {
+        &self.ffi
+    }
 }
 
 impl GliTexture for Texture1D {

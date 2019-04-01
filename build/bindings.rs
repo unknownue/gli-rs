@@ -358,6 +358,61 @@ pub mod root {
             #[doc = " Evaluate whether the format has depth and stencil components"]
             pub fn is_depth_stencil(Format: root::gli::format) -> bool;
         }
+        pub mod detail {
+            #[allow(unused_imports)]
+            use self::super::super::super::root;
+            #[repr(C)]
+            #[derive(Debug, Default)]
+            pub struct interpolate {
+                pub _address: u8,
+            }
+            pub type interpolate_type = f32;
+            pub type filterBase_size_type = [u8; 0usize];
+            pub type filterBase_extent_type = [u8; 0usize];
+            pub type filterBase_filterFunc<
+                texture_type,
+                interpolate_type,
+                normalized_type,
+                fetch_type,
+                texel_type,
+            > = ::std::option::Option<
+                unsafe extern "C" fn(
+                    Texture: *const texture_type,
+                    Fetch: fetch_type,
+                    SampleCoordWrap: *const normalized_type,
+                    Layer: root::gli::detail::filterBase_size_type,
+                    Face: root::gli::detail::filterBase_size_type,
+                    Level: interpolate_type,
+                    BorderColor: *const texel_type,
+                ) -> texel_type,
+            >;
+            pub type convert_fetchFunc<textureType> = ::std::option::Option<
+                unsafe extern "C" fn(
+                    Texture: *const textureType,
+                    TexelCoord: *const [u8; 0usize],
+                    Layer: [u8; 0usize],
+                    Face: [u8; 0usize],
+                    Level: [u8; 0usize],
+                ) -> u8,
+            >;
+            pub type convert_writeFunc<textureType> = ::std::option::Option<
+                unsafe extern "C" fn(
+                    Texture: *mut textureType,
+                    TexelCoord: *const [u8; 0usize],
+                    Layer: [u8; 0usize],
+                    Face: [u8; 0usize],
+                    Level: [u8; 0usize],
+                    Texel: *mut u8,
+                ),
+            >;
+            #[repr(C)]
+            #[derive(Debug, Default)]
+            pub struct convert_func<textureType> {
+                pub Fetch: root::gli::detail::convert_fetchFunc<textureType>,
+                pub Write: root::gli::detail::convert_writeFunc<textureType>,
+                pub _phantom_0: ::std::marker::PhantomData<::std::cell::UnsafeCell<textureType>>,
+            }
+        }
         #[repr(C)]
         #[derive(Debug, Default)]
         pub struct storage_linear {
@@ -3578,6 +3633,35 @@ pub mod root {
             #[doc = " Evaluate whether a target and format combinaison is only supported by the DDS container through GLI DDS extension."]
             pub fn is_dds_ext(Target: root::gli::target, Format: root::gli::format) -> bool;
         }
+        pub const filter_FILTER_NONE: root::gli::filter = 0;
+        pub const filter_FILTER_NEAREST: root::gli::filter = 1;
+        pub const filter_FILTER_FIRST: root::gli::filter = 1;
+        pub const filter_FILTER_LINEAR: root::gli::filter = 2;
+        pub const filter_FILTER_LAST: root::gli::filter = 2;
+        #[doc = " Texture filtring modes"]
+        pub type filter = u32;
+        pub const wrap_WRAP_CLAMP_TO_EDGE: root::gli::wrap = 0;
+        pub const wrap_WRAP_FIRST: root::gli::wrap = 0;
+        pub const wrap_WRAP_CLAMP_TO_BORDER: root::gli::wrap = 1;
+        pub const wrap_WRAP_REPEAT: root::gli::wrap = 2;
+        pub const wrap_WRAP_MIRROR_REPEAT: root::gli::wrap = 3;
+        pub const wrap_WRAP_MIRROR_CLAMP_TO_EDGE: root::gli::wrap = 4;
+        pub const wrap_WRAP_MIRROR_CLAMP_TO_BORDER: root::gli::wrap = 5;
+        pub const wrap_WRAP_LAST: root::gli::wrap = 5;
+        #[doc = " Texture coordinate wrapping mode"]
+        pub type wrap = u32;
+        pub type sampler1d_interpolate_type = root::gli::detail::interpolate;
+        pub type sampler1d_texture_type = root::gli::texture1d;
+        pub type sampler1d_size_type = root::gli::texture_size_type;
+        pub type sampler1d_extent_type = root::gli::texture1d_extent_type;
+        pub type sampler1d_level_type = root::gli::sampler1d_interpolate_type;
+        pub type sampler1d_normalized_type = u8;
+        pub type sampler1d_texel_type = u8;
+        pub type sampler1d_convert_type = u8;
+        pub type sampler1d_fetch_type = u8;
+        pub type sampler1d_write_type = u8;
+        pub type sampler1d_filter_type = u8;
+        pub type fsampler1D = [u64; 66usize];
     }
     pub mod std {
         #[allow(unused_imports)]
@@ -4386,6 +4470,68 @@ pub mod root {
                     Texture: *const root::gli::texture,
                     Path: *const ::std::os::raw::c_char,
                 ) -> bool;
+            }
+        }
+        pub mod FSampler1D {
+            #[allow(unused_imports)]
+            use self::super::super::super::root;
+            extern "C" {
+                pub fn fsampler1d_new(
+                    Texture: *const root::gli::texture1d,
+                    Wrap: root::gli::wrap,
+                    Mip: root::gli::filter,
+                    Min: root::gli::filter,
+                ) -> root::gli::fsampler1D;
+            }
+            extern "C" {
+                pub fn fsampler1d_set_border_color(
+                    Sampler: *mut root::gli::fsampler1D,
+                    BorderColor: [u32; 4usize],
+                );
+            }
+            extern "C" {
+                pub fn fsampler1d_clear(Sampler: *mut root::gli::fsampler1D, Texel: [u32; 4usize]);
+            }
+            extern "C" {
+                pub fn fsampler1d_generate_mipmaps1(
+                    Sampler: *mut root::gli::fsampler1D,
+                    Minification: root::gli::filter,
+                );
+            }
+            extern "C" {
+                pub fn fsampler1d_generate_mipmaps2(
+                    Sampler: *mut root::gli::fsampler1D,
+                    BaseLevel: root::gli::texture_size_type,
+                    MaxLevel: root::gli::texture_size_type,
+                    Minification: root::gli::filter,
+                );
+            }
+            extern "C" {
+                pub fn fsampler1d_texel_fetch(
+                    Sampler: *const root::gli::fsampler1D,
+                    TexelCoord: u32,
+                    Level: root::gli::texture_size_type,
+                ) -> [u32; 4usize];
+            }
+            extern "C" {
+                pub fn fsampler1d_texel_write(
+                    Sampler: *mut root::gli::fsampler1D,
+                    TexelCoord: u32,
+                    Level: root::gli::texture_size_type,
+                    Texel: [u32; 4usize],
+                );
+            }
+            extern "C" {
+                pub fn fsampler1d_texel_lod(
+                    Sampler: *const root::gli::fsampler1D,
+                    SampleCoord: u32,
+                    Level: root::gli::texture_size_type,
+                ) -> [u32; 4usize];
+            }
+            extern "C" {
+                pub fn fsampler1d_target_texture(
+                    Sampler: *const root::gli::fsampler1D,
+                ) -> *const root::gli::texture1d;
             }
         }
     }

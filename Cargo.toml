@@ -2,12 +2,12 @@
 [package]
 name    = "gli-rs"
 version = "0.2.1"
-authors = ["usami-renko <usami-ssc@protonmail.com>"]
+authors = ["Houjuu-Nue <usami-ssc@protonmail.com>"]
 edition = "2018"
 build   = "build.rs"
 
-homepage    = "https://github.com/Usami-Renko/gli-rs"
-repository  = "https://github.com/Usami-Renko/gli-rs"
+homepage    = "https://github.com/Houjuu-Nue/gli-rs"
+repository  = "https://github.com/Houjuu-Nue/gli-rs"
 description = "Rust binding for OpenGL Image(GLI)"
 keywords    = ["Graphics", "gli", "Texture"]
 license     = "MIT"
@@ -24,7 +24,7 @@ include = [
 ]
 
 [badges]
-travis-ci = { repository = "Usami-Renko/gli-rs" }
+travis-ci = { repository = "Houjuu-Nue/gli-rs" }
 
 [dependencies]
 failure = "0.1.5"
@@ -33,7 +33,7 @@ failure = "0.1.5"
 cc = { version = "1.0.31", features = ["parallel"] }
 
 [build-dependencies.bindgen]
-version = "0.48.1"
+version = "0.49.0"
 optional = true
 
 [features]
