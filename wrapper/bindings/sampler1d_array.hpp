@@ -29,6 +29,10 @@ namespace gli
 
 		sampler1d_array(texture_type const& Texture, wrap Wrap, filter Mip = FILTER_NEAREST, filter Min = FILTER_NEAREST, texel_type const& BorderColor = texel_type(0, 0, 0, 1));
 
+        void set_border_color(texel_type BorderColor) {
+            this->BorderColor = BorderColor;
+        }
+
 		/// Access the sampler texture object
 		texture_type const& operator()() const;
 
@@ -69,6 +73,51 @@ namespace gli
 
 }//namespace gli
 
+
+extern "C" {
+
+    namespace bindings {
+
+        namespace FSampler1DArray {
+
+            gli::fsampler1DArray fsampler1darray_new(const gli::texture1d_array & Texture, gli::wrap Wrap, gli::filter Mip, gli::filter Min) {
+                return gli::fsampler1DArray(Texture, Wrap, Mip, Min);
+            }
+
+            void fsampler1darray_set_border_color(gli::fsampler1DArray & Sampler, gli::fsampler1DArray::texel_type BorderColor) {
+                Sampler.set_border_color(BorderColor);
+            }
+
+            void fsampler1darray_clear(gli::fsampler1DArray & Sampler, gli::fsampler1DArray::texel_type Texel) {
+                Sampler.clear(Texel);
+            }
+
+            gli::fsampler1DArray::texel_type fsampler1darray_texel_fetch(const gli::fsampler1DArray & Sampler, gli::fsampler1DArray::extent_type TexelCoord, gli::texture::size_type Layer, gli::texture::size_type Level) {
+                return Sampler.texel_fetch(TexelCoord, Layer, Level);
+            }
+
+            void fsampler1darray_texel_write(gli::fsampler1DArray & Sampler, gli::fsampler1DArray::extent_type TexelCoord, gli::texture::size_type Layer, gli::texture::size_type Level, gli::fsampler1DArray::texel_type Texel) {
+                return Sampler.texel_write(TexelCoord, Layer, Level, Texel);
+            }
+
+            gli::fsampler1DArray::texel_type fsampler1darray_texel_lod(const gli::fsampler1DArray & Sampler, gli::vec<1, float, (glm::qualifier)0U> SampleCoord, gli::texture::size_type Layer, gli::texture::size_type Level) {
+                return Sampler.texture_lod(SampleCoord, Layer, Level);
+            }
+
+            const gli::texture1d_array & fsampler1darray_target_texture(const gli::fsampler1DArray & Sampler) {
+                return Sampler.operator()();
+            }
+
+            void fsampler1darray_generate_mipmaps1(gli::fsampler1DArray & Sampler, gli::filter Minification) {
+                Sampler.generate_mipmaps(Minification);
+            }
+
+            void fsampler1darray_generate_mipmaps2(gli::fsampler1DArray & Sampler, gli::texture::size_type BaseLayer, gli::texture::size_type MaxLayer, gli::texture::size_type BaseLevel, gli::texture::size_type MaxLevel, gli::filter Minification) {
+                Sampler.generate_mipmaps(BaseLayer, MaxLayer, BaseLevel, MaxLevel, Minification);
+            }
+        }
+    }
+}
 
 #ifdef GLI_IMPLEMENTATION
 #include "sampler1d_array.inl"

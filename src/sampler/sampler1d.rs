@@ -8,6 +8,7 @@ use crate::extent::Extent1d;
 
 use std::marker::PhantomData;
 
+/// 1d texture sampler.
 pub struct FSampler1D<'a> {
 
     ffi: gli::fsampler1D,
@@ -16,6 +17,7 @@ pub struct FSampler1D<'a> {
 
 impl<'a, 'b: 'a> FSampler1D<'a> {
 
+    /// Constructor of `FSampler1D`.
     pub fn new(texture: &'b Texture1D, wrap: Wrap, mip: Filter, min: Filter) -> FSampler1D {
         FSampler1D {
             ffi: unsafe { bindings::fsampler1d_new(texture.raw_ffi(), wrap.0, mip.0, min.0) },

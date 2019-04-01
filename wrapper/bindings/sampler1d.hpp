@@ -91,14 +91,6 @@ extern "C" {
                 Sampler.clear(Texel);
             }
 
-            void fsampler1d_generate_mipmaps1(gli::fsampler1D & Sampler, gli::filter Minification) {
-                Sampler.generate_mipmaps(Minification);
-            }
-
-            void fsampler1d_generate_mipmaps2(gli::fsampler1D & Sampler, gli::texture::size_type BaseLevel, gli::texture::size_type  MaxLevel, gli::filter Minification) {
-                Sampler.generate_mipmaps(BaseLevel, MaxLevel, Minification);
-            }
-
             gli::fsampler1D::texel_type fsampler1d_texel_fetch(const gli::fsampler1D & Sampler, gli::fsampler1D::extent_type TexelCoord, gli::texture::size_type Level) {
                 return Sampler.texel_fetch(TexelCoord, Level);
             }
@@ -113,6 +105,14 @@ extern "C" {
 
             const gli::texture1d & fsampler1d_target_texture(const gli::fsampler1D & Sampler) {
                 return Sampler.operator()();
+            }
+
+            void fsampler1d_generate_mipmaps1(gli::fsampler1D & Sampler, gli::filter Minification) {
+                Sampler.generate_mipmaps(Minification);
+            }
+
+            void fsampler1d_generate_mipmaps2(gli::fsampler1D & Sampler, gli::texture::size_type BaseLevel, gli::texture::size_type  MaxLevel, gli::filter Minification) {
+                Sampler.generate_mipmaps(BaseLevel, MaxLevel, Minification);
             }
         }
 

@@ -3662,6 +3662,18 @@ pub mod root {
         pub type sampler1d_write_type = u8;
         pub type sampler1d_filter_type = u8;
         pub type fsampler1D = [u64; 66usize];
+        pub type sampler1d_array_interpolate_type = root::gli::detail::interpolate;
+        pub type sampler1d_array_texture_type = root::gli::texture1d_array;
+        pub type sampler1d_array_size_type = root::gli::texture_size_type;
+        pub type sampler1d_array_extent_type = root::gli::texture1d_array_extent_type;
+        pub type sampler1d_array_level_type = root::gli::sampler1d_array_interpolate_type;
+        pub type sampler1d_array_normalized_type = u8;
+        pub type sampler1d_array_texel_type = u8;
+        pub type sampler1d_array_convert_type = u8;
+        pub type sampler1d_array_fetch_type = u8;
+        pub type sampler1d_array_write_type = u8;
+        pub type sampler1d_array_filter_type = u8;
+        pub type fsampler1DArray = [u64; 66usize];
     }
     pub mod std {
         #[allow(unused_imports)]
@@ -4493,20 +4505,6 @@ pub mod root {
                 pub fn fsampler1d_clear(Sampler: *mut root::gli::fsampler1D, Texel: [u32; 4usize]);
             }
             extern "C" {
-                pub fn fsampler1d_generate_mipmaps1(
-                    Sampler: *mut root::gli::fsampler1D,
-                    Minification: root::gli::filter,
-                );
-            }
-            extern "C" {
-                pub fn fsampler1d_generate_mipmaps2(
-                    Sampler: *mut root::gli::fsampler1D,
-                    BaseLevel: root::gli::texture_size_type,
-                    MaxLevel: root::gli::texture_size_type,
-                    Minification: root::gli::filter,
-                );
-            }
-            extern "C" {
                 pub fn fsampler1d_texel_fetch(
                     Sampler: *const root::gli::fsampler1D,
                     TexelCoord: u32,
@@ -4532,6 +4530,90 @@ pub mod root {
                 pub fn fsampler1d_target_texture(
                     Sampler: *const root::gli::fsampler1D,
                 ) -> *const root::gli::texture1d;
+            }
+            extern "C" {
+                pub fn fsampler1d_generate_mipmaps1(
+                    Sampler: *mut root::gli::fsampler1D,
+                    Minification: root::gli::filter,
+                );
+            }
+            extern "C" {
+                pub fn fsampler1d_generate_mipmaps2(
+                    Sampler: *mut root::gli::fsampler1D,
+                    BaseLevel: root::gli::texture_size_type,
+                    MaxLevel: root::gli::texture_size_type,
+                    Minification: root::gli::filter,
+                );
+            }
+        }
+        pub mod FSampler1DArray {
+            #[allow(unused_imports)]
+            use self::super::super::super::root;
+            extern "C" {
+                pub fn fsampler1darray_new(
+                    Texture: *const root::gli::texture1d_array,
+                    Wrap: root::gli::wrap,
+                    Mip: root::gli::filter,
+                    Min: root::gli::filter,
+                ) -> root::gli::fsampler1DArray;
+            }
+            extern "C" {
+                pub fn fsampler1darray_set_border_color(
+                    Sampler: *mut root::gli::fsampler1DArray,
+                    BorderColor: [u32; 4usize],
+                );
+            }
+            extern "C" {
+                pub fn fsampler1darray_clear(
+                    Sampler: *mut root::gli::fsampler1DArray,
+                    Texel: [u32; 4usize],
+                );
+            }
+            extern "C" {
+                pub fn fsampler1darray_texel_fetch(
+                    Sampler: *const root::gli::fsampler1DArray,
+                    TexelCoord: u32,
+                    Layer: root::gli::texture_size_type,
+                    Level: root::gli::texture_size_type,
+                ) -> [u32; 4usize];
+            }
+            extern "C" {
+                pub fn fsampler1darray_texel_write(
+                    Sampler: *mut root::gli::fsampler1DArray,
+                    TexelCoord: u32,
+                    Layer: root::gli::texture_size_type,
+                    Level: root::gli::texture_size_type,
+                    Texel: [u32; 4usize],
+                );
+            }
+            extern "C" {
+                pub fn fsampler1darray_texel_lod(
+                    Sampler: *const root::gli::fsampler1DArray,
+                    SampleCoord: u32,
+                    Layer: root::gli::texture_size_type,
+                    Level: root::gli::texture_size_type,
+                ) -> [u32; 4usize];
+            }
+            extern "C" {
+                pub fn fsampler1darray_target_texture(
+                    Sampler: *const root::gli::fsampler1DArray,
+                ) -> *const root::gli::texture1d_array;
+            }
+            extern "C" {
+                pub fn fsampler1darray_generate_mipmaps1(
+                    Sampler: *mut root::gli::fsampler1DArray,
+                    Minification: root::gli::filter,
+                );
+            }
+            extern "C" {
+                pub fn fsampler1darray_generate_mipmaps2(
+                    Sampler: *mut root::gli::fsampler1DArray,
+                    BaseLayer: root::gli::texture_size_type,
+                    MaxLayer: root::gli::texture_size_type,
+                    BaseLevel: root::gli::texture_size_type,
+                    MaxLevel: root::gli::texture_size_type,
+                    Minification: root::gli::filter,
+                );
             }
         }
     }
