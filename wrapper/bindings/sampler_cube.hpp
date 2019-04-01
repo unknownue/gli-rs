@@ -31,6 +31,10 @@ namespace gli
 
 		sampler_cube(texture_type const& Texture, wrap Wrap, filter Mip = FILTER_NEAREST, filter Min = FILTER_NEAREST, texel_type const& BorderColor = texel_type(0, 0, 0, 1));
 
+        void set_border_color(texel_type BorderColor) {
+            this->BorderColor = BorderColor;
+        }
+
 		/// Access the sampler texture object
 		texture_type const& operator()() const;
 
@@ -71,6 +75,51 @@ namespace gli
 
 }//namespace gli
 
+
+extern "C" {
+
+    namespace bindings {
+
+        namespace FSamplerCube {
+
+            gli::fsamplerCube fsampler_cube_new(const gli::texture_cube & Texture, gli::wrap Wrap, gli::filter Mip, gli::filter Min) {
+                return gli::fsamplerCube(Texture, Wrap, Mip, Min);
+            }
+
+            void fsampler_cube_set_border_color(gli::fsamplerCube & Sampler, gli::fsamplerCube::texel_type BorderColor) {
+                Sampler.set_border_color(BorderColor);
+            }
+
+            void fsampler_cube_clear(gli::fsamplerCube & Sampler, gli::fsamplerCube::texel_type Texel) {
+                Sampler.clear(Texel);
+            }
+
+            gli::fsamplerCube::texel_type fsampler_cube_texel_fetch(const gli::fsamplerCube & Sampler, gli::fsamplerCube::extent_type TexelCoord, gli::texture::size_type Face, gli::texture::size_type Level) {
+                return Sampler.texel_fetch(TexelCoord, Face, Level);
+            }
+
+            void fsampler_cube_texel_write(gli::fsamplerCube & Sampler, gli::fsamplerCube::extent_type TexelCoord, gli::texture::size_type Face, gli::texture::size_type Level, gli::fsamplerCube::texel_type Texel) {
+                return Sampler.texel_write(TexelCoord, Face, Level, Texel);
+            }
+
+            gli::fsamplerCube::texel_type fsampler_cube_texel_lod(const gli::fsamplerCube & Sampler, gli::vec<2, float, (glm::qualifier)0U> SampleCoord, gli::texture::size_type Face, gli::texture::size_type Level) {
+                return Sampler.texture_lod(SampleCoord, Face, Level);
+            }
+
+            const gli::texture_cube & fsampler_cube_target_texture(const gli::fsamplerCube & Sampler) {
+                return Sampler.operator()();
+            }
+
+            void fsampler_cube_generate_mipmaps1(gli::fsamplerCube & Sampler, gli::filter Minification) {
+                Sampler.generate_mipmaps(Minification);
+            }
+
+            void fsampler_cube_generate_mipmaps2(gli::fsamplerCube & Sampler, gli::texture::size_type BaseFace, gli::texture::size_type MaxFace, gli::texture::size_type BaseLevel, gli::texture::size_type MaxLevel, gli::filter Minification) {
+                Sampler.generate_mipmaps(BaseFace, MaxFace, BaseLevel, MaxLevel, Minification);
+            }
+        }
+    }
+}
 
 #ifdef GLI_IMPLEMENTATION
 #include "sampler_cube.inl"

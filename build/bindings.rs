@@ -3674,6 +3674,66 @@ pub mod root {
         pub type sampler1d_array_write_type = u8;
         pub type sampler1d_array_filter_type = u8;
         pub type fsampler1DArray = [u64; 66usize];
+        pub type sampler2d_interpolate_type = root::gli::detail::interpolate;
+        pub type sampler2d_texture_type = root::gli::texture2d;
+        pub type sampler2d_size_type = root::gli::texture_size_type;
+        pub type sampler2d_extent_type = root::gli::texture2d_extent_type;
+        pub type sampler2d_level_type = root::gli::sampler2d_interpolate_type;
+        pub type sampler2d_normalized_type = u8;
+        pub type sampler2d_texel_type = u8;
+        pub type sampler2d_convert_type = u8;
+        pub type sampler2d_fetch_type = u8;
+        pub type sampler2d_write_type = u8;
+        pub type sampler2d_filter_type = u8;
+        pub type fsampler2D = [u64; 66usize];
+        pub type sampler2d_array_interpolate_type = root::gli::detail::interpolate;
+        pub type sampler2d_array_texture_type = root::gli::texture2d_array;
+        pub type sampler2d_array_size_type = root::gli::texture_size_type;
+        pub type sampler2d_array_extent_type = root::gli::texture2d_array_extent_type;
+        pub type sampler2d_array_level_type = root::gli::sampler2d_array_interpolate_type;
+        pub type sampler2d_array_normalized_type = u8;
+        pub type sampler2d_array_texel_type = u8;
+        pub type sampler2d_array_convert_type = u8;
+        pub type sampler2d_array_fetch_type = u8;
+        pub type sampler2d_array_write_type = u8;
+        pub type sampler2d_array_filter_type = u8;
+        pub type fsampler2DArray = [u64; 66usize];
+        pub type sampler3d_interpolate_type = root::gli::detail::interpolate;
+        pub type sampler3d_texture_type = root::gli::texture3d;
+        pub type sampler3d_size_type = root::gli::texture_size_type;
+        pub type sampler3d_extent_type = root::gli::texture3d_extent_type;
+        pub type sampler3d_level_type = root::gli::sampler3d_interpolate_type;
+        pub type sampler3d_normalized_type = u8;
+        pub type sampler3d_texel_type = u8;
+        pub type sampler3d_convert_type = u8;
+        pub type sampler3d_fetch_type = u8;
+        pub type sampler3d_write_type = u8;
+        pub type sampler3d_filter_type = u8;
+        pub type fsampler3D = [u64; 66usize];
+        pub type sampler_cube_interpolate_type = root::gli::detail::interpolate;
+        pub type sampler_cube_texture_type = root::gli::texture_cube;
+        pub type sampler_cube_size_type = root::gli::texture_size_type;
+        pub type sampler_cube_extent_type = root::gli::texture_cube_extent_type;
+        pub type sampler_cube_level_type = root::gli::sampler_cube_interpolate_type;
+        pub type sampler_cube_normalized_type = u8;
+        pub type sampler_cube_texel_type = u8;
+        pub type sampler_cube_convert_type = u8;
+        pub type sampler_cube_fetch_type = u8;
+        pub type sampler_cube_write_type = u8;
+        pub type sampler_cube_filter_type = u8;
+        pub type fsamplerCube = [u64; 66usize];
+        pub type sampler_cube_array_interpolate_type = root::gli::detail::interpolate;
+        pub type sampler_cube_array_texture_type = root::gli::texture_cube_array;
+        pub type sampler_cube_array_size_type = root::gli::texture_size_type;
+        pub type sampler_cube_array_extent_type = root::gli::texture_cube_array_extent_type;
+        pub type sampler_cube_array_level_type = root::gli::sampler_cube_array_interpolate_type;
+        pub type sampler_cube_array_normalized_type = u8;
+        pub type sampler_cube_array_texel_type = u8;
+        pub type sampler_cube_array_convert_type = u8;
+        pub type sampler_cube_array_fetch_type = u8;
+        pub type sampler_cube_array_write_type = u8;
+        pub type sampler_cube_array_filter_type = u8;
+        pub type fsamplerCubeArray = [u64; 66usize];
     }
     pub mod std {
         #[allow(unused_imports)]
@@ -4610,6 +4670,345 @@ pub mod root {
                     Sampler: *mut root::gli::fsampler1DArray,
                     BaseLayer: root::gli::texture_size_type,
                     MaxLayer: root::gli::texture_size_type,
+                    BaseLevel: root::gli::texture_size_type,
+                    MaxLevel: root::gli::texture_size_type,
+                    Minification: root::gli::filter,
+                );
+            }
+        }
+        pub mod FSampler2D {
+            #[allow(unused_imports)]
+            use self::super::super::super::root;
+            extern "C" {
+                pub fn fsampler2d_new(
+                    Texture: *const root::gli::texture2d,
+                    Wrap: root::gli::wrap,
+                    Mip: root::gli::filter,
+                    Min: root::gli::filter,
+                ) -> root::gli::fsampler2D;
+            }
+            extern "C" {
+                pub fn fsampler2d_set_border_color(
+                    Sampler: *mut root::gli::fsampler2D,
+                    BorderColor: [u32; 4usize],
+                );
+            }
+            extern "C" {
+                pub fn fsampler2d_clear(Sampler: *mut root::gli::fsampler2D, Texel: [u32; 4usize]);
+            }
+            extern "C" {
+                pub fn fsampler2d_texel_fetch(
+                    Sampler: *const root::gli::fsampler2D,
+                    TexelCoord: [u32; 2usize],
+                    Level: root::gli::texture_size_type,
+                ) -> [u32; 4usize];
+            }
+            extern "C" {
+                pub fn fsampler2d_texel_write(
+                    Sampler: *mut root::gli::fsampler2D,
+                    TexelCoord: [u32; 2usize],
+                    Level: root::gli::texture_size_type,
+                    Texel: [u32; 4usize],
+                );
+            }
+            extern "C" {
+                pub fn fsampler2d_texel_lod(
+                    Sampler: *const root::gli::fsampler2D,
+                    SampleCoord: [u32; 2usize],
+                    Level: root::gli::texture_size_type,
+                ) -> [u32; 4usize];
+            }
+            extern "C" {
+                pub fn fsampler2d_target_texture(
+                    Sampler: *const root::gli::fsampler2D,
+                ) -> *const root::gli::texture2d;
+            }
+            extern "C" {
+                pub fn fsampler2d_generate_mipmaps1(
+                    Sampler: *mut root::gli::fsampler2D,
+                    Minification: root::gli::filter,
+                );
+            }
+            extern "C" {
+                pub fn fsampler2d_generate_mipmaps2(
+                    Sampler: *mut root::gli::fsampler2D,
+                    BaseLevel: root::gli::texture_size_type,
+                    MaxLevel: root::gli::texture_size_type,
+                    Minification: root::gli::filter,
+                );
+            }
+        }
+        pub mod FSampler2DArray {
+            #[allow(unused_imports)]
+            use self::super::super::super::root;
+            extern "C" {
+                pub fn fsampler2darray_new(
+                    Texture: *const root::gli::texture2d_array,
+                    Wrap: root::gli::wrap,
+                    Mip: root::gli::filter,
+                    Min: root::gli::filter,
+                ) -> root::gli::fsampler2DArray;
+            }
+            extern "C" {
+                pub fn fsampler2darray_set_border_color(
+                    Sampler: *mut root::gli::fsampler2DArray,
+                    BorderColor: [u32; 4usize],
+                );
+            }
+            extern "C" {
+                pub fn fsampler2darray_clear(
+                    Sampler: *mut root::gli::fsampler2DArray,
+                    Texel: [u32; 4usize],
+                );
+            }
+            extern "C" {
+                pub fn fsampler2darray_texel_fetch(
+                    Sampler: *const root::gli::fsampler2DArray,
+                    TexelCoord: [u32; 2usize],
+                    Layer: root::gli::texture_size_type,
+                    Level: root::gli::texture_size_type,
+                ) -> [u32; 4usize];
+            }
+            extern "C" {
+                pub fn fsampler2darray_texel_write(
+                    Sampler: *mut root::gli::fsampler2DArray,
+                    TexelCoord: [u32; 2usize],
+                    Layer: root::gli::texture_size_type,
+                    Level: root::gli::texture_size_type,
+                    Texel: [u32; 4usize],
+                );
+            }
+            extern "C" {
+                pub fn fsampler2darray_texel_lod(
+                    Sampler: *const root::gli::fsampler2DArray,
+                    SampleCoord: [u32; 2usize],
+                    Layer: root::gli::texture_size_type,
+                    Level: root::gli::texture_size_type,
+                ) -> [u32; 4usize];
+            }
+            extern "C" {
+                pub fn fsampler2darray_target_texture(
+                    Sampler: *const root::gli::fsampler2DArray,
+                ) -> *const root::gli::texture2d_array;
+            }
+            extern "C" {
+                pub fn fsampler2darray_generate_mipmaps1(
+                    Sampler: *mut root::gli::fsampler2DArray,
+                    Minification: root::gli::filter,
+                );
+            }
+            extern "C" {
+                pub fn fsampler2darray_generate_mipmaps2(
+                    Sampler: *mut root::gli::fsampler2DArray,
+                    BaseLayer: root::gli::texture_size_type,
+                    MaxLayer: root::gli::texture_size_type,
+                    BaseLevel: root::gli::texture_size_type,
+                    MaxLevel: root::gli::texture_size_type,
+                    Minification: root::gli::filter,
+                );
+            }
+        }
+        pub mod FSampler3D {
+            #[allow(unused_imports)]
+            use self::super::super::super::root;
+            extern "C" {
+                pub fn fsampler3d_new(
+                    Texture: *const root::gli::texture3d,
+                    Wrap: root::gli::wrap,
+                    Mip: root::gli::filter,
+                    Min: root::gli::filter,
+                ) -> root::gli::fsampler3D;
+            }
+            extern "C" {
+                pub fn fsampler3d_set_border_color(
+                    Sampler: *mut root::gli::fsampler3D,
+                    BorderColor: [u32; 4usize],
+                );
+            }
+            extern "C" {
+                pub fn fsampler3d_clear(Sampler: *mut root::gli::fsampler3D, Texel: [u32; 4usize]);
+            }
+            extern "C" {
+                pub fn fsampler3d_texel_fetch(
+                    Sampler: *const root::gli::fsampler3D,
+                    TexelCoord: [u32; 3usize],
+                    Level: root::gli::texture_size_type,
+                ) -> [u32; 4usize];
+            }
+            extern "C" {
+                pub fn fsampler3d_texel_write(
+                    Sampler: *mut root::gli::fsampler3D,
+                    TexelCoord: [u32; 3usize],
+                    Level: root::gli::texture_size_type,
+                    Texel: [u32; 4usize],
+                );
+            }
+            extern "C" {
+                pub fn fsampler3d_texel_lod(
+                    Sampler: *const root::gli::fsampler3D,
+                    SampleCoord: [u32; 3usize],
+                    Level: root::gli::texture_size_type,
+                ) -> [u32; 4usize];
+            }
+            extern "C" {
+                pub fn fsampler3d_target_texture(
+                    Sampler: *const root::gli::fsampler3D,
+                ) -> *const root::gli::texture3d;
+            }
+            extern "C" {
+                pub fn fsampler3d_generate_mipmaps1(
+                    Sampler: *mut root::gli::fsampler3D,
+                    Minification: root::gli::filter,
+                );
+            }
+            extern "C" {
+                pub fn fsampler3d_generate_mipmaps3(
+                    Sampler: *mut root::gli::fsampler3D,
+                    BaseLevel: root::gli::texture_size_type,
+                    MaxLevel: root::gli::texture_size_type,
+                    Minification: root::gli::filter,
+                );
+            }
+        }
+        pub mod FSamplerCube {
+            #[allow(unused_imports)]
+            use self::super::super::super::root;
+            extern "C" {
+                pub fn fsampler_cube_new(
+                    Texture: *const root::gli::texture_cube,
+                    Wrap: root::gli::wrap,
+                    Mip: root::gli::filter,
+                    Min: root::gli::filter,
+                ) -> root::gli::fsamplerCube;
+            }
+            extern "C" {
+                pub fn fsampler_cube_set_border_color(
+                    Sampler: *mut root::gli::fsamplerCube,
+                    BorderColor: [u32; 4usize],
+                );
+            }
+            extern "C" {
+                pub fn fsampler_cube_clear(
+                    Sampler: *mut root::gli::fsamplerCube,
+                    Texel: [u32; 4usize],
+                );
+            }
+            extern "C" {
+                pub fn fsampler_cube_texel_fetch(
+                    Sampler: *const root::gli::fsamplerCube,
+                    TexelCoord: [u32; 2usize],
+                    Face: root::gli::texture_size_type,
+                    Level: root::gli::texture_size_type,
+                ) -> [u32; 4usize];
+            }
+            extern "C" {
+                pub fn fsampler_cube_texel_write(
+                    Sampler: *mut root::gli::fsamplerCube,
+                    TexelCoord: [u32; 2usize],
+                    Face: root::gli::texture_size_type,
+                    Level: root::gli::texture_size_type,
+                    Texel: [u32; 4usize],
+                );
+            }
+            extern "C" {
+                pub fn fsampler_cube_texel_lod(
+                    Sampler: *const root::gli::fsamplerCube,
+                    SampleCoord: [u32; 2usize],
+                    Face: root::gli::texture_size_type,
+                    Level: root::gli::texture_size_type,
+                ) -> [u32; 4usize];
+            }
+            extern "C" {
+                pub fn fsampler_cube_target_texture(
+                    Sampler: *const root::gli::fsamplerCube,
+                ) -> *const root::gli::texture_cube;
+            }
+            extern "C" {
+                pub fn fsampler_cube_generate_mipmaps1(
+                    Sampler: *mut root::gli::fsamplerCube,
+                    Minification: root::gli::filter,
+                );
+            }
+            extern "C" {
+                pub fn fsampler_cube_generate_mipmaps2(
+                    Sampler: *mut root::gli::fsamplerCube,
+                    BaseFace: root::gli::texture_size_type,
+                    MaxFace: root::gli::texture_size_type,
+                    BaseLevel: root::gli::texture_size_type,
+                    MaxLevel: root::gli::texture_size_type,
+                    Minification: root::gli::filter,
+                );
+            }
+        }
+        pub mod FSamplerCubeArray {
+            #[allow(unused_imports)]
+            use self::super::super::super::root;
+            extern "C" {
+                pub fn fsampler_cube_array_new(
+                    Texture: *const root::gli::texture_cube_array,
+                    Wrap: root::gli::wrap,
+                    Mip: root::gli::filter,
+                    Min: root::gli::filter,
+                ) -> root::gli::fsamplerCubeArray;
+            }
+            extern "C" {
+                pub fn fsampler_cube_array_set_border_color(
+                    Sampler: *mut root::gli::fsamplerCubeArray,
+                    BorderColor: [u32; 4usize],
+                );
+            }
+            extern "C" {
+                pub fn fsampler_cube_array_clear(
+                    Sampler: *mut root::gli::fsamplerCubeArray,
+                    Texel: [u32; 4usize],
+                );
+            }
+            extern "C" {
+                pub fn fsampler_cube_array_texel_fetch(
+                    Sampler: *const root::gli::fsamplerCubeArray,
+                    TexelCoord: [u32; 2usize],
+                    Layer: root::gli::texture_size_type,
+                    Face: root::gli::texture_size_type,
+                    Level: root::gli::texture_size_type,
+                ) -> [u32; 4usize];
+            }
+            extern "C" {
+                pub fn fsampler_cube_array_texel_write(
+                    Sampler: *mut root::gli::fsamplerCubeArray,
+                    TexelCoord: [u32; 2usize],
+                    Layer: root::gli::texture_size_type,
+                    Face: root::gli::texture_size_type,
+                    Level: root::gli::texture_size_type,
+                    Texel: [u32; 4usize],
+                );
+            }
+            extern "C" {
+                pub fn fsampler_cube_array_texel_lod(
+                    Sampler: *const root::gli::fsamplerCubeArray,
+                    SampleCoord: [u32; 2usize],
+                    Layer: root::gli::texture_size_type,
+                    Face: root::gli::texture_size_type,
+                    Level: root::gli::texture_size_type,
+                ) -> [u32; 4usize];
+            }
+            extern "C" {
+                pub fn fsampler_cube_array_target_texture(
+                    Sampler: *const root::gli::fsamplerCubeArray,
+                ) -> *const root::gli::texture_cube_array;
+            }
+            extern "C" {
+                pub fn fsampler_cube_array_generate_mipmaps1(
+                    Sampler: *mut root::gli::fsamplerCubeArray,
+                    Minification: root::gli::filter,
+                );
+            }
+            extern "C" {
+                pub fn fsampler_cube_array_generate_mipmaps2(
+                    Sampler: *mut root::gli::fsamplerCubeArray,
+                    BaseLayer: root::gli::texture_size_type,
+                    MaxLayer: root::gli::texture_size_type,
+                    BaseFace: root::gli::texture_size_type,
+                    MaxFace: root::gli::texture_size_type,
                     BaseLevel: root::gli::texture_size_type,
                     MaxLevel: root::gli::texture_size_type,
                     Minification: root::gli::filter,

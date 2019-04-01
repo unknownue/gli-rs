@@ -25,6 +25,7 @@ impl<'a, 'b: 'a> FSampler1DArray<'a> {
         }
     }
 
+    /// Set the border color used by sampler. Default is `[0, 0, 0, 1]`.
     pub fn set_border_color(&mut self, color: [u32; 4]) {
         unsafe { bindings::fsampler1darray_set_border_color(&mut self.ffi, color); }
     }
@@ -46,16 +47,16 @@ impl<'a, 'b: 'a> FSampler1DArray<'a> {
 
     /// Fetch a texel from the sampler texture.
     pub fn texel_fetch(&self, texel_coord: Extent1d, layer: usize, level: usize) -> [u32; 4] {
-        unsafe { bindings::fsampler1darray_texel_fetch(&self.ffi, texel_coord.width, layer, level) }
+        unsafe { bindings::fsampler1darray_texel_fetch(&self.ffi, texel_coord.into(), layer, level) }
     }
 
     /// Write a texel in the sampler texture.
     pub fn texel_write(&mut self, texel_coord: Extent1d, layer: usize, level: usize, texel: [u32; 4]) {
-        unsafe { bindings::fsampler1darray_texel_write(&mut self.ffi, texel_coord.width, layer, level, texel); }
+        unsafe { bindings::fsampler1darray_texel_write(&mut self.ffi, texel_coord.into(), layer, level, texel); }
     }
 
     /// Sample the sampler texture at a specific level.
-    pub fn texel_lod(&self, sampler_coord: u32, layer: usize, level: usize) -> [u32; 4] {
-        unsafe { bindings::fsampler1darray_texel_lod(&self.ffi, sampler_coord, layer, level) }
+    pub fn texel_lod(&self, sample_coord: u32, layer: usize, level: usize) -> [u32; 4] {
+        unsafe { bindings::fsampler1darray_texel_lod(&self.ffi, sample_coord, layer, level) }
     }
 }

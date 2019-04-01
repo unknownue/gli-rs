@@ -1,9 +1,19 @@
 
 pub use self::sampler1d::FSampler1D;
 pub use self::sampler1d_array::FSampler1DArray;
+pub use self::sampler2d::FSampler2D;
+pub use self::sampler2d_array::FSampler2DArray;
+pub use self::sampler3d::FSampler3D;
+pub use self::sampler_cube::FSamplerCube;
+pub use self::sampler_cube_array::FSamplerCubeArray;
 
 mod sampler1d;
 mod sampler1d_array;
+mod sampler2d;
+mod sampler2d_array;
+mod sampler3d;
+mod sampler_cube;
+mod sampler_cube_array;
 
 use crate::ffi::root::gli;
 

@@ -31,6 +31,10 @@ namespace gli
 
 		sampler3d(texture_type const& Texture, wrap Wrap, filter Mip = FILTER_NEAREST, filter Min = FILTER_NEAREST, texel_type const& BorderColor = texel_type(0, 0, 0, 1));
 
+        void set_border_color(texel_type BorderColor) {
+            this->BorderColor = BorderColor;
+        }
+
 		/// Access the sampler texture object
 		texture_type const& operator()() const;
 
@@ -70,6 +74,51 @@ namespace gli
 	typedef sampler3d<int> isampler3D;
 }//namespace gli
 
+
+extern "C" {
+
+    namespace bindings {
+
+        namespace FSampler3D {
+
+            gli::fsampler3D fsampler3d_new(const gli::texture3d & Texture, gli::wrap Wrap, gli::filter Mip, gli::filter Min) {
+                return gli::fsampler3D(Texture, Wrap, Mip, Min);
+            }
+
+            void fsampler3d_set_border_color(gli::fsampler3D & Sampler, gli::fsampler3D::texel_type BorderColor) {
+                Sampler.set_border_color(BorderColor);
+            }
+
+            void fsampler3d_clear(gli::fsampler3D & Sampler, gli::fsampler3D::texel_type Texel) {
+                Sampler.clear(Texel);
+            }
+
+            gli::fsampler3D::texel_type fsampler3d_texel_fetch(const gli::fsampler3D & Sampler, gli::fsampler3D::extent_type TexelCoord, gli::texture::size_type Level) {
+                return Sampler.texel_fetch(TexelCoord, Level);
+            }
+
+            void fsampler3d_texel_write(gli::fsampler3D & Sampler, gli::fsampler3D::extent_type TexelCoord, gli::texture::size_type Level, gli::fsampler3D::texel_type Texel) {
+                return Sampler.texel_write(TexelCoord, Level, Texel);
+            }
+
+            gli::fsampler3D::texel_type fsampler3d_texel_lod(const gli::fsampler3D & Sampler, gli::vec<3, float, (glm::qualifier)0U> SampleCoord, gli::texture::size_type Level) {
+                return Sampler.texture_lod(SampleCoord, Level);
+            }
+
+            const gli::texture3d & fsampler3d_target_texture(const gli::fsampler3D & Sampler) {
+                return Sampler.operator()();
+            }
+
+            void fsampler3d_generate_mipmaps1(gli::fsampler3D & Sampler, gli::filter Minification) {
+                Sampler.generate_mipmaps(Minification);
+            }
+
+            void fsampler3d_generate_mipmaps3(gli::fsampler3D & Sampler, gli::texture::size_type BaseLevel, gli::texture::size_type  MaxLevel, gli::filter Minification) {
+                Sampler.generate_mipmaps(BaseLevel, MaxLevel, Minification);
+            }
+        }
+    }
+}
 
 #ifdef GLI_IMPLEMENTATION
 #include "sampler3d.inl"

@@ -73,6 +73,12 @@ impl TextureCubeArray {
             self.base_face(), self.max_face(),
             self.base_level(), self.max_level())
     }
+
+    #[doc(hidden)]
+    #[inline]
+    pub(crate) fn raw_ffi(&self) -> &gli::texture_cube_array {
+        &self.ffi
+    }
 }
 
 impl GliTexture for TextureCubeArray {
