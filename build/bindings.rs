@@ -4544,6 +4544,11 @@ pub mod root {
                 ) -> bool;
             }
         }
+        #[repr(C)]
+        #[derive(Debug, Default)]
+        pub struct TexelType4F {
+            pub content: [f32; 4usize],
+        }
         pub mod FSampler1D {
             #[allow(unused_imports)]
             use self::super::super::super::root;
@@ -4558,33 +4563,36 @@ pub mod root {
             extern "C" {
                 pub fn fsampler1d_set_border_color(
                     Sampler: *mut root::gli::fsampler1D,
-                    BorderColor: [u32; 4usize],
+                    BorderColor: root::bindings::TexelType4F,
                 );
             }
             extern "C" {
-                pub fn fsampler1d_clear(Sampler: *mut root::gli::fsampler1D, Texel: [u32; 4usize]);
+                pub fn fsampler1d_clear(
+                    Sampler: *mut root::gli::fsampler1D,
+                    Texel: root::bindings::TexelType4F,
+                );
             }
             extern "C" {
                 pub fn fsampler1d_texel_fetch(
                     Sampler: *const root::gli::fsampler1D,
                     TexelCoord: u32,
                     Level: root::gli::texture_size_type,
-                ) -> [u32; 4usize];
+                ) -> root::bindings::TexelType4F;
             }
             extern "C" {
                 pub fn fsampler1d_texel_write(
                     Sampler: *mut root::gli::fsampler1D,
                     TexelCoord: u32,
                     Level: root::gli::texture_size_type,
-                    Texel: [u32; 4usize],
+                    Texel: root::bindings::TexelType4F,
                 );
             }
             extern "C" {
                 pub fn fsampler1d_texel_lod(
                     Sampler: *const root::gli::fsampler1D,
-                    SampleCoord: u32,
+                    SampleCoord: f32,
                     Level: root::gli::texture_size_type,
-                ) -> [u32; 4usize];
+                ) -> root::bindings::TexelType4F;
             }
             extern "C" {
                 pub fn fsampler1d_target_texture(
@@ -4620,13 +4628,13 @@ pub mod root {
             extern "C" {
                 pub fn fsampler1darray_set_border_color(
                     Sampler: *mut root::gli::fsampler1DArray,
-                    BorderColor: [u32; 4usize],
+                    BorderColor: root::bindings::TexelType4F,
                 );
             }
             extern "C" {
                 pub fn fsampler1darray_clear(
                     Sampler: *mut root::gli::fsampler1DArray,
-                    Texel: [u32; 4usize],
+                    Texel: root::bindings::TexelType4F,
                 );
             }
             extern "C" {
@@ -4635,7 +4643,7 @@ pub mod root {
                     TexelCoord: u32,
                     Layer: root::gli::texture_size_type,
                     Level: root::gli::texture_size_type,
-                ) -> [u32; 4usize];
+                ) -> root::bindings::TexelType4F;
             }
             extern "C" {
                 pub fn fsampler1darray_texel_write(
@@ -4643,16 +4651,16 @@ pub mod root {
                     TexelCoord: u32,
                     Layer: root::gli::texture_size_type,
                     Level: root::gli::texture_size_type,
-                    Texel: [u32; 4usize],
+                    Texel: root::bindings::TexelType4F,
                 );
             }
             extern "C" {
                 pub fn fsampler1darray_texel_lod(
                     Sampler: *const root::gli::fsampler1DArray,
-                    SampleCoord: u32,
+                    SampleCoord: f32,
                     Layer: root::gli::texture_size_type,
                     Level: root::gli::texture_size_type,
-                ) -> [u32; 4usize];
+                ) -> root::bindings::TexelType4F;
             }
             extern "C" {
                 pub fn fsampler1darray_target_texture(
@@ -4690,33 +4698,36 @@ pub mod root {
             extern "C" {
                 pub fn fsampler2d_set_border_color(
                     Sampler: *mut root::gli::fsampler2D,
-                    BorderColor: [u32; 4usize],
+                    BorderColor: root::bindings::TexelType4F,
                 );
             }
             extern "C" {
-                pub fn fsampler2d_clear(Sampler: *mut root::gli::fsampler2D, Texel: [u32; 4usize]);
+                pub fn fsampler2d_clear(
+                    Sampler: *mut root::gli::fsampler2D,
+                    Texel: root::bindings::TexelType4F,
+                );
             }
             extern "C" {
                 pub fn fsampler2d_texel_fetch(
                     Sampler: *const root::gli::fsampler2D,
                     TexelCoord: [u32; 2usize],
                     Level: root::gli::texture_size_type,
-                ) -> [u32; 4usize];
+                ) -> root::bindings::TexelType4F;
             }
             extern "C" {
                 pub fn fsampler2d_texel_write(
                     Sampler: *mut root::gli::fsampler2D,
                     TexelCoord: [u32; 2usize],
                     Level: root::gli::texture_size_type,
-                    Texel: [u32; 4usize],
+                    Texel: root::bindings::TexelType4F,
                 );
             }
             extern "C" {
                 pub fn fsampler2d_texel_lod(
                     Sampler: *const root::gli::fsampler2D,
-                    SampleCoord: [u32; 2usize],
+                    SampleCoord: *const f32,
                     Level: root::gli::texture_size_type,
-                ) -> [u32; 4usize];
+                ) -> root::bindings::TexelType4F;
             }
             extern "C" {
                 pub fn fsampler2d_target_texture(
@@ -4752,13 +4763,13 @@ pub mod root {
             extern "C" {
                 pub fn fsampler2darray_set_border_color(
                     Sampler: *mut root::gli::fsampler2DArray,
-                    BorderColor: [u32; 4usize],
+                    BorderColor: root::bindings::TexelType4F,
                 );
             }
             extern "C" {
                 pub fn fsampler2darray_clear(
                     Sampler: *mut root::gli::fsampler2DArray,
-                    Texel: [u32; 4usize],
+                    Texel: root::bindings::TexelType4F,
                 );
             }
             extern "C" {
@@ -4767,7 +4778,7 @@ pub mod root {
                     TexelCoord: [u32; 2usize],
                     Layer: root::gli::texture_size_type,
                     Level: root::gli::texture_size_type,
-                ) -> [u32; 4usize];
+                ) -> root::bindings::TexelType4F;
             }
             extern "C" {
                 pub fn fsampler2darray_texel_write(
@@ -4775,16 +4786,16 @@ pub mod root {
                     TexelCoord: [u32; 2usize],
                     Layer: root::gli::texture_size_type,
                     Level: root::gli::texture_size_type,
-                    Texel: [u32; 4usize],
+                    Texel: root::bindings::TexelType4F,
                 );
             }
             extern "C" {
                 pub fn fsampler2darray_texel_lod(
                     Sampler: *const root::gli::fsampler2DArray,
-                    SampleCoord: [u32; 2usize],
+                    SampleCoord: *const f32,
                     Layer: root::gli::texture_size_type,
                     Level: root::gli::texture_size_type,
-                ) -> [u32; 4usize];
+                ) -> root::bindings::TexelType4F;
             }
             extern "C" {
                 pub fn fsampler2darray_target_texture(
@@ -4822,33 +4833,36 @@ pub mod root {
             extern "C" {
                 pub fn fsampler3d_set_border_color(
                     Sampler: *mut root::gli::fsampler3D,
-                    BorderColor: [u32; 4usize],
+                    BorderColor: root::bindings::TexelType4F,
                 );
             }
             extern "C" {
-                pub fn fsampler3d_clear(Sampler: *mut root::gli::fsampler3D, Texel: [u32; 4usize]);
+                pub fn fsampler3d_clear(
+                    Sampler: *mut root::gli::fsampler3D,
+                    Texel: root::bindings::TexelType4F,
+                );
             }
             extern "C" {
                 pub fn fsampler3d_texel_fetch(
                     Sampler: *const root::gli::fsampler3D,
                     TexelCoord: [u32; 3usize],
                     Level: root::gli::texture_size_type,
-                ) -> [u32; 4usize];
+                ) -> root::bindings::TexelType4F;
             }
             extern "C" {
                 pub fn fsampler3d_texel_write(
                     Sampler: *mut root::gli::fsampler3D,
                     TexelCoord: [u32; 3usize],
                     Level: root::gli::texture_size_type,
-                    Texel: [u32; 4usize],
+                    Texel: root::bindings::TexelType4F,
                 );
             }
             extern "C" {
                 pub fn fsampler3d_texel_lod(
                     Sampler: *const root::gli::fsampler3D,
-                    SampleCoord: [u32; 3usize],
+                    SampleCoord: *const f32,
                     Level: root::gli::texture_size_type,
-                ) -> [u32; 4usize];
+                ) -> root::bindings::TexelType4F;
             }
             extern "C" {
                 pub fn fsampler3d_target_texture(
@@ -4884,13 +4898,13 @@ pub mod root {
             extern "C" {
                 pub fn fsampler_cube_set_border_color(
                     Sampler: *mut root::gli::fsamplerCube,
-                    BorderColor: [u32; 4usize],
+                    BorderColor: root::bindings::TexelType4F,
                 );
             }
             extern "C" {
                 pub fn fsampler_cube_clear(
                     Sampler: *mut root::gli::fsamplerCube,
-                    Texel: [u32; 4usize],
+                    Texel: root::bindings::TexelType4F,
                 );
             }
             extern "C" {
@@ -4899,7 +4913,7 @@ pub mod root {
                     TexelCoord: [u32; 2usize],
                     Face: root::gli::texture_size_type,
                     Level: root::gli::texture_size_type,
-                ) -> [u32; 4usize];
+                ) -> root::bindings::TexelType4F;
             }
             extern "C" {
                 pub fn fsampler_cube_texel_write(
@@ -4907,16 +4921,16 @@ pub mod root {
                     TexelCoord: [u32; 2usize],
                     Face: root::gli::texture_size_type,
                     Level: root::gli::texture_size_type,
-                    Texel: [u32; 4usize],
+                    Texel: root::bindings::TexelType4F,
                 );
             }
             extern "C" {
                 pub fn fsampler_cube_texel_lod(
                     Sampler: *const root::gli::fsamplerCube,
-                    SampleCoord: [u32; 2usize],
+                    SampleCoord: *const f32,
                     Face: root::gli::texture_size_type,
                     Level: root::gli::texture_size_type,
-                ) -> [u32; 4usize];
+                ) -> root::bindings::TexelType4F;
             }
             extern "C" {
                 pub fn fsampler_cube_target_texture(
@@ -4954,13 +4968,13 @@ pub mod root {
             extern "C" {
                 pub fn fsampler_cube_array_set_border_color(
                     Sampler: *mut root::gli::fsamplerCubeArray,
-                    BorderColor: [u32; 4usize],
+                    BorderColor: root::bindings::TexelType4F,
                 );
             }
             extern "C" {
                 pub fn fsampler_cube_array_clear(
                     Sampler: *mut root::gli::fsamplerCubeArray,
-                    Texel: [u32; 4usize],
+                    Texel: root::bindings::TexelType4F,
                 );
             }
             extern "C" {
@@ -4970,7 +4984,7 @@ pub mod root {
                     Layer: root::gli::texture_size_type,
                     Face: root::gli::texture_size_type,
                     Level: root::gli::texture_size_type,
-                ) -> [u32; 4usize];
+                ) -> root::bindings::TexelType4F;
             }
             extern "C" {
                 pub fn fsampler_cube_array_texel_write(
@@ -4979,17 +4993,17 @@ pub mod root {
                     Layer: root::gli::texture_size_type,
                     Face: root::gli::texture_size_type,
                     Level: root::gli::texture_size_type,
-                    Texel: [u32; 4usize],
+                    Texel: root::bindings::TexelType4F,
                 );
             }
             extern "C" {
                 pub fn fsampler_cube_array_texel_lod(
                     Sampler: *const root::gli::fsamplerCubeArray,
-                    SampleCoord: [u32; 2usize],
+                    SampleCoord: *const f32,
                     Layer: root::gli::texture_size_type,
                     Face: root::gli::texture_size_type,
                     Level: root::gli::texture_size_type,
-                ) -> [u32; 4usize];
+                ) -> root::bindings::TexelType4F;
             }
             extern "C" {
                 pub fn fsampler_cube_array_target_texture(

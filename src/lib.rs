@@ -1,6 +1,6 @@
 
 pub use self::format::{Format, Swizzle, Swizzles};
-pub use self::extent::*;
+pub use self::extent::{Extent1d, Extent2d, Extent3d};
 
 pub use self::image::GliImage;
 pub use self::texture::*;
@@ -14,13 +14,13 @@ pub mod target;
 pub mod dx;
 pub mod gl;
 pub mod sampler;
+pub mod extent;
 
 mod load;
 mod save;
 mod texture;
 mod image;
 mod format;
-mod extent;
 mod ffi;
 mod error;
 

@@ -86,24 +86,26 @@ extern "C" {
                 return gli::fsamplerCubeArray(Texture, Wrap, Mip, Min);
             }
             
-            void fsampler_cube_array_set_border_color(gli::fsamplerCubeArray & Sampler, gli::fsamplerCubeArray::texel_type BorderColor) {
-                Sampler.set_border_color(BorderColor);
+            void fsampler_cube_array_set_border_color(gli::fsamplerCubeArray & Sampler, TexelType4F BorderColor) {
+                Sampler.set_border_color(BorderColor.into_raw());
             }
             
-            void fsampler_cube_array_clear(gli::fsamplerCubeArray & Sampler, gli::fsamplerCubeArray::texel_type Texel) {
-                Sampler.clear(Texel);
+            void fsampler_cube_array_clear(gli::fsamplerCubeArray & Sampler, TexelType4F Texel) {
+                Sampler.clear(Texel.into_raw());
             }
     
-            gli::fsamplerCubeArray::texel_type fsampler_cube_array_texel_fetch(const gli::fsamplerCubeArray & Sampler, gli::fsamplerCubeArray::extent_type TexelCoord, gli::texture::size_type Layer, gli::texture::size_type Face, gli::texture::size_type Level) {
-                return Sampler.texel_fetch(TexelCoord, Layer, Face, Level);
+            TexelType4F fsampler_cube_array_texel_fetch(const gli::fsamplerCubeArray & Sampler, gli::fsamplerCubeArray::extent_type TexelCoord, gli::texture::size_type Layer, gli::texture::size_type Face, gli::texture::size_type Level) {
+                gli::vec4 raw = Sampler.texel_fetch(TexelCoord, Layer, Face, Level);
+                return TexelType4F(raw);
             }
             
-            void fsampler_cube_array_texel_write(gli::fsamplerCubeArray & Sampler, gli::fsamplerCubeArray::extent_type TexelCoord, gli::texture::size_type Layer, gli::texture::size_type Face, gli::texture::size_type Level, gli::fsamplerCubeArray::texel_type Texel) {
-                return Sampler.texel_write(TexelCoord, Layer, Face, Level, Texel);
+            void fsampler_cube_array_texel_write(gli::fsamplerCubeArray & Sampler, gli::fsamplerCubeArray::extent_type TexelCoord, gli::texture::size_type Layer, gli::texture::size_type Face, gli::texture::size_type Level, TexelType4F Texel) {
+                return Sampler.texel_write(TexelCoord, Layer, Face, Level, Texel.into_raw());
             }
             
-            gli::fsamplerCubeArray::texel_type fsampler_cube_array_texel_lod(const gli::fsamplerCubeArray & Sampler, gli::vec<2, float, (glm::qualifier)0U> SampleCoord, gli::texture::size_type Layer, gli::texture::size_type Face, gli::texture::size_type Level) {
-                return Sampler.texture_lod(SampleCoord, Layer, Face, Level);
+            TexelType4F fsampler_cube_array_texel_lod(const gli::fsamplerCubeArray & Sampler, const float SampleCoord[2], gli::texture::size_type Layer, gli::texture::size_type Face, gli::texture::size_type Level) {
+                gli::vec4 raw = Sampler.texture_lod(gli::fsamplerCubeArray::normalized_type(SampleCoord[0], SampleCoord[1]), Layer, Face, Level);
+                return TexelType4F(raw);
             }
             
             const gli::texture_cube_array & fsampler_cube_array_target_texture(const gli::fsamplerCubeArray & Sampler) {

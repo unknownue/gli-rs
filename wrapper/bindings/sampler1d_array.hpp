@@ -84,24 +84,26 @@ extern "C" {
                 return gli::fsampler1DArray(Texture, Wrap, Mip, Min);
             }
 
-            void fsampler1darray_set_border_color(gli::fsampler1DArray & Sampler, gli::fsampler1DArray::texel_type BorderColor) {
-                Sampler.set_border_color(BorderColor);
+            void fsampler1darray_set_border_color(gli::fsampler1DArray & Sampler, TexelType4F BorderColor) {
+                Sampler.set_border_color(BorderColor.into_raw());
             }
 
-            void fsampler1darray_clear(gli::fsampler1DArray & Sampler, gli::fsampler1DArray::texel_type Texel) {
-                Sampler.clear(Texel);
+            void fsampler1darray_clear(gli::fsampler1DArray & Sampler, TexelType4F Texel) {
+                Sampler.clear(Texel.into_raw());
             }
 
-            gli::fsampler1DArray::texel_type fsampler1darray_texel_fetch(const gli::fsampler1DArray & Sampler, gli::fsampler1DArray::extent_type TexelCoord, gli::texture::size_type Layer, gli::texture::size_type Level) {
-                return Sampler.texel_fetch(TexelCoord, Layer, Level);
+            TexelType4F fsampler1darray_texel_fetch(const gli::fsampler1DArray & Sampler, gli::fsampler1DArray::extent_type TexelCoord, gli::texture::size_type Layer, gli::texture::size_type Level) {
+                gli::vec4 raw = Sampler.texel_fetch(TexelCoord, Layer, Level);
+                return TexelType4F(raw);
             }
 
-            void fsampler1darray_texel_write(gli::fsampler1DArray & Sampler, gli::fsampler1DArray::extent_type TexelCoord, gli::texture::size_type Layer, gli::texture::size_type Level, gli::fsampler1DArray::texel_type Texel) {
-                return Sampler.texel_write(TexelCoord, Layer, Level, Texel);
+            void fsampler1darray_texel_write(gli::fsampler1DArray & Sampler, gli::fsampler1DArray::extent_type TexelCoord, gli::texture::size_type Layer, gli::texture::size_type Level, TexelType4F Texel) {
+                Sampler.texel_write(TexelCoord, Layer, Level, Texel.into_raw());
             }
 
-            gli::fsampler1DArray::texel_type fsampler1darray_texel_lod(const gli::fsampler1DArray & Sampler, gli::vec<1, float, (glm::qualifier)0U> SampleCoord, gli::texture::size_type Layer, gli::texture::size_type Level) {
-                return Sampler.texture_lod(SampleCoord, Layer, Level);
+            TexelType4F fsampler1darray_texel_lod(const gli::fsampler1DArray & Sampler, float SampleCoord, gli::texture::size_type Layer, gli::texture::size_type Level) {
+                gli::vec4 raw = Sampler.texture_lod(gli::fsampler1DArray::normalized_type(SampleCoord), Layer, Level);
+                return TexelType4F(raw);
             }
 
             const gli::texture1d_array & fsampler1darray_target_texture(const gli::fsampler1DArray & Sampler) {

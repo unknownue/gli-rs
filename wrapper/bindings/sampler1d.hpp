@@ -83,24 +83,26 @@ extern "C" {
                 return gli::fsampler1D(Texture, Wrap, Mip, Min);
             }
 
-            void fsampler1d_set_border_color(gli::fsampler1D & Sampler, gli::fsampler1D::texel_type BorderColor) {
-                Sampler.set_border_color(BorderColor);
+            void fsampler1d_set_border_color(gli::fsampler1D & Sampler, TexelType4F BorderColor) {
+                Sampler.set_border_color(BorderColor.into_raw());
             }
 
-            void fsampler1d_clear(gli::fsampler1D & Sampler, gli::fsampler1D::texel_type Texel) {
-                Sampler.clear(Texel);
+            void fsampler1d_clear(gli::fsampler1D & Sampler, TexelType4F Texel) {
+                Sampler.clear(Texel.into_raw());
             }
 
-            gli::fsampler1D::texel_type fsampler1d_texel_fetch(const gli::fsampler1D & Sampler, gli::fsampler1D::extent_type TexelCoord, gli::texture::size_type Level) {
-                return Sampler.texel_fetch(TexelCoord, Level);
+            TexelType4F fsampler1d_texel_fetch(const gli::fsampler1D & Sampler, gli::fsampler1D::extent_type TexelCoord, gli::texture::size_type Level) {
+                gli::vec4 raw = Sampler.texel_fetch(TexelCoord, Level);
+                return TexelType4F(raw);
             }
 
-            void fsampler1d_texel_write(gli::fsampler1D & Sampler, gli::fsampler1D::extent_type TexelCoord, gli::texture::size_type Level, gli::fsampler1D::texel_type Texel) {
-                return Sampler.texel_write(TexelCoord, Level, Texel);
+            void fsampler1d_texel_write(gli::fsampler1D & Sampler, gli::fsampler1D::extent_type TexelCoord, gli::texture::size_type Level, TexelType4F Texel) {
+                Sampler.texel_write(TexelCoord, Level, Texel.into_raw());
             }
 
-            gli::fsampler1D::texel_type fsampler1d_texel_lod(const gli::fsampler1D & Sampler, gli::vec<1, float, (glm::qualifier)0U> SampleCoord, gli::texture::size_type Level) {
-                return Sampler.texture_lod(SampleCoord, Level);
+            TexelType4F fsampler1d_texel_lod(const gli::fsampler1D & Sampler, float SampleCoord, gli::texture::size_type Level) {
+                gli::vec4 raw = Sampler.texture_lod(gli::fsampler1D::normalized_type(SampleCoord), Level);
+                return TexelType4F(raw);
             }
 
             const gli::texture1d & fsampler1d_target_texture(const gli::fsampler1D & Sampler) {

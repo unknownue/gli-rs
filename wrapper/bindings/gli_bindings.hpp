@@ -31,6 +31,7 @@ namespace gli {
 #include "load.hpp"
 #include "save.hpp"
 
+#include "utility.hpp"
 #include "sampler.hpp"
 #include "sampler1d.hpp"
 #include "sampler1d_array.hpp"

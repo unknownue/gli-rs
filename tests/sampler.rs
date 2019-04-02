@@ -22,15 +22,15 @@ mod sampler {
         let mut test_sampler = FSampler2D::new(&texture_loaded, Wrap::CLAMP_TO_EDGE, Filter::LINEAR, Filter::LINEAR);
         test_sampler.generate_mipmaps(Filter::NEAREST);
 
-        let test_fetch = test_sampler.texel_fetch(Extent2d { width: 10, height: 10 }, 0);
-        assert_ne!(test_fetch, [0, 0, 0, 0]);
-        let test_sample = test_sampler.texel_lod([0, 0], 0);
+        let test_fetch = test_sampler.texel_fetch(Extent2d { width: 0, height: 0 }, 0);
+        assert_ne!(test_fetch, [0.0; 4]);
+        let test_sample = test_sampler.texel_lod([0.0, 0.0].into(), 0);
 
         println!("Test fetch  texel: {:?}", test_fetch);
         println!("Test sample texel: {:?}", test_sample);
 
-        test_sampler.texel_write(Extent2d { width: 10, height: 10 }, 0, [0, 0, 0, 0]);
+        test_sampler.texel_write(Extent2d { width: 10, height: 10 }, 0, [0.0; 4].into());
 
-        assert_eq!(test_sampler.texel_fetch(Extent2d { width: 10, height: 10 }, 0), [0, 0, 0, 0]);
+        assert_eq!(test_sampler.texel_fetch(Extent2d { width: 10, height: 10 }, 0), [0.0; 4]);
     }
 }

@@ -85,24 +85,26 @@ extern "C" {
                 return gli::fsampler3D(Texture, Wrap, Mip, Min);
             }
 
-            void fsampler3d_set_border_color(gli::fsampler3D & Sampler, gli::fsampler3D::texel_type BorderColor) {
-                Sampler.set_border_color(BorderColor);
+            void fsampler3d_set_border_color(gli::fsampler3D & Sampler, TexelType4F BorderColor) {
+                Sampler.set_border_color(BorderColor.into_raw());
             }
 
-            void fsampler3d_clear(gli::fsampler3D & Sampler, gli::fsampler3D::texel_type Texel) {
-                Sampler.clear(Texel);
+            void fsampler3d_clear(gli::fsampler3D & Sampler, TexelType4F Texel) {
+                Sampler.clear(Texel.into_raw());
             }
 
-            gli::fsampler3D::texel_type fsampler3d_texel_fetch(const gli::fsampler3D & Sampler, gli::fsampler3D::extent_type TexelCoord, gli::texture::size_type Level) {
-                return Sampler.texel_fetch(TexelCoord, Level);
+            TexelType4F fsampler3d_texel_fetch(const gli::fsampler3D & Sampler, gli::fsampler3D::extent_type TexelCoord, gli::texture::size_type Level) {
+                gli::vec4 raw = Sampler.texel_fetch(TexelCoord, Level);
+                return TexelType4F(raw);
             }
 
-            void fsampler3d_texel_write(gli::fsampler3D & Sampler, gli::fsampler3D::extent_type TexelCoord, gli::texture::size_type Level, gli::fsampler3D::texel_type Texel) {
-                return Sampler.texel_write(TexelCoord, Level, Texel);
+            void fsampler3d_texel_write(gli::fsampler3D & Sampler, gli::fsampler3D::extent_type TexelCoord, gli::texture::size_type Level, TexelType4F Texel) {
+                return Sampler.texel_write(TexelCoord, Level, Texel.into_raw());
             }
 
-            gli::fsampler3D::texel_type fsampler3d_texel_lod(const gli::fsampler3D & Sampler, gli::vec<3, float, (glm::qualifier)0U> SampleCoord, gli::texture::size_type Level) {
-                return Sampler.texture_lod(SampleCoord, Level);
+            TexelType4F fsampler3d_texel_lod(const gli::fsampler3D & Sampler, const float SampleCoord[3], gli::texture::size_type Level) {
+                gli::vec4 raw = Sampler.texture_lod(gli::fsampler3D::normalized_type(SampleCoord[0], SampleCoord[1], SampleCoord[2]), Level);
+                return TexelType4F(raw);
             }
 
             const gli::texture3d & fsampler3d_target_texture(const gli::fsampler3D & Sampler) {
