@@ -4,7 +4,7 @@ use std::ffi::{CString, CStr};
 
 use crate::ffi::root::bindings::Load as bindings;
 
-use crate::TexFormatType;
+use crate::format::TexFormatType;
 use crate::texture::GliTexture;
 use crate::error::{Result, Error, ErrorKind};
 

@@ -63,33 +63,34 @@ mod texture {
             .unwrap();
     }
 
-//    #[test]
-//    fn shared_ptr_test() {
-//
-//        use crate::texture::gli::texture::inner::TextureAccessible;
-//        use gli::ffi::root::bindings;
-//
-//        const TEST_KTX_PATH: &'static str = "./vendors/gli/data/array_r8_uint.ktx";
-//
-//        let mut texture_loaded: Texture2D = gli::load_ktx(Path::new(TEST_KTX_PATH))
-//            .unwrap();
-//
-//        unsafe {
-//            let raw_texture = texture_loaded.raw_texture_mut();
-//            raw_texture.is_print_shared_storage_count = true;
-//            assert_eq!(bindings::Texture::get_texture_shared_storage_count(raw_texture), 1);
-//        }
-//
-//        unsafe {
-//            let base_level_image = texture_loaded.get_level(0);
-//            let raw_texture = texture_loaded.raw_texture_mut();
-//            assert_eq!(bindings::Texture::get_texture_shared_storage_count(raw_texture), 2);
-//            assert_eq!(bindings::Image::get_image_shared_storage_count(&base_level_image.ffi), 2);
-//        }
-//
-//        unsafe {
-//            let raw_texture = texture_loaded.raw_texture();
-//            assert_eq!(bindings::Texture::get_texture_shared_storage_count(raw_texture), 1);
-//        }
-//    }
+    #[cfg(feature = "rc_debug")]
+    #[test]
+    fn shared_ptr_test() {
+
+        use crate::texture::gli::texture::inner::TextureAccessible;
+        use self::gli::ffi::root::bindings;
+
+        const TEST_KTX_PATH: &'static str = "./vendors/gli/data/array_r8_uint.ktx";
+
+        let mut texture_loaded: Texture2D = gli::load_ktx(Path::new(TEST_KTX_PATH))
+            .unwrap();
+
+        unsafe {
+            let raw_texture = texture_loaded.raw_texture_mut();
+            raw_texture.is_print_shared_storage_count = true;
+            assert_eq!(bindings::Texture::get_texture_shared_storage_count(raw_texture), 1);
+        }
+
+        unsafe {
+            let base_level_image = texture_loaded.get_level(0);
+            let raw_texture = texture_loaded.raw_texture_mut();
+            assert_eq!(bindings::Texture::get_texture_shared_storage_count(raw_texture), 2);
+            assert_eq!(bindings::Image::get_image_shared_storage_count(&base_level_image.ffi), 2);
+        }
+
+        unsafe {
+            let raw_texture = texture_loaded.raw_texture();
+            assert_eq!(bindings::Texture::get_texture_shared_storage_count(raw_texture), 1);
+        }
+    }
 }

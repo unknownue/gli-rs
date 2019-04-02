@@ -18,15 +18,16 @@ pub mod extent;
 
 mod load;
 mod save;
-mod texture;
 mod image;
 mod format;
-mod ffi;
 mod error;
 
+#[cfg(feature = "rc_debug")]
+pub mod ffi;
+#[cfg(feature = "rc_debug")]
+pub mod texture;
 
-pub enum TexFormatType {
-    DDS,
-    KTX,
-    KMG,
-}
+#[cfg(not(feature = "rc_debug"))]
+mod ffi;
+#[cfg(not(feature = "rc_debug"))]
+mod texture;

@@ -22,7 +22,19 @@ use crate::format::{Format, Swizzles};
 use crate::target::Target;
 use crate::Extent3d;
 
+#[cfg(not(feature = "rc_debug"))]
 pub(crate) mod inner {
+
+    use crate::ffi::root::gli::texture as RawTexture;
+
+    pub trait TextureAccessible: From<RawTexture> {
+        fn raw_texture(&self) -> &RawTexture;
+        fn raw_texture_mut(&mut self) -> &mut RawTexture;
+    }
+}
+
+#[cfg(feature = "rc_debug")]
+pub mod inner {
 
     use crate::ffi::root::gli::texture as RawTexture;
 

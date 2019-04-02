@@ -3,6 +3,12 @@ use crate::ffi::root::gli;
 
 use std::fmt;
 
+pub enum TexFormatType {
+    DDS,
+    KTX,
+    KMG,
+}
+
 /// Texture data format.
 #[derive(Debug, Clone, Eq, PartialEq)]
 pub struct Format(pub(crate) gli::format);

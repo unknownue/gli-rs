@@ -38,6 +38,7 @@ optional = true
 
 [features]
 bindings = ["bindgen"] # use this feature to enable binding generation.
+rc_debug = []
 
 [profile.release]
 opt-level = 3
