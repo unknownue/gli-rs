@@ -5,7 +5,7 @@ mod texture {
     extern crate gli_rs as gli;
 
     use std::path::Path;
-    use gli::{Texture2D, GliTexture};
+    use self::gli::{Texture2D, GliTexture};
 
     fn print_texture_info(texture: &impl GliTexture) {
 
