@@ -1,5 +1,6 @@
-# Version 0.3.0 (2019-3-27)
+# Version 0.3.0 (2019-4-1)
 
+- Implement partial API in gli::Sampler* namespace.
 - Implement API in gli::dx and gli::gl namespace.
 - Implement `ParticalEq` and `Eq` for `GliImage` and `Texture*` structs.
 

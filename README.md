@@ -2,7 +2,7 @@
 
 Rust binding for [OpenGL Image(GLI)](https://github.com/g-truc/gli) library.
 
-[![gli-rs on travis-ci.com](https://api.travis-ci.org/Usami-Renko/gli-rs.svg?branch=master)](https://travis-ci.com/Usami-Renko/gli-rs)
+[![gli-rs on travis-ci.com](https://api.travis-ci.org/Houjuu-Nue/gli-rs.svg?branch=master)](https://travis-ci.com/Houjuu-Nue/gli-rs)
 [![Latest version](https://img.shields.io/crates/g/gli-rs.svg)](https://crates.io/crates/gli-rs)
 [![Documentation](https://docs.rs/gli-rs/badge.svg)](https://docs.rs/gli-rs)
 ![MIT](https://img.shields.io/badge/license-MIT-blue.svg)
@@ -25,11 +25,11 @@ Add this to `Cargo.toml`:
 
 ```toml
 [dependencies]
-gli-rs = "0.2.1"
+gli-rs = "0.3.0"
 
 # or
 [dependencies]
-gli = { package = "gli-rs", version = "0.2.1" }
+gli = { package = "gli-rs", version = "0.3.0" }
 ```
 
 ## Get help
