@@ -8,6 +8,8 @@ steps:
   #   condition: eq( variables['Agent.OS'], 'Linux' )
   #   displayName: Install g++-multilib
 
+  - bash: git submodule init && git submodule update
+    displayName: "Clone gli submodule"
   - script: cargo build
     displayName: "Normal build"
   # - bash: cargo test $NO_RUN -- --test-threads 1
