@@ -81,9 +81,11 @@ extern "C" {
 
         namespace FSampler3D {
 
+#ifndef _WIN32
             gli::fsampler3D fsampler3d_new(const gli::texture3d & Texture, gli::wrap Wrap, gli::filter Mip, gli::filter Min) {
                 return gli::fsampler3D(Texture, Wrap, Mip, Min);
             }
+#endif
 
             void fsampler3d_set_border_color(gli::fsampler3D & Sampler, TexelType4F BorderColor) {
                 Sampler.set_border_color(gli::tex4FToVec4(BorderColor));

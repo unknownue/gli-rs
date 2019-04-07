@@ -20,6 +20,7 @@ pub struct FSampler2D<'a> {
 impl<'a, 'b: 'a> FSampler2D<'a> {
 
     /// Constructor of `FSampler2D`.
+    #[cfg(not(target_os = "windows"))]
     pub fn new(texture: &'b Texture2D, wrap: Wrap, mip: Filter, min: Filter) -> FSampler2D {
         FSampler2D {
             ffi: unsafe { bindings::fsampler2d_new(texture.raw_ffi(), wrap.0, mip.0, min.0) },

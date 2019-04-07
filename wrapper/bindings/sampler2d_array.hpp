@@ -80,11 +80,13 @@ extern "C" {
     namespace bindings {
     
         namespace FSampler2DArray {
-    
+
+#ifndef _WIN32
             gli::fsampler2DArray fsampler2darray_new(const gli::texture2d_array & Texture, gli::wrap Wrap, gli::filter Mip, gli::filter Min) {
                 return gli::fsampler2DArray(Texture, Wrap, Mip, Min);
             }
-    
+#endif
+
             void fsampler2darray_set_border_color(gli::fsampler2DArray & Sampler, TexelType4F BorderColor) {
                 Sampler.set_border_color(gli::tex4FToVec4(BorderColor));
             }

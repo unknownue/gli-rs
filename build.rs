@@ -44,7 +44,7 @@ fn build_gli_lib() {
             .cpp(true);
     } else {
         build
-            .flag("-Wno-return-type-c-linkage")
+            //.flag("-Wno-return-type-c-linkage")
             .cpp(true);
     }
 

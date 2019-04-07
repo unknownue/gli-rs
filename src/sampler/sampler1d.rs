@@ -20,6 +20,7 @@ pub struct FSampler1D<'a> {
 impl<'a, 'b: 'a> FSampler1D<'a> {
 
     /// Constructor of `FSampler1D`.
+    #[cfg(not(target_os = "windows"))]
     pub fn new(texture: &'b Texture1D, wrap: Wrap, mip: Filter, min: Filter) -> FSampler1D {
         FSampler1D {
             ffi: unsafe { bindings::fsampler1d_new(texture.raw_ffi(), wrap.0, mip.0, min.0) },

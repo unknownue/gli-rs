@@ -20,6 +20,7 @@ pub struct FSampler2DArray<'a> {
 impl<'a, 'b: 'a> FSampler2DArray<'a> {
 
     /// Constructor of `FSampler2DArray`.
+    #[cfg(not(target_os = "windows"))]
     pub fn new(texture: &'b Texture2DArray, wrap: Wrap, mip: Filter, min: Filter) -> FSampler2DArray {
         FSampler2DArray {
             ffi: unsafe { bindings::fsampler2darray_new(texture.raw_ffi(), wrap.0, mip.0, min.0) },

@@ -83,10 +83,12 @@ extern "C" {
     namespace bindings {
     
         namespace FSampler2D {
-    
+
+#ifndef _WIN32
             gli::fsampler2D fsampler2d_new(const gli::texture2d & Texture, gli::wrap Wrap, gli::filter Mip, gli::filter Min) {
                 return gli::fsampler2D(Texture, Wrap, Mip, Min);
             }
+#endif
     
             void fsampler2d_set_border_color(gli::fsampler2D & Sampler, TexelType4F BorderColor) {
                 Sampler.set_border_color(gli::tex4FToVec4(BorderColor));

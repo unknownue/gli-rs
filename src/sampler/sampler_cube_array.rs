@@ -20,6 +20,7 @@ pub struct FSamplerCubeArray<'a> {
 impl<'a, 'b: 'a> FSamplerCubeArray<'a> {
 
     /// Constructor of `FSamplerCubeArray`.
+    #[cfg(not(target_os = "windows"))]
     pub fn new(texture: &'b TextureCubeArray, wrap: Wrap, mip: Filter, min: Filter) -> FSamplerCubeArray {
         FSamplerCubeArray {
             ffi: unsafe { bindings::fsampler_cube_array_new(texture.raw_ffi(), wrap.0, mip.0, min.0) },

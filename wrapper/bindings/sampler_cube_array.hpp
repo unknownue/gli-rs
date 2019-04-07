@@ -81,11 +81,13 @@ extern "C" {
     namespace bindings {
         
         namespace FSamplerCubeArray {
-            
+
+#ifndef _WIN32
             gli::fsamplerCubeArray fsampler_cube_array_new(const gli::texture_cube_array & Texture, gli::wrap Wrap, gli::filter Mip, gli::filter Min) {
                 return gli::fsamplerCubeArray(Texture, Wrap, Mip, Min);
             }
-            
+#endif
+
             void fsampler_cube_array_set_border_color(gli::fsamplerCubeArray & Sampler, TexelType4F BorderColor) {
                 Sampler.set_border_color(gli::tex4FToVec4(BorderColor));
             }

@@ -82,9 +82,11 @@ extern "C" {
 
         namespace FSamplerCube {
 
+#ifndef _WIN32
             gli::fsamplerCube fsampler_cube_new(const gli::texture_cube & Texture, gli::wrap Wrap, gli::filter Mip, gli::filter Min) {
                 return gli::fsamplerCube(Texture, Wrap, Mip, Min);
             }
+#endif
 
             void fsampler_cube_set_border_color(gli::fsamplerCube & Sampler, TexelType4F BorderColor) {
                 Sampler.set_border_color(gli::tex4FToVec4(BorderColor));
