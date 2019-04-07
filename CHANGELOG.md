@@ -1,3 +1,10 @@
+# Version 0.3.1 (2019-4-7)
+
+- Fix build error on Windows platform(Temporarily disable some API on Windows).
+- Fix some parameter types.
+
+
+
 # Version 0.3.0 (2019-4-1)
 
 - Implement partial API in gli::Sampler* namespace.
