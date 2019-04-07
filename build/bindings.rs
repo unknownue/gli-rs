@@ -3827,6 +3827,10 @@ pub mod root {
         #[doc = " Default qualifier 32 bit unsigned integer vector of 4 components type."]
         #[doc = " @see gtc_type_precision"]
         pub type u32vec4 = [u32; 4usize];
+        #[doc = " 4 components vector of single-precision floating-point numbers."]
+        #[doc = ""]
+        #[doc = " @see <a href=\"http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf\">GLSL 4.20.8 specification, section 4.1.5 Vectors</a>"]
+        pub type vec4 = [u32; 4usize];
     }
     pub mod bindings {
         #[allow(unused_imports)]
@@ -4549,6 +4553,9 @@ pub mod root {
         pub struct TexelType4F {
             pub content: [f32; 4usize],
         }
+        extern "C" {
+            pub fn vec4ToTex4F(raw: root::glm::vec4) -> root::bindings::TexelType4F;
+        }
         pub mod FSampler1D {
             #[allow(unused_imports)]
             use self::super::super::super::root;
@@ -4591,7 +4598,7 @@ pub mod root {
                 pub fn fsampler1d_texel_lod(
                     Sampler: *const root::gli::fsampler1D,
                     SampleCoord: f32,
-                    Level: root::gli::texture_size_type,
+                    Level: f32,
                 ) -> root::bindings::TexelType4F;
             }
             extern "C" {
@@ -4659,7 +4666,7 @@ pub mod root {
                     Sampler: *const root::gli::fsampler1DArray,
                     SampleCoord: f32,
                     Layer: root::gli::texture_size_type,
-                    Level: root::gli::texture_size_type,
+                    Level: f32,
                 ) -> root::bindings::TexelType4F;
             }
             extern "C" {
@@ -4726,7 +4733,7 @@ pub mod root {
                 pub fn fsampler2d_texel_lod(
                     Sampler: *const root::gli::fsampler2D,
                     SampleCoord: *const f32,
-                    Level: root::gli::texture_size_type,
+                    Level: f32,
                 ) -> root::bindings::TexelType4F;
             }
             extern "C" {
@@ -4794,7 +4801,7 @@ pub mod root {
                     Sampler: *const root::gli::fsampler2DArray,
                     SampleCoord: *const f32,
                     Layer: root::gli::texture_size_type,
-                    Level: root::gli::texture_size_type,
+                    Level: f32,
                 ) -> root::bindings::TexelType4F;
             }
             extern "C" {
@@ -4861,7 +4868,7 @@ pub mod root {
                 pub fn fsampler3d_texel_lod(
                     Sampler: *const root::gli::fsampler3D,
                     SampleCoord: *const f32,
-                    Level: root::gli::texture_size_type,
+                    Level: f32,
                 ) -> root::bindings::TexelType4F;
             }
             extern "C" {
@@ -4929,7 +4936,7 @@ pub mod root {
                     Sampler: *const root::gli::fsamplerCube,
                     SampleCoord: *const f32,
                     Face: root::gli::texture_size_type,
-                    Level: root::gli::texture_size_type,
+                    Level: f32,
                 ) -> root::bindings::TexelType4F;
             }
             extern "C" {
@@ -5002,7 +5009,7 @@ pub mod root {
                     SampleCoord: *const f32,
                     Layer: root::gli::texture_size_type,
                     Face: root::gli::texture_size_type,
-                    Level: root::gli::texture_size_type,
+                    Level: f32,
                 ) -> root::bindings::TexelType4F;
             }
             extern "C" {

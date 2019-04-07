@@ -59,7 +59,7 @@ impl<'a, 'b: 'a> FSampler2DArray<'a> {
     }
 
     /// Sample the sampler texture at a specific level.
-    pub fn texel_lod(&self, sample_coord: NormalizeCoord2d, layer: usize, level: usize) -> [f32; 4] {
+    pub fn texel_lod(&self, sample_coord: NormalizeCoord2d, layer: usize, level: f32) -> [f32; 4] {
         let raw = unsafe { bindings::fsampler2darray_texel_lod(&self.ffi, <[f32; 2]>::from(sample_coord).as_ptr(), layer, level) };
         raw.content
     }

@@ -59,7 +59,7 @@ impl<'a, 'b: 'a> FSamplerCubeArray<'a> {
     }
 
     /// Sample the sampler texture at a specific level.
-    pub fn texel_lod(&self, sample_coord: NormalizeCoord2d, layer: usize, face: usize, level: usize) -> [f32; 4] {
+    pub fn texel_lod(&self, sample_coord: NormalizeCoord2d, layer: usize, face: usize, level: f32) -> [f32; 4] {
         let raw = unsafe { bindings::fsampler_cube_array_texel_lod(&self.ffi, <[f32; 2]>::from(sample_coord).as_ptr(), layer, face, level) };
         raw.content
     }

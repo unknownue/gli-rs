@@ -33,6 +33,8 @@ mod sampler {
         test_sampler.texel_write(Extent2d { width: 255, height: 255 }, 0, [0.0; 4].into());
         assert_eq!(test_sampler.texel_fetch(Extent2d { width: 255, height: 255 }, 0), [0.0; 4]);
 
+        // TODO: Test for other level generated.
+
         // test level 1.
         //test_sampler.generate_mipmaps(Filter::NEAREST);
         //test_sampler.texel_write(Extent2d { width: 127, height: 127 }, 0, [0.0; 4].into());

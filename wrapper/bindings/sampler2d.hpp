@@ -89,25 +89,25 @@ extern "C" {
             }
     
             void fsampler2d_set_border_color(gli::fsampler2D & Sampler, TexelType4F BorderColor) {
-                Sampler.set_border_color(BorderColor.into_raw());
+                Sampler.set_border_color(gli::tex4FToVec4(BorderColor));
             }
     
             void fsampler2d_clear(gli::fsampler2D & Sampler, TexelType4F Texel) {
-                Sampler.clear(Texel.into_raw());
+                Sampler.clear(gli::tex4FToVec4(Texel));
             }
     
             TexelType4F fsampler2d_texel_fetch(const gli::fsampler2D & Sampler, gli::fsampler2D::extent_type TexelCoord, gli::texture::size_type Level) {
                 gli::vec4 raw = Sampler.texel_fetch(TexelCoord, Level);
-                return TexelType4F(raw);
+                return vec4ToTex4F(raw);
             }
     
             void fsampler2d_texel_write(gli::fsampler2D & Sampler, gli::fsampler2D::extent_type TexelCoord, gli::texture::size_type Level, TexelType4F Texel) {
-                return Sampler.texel_write(TexelCoord, Level, Texel.into_raw());
+                return Sampler.texel_write(TexelCoord, Level, gli::tex4FToVec4(Texel));
             }
     
-            TexelType4F fsampler2d_texel_lod(const gli::fsampler2D & Sampler, const float SampleCoord[2], gli::texture::size_type Level) {
+            TexelType4F fsampler2d_texel_lod(const gli::fsampler2D & Sampler, const float SampleCoord[2], float Level) {
                 gli::vec4 raw = Sampler.texture_lod(gli::fsampler2D::normalized_type(SampleCoord[0], SampleCoord[1]), Level);
-                return TexelType4F(raw);
+                return vec4ToTex4F(raw);
             }
     
             const gli::texture2d & fsampler2d_target_texture(const gli::fsampler2D & Sampler) {
