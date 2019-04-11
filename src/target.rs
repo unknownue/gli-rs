@@ -70,15 +70,15 @@ impl fmt::Display for Target {
 
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match *self {
-            | Target::TARGET_1D         => write!(f, stringify!(Target::TARGET_1D        )),
-            | Target::TARGET_1D_ARRAY   => write!(f, stringify!(Target::TARGET_1D_ARRAY  )),
-            | Target::TARGET_2D         => write!(f, stringify!(Target::TARGET_2D        )),
-            | Target::TARGET_2D_ARRAY   => write!(f, stringify!(Target::TARGET_2D_ARRAY  )),
-            | Target::TARGET_3D         => write!(f, stringify!(Target::TARGET_3D        )),
-            | Target::TARGET_RECT       => write!(f, stringify!(Target::TARGET_RECT      )),
-            | Target::TARGET_RECT_ARRAY => write!(f, stringify!(Target::TARGET_RECT_ARRAY)),
-            | Target::TARGET_CUBE       => write!(f, stringify!(Target::TARGET_CUBE      )),
-            | Target::TARGET_CUBE_ARRAY => write!(f, stringify!(Target::TARGET_CUBE_ARRAY)),
+            | Target::TARGET_1D         => write!(f, stringify!(TARGET_1D        )),
+            | Target::TARGET_1D_ARRAY   => write!(f, stringify!(TARGET_1D_ARRAY  )),
+            | Target::TARGET_2D         => write!(f, stringify!(TARGET_2D        )),
+            | Target::TARGET_2D_ARRAY   => write!(f, stringify!(TARGET_2D_ARRAY  )),
+            | Target::TARGET_3D         => write!(f, stringify!(TARGET_3D        )),
+            | Target::TARGET_RECT       => write!(f, stringify!(TARGET_RECT      )),
+            | Target::TARGET_RECT_ARRAY => write!(f, stringify!(TARGET_RECT_ARRAY)),
+            | Target::TARGET_CUBE       => write!(f, stringify!(TARGET_CUBE      )),
+            | Target::TARGET_CUBE_ARRAY => write!(f, stringify!(TARGET_CUBE_ARRAY)),
             | _ => write!(f, "Unknown target"),
         }
     }

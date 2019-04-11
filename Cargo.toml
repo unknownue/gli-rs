@@ -43,3 +43,7 @@ rc_debug = []
 [profile.release]
 opt-level = 3
 lto = true
+
+
+[[example]]
+name = "texture"

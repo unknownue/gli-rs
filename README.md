@@ -1,8 +1,8 @@
 # gli-rs
 
-Rust binding for [OpenGL Image(GLI)](https://github.com/g-truc/gli) library.
-
 [![Build Status](https://dev.azure.com/usami-ssc/usami-ssc/_apis/build/status/Houjuu-Nue.gli-rs?branchName=master)](https://dev.azure.com/usami-ssc/usami-ssc/_build/latest?definitionId=3&branchName=master) [![Latest version](https://img.shields.io/badge/crates.io-gli--rs-green.svg)](https://crates.io/crates/gli-rs) [![Documentation](https://docs.rs/gli-rs/badge.svg)](https://docs.rs/gli-rs) ![MIT](https://img.shields.io/badge/license-MIT-blue.svg)
+
+Rust binding for [OpenGL Image(GLI)](https://github.com/g-truc/gli) library.
 
 - [Documentation](https://docs.rs/gli-rs)
 - [Change Logs](./CHANGELOG.md)
