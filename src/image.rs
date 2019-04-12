@@ -57,8 +57,8 @@ impl GliImage {
 
     /// Return a mutable pointer to the beginning of the texture instance data.
     #[inline]
-    pub fn data_mut(&mut self) -> *mut c_void {
-        unsafe { bindings::image_data_mut(&mut self.ffi) }
+    pub unsafe fn data_mut(&mut self) -> *mut c_void {
+        bindings::image_data_mut(&mut self.ffi)
     }
 
     // TODO: another two data(..) methods are missing, due to template specialization.

@@ -105,8 +105,8 @@ pub trait GliTexture: inner::TextureAccessible + Sized + PartialEq + Eq {
         unsafe { bindings::texture_data(self.raw_texture()) }
     }
 
-    fn data_mut(&mut self) -> *mut c_void {
-        unsafe { bindings::texture_data_mut(self.raw_texture_mut()) }
+    unsafe fn data_mut(&mut self) -> *mut c_void {
+        bindings::texture_data_mut(self.raw_texture_mut())
     }
 
     // TODO: Other 6 data methods is missing.
