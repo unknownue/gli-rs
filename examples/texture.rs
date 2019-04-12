@@ -21,14 +21,25 @@ fn main() {
     println!("\tTarget: {}", texture.target());
     println!();
 
-    // access the base level image of the texture.
-    let image: GliImage = texture.get_level(0);
-    println!("Base level image info:");
-    println!("\tExtent: ({}, {})", image.extent().width, image.extent().height);
-    println!("\tFormat: {}", image.format());
-    println!("\tSize: {}", image.size());
-    println!("\tAddress: {:?}", texture.data());
-    println!();
+    { // access the base level image of the texture.
+        let image: GliImage = texture.get_level(0);
+        println!("Base level image info:");
+        println!("\tExtent: ({}, {})", image.extent().width, image.extent().height);
+        println!("\tFormat: {}", image.format());
+        println!("\tSize: {}", image.size());
+        println!("\tAddress: {:?}", image.data());
+        println!();
+    }
+
+    { // access the level 1 image of the texture.
+        let image: GliImage = texture.get_level(1);
+        println!("Level 1 image info:");
+        println!("\tExtent: ({}, {})", image.extent().width, image.extent().height);
+        println!("\tFormat: {}", image.format());
+        println!("\tSize: {}", image.size());
+        println!("\tAddress: {:?}", image.data());
+        println!();
+    }
 
     gli::save_dds(&texture, Path::new("kueken7_r5g6b5_unorm.dds"))
         .expect("Failed to save dds texture.");

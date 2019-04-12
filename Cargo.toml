@@ -24,7 +24,7 @@ include = [
 ]
 
 [badges]
-travis-ci = { repository = "Houjuu-Nue/gli-rs" }
+azure-devops = { project = "Houjuu-Nue/gli-rs", pipeline = "Houjuu-Nue.gli-rs", build="3" }
 
 [dependencies]
 failure = "0.1.5"

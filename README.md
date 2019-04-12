@@ -8,13 +8,13 @@ Rust binding for [OpenGL Image(GLI)](https://github.com/g-truc/gli) library.
 - [Change Logs](./CHANGELOG.md)
 - [GLI GitHub](https://github.com/g-truc/gli)
 
-This crate aims to fill the gap of loading KTX and DDS image file for graphic developer in Rust ecosystem.
+This crate aims to fill the gap of loading KTX and DDS image file in Rust ecosystem.
 
 ## Compatibility
 
 Although not all the api has been translated to Rust and fully tested, it does work for the most part.
 
-While the origin library is written in C++, this crate wouldn't insure full compatibility.
+This crate does not guarantee full compatibility with original library.
 
 ## Requirement
 
@@ -35,9 +35,5 @@ gli = { package = "gli-rs", version = "0.3.1" }
 
 ## Get help
 
-Welcome to create issues if you have any questions or find any of api is missing.
-
-## License
-
-The repository is under [MIT license](http://opensource.org/licenses/MIT).
+If you get any questions or find any api is missing, welcome to create an issue.
 
