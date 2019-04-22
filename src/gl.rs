@@ -3,6 +3,7 @@ use crate::ffi::root::gli;
 use crate::ffi::root::bindings::GL as bindings;
 
 /// Translation class to convert GLI enums into OpenGL values.
+#[repr(transparent)]
 pub struct GLConverter {
     inner: gli::gl,
 }
@@ -33,6 +34,7 @@ impl GLConverter {
 }
 
 #[derive(Debug, Clone, Copy, Eq, PartialEq)]
+#[repr(transparent)]
 pub struct GLProfile(pub(crate) gli::gl_profile);
 
 impl GLProfile {
@@ -44,6 +46,7 @@ impl GLProfile {
 }
 
 #[derive(Debug, Clone, Copy, Eq, PartialEq)]
+#[repr(transparent)]
 pub struct GLTarget(pub(crate) gli::gl_target);
 
 impl GLTarget {
@@ -59,6 +62,7 @@ impl GLTarget {
 }
 
 #[derive(Debug, Clone, Copy, Eq, PartialEq)]
+#[repr(transparent)]
 pub struct GLInternalFmt(pub(crate) gli::gl_internal_format);
 
 impl GLInternalFmt {
@@ -247,6 +251,7 @@ impl GLInternalFmt {
 
 
 #[derive(Debug, Clone, Copy, Eq, PartialEq)]
+#[repr(transparent)]
 pub struct GLExternalFmt(pub(crate) gli::gl_external_format);
 
 impl GLExternalFmt {
@@ -274,6 +279,7 @@ impl GLExternalFmt {
 }
 
 #[derive(Debug, Clone, Copy, Eq, PartialEq)]
+#[repr(transparent)]
 pub struct GLTypeFmt(pub(crate) gli::gl_type_format);
 
 impl GLTypeFmt {
@@ -309,6 +315,7 @@ impl GLTypeFmt {
 }
 
 #[derive(Debug, Clone, Copy, Eq, PartialEq)]
+#[repr(transparent)]
 pub struct GLSwizzle(pub(crate) gli::gl_swizzle);
 
 impl GLSwizzle {

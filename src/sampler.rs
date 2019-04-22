@@ -19,6 +19,7 @@ use crate::ffi::root::gli;
 
 /// Texture coordinate wrapping mode.
 #[derive(Debug, Clone, Eq, PartialEq)]
+#[repr(transparent)]
 pub struct Wrap(pub(crate) gli::wrap);
 
 impl Wrap {
@@ -34,6 +35,7 @@ impl Wrap {
 
 /// Texture filtering mode.
 #[derive(Debug, Clone, Eq, PartialEq)]
+#[repr(transparent)]
 pub struct Filter(pub(crate) gli::filter);
 
 impl Filter {

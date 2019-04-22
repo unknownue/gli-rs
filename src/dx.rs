@@ -3,6 +3,7 @@ use crate::ffi::root::gli;
 use crate::ffi::root::bindings::DX as bindings;
 
 /// Translation class to convert GLI enums into DirectX enums.
+#[repr(transparent)]
 pub struct DxConverter {
     inner: gli::dx,
 }
@@ -34,6 +35,7 @@ impl DxConverter {
 }
 
 #[derive(Debug, Clone, Copy, Eq, PartialEq)]
+#[repr(transparent)]
 pub struct D3DFormat(pub(crate) gli::dx_d3dfmt);
 
 impl D3DFormat {
@@ -427,6 +429,7 @@ impl From<DXGIFormat> for gli::dx_dxgiFormat {
 }
 
 #[derive(Debug, Clone, Copy, Eq, PartialEq)]
+#[repr(transparent)]
 pub struct DDPF(pub(crate) gli::dx_ddpf);
 
 impl DDPF {

@@ -9,6 +9,7 @@ use crate::texture::inner::TextureAccessible;
 use crate::Extent2d;
 
 /// 2d array texture
+#[repr(transparent)]
 pub struct Texture2DArray {
     ffi: gli::texture2d_array,
 }

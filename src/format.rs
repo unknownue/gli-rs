@@ -11,6 +11,7 @@ pub enum TexFormatType {
 
 /// Texture data format.
 #[derive(Debug, Clone, Eq, PartialEq)]
+#[repr(transparent)]
 pub struct Format(pub(crate) gli::format);
 
 impl Format {
@@ -137,6 +138,7 @@ impl Format {
 
 /// Represent the source of a channel.
 #[derive(Debug, Clone, Eq, PartialEq)]
+#[repr(transparent)]
 pub struct Swizzle(pub(crate) gli::swizzle);
 
 pub type Swizzles = [gli::swizzle; 4];

@@ -11,6 +11,7 @@ use std::marker::PhantomData;
 /// Cube map array texture sampler.
 ///
 /// It interprets the texture data as float.
+#[repr(transparent)]
 pub struct FSamplerCubeArray<'a> {
 
     ffi: gli::fsamplerCubeArray,

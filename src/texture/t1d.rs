@@ -10,6 +10,7 @@ use crate::texture::inner::TextureAccessible;
 use crate::Extent1d;
 
 /// 1d texture
+#[repr(transparent)]
 pub struct Texture1D {
     ffi: gli::texture1d,
 }

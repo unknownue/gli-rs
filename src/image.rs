@@ -10,11 +10,13 @@ use crate::Extent3d;
 
 /// GliImage representation for a single texture level.
 #[cfg(not(feature = "rc_debug"))]
+#[repr(transparent)]
 pub struct GliImage {
     ffi: gli::image,
 }
 
 #[cfg(feature = "rc_debug")]
+#[repr(transparent)]
 pub struct GliImage {
     pub ffi: gli::image,
 }

@@ -9,6 +9,7 @@ use crate::texture::inner::TextureAccessible;
 use crate::Extent2d;
 
 /// Cube map array texture
+#[repr(transparent)]
 pub struct TextureCubeArray {
     ffi: gli::texture_cube_array,
 }

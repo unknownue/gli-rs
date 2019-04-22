@@ -6,6 +6,7 @@ use std::fmt;
 
 
 #[derive(Debug, Clone, Eq, PartialEq)]
+#[repr(transparent)]
 pub struct Target(pub(crate) gli::target);
 
 impl Target {

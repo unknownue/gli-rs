@@ -2,6 +2,7 @@
 
 - Add basic example codes.
 - Mark `data_mut()` methods as `unsafe fn` for `GliTexture` and `GliImage`.
+- Mark ffi newtype with `#[repr(transparent)]`.
 
 
 

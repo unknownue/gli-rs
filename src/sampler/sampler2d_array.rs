@@ -11,6 +11,7 @@ use std::marker::PhantomData;
 /// 2d array texture sampler.
 ///
 /// It interprets the texture data as float.
+#[repr(transparent)]
 pub struct FSampler2DArray<'a> {
 
     ffi: gli::fsampler2DArray,

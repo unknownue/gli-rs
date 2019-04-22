@@ -11,6 +11,7 @@ use std::marker::PhantomData;
 /// 3d texture sampler.
 ///
 /// It interprets the texture data as float.
+#[repr(transparent)]
 pub struct FSampler3D<'a> {
 
     ffi: gli::fsampler3D,
