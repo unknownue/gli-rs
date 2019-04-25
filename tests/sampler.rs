@@ -9,6 +9,7 @@ mod sampler {
     use self::gli::sampler::{Wrap, Filter, FSampler2D};
     use self::gli::Extent2d;
 
+    #[cfg(not(target_os = "windows"))]
     #[test]
     fn sampler2d_test() {
 

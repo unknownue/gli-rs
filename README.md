@@ -4,11 +4,11 @@
 
 Rust binding for [OpenGL Image(GLI)](https://github.com/g-truc/gli) library.
 
+This crate aims to fill the gap of loading KTX and DDS image file in Rust ecosystem.
+
 - [Documentation](https://docs.rs/gli-rs)
 - [Change Logs](./CHANGELOG.md)
 - [GLI GitHub](https://github.com/g-truc/gli)
-
-This crate aims to fill the gap of loading KTX and DDS image file in Rust ecosystem.
 
 ## Compatibility
 
