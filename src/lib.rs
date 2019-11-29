@@ -1,5 +1,5 @@
 
-pub use self::format::{Format, Swizzle, Swizzles};
+pub use self::format::{Format, Swizzle, Swizzles, TexFormatType};
 pub use self::extent::{Extent1d, Extent2d, Extent3d};
 
 pub use self::image::GliImage;
