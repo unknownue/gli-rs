@@ -2,7 +2,7 @@
 [package]
 name    = "gli-rs"
 version = "0.3.2"
-authors = ["Houjuu-Nue <usami-ssc@protonmail.com>"]
+authors = ["unknownue <usami-ssc@protonmail.com>"]
 edition = "2018"
 build   = "build/build.rs"
 
