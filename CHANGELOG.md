@@ -1,8 +1,9 @@
-# Unreleased
+# Version 0.3.2 (2019-11-29)
 
 - Add basic example codes.
 - Mark `data_mut()` methods as `unsafe fn` for `GliTexture` and `GliImage`.
 - Mark ffi newtype with `#[repr(transparent)]`.
+- Make `TexFormatType` public to user. #3
 
 
 
