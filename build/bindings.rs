@@ -3750,64 +3750,63 @@ pub mod root {
         pub type allocator_reference = u8;
         pub type allocator_const_reference = u8;
         pub type allocator_value_type = u8;
-        pub type allocator_propagate_on_container_move_assignment = u8;
-        pub type allocator_is_always_equal = u8;
         #[repr(C)]
         #[derive(Debug, Default)]
         pub struct allocator_rebind {
             pub _address: u8,
         }
         pub type allocator_rebind_other = u8;
-        #[repr(C)]
-        #[derive(Debug, Default)]
-        pub struct shared_ptr {
-            pub _address: u8,
-        }
-        pub type shared_ptr_element_type = u8;
-        #[repr(C)]
-        #[derive(Debug, Default)]
-        pub struct shared_ptr___nat {
-            pub _address: u8,
-        }
-        pub type shared_ptr___shared_ptr_default_allocator_type = u8;
+        pub type allocator_propagate_on_container_move_assignment = u8;
+        pub type allocator_is_always_equal = u8;
         #[repr(C)]
         #[derive(Debug, Default)]
         pub struct vector {
             pub _address: u8,
         }
-        pub type vector___base = u8;
-        pub type vector___default_allocator_type = u8;
-        pub type vector___self = u8;
+        pub type vector__Base = u8;
+        pub type vector__Tp_alloc_type = u8;
+        pub type vector__Alloc_traits = u8;
         pub type vector_value_type = u8;
-        pub type vector_allocator_type = u8;
-        pub type vector___alloc_traits = u8;
-        pub type vector_reference = u8;
-        pub type vector_const_reference = u8;
-        pub type vector_size_type = u8;
-        pub type vector_difference_type = u8;
         pub type vector_pointer = u8;
         pub type vector_const_pointer = u8;
+        pub type vector_reference = u8;
+        pub type vector_const_reference = u8;
         pub type vector_iterator = u8;
         pub type vector_const_iterator = u8;
-        pub type vector_reverse_iterator = u8;
         pub type vector_const_reverse_iterator = u8;
+        pub type vector_reverse_iterator = u8;
+        pub type vector_size_type = u64;
+        pub type vector_difference_type = u64;
+        pub type vector_allocator_type = u8;
         #[repr(C)]
         #[derive(Debug, Default)]
-        pub struct vector___RAII_IncreaseAnnotator {
+        pub struct vector__Temporary_value {
             pub _address: u8,
         }
-        pub type array___self = u8;
         pub type array_value_type = u8;
+        pub type array_pointer = u8;
+        pub type array_const_pointer = u8;
         pub type array_reference = u8;
         pub type array_const_reference = u8;
         pub type array_iterator = u8;
         pub type array_const_iterator = u8;
-        pub type array_pointer = u8;
-        pub type array_const_pointer = u8;
         pub type array_size_type = u64;
         pub type array_difference_type = u64;
         pub type array_reverse_iterator = u8;
         pub type array_const_reverse_iterator = u8;
+        pub type array__AT_Type = u8;
+        #[repr(C)]
+        #[derive(Debug, Default)]
+        pub struct shared_ptr {
+            pub _address: u8,
+        }
+        pub type shared_ptr__Constructible = u8;
+        pub type shared_ptr__Assignable = u8;
+        pub type shared_ptr_element_type = u8;
+    }
+    pub mod __gnu_cxx {
+        #[allow(unused_imports)]
+        use self::super::super::root;
     }
     pub mod glm {
         #[allow(unused_imports)]
@@ -4754,6 +4753,10 @@ pub mod root {
                     MaxLevel: root::gli::texture_size_type,
                     Minification: root::gli::filter,
                 );
+            }
+            extern "C" {
+                #[doc = " Manually Call destructor for image object. Helper function used in FFI."]
+                pub fn destroy_sampler2d(Sampler: *mut root::gli::fsampler2D);
             }
         }
         pub mod FSampler2DArray {

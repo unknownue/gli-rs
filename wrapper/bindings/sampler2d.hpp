@@ -30,6 +30,10 @@ namespace gli
 
 		sampler2d(texture_type const& Texture, wrap Wrap, filter Mip = FILTER_NEAREST, filter Min = FILTER_NEAREST, texel_type const& BorderColor = texel_type(0, 0, 0, 1));
 
+		~sampler2d() {
+
+        }
+
         void set_border_color(texel_type BorderColor) {
             this->BorderColor = BorderColor;
         }
@@ -122,6 +126,11 @@ extern "C" {
     
             void fsampler2d_generate_mipmaps2(gli::fsampler2D & Sampler, gli::texture::size_type BaseLevel, gli::texture::size_type  MaxLevel, gli::filter Minification) {
                 Sampler.generate_mipmaps(BaseLevel, MaxLevel, Minification);
+            }
+
+            /// Manually Call destructor for image object. Helper function used in FFI.
+            void destroy_sampler2d(gli::fsampler2D & Sampler) {
+                Sampler.~sampler2d();
             }
         }
     }

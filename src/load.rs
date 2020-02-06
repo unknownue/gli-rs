@@ -27,9 +27,9 @@ pub fn load<T>(path: impl AsRef<Path>) -> Result<T>
     construct_texture(raw_texture)
 }
 
-/// Construct a `GliTexture` from the data in memory.
+/// Construct a `GliTexture` by sharing another texture data in memory.
 ///
-/// The `format` type must be specified correctly. 
+/// The `format` type and resulting texture type must be specified correctly.
 ///
 /// The lifetime of `data` must be longer than constructed `GliTexture`, which is not guaranteed by this crate.
 pub fn load_from_memory<T>(data: &[u8], format: TexFormatType) -> Result<T>

@@ -85,7 +85,7 @@ impl fmt::Display for Target {
     }
 }
 
-/// Evaluate whether a target and format combinaison is only supported by the DDS container through GLI DDS extension.
+/// Evaluate whether a target and format combination is only supported by the DDS container through GLI DDS extension.
 pub fn is_dds_ext(target: Target, fmt: Format) -> bool {
     unsafe {
         crate::ffi::root::bindings::DX::is_dds_ext(target.0, fmt.0)
