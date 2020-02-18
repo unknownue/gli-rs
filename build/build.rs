@@ -76,9 +76,11 @@ fn generate_bindings() {
         .enable_cxx_namespaces()
         .disable_untagged_union()
         //.new_type_alias("fsampler*")
+        .array_pointers_in_arguments(true)
         .derive_debug(true)
         .derive_copy(false)
         .derive_default(true)
+        .size_t_is_usize(true)
         .rustfmt_bindings(true)
         .trust_clang_mangling(false)
         .layout_tests(false);

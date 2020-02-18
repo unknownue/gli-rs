@@ -426,7 +426,7 @@ pub mod root {
             pub Data: [u64; 3usize],
         }
         pub type storage_linear_extent_type = root::gli::extent3d;
-        pub type storage_linear_size_type = root::std::size_t;
+        pub type storage_linear_size_type = usize;
         pub use self::super::super::root::gli::format as storage_linear_format_type;
         pub type storage_linear_data_type = root::gli::byte;
         extern "C" {
@@ -535,13 +535,13 @@ pub mod root {
             pub fn storage_linear_copy(
                 this: *mut root::gli::storage_linear,
                 StorageSrc: *const root::gli::storage_linear,
-                LayerSrc: root::std::size_t,
-                FaceSrc: root::std::size_t,
-                LevelSrc: root::std::size_t,
+                LayerSrc: usize,
+                FaceSrc: usize,
+                LevelSrc: usize,
                 BlockIndexSrc: *const root::gli::storage_linear_extent_type,
-                LayerDst: root::std::size_t,
-                FaceDst: root::std::size_t,
-                LevelDst: root::std::size_t,
+                LayerDst: usize,
+                FaceDst: usize,
+                LevelDst: usize,
                 BlockIndexDst: *const root::gli::storage_linear_extent_type,
                 BlockCount: *const root::gli::storage_linear_extent_type,
             );
@@ -674,13 +674,13 @@ pub mod root {
             pub unsafe fn copy(
                 &mut self,
                 StorageSrc: *const root::gli::storage_linear,
-                LayerSrc: root::std::size_t,
-                FaceSrc: root::std::size_t,
-                LevelSrc: root::std::size_t,
+                LayerSrc: usize,
+                FaceSrc: usize,
+                LevelSrc: usize,
                 BlockIndexSrc: *const root::gli::storage_linear_extent_type,
-                LayerDst: root::std::size_t,
-                FaceDst: root::std::size_t,
-                LevelDst: root::std::size_t,
+                LayerDst: usize,
+                FaceDst: usize,
+                LevelDst: usize,
                 BlockIndexDst: *const root::gli::storage_linear_extent_type,
                 BlockCount: *const root::gli::storage_linear_extent_type,
             ) {
@@ -765,7 +765,7 @@ pub mod root {
             pub Swizzles: root::gli::texture_swizzles_type,
             pub Cache: root::gli::texture_cache,
         }
-        pub type texture_size_type = root::std::size_t;
+        pub type texture_size_type = usize;
         pub use self::super::super::root::gli::format as texture_format_type;
         pub use self::super::super::root::gli::target as texture_target_type;
         pub type texture_swizzles_type = root::gli::swizzles;
@@ -925,12 +925,12 @@ pub mod root {
             pub fn texture_copy(
                 this: *mut root::gli::texture,
                 TextureSrc: *const root::gli::texture,
-                LayerSrc: root::std::size_t,
-                FaceSrc: root::std::size_t,
-                LevelSrc: root::std::size_t,
-                LayerDst: root::std::size_t,
-                FaceDst: root::std::size_t,
-                LevelDst: root::std::size_t,
+                LayerSrc: usize,
+                FaceSrc: usize,
+                LevelSrc: usize,
+                LayerDst: usize,
+                FaceDst: usize,
+                LevelDst: usize,
             );
         }
         extern "C" {
@@ -939,13 +939,13 @@ pub mod root {
             pub fn texture_copy1(
                 this: *mut root::gli::texture,
                 TextureSrc: *const root::gli::texture,
-                LayerSrc: root::std::size_t,
-                FaceSrc: root::std::size_t,
-                LevelSrc: root::std::size_t,
+                LayerSrc: usize,
+                FaceSrc: usize,
+                LevelSrc: usize,
                 OffsetSrc: *const root::gli::texture_extent_type,
-                LayerDst: root::std::size_t,
-                FaceDst: root::std::size_t,
-                LevelDst: root::std::size_t,
+                LayerDst: usize,
+                FaceDst: usize,
+                LevelDst: usize,
                 OffsetDst: *const root::gli::texture_extent_type,
                 Extent: *const root::gli::texture_extent_type,
             );
@@ -1116,12 +1116,12 @@ pub mod root {
             pub unsafe fn copy(
                 &mut self,
                 TextureSrc: *const root::gli::texture,
-                LayerSrc: root::std::size_t,
-                FaceSrc: root::std::size_t,
-                LevelSrc: root::std::size_t,
-                LayerDst: root::std::size_t,
-                FaceDst: root::std::size_t,
-                LevelDst: root::std::size_t,
+                LayerSrc: usize,
+                FaceSrc: usize,
+                LevelSrc: usize,
+                LayerDst: usize,
+                FaceDst: usize,
+                LevelDst: usize,
             ) {
                 texture_copy(
                     self, TextureSrc, LayerSrc, FaceSrc, LevelSrc, LayerDst, FaceDst, LevelDst,
@@ -1131,13 +1131,13 @@ pub mod root {
             pub unsafe fn copy1(
                 &mut self,
                 TextureSrc: *const root::gli::texture,
-                LayerSrc: root::std::size_t,
-                FaceSrc: root::std::size_t,
-                LevelSrc: root::std::size_t,
+                LayerSrc: usize,
+                FaceSrc: usize,
+                LevelSrc: usize,
                 OffsetSrc: *const root::gli::texture_extent_type,
-                LayerDst: root::std::size_t,
-                FaceDst: root::std::size_t,
-                LevelDst: root::std::size_t,
+                LayerDst: usize,
+                FaceDst: usize,
+                LevelDst: usize,
                 OffsetDst: *const root::gli::texture_extent_type,
                 Extent: *const root::gli::texture_extent_type,
             ) {
@@ -1233,7 +1233,7 @@ pub mod root {
             pub Data: *mut root::gli::image_data_type,
             pub Size: root::gli::image_size_type,
         }
-        pub type image_size_type = root::std::size_t;
+        pub type image_size_type = usize;
         pub use self::super::super::root::gli::format as image_format_type;
         pub type image_extent_type = root::gli::storage_linear_extent_type;
         pub type image_data_type = root::gli::storage_linear_data_type;
@@ -3750,7 +3750,6 @@ pub mod root {
     pub mod std {
         #[allow(unused_imports)]
         use self::super::super::root;
-        pub type size_t = u64;
         #[repr(C)]
         #[derive(Debug, Default)]
         pub struct allocator {
@@ -3821,7 +3820,6 @@ pub mod root {
         #[allow(unused_imports)]
         use self::super::super::root;
     }
-    pub type size_t = ::std::os::raw::c_ulong;
     pub mod glm {
         #[allow(unused_imports)]
         use self::super::super::root;
@@ -3963,25 +3961,25 @@ pub mod root {
                 pub fn texture_copy(
                     tex: *mut root::gli::texture,
                     src: *const root::gli::texture,
-                    src_layer: root::size_t,
-                    src_face: root::size_t,
-                    src_level: root::size_t,
-                    dst_layer: root::size_t,
-                    dst_face: root::size_t,
-                    dst_level: root::size_t,
+                    src_layer: usize,
+                    src_face: usize,
+                    src_level: usize,
+                    dst_layer: usize,
+                    dst_face: usize,
+                    dst_level: usize,
                 );
             }
             extern "C" {
                 pub fn texture_copy_subset(
                     tex: *mut root::gli::texture,
                     src: *const root::gli::texture,
-                    src_layer: root::size_t,
-                    src_face: root::size_t,
-                    src_level: root::size_t,
+                    src_layer: usize,
+                    src_face: usize,
+                    src_level: usize,
                     src_offset: *const root::gli::texture_extent_type,
-                    dst_layer: root::size_t,
-                    dst_face: root::size_t,
-                    dst_level: root::size_t,
+                    dst_layer: usize,
+                    dst_face: usize,
+                    dst_level: usize,
                     dst_offset: *const root::gli::texture_extent_type,
                     extent: *const root::gli::texture_extent_type,
                 );
@@ -4505,7 +4503,7 @@ pub mod root {
             extern "C" {
                 pub fn load_memory(
                     Data: *const ::std::os::raw::c_char,
-                    Size: root::std::size_t,
+                    Size: usize,
                 ) -> root::gli::texture;
             }
             extern "C" {
@@ -4514,7 +4512,7 @@ pub mod root {
             extern "C" {
                 pub fn load_dds_memory(
                     Data: *const ::std::os::raw::c_char,
-                    Size: root::std::size_t,
+                    Size: usize,
                 ) -> root::gli::texture;
             }
             extern "C" {
@@ -4523,7 +4521,7 @@ pub mod root {
             extern "C" {
                 pub fn load_kmg_memory(
                     Data: *const ::std::os::raw::c_char,
-                    Size: root::std::size_t,
+                    Size: usize,
                 ) -> root::gli::texture;
             }
             extern "C" {
@@ -4532,7 +4530,7 @@ pub mod root {
             extern "C" {
                 pub fn load_ktx_memory(
                     Data: *const ::std::os::raw::c_char,
-                    Size: root::std::size_t,
+                    Size: usize,
                 ) -> root::gli::texture;
             }
             extern "C" {
@@ -4745,7 +4743,7 @@ pub mod root {
             extern "C" {
                 pub fn fsampler2d_texel_lod(
                     Sampler: *const root::gli::fsampler2D,
-                    SampleCoord: *const f32,
+                    SampleCoord: *const [f32; 2usize],
                     Level: f32,
                 ) -> root::bindings::TexelType4F;
             }
@@ -4816,7 +4814,7 @@ pub mod root {
             extern "C" {
                 pub fn fsampler2darray_texel_lod(
                     Sampler: *const root::gli::fsampler2DArray,
-                    SampleCoord: *const f32,
+                    SampleCoord: *const [f32; 2usize],
                     Layer: root::gli::texture_size_type,
                     Level: f32,
                 ) -> root::bindings::TexelType4F;
@@ -4884,7 +4882,7 @@ pub mod root {
             extern "C" {
                 pub fn fsampler3d_texel_lod(
                     Sampler: *const root::gli::fsampler3D,
-                    SampleCoord: *const f32,
+                    SampleCoord: *const [f32; 3usize],
                     Level: f32,
                 ) -> root::bindings::TexelType4F;
             }
@@ -4951,7 +4949,7 @@ pub mod root {
             extern "C" {
                 pub fn fsampler_cube_texel_lod(
                     Sampler: *const root::gli::fsamplerCube,
-                    SampleCoord: *const f32,
+                    SampleCoord: *const [f32; 2usize],
                     Face: root::gli::texture_size_type,
                     Level: f32,
                 ) -> root::bindings::TexelType4F;
@@ -5023,7 +5021,7 @@ pub mod root {
             extern "C" {
                 pub fn fsampler_cube_array_texel_lod(
                     Sampler: *const root::gli::fsamplerCubeArray,
-                    SampleCoord: *const f32,
+                    SampleCoord: *const [f32; 2usize],
                     Layer: root::gli::texture_size_type,
                     Face: root::gli::texture_size_type,
                     Level: f32,

@@ -108,7 +108,6 @@ impl From<f32> for NormalizeCoord1d {
 pub struct NormalizeCoord2d {
     pub x: f32,
     pub y: f32,
-
 }
 
 impl From<NormalizeCoord2d> for [f32; 2] {
