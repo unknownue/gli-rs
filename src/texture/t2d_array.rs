@@ -1,5 +1,6 @@
 
 use crate::ffi::root::gli;
+use crate::ffi::root::glm;
 use crate::ffi::root::bindings::Texture2DArray as bindings;
 
 use crate::format::Format;
@@ -25,13 +26,13 @@ impl Texture2DArray {
     /// Create a texture2d_array and allocate a new storage_linear.
     #[inline]
     pub fn new(format: Format, extent: Extent2d, layers: usize, levels: usize) -> Texture2DArray {
-        Texture2DArray { ffi: unsafe { bindings::tex2darray_new_(format.0, extent.into(), layers, levels) } }
+        Texture2DArray { ffi: unsafe { bindings::tex2darray_new_(format.0, glm::ivec2(extent.into()), layers, levels) } }
     }
 
     /// Create a texture2d_array and allocate a new storage_linear with a complete mipmap chain.
     #[inline]
     pub fn new_with_mipmap_chain(format: Format, extent: Extent2d, layers: usize) -> Texture2DArray {
-        Texture2DArray { ffi: unsafe { bindings::tex2darray_new_with_mipmap_chain(format.0, extent.into(), layers) } }
+        Texture2DArray { ffi: unsafe { bindings::tex2darray_new_with_mipmap_chain(format.0, glm::ivec2(extent.into()), layers) } }
     }
 
     /// Create a texture2d_array view with an existing storage_linear.

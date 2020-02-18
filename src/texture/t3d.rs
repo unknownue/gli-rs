@@ -1,5 +1,6 @@
 
 use crate::ffi::root::gli;
+use crate::ffi::root::glm;
 use crate::ffi::root::bindings::Texture3D as bindings;
 
 use crate::format::Format;
@@ -26,13 +27,13 @@ impl Texture3D {
     /// Create a texture3d and allocate a new storage_linear.
     #[inline]
     pub fn new(format: Format, extent: Extent3d, levels: usize) -> Texture3D {
-        Texture3D { ffi: unsafe { bindings::tex3d_new_(format.0, extent.into(), levels) } }
+        Texture3D { ffi: unsafe { bindings::tex3d_new_(format.0, glm::ivec3(extent.into()), levels) } }
     }
 
     /// Create a texture3d and allocate a new storage_linear with a complete mipmap chain.
     #[inline]
     pub fn new_with_mipmap_chain(format: Format, extent: Extent3d) -> Texture3D {
-        Texture3D { ffi: unsafe { bindings::tex3d_new_with_mipmap_chain(format.0, extent.into()) } }
+        Texture3D { ffi: unsafe { bindings::tex3d_new_with_mipmap_chain(format.0, glm::ivec3(extent.into())) } }
     }
 
     /// Create a texture3d view with an existing storage_linear.

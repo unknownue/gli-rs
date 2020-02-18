@@ -293,7 +293,21 @@ pub mod root {
         pub const swizzle_SWIZZLE_LAST: root::gli::swizzle = 5;
         #[doc = " Represent the source of a channel"]
         pub type swizzle = u32;
-        pub type swizzles = [u32; 4usize];
+        #[repr(transparent)]
+        pub struct swizzles(pub [u32; 4usize]);
+        impl ::std::ops::Deref for swizzles {
+            type Target = [u32; 4usize];
+            #[inline]
+            fn deref(&self) -> &Self::Target {
+                &self.0
+            }
+        }
+        impl ::std::ops::DerefMut for swizzles {
+            #[inline]
+            fn deref_mut(&mut self) -> &mut Self::Target {
+                &mut self.0
+            }
+        }
         extern "C" {
             #[doc = " Evaluate whether a format is compressed"]
             pub fn is_compressed(Format: root::gli::format) -> bool;
@@ -3673,7 +3687,21 @@ pub mod root {
         pub type sampler1d_fetch_type = u8;
         pub type sampler1d_write_type = u8;
         pub type sampler1d_filter_type = u8;
-        pub type fsampler1D = [u64; 66usize];
+        #[repr(transparent)]
+        pub struct fsampler1D(pub [u64; 66usize]);
+        impl ::std::ops::Deref for fsampler1D {
+            type Target = [u64; 66usize];
+            #[inline]
+            fn deref(&self) -> &Self::Target {
+                &self.0
+            }
+        }
+        impl ::std::ops::DerefMut for fsampler1D {
+            #[inline]
+            fn deref_mut(&mut self) -> &mut Self::Target {
+                &mut self.0
+            }
+        }
         pub type sampler1d_array_interpolate_type = root::gli::detail::interpolate;
         pub type sampler1d_array_texture_type = root::gli::texture1d_array;
         pub type sampler1d_array_size_type = root::gli::texture_size_type;
@@ -3685,7 +3713,21 @@ pub mod root {
         pub type sampler1d_array_fetch_type = u8;
         pub type sampler1d_array_write_type = u8;
         pub type sampler1d_array_filter_type = u8;
-        pub type fsampler1DArray = [u64; 66usize];
+        #[repr(transparent)]
+        pub struct fsampler1DArray(pub [u64; 66usize]);
+        impl ::std::ops::Deref for fsampler1DArray {
+            type Target = [u64; 66usize];
+            #[inline]
+            fn deref(&self) -> &Self::Target {
+                &self.0
+            }
+        }
+        impl ::std::ops::DerefMut for fsampler1DArray {
+            #[inline]
+            fn deref_mut(&mut self) -> &mut Self::Target {
+                &mut self.0
+            }
+        }
         pub type sampler2d_interpolate_type = root::gli::detail::interpolate;
         pub type sampler2d_texture_type = root::gli::texture2d;
         pub type sampler2d_size_type = root::gli::texture_size_type;
@@ -3697,7 +3739,21 @@ pub mod root {
         pub type sampler2d_fetch_type = u8;
         pub type sampler2d_write_type = u8;
         pub type sampler2d_filter_type = u8;
-        pub type fsampler2D = [u64; 66usize];
+        #[repr(transparent)]
+        pub struct fsampler2D(pub [u64; 66usize]);
+        impl ::std::ops::Deref for fsampler2D {
+            type Target = [u64; 66usize];
+            #[inline]
+            fn deref(&self) -> &Self::Target {
+                &self.0
+            }
+        }
+        impl ::std::ops::DerefMut for fsampler2D {
+            #[inline]
+            fn deref_mut(&mut self) -> &mut Self::Target {
+                &mut self.0
+            }
+        }
         pub type sampler2d_array_interpolate_type = root::gli::detail::interpolate;
         pub type sampler2d_array_texture_type = root::gli::texture2d_array;
         pub type sampler2d_array_size_type = root::gli::texture_size_type;
@@ -3709,7 +3765,21 @@ pub mod root {
         pub type sampler2d_array_fetch_type = u8;
         pub type sampler2d_array_write_type = u8;
         pub type sampler2d_array_filter_type = u8;
-        pub type fsampler2DArray = [u64; 66usize];
+        #[repr(transparent)]
+        pub struct fsampler2DArray(pub [u64; 66usize]);
+        impl ::std::ops::Deref for fsampler2DArray {
+            type Target = [u64; 66usize];
+            #[inline]
+            fn deref(&self) -> &Self::Target {
+                &self.0
+            }
+        }
+        impl ::std::ops::DerefMut for fsampler2DArray {
+            #[inline]
+            fn deref_mut(&mut self) -> &mut Self::Target {
+                &mut self.0
+            }
+        }
         pub type sampler3d_interpolate_type = root::gli::detail::interpolate;
         pub type sampler3d_texture_type = root::gli::texture3d;
         pub type sampler3d_size_type = root::gli::texture_size_type;
@@ -3721,7 +3791,21 @@ pub mod root {
         pub type sampler3d_fetch_type = u8;
         pub type sampler3d_write_type = u8;
         pub type sampler3d_filter_type = u8;
-        pub type fsampler3D = [u64; 66usize];
+        #[repr(transparent)]
+        pub struct fsampler3D(pub [u64; 66usize]);
+        impl ::std::ops::Deref for fsampler3D {
+            type Target = [u64; 66usize];
+            #[inline]
+            fn deref(&self) -> &Self::Target {
+                &self.0
+            }
+        }
+        impl ::std::ops::DerefMut for fsampler3D {
+            #[inline]
+            fn deref_mut(&mut self) -> &mut Self::Target {
+                &mut self.0
+            }
+        }
         pub type sampler_cube_interpolate_type = root::gli::detail::interpolate;
         pub type sampler_cube_texture_type = root::gli::texture_cube;
         pub type sampler_cube_size_type = root::gli::texture_size_type;
@@ -3733,7 +3817,21 @@ pub mod root {
         pub type sampler_cube_fetch_type = u8;
         pub type sampler_cube_write_type = u8;
         pub type sampler_cube_filter_type = u8;
-        pub type fsamplerCube = [u64; 66usize];
+        #[repr(transparent)]
+        pub struct fsamplerCube(pub [u64; 66usize]);
+        impl ::std::ops::Deref for fsamplerCube {
+            type Target = [u64; 66usize];
+            #[inline]
+            fn deref(&self) -> &Self::Target {
+                &self.0
+            }
+        }
+        impl ::std::ops::DerefMut for fsamplerCube {
+            #[inline]
+            fn deref_mut(&mut self) -> &mut Self::Target {
+                &mut self.0
+            }
+        }
         pub type sampler_cube_array_interpolate_type = root::gli::detail::interpolate;
         pub type sampler_cube_array_texture_type = root::gli::texture_cube_array;
         pub type sampler_cube_array_size_type = root::gli::texture_size_type;
@@ -3830,18 +3928,62 @@ pub mod root {
         #[doc = " 2 components vector of signed integer numbers."]
         #[doc = ""]
         #[doc = " @see <a href=\"http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf\">GLSL 4.20.8 specification, section 4.1.5 Vectors</a>"]
-        pub type ivec2 = [u32; 2usize];
+        #[derive(Debug, Default)]
+        #[repr(transparent)]
+        pub struct ivec2(pub [u32; 2usize]);
+        impl ::std::ops::Deref for ivec2 {
+            type Target = [u32; 2usize];
+            #[inline]
+            fn deref(&self) -> &Self::Target {
+                &self.0
+            }
+        }
+        impl ::std::ops::DerefMut for ivec2 {
+            #[inline]
+            fn deref_mut(&mut self) -> &mut Self::Target {
+                &mut self.0
+            }
+        }
         #[doc = " 3 components vector of signed integer numbers."]
         #[doc = ""]
         #[doc = " @see <a href=\"http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf\">GLSL 4.20.8 specification, section 4.1.5 Vectors</a>"]
-        pub type ivec3 = [u32; 3usize];
+        #[derive(Debug, Default)]
+        #[repr(transparent)]
+        pub struct ivec3(pub [u32; 3usize]);
+        impl ::std::ops::Deref for ivec3 {
+            type Target = [u32; 3usize];
+            #[inline]
+            fn deref(&self) -> &Self::Target {
+                &self.0
+            }
+        }
+        impl ::std::ops::DerefMut for ivec3 {
+            #[inline]
+            fn deref_mut(&mut self) -> &mut Self::Target {
+                &mut self.0
+            }
+        }
         #[doc = " Default qualifier 32 bit unsigned integer vector of 4 components type."]
         #[doc = " @see gtc_type_precision"]
         pub type u32vec4 = [u32; 4usize];
         #[doc = " 4 components vector of single-precision floating-point numbers."]
         #[doc = ""]
         #[doc = " @see <a href=\"http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf\">GLSL 4.20.8 specification, section 4.1.5 Vectors</a>"]
-        pub type vec4 = [u32; 4usize];
+        #[repr(transparent)]
+        pub struct vec4(pub [u32; 4usize]);
+        impl ::std::ops::Deref for vec4 {
+            type Target = [u32; 4usize];
+            #[inline]
+            fn deref(&self) -> &Self::Target {
+                &self.0
+            }
+        }
+        impl ::std::ops::DerefMut for vec4 {
+            #[inline]
+            fn deref_mut(&mut self) -> &mut Self::Target {
+                &mut self.0
+            }
+        }
     }
     pub mod bindings {
         #[allow(unused_imports)]

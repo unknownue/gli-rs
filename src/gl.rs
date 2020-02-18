@@ -21,8 +21,9 @@ impl GLConverter {
     }
 
     /// Convert GLI formats into OpenGL texture formats.
-    pub fn translate2(&self, format: crate::format::Format, swizzles: &[u32; 4]) -> GLFormat {
-        let raw = unsafe { bindings::gl_translate1(&self.inner, format.0, swizzles) };
+    pub fn translate2(&self, format: crate::format::Format, swizzles: [u32; 4]) -> GLFormat {
+        let swizzles_ = gli::swizzles(swizzles);
+        let raw = unsafe { bindings::gl_translate1(&self.inner, format.0, &swizzles_) };
         GLFormat::from(raw)
     }
 

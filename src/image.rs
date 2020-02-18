@@ -2,6 +2,7 @@
 use std::os::raw::c_void;
 
 use crate::ffi::root::gli;
+use crate::ffi::root::glm;
 use crate::ffi::root::bindings::Image as bindings;
 
 use crate::format::Format;
@@ -26,7 +27,7 @@ impl GliImage {
     /// Create an image object and allocate an image storage for it.
     #[inline]
     pub fn new(format: Format, extent: Extent3d) -> GliImage {
-        GliImage { ffi: unsafe { bindings::image_new_(format.0, extent.into()) } }
+        GliImage { ffi: unsafe { bindings::image_new_(format.0, glm::ivec3(extent.into())) } }
     }
 
     /// Create an empty image instance.
@@ -74,7 +75,8 @@ impl GliImage {
     /// Return the dimensions of an image instance: width, height and depth.
     #[inline]
     pub fn extent(&self) -> Extent3d {
-        unsafe { bindings::image_extent(&self.ffi).into() }
+        let ext: glm::ivec3 = unsafe { bindings::image_extent(&self.ffi) };
+        Extent3d::from(*ext)
     }
 
     /// Return the image instance format.

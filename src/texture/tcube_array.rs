@@ -1,5 +1,6 @@
 
 use crate::ffi::root::gli;
+use crate::ffi::root::glm;
 use crate::ffi::root::bindings::TextureCubeArray as bindings;
 
 use crate::format::Format;
@@ -26,14 +27,14 @@ impl TextureCubeArray {
     #[inline]
     pub fn new(format: Format, extent: Extent2d, layers: usize, levels: usize) -> TextureCubeArray {
 
-        TextureCubeArray { ffi: unsafe { bindings::texcubearray_new_(format.0, extent.into(), layers, levels) } }
+        TextureCubeArray { ffi: unsafe { bindings::texcubearray_new_(format.0, glm::ivec2(extent.into()), layers, levels) } }
     }
 
     /// Create a texture_cube_array and allocate a new storage_linear with a complete mipmap chain.
     #[inline]
     pub fn new_with_mipmap_chain(format: Format, extent: Extent2d, layers: usize) -> TextureCubeArray {
 
-        TextureCubeArray { ffi: unsafe { bindings::texcubearray_new_with_mipmap_chain(format.0, extent.into(), layers) } }
+        TextureCubeArray { ffi: unsafe { bindings::texcubearray_new_with_mipmap_chain(format.0, glm::ivec2(extent.into()), layers) } }
     }
 
     /// Create a texture_cube_array view with an existing storage_linear.

@@ -1,5 +1,6 @@
 
 use crate::ffi::root::gli;
+use crate::ffi::root::glm;
 use crate::ffi::root::bindings::TextureCube as bindings;
 
 use crate::format::Format;
@@ -25,13 +26,13 @@ impl TextureCube {
     /// Create a texture_cube.hpp and allocate a new storage_linear.
     #[inline]
     pub fn new(format: Format, extent: Extent2d, levels: usize) -> TextureCube {
-        TextureCube { ffi: unsafe { bindings::texcube_new_(format.0, extent.into(), levels) } }
+        TextureCube { ffi: unsafe { bindings::texcube_new_(format.0, glm::ivec2(extent.into()), levels) } }
     }
 
     /// Create a texture_cube.hpp and allocate a new storage_linear with a complete mipmap chain.
     #[inline]
     pub fn new_with_mipmap_chain(format: Format, extent: Extent2d) -> TextureCube {
-        TextureCube { ffi: unsafe { bindings::texcube_new_with_mipmap_chain(format.0, extent.into()) } }
+        TextureCube { ffi: unsafe { bindings::texcube_new_with_mipmap_chain(format.0, glm::ivec2(extent.into())) } }
     }
 
     /// Create a texture_cube.hpp view with an existing storage_linear.

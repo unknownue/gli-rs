@@ -73,9 +73,21 @@ fn generate_bindings() {
         .opaque_type("std::.*");
 
     builder = builder
+        .new_type_alias_deref("ivec2")
+        .new_type_alias_deref("ivec3")
+        .new_type_alias_deref("vec4")
+        .new_type_alias_deref("swizzles")
+        .new_type_alias_deref("fsampler1D")
+        .new_type_alias_deref("fsampler1DArray")
+        .new_type_alias_deref("fsampler2D")
+        .new_type_alias_deref("fsampler2DArray")
+        .new_type_alias_deref("fsampler3D")
+        .new_type_alias_deref("fsamplerCube")
+        .new_type_alias_deref("fsamplerCubeArray;");
+
+    builder = builder
         .enable_cxx_namespaces()
         .disable_untagged_union()
-        //.new_type_alias("fsampler*")
         .array_pointers_in_arguments(true)
         .derive_debug(true)
         .derive_copy(false)

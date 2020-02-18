@@ -17,6 +17,7 @@ mod tcube_array;
 
 use std::os::raw::c_void;
 
+use crate::ffi::root::glm;
 use crate::ffi::root::bindings::Texture as bindings;
 use crate::format::{Format, Swizzles};
 use crate::target::Target;
@@ -51,11 +52,13 @@ pub trait GliTexture: inner::TextureAccessible + Sized + PartialEq + Eq {
     /// Return the corresponding extent type of the texture instance,
     /// which represents the size of a specific mip-level of this texture(width, height and depth).
     fn extent(&self, level: usize) -> Self::ExtentType {
-        unsafe { bindings::texture_extent(self.raw_texture(), level).into() }
+        let ext: glm::ivec3 = unsafe { bindings::texture_extent(self.raw_texture(), level) };
+        Self::ExtentType::from(*ext)
     }
 
     fn set_swizzles(&mut self, swizzles: Swizzles) {
-        self.raw_texture_mut().Swizzles = swizzles;
+        use crate::ffi::root::gli;
+        self.raw_texture_mut().Swizzles = gli::swizzles(swizzles);
     }
 
     /// Return the base face of the texture instance, effectively a memory offset in the actual texture storage_type
@@ -94,9 +97,12 @@ pub trait GliTexture: inner::TextureAccessible + Sized + PartialEq + Eq {
     /// Copy a subset of a specific image of a texture.
     fn copy_subset(&mut self, src_texture: &Self, src_layer: usize, src_face: usize, src_level: usize, src_offset: Extent3d, dst_layer: usize, dst_face: usize, dst_level: usize, dst_offset: Extent3d, extent: Extent3d) {
 
+        let src_offset = glm::ivec3(src_offset.into());
+        let dst_offset = glm::ivec3(dst_offset.into());
+        let extent = glm::ivec3(extent.into());
         unsafe {
             bindings::texture_copy_subset(
-                self.raw_texture_mut(), src_texture.raw_texture(), src_layer, src_face, src_level, &src_offset.into(), dst_layer, dst_face, dst_level, &dst_offset.into(), &extent.into())
+                self.raw_texture_mut(), src_texture.raw_texture(), src_layer, src_face, src_level, &src_offset, dst_layer, dst_face, dst_level, &dst_offset, &extent)
         }
     }
 
