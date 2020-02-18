@@ -4892,14 +4892,14 @@ pub mod root {
             extern "C" {
                 pub fn fsampler2d_texel_fetch(
                     Sampler: *const root::gli::fsampler2D,
-                    TexelCoord: [u32; 2usize],
+                    TexelCoord: *const [u32; 2usize],
                     Level: root::gli::texture_size_type,
                 ) -> root::bindings::TexelType4F;
             }
             extern "C" {
                 pub fn fsampler2d_texel_write(
                     Sampler: *mut root::gli::fsampler2D,
-                    TexelCoord: [u32; 2usize],
+                    TexelCoord: *const [u32; 2usize],
                     Level: root::gli::texture_size_type,
                     Texel: root::bindings::TexelType4F,
                 );
@@ -4961,7 +4961,7 @@ pub mod root {
             extern "C" {
                 pub fn fsampler2darray_texel_fetch(
                     Sampler: *const root::gli::fsampler2DArray,
-                    TexelCoord: [u32; 2usize],
+                    TexelCoord: *const [u32; 2usize],
                     Layer: root::gli::texture_size_type,
                     Level: root::gli::texture_size_type,
                 ) -> root::bindings::TexelType4F;
@@ -4969,7 +4969,7 @@ pub mod root {
             extern "C" {
                 pub fn fsampler2darray_texel_write(
                     Sampler: *mut root::gli::fsampler2DArray,
-                    TexelCoord: [u32; 2usize],
+                    TexelCoord: *const [u32; 2usize],
                     Layer: root::gli::texture_size_type,
                     Level: root::gli::texture_size_type,
                     Texel: root::bindings::TexelType4F,
@@ -5035,14 +5035,14 @@ pub mod root {
             extern "C" {
                 pub fn fsampler3d_texel_fetch(
                     Sampler: *const root::gli::fsampler3D,
-                    TexelCoord: [u32; 3usize],
+                    TexelCoord: *const [u32; 3usize],
                     Level: root::gli::texture_size_type,
                 ) -> root::bindings::TexelType4F;
             }
             extern "C" {
                 pub fn fsampler3d_texel_write(
                     Sampler: *mut root::gli::fsampler3D,
-                    TexelCoord: [u32; 3usize],
+                    TexelCoord: *const [u32; 3usize],
                     Level: root::gli::texture_size_type,
                     Texel: root::bindings::TexelType4F,
                 );
@@ -5104,7 +5104,7 @@ pub mod root {
             extern "C" {
                 pub fn fsampler_cube_texel_fetch(
                     Sampler: *const root::gli::fsamplerCube,
-                    TexelCoord: [u32; 2usize],
+                    TexelCoord: *const [u32; 2usize],
                     Face: root::gli::texture_size_type,
                     Level: root::gli::texture_size_type,
                 ) -> root::bindings::TexelType4F;
@@ -5112,7 +5112,7 @@ pub mod root {
             extern "C" {
                 pub fn fsampler_cube_texel_write(
                     Sampler: *mut root::gli::fsamplerCube,
-                    TexelCoord: [u32; 2usize],
+                    TexelCoord: *const [u32; 2usize],
                     Face: root::gli::texture_size_type,
                     Level: root::gli::texture_size_type,
                     Texel: root::bindings::TexelType4F,
@@ -5178,7 +5178,7 @@ pub mod root {
             extern "C" {
                 pub fn fsampler_cube_array_texel_fetch(
                     Sampler: *const root::gli::fsamplerCubeArray,
-                    TexelCoord: [u32; 2usize],
+                    TexelCoord: *const [u32; 2usize],
                     Layer: root::gli::texture_size_type,
                     Face: root::gli::texture_size_type,
                     Level: root::gli::texture_size_type,
@@ -5187,7 +5187,7 @@ pub mod root {
             extern "C" {
                 pub fn fsampler_cube_array_texel_write(
                     Sampler: *mut root::gli::fsamplerCubeArray,
-                    TexelCoord: [u32; 2usize],
+                    TexelCoord: *const [u32; 2usize],
                     Layer: root::gli::texture_size_type,
                     Face: root::gli::texture_size_type,
                     Level: root::gli::texture_size_type,

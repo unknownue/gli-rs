@@ -100,12 +100,12 @@ extern "C" {
                 Sampler.clear(gli::tex4FToVec4(Texel));
             }
 
-            TexelType4F fsampler_cube_texel_fetch(const gli::fsamplerCube & Sampler, gli::fsamplerCube::extent_type TexelCoord, gli::texture::size_type Face, gli::texture::size_type Level) {
+            TexelType4F fsampler_cube_texel_fetch(const gli::fsamplerCube & Sampler, const gli::fsamplerCube::extent_type & TexelCoord, gli::texture::size_type Face, gli::texture::size_type Level) {
                 gli::vec4 raw = Sampler.texel_fetch(TexelCoord, Face, Level);
                 return vec4ToTex4F(raw);
             }
 
-            void fsampler_cube_texel_write(gli::fsamplerCube & Sampler, gli::fsamplerCube::extent_type TexelCoord, gli::texture::size_type Face, gli::texture::size_type Level, TexelType4F Texel) {
+            void fsampler_cube_texel_write(gli::fsamplerCube & Sampler, const gli::fsamplerCube::extent_type & TexelCoord, gli::texture::size_type Face, gli::texture::size_type Level, TexelType4F Texel) {
                 return Sampler.texel_write(TexelCoord, Face, Level, gli::tex4FToVec4(Texel));
             }
 

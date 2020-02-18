@@ -51,13 +51,13 @@ impl<'a, 'b: 'a> FSampler3D<'a> {
 
     /// Fetch a texel from the sampler texture.
     pub fn texel_fetch(&self, texel_coord: Extent3d, level: usize) -> [f32; 4] {
-        let raw = unsafe { bindings::fsampler3d_texel_fetch(&self.ffi, texel_coord.into(), level) };
+        let raw = unsafe { bindings::fsampler3d_texel_fetch(&self.ffi, &texel_coord.into(), level) };
         raw.content
     }
 
     /// Write a texel in the sampler texture.
     pub fn texel_write(&mut self, texel_coord: Extent3d, level: usize, texel: [f32; 4]) {
-        unsafe { bindings::fsampler3d_texel_write(&mut self.ffi, texel_coord.into(), level, texel.into()); }
+        unsafe { bindings::fsampler3d_texel_write(&mut self.ffi, &texel_coord.into(), level, texel.into()); }
     }
 
     /// Sample the sampler texture at a specific level.

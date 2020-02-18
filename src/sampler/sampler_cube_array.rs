@@ -51,13 +51,13 @@ impl<'a, 'b: 'a> FSamplerCubeArray<'a> {
 
     /// Fetch a texel from the sampler texture.
     pub fn texel_fetch(&self, texel_coord: Extent2d, layer: usize, face: usize, level: usize) -> [f32; 4] {
-        let raw = unsafe { bindings::fsampler_cube_array_texel_fetch(&self.ffi, texel_coord.into(), layer, face, level) };
+        let raw = unsafe { bindings::fsampler_cube_array_texel_fetch(&self.ffi, &texel_coord.into(), layer, face, level) };
         raw.content
     }
 
     /// Write a texel in the sampler texture.
     pub fn texel_write(&mut self, texel_coord: Extent2d, layer: usize, face: usize, level: usize, texel: [f32; 4]) {
-        unsafe { bindings::fsampler_cube_array_texel_write(&mut self.ffi, texel_coord.into(), layer, face, level, texel.into()); }
+        unsafe { bindings::fsampler_cube_array_texel_write(&mut self.ffi, &texel_coord.into(), layer, face, level, texel.into()); }
     }
 
     /// Sample the sampler texture at a specific level.
