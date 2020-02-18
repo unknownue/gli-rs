@@ -3843,7 +3843,21 @@ pub mod root {
         pub type sampler_cube_array_fetch_type = u8;
         pub type sampler_cube_array_write_type = u8;
         pub type sampler_cube_array_filter_type = u8;
-        pub type fsamplerCubeArray = [u64; 66usize];
+        #[repr(transparent)]
+        pub struct fsamplerCubeArray(pub [u64; 66usize]);
+        impl ::std::ops::Deref for fsamplerCubeArray {
+            type Target = [u64; 66usize];
+            #[inline]
+            fn deref(&self) -> &Self::Target {
+                &self.0
+            }
+        }
+        impl ::std::ops::DerefMut for fsamplerCubeArray {
+            #[inline]
+            fn deref_mut(&mut self) -> &mut Self::Target {
+                &mut self.0
+            }
+        }
     }
     pub mod std {
         #[allow(unused_imports)]
@@ -4773,6 +4787,10 @@ pub mod root {
                     Minification: root::gli::filter,
                 );
             }
+            extern "C" {
+                #[doc = " Manually Call destructor for image object. Helper function used in FFI."]
+                pub fn destroy_sampler1d(Sampler: *mut root::gli::fsampler1D);
+            }
         }
         pub mod FSampler1DArray {
             #[allow(unused_imports)]
@@ -4842,6 +4860,10 @@ pub mod root {
                     MaxLevel: root::gli::texture_size_type,
                     Minification: root::gli::filter,
                 );
+            }
+            extern "C" {
+                #[doc = " Manually Call destructor for image object. Helper function used in FFI."]
+                pub fn destroy_sampler1d_array(Sampler: *mut root::gli::fsampler1DArray);
             }
         }
         pub mod FSampler2D {
@@ -4982,6 +5004,10 @@ pub mod root {
                     Minification: root::gli::filter,
                 );
             }
+            extern "C" {
+                #[doc = " Manually Call destructor for image object. Helper function used in FFI."]
+                pub fn destroy_sampler2d_array(Sampler: *mut root::gli::fsampler2DArray);
+            }
         }
         pub mod FSampler3D {
             #[allow(unused_imports)]
@@ -5046,6 +5072,10 @@ pub mod root {
                     MaxLevel: root::gli::texture_size_type,
                     Minification: root::gli::filter,
                 );
+            }
+            extern "C" {
+                #[doc = " Manually Call destructor for image object. Helper function used in FFI."]
+                pub fn destroy_sampler3d(Sampler: *mut root::gli::fsampler3D);
             }
         }
         pub mod FSamplerCube {
@@ -5116,6 +5146,10 @@ pub mod root {
                     MaxLevel: root::gli::texture_size_type,
                     Minification: root::gli::filter,
                 );
+            }
+            extern "C" {
+                #[doc = " Manually Call destructor for image object. Helper function used in FFI."]
+                pub fn destroy_sampler_cube(Sampler: *mut root::gli::fsamplerCube);
             }
         }
         pub mod FSamplerCubeArray {
@@ -5191,6 +5225,10 @@ pub mod root {
                     MaxLevel: root::gli::texture_size_type,
                     Minification: root::gli::filter,
                 );
+            }
+            extern "C" {
+                #[doc = " Manually Call destructor for image object. Helper function used in FFI."]
+                pub fn destroy_sampler_cube_array(Sampler: *mut root::gli::fsamplerCubeArray);
             }
         }
     }

@@ -67,3 +67,12 @@ impl<'a, 'b: 'a> FSampler2DArray<'a> {
         raw.content
     }
 }
+
+impl Drop for gli::fsampler2DArray {
+
+    fn drop(&mut self) {
+        unsafe {
+            bindings::destroy_sampler2d_array(self);
+        }
+    }
+}

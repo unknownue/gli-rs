@@ -67,3 +67,12 @@ impl<'a, 'b: 'a> FSamplerCubeArray<'a> {
         raw.content
     }
 }
+
+impl Drop for gli::fsamplerCubeArray {
+
+    fn drop(&mut self) {
+        unsafe {
+            bindings::destroy_sampler_cube_array(self);
+        }
+    }
+}

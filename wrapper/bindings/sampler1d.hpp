@@ -30,6 +30,10 @@ namespace gli
 
 		sampler1d(texture_type const& Texture, wrap Wrap, filter Mip = FILTER_NEAREST, filter Min = FILTER_NEAREST, texel_type const& BorderColor = texel_type(0, 0, 0, 1));
 
+		~sampler1d() {
+
+        }
+
 		/// Access the sampler texture object
 		texture_type const& operator()() const;
 
@@ -117,6 +121,11 @@ extern "C" {
 
             void fsampler1d_generate_mipmaps2(gli::fsampler1D & Sampler, gli::texture::size_type BaseLevel, gli::texture::size_type  MaxLevel, gli::filter Minification) {
                 Sampler.generate_mipmaps(BaseLevel, MaxLevel, Minification);
+            }
+
+            /// Manually Call destructor for image object. Helper function used in FFI.
+            void destroy_sampler1d(gli::fsampler1D & Sampler) {
+                Sampler.~sampler1d();
             }
         }
 

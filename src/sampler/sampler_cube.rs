@@ -67,3 +67,12 @@ impl<'a, 'b: 'a> FSamplerCube<'a> {
         raw.content
     }
 }
+
+impl Drop for gli::fsamplerCube {
+
+    fn drop(&mut self) {
+        unsafe {
+            bindings::destroy_sampler_cube(self);
+        }
+    }
+}

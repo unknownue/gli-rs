@@ -66,3 +66,12 @@ impl<'a, 'b: 'a> FSampler1D<'a> {
         raw.content
     }
 }
+
+impl Drop for gli::fsampler1D {
+
+    fn drop(&mut self) {
+        unsafe {
+            bindings::destroy_sampler1d(self);
+        }
+    }
+}

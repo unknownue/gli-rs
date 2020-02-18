@@ -78,7 +78,7 @@ mod texture {
             assert_eq!(bindings::Texture::get_texture_shared_storage_count(raw_texture), 1);
         }
 
-        for i in 0..10 {
+        for _ in 0..10 {
             unsafe {
                 let base_level_image = texture_loaded.get_level(0);
                 let raw_texture = texture_loaded.raw_texture_mut();

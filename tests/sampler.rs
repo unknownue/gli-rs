@@ -54,16 +54,16 @@ mod sampler {
         let mut texture_loaded: Texture2D = gli::load_dds(Path::new(TEST_DDS_PATH))
             .unwrap();
 
-        for i in 0..10 {
+        for _ in 0..10 {
             let sampler = FSampler2D::new(&texture_loaded, Wrap::CLAMP_TO_EDGE, Filter::LINEAR, Filter::LINEAR);
 
-//            unsafe {
-//                let raw_texture = texture_loaded.raw_texture_mut();
-//                raw_texture.is_print_shared_storage_count = true;
-//                //println!("{} round - point count {}", i, bindings::Texture::get_texture_shared_storage_count(raw_texture));
-//                assert_eq!(bindings::Texture::get_texture_shared_storage_count(raw_texture), 2);
-//            }
-            let _ = sampler.texel_fetch([0, 0].into(), 0);
+            unsafe {
+                let raw_texture = texture_loaded.raw_texture_mut();
+                raw_texture.is_print_shared_storage_count = true;
+                //println!("{} round - point count {}", i, bindings::Texture::get_texture_shared_storage_count(raw_texture));
+                assert_eq!(bindings::Texture::get_texture_shared_storage_count(raw_texture), 2);
+            }
+            // let _ = sampler.texel_fetch([0, 0].into(), 0);
         }
 
         unsafe {

@@ -83,7 +83,7 @@ fn generate_bindings() {
         .new_type_alias_deref("fsampler2DArray")
         .new_type_alias_deref("fsampler3D")
         .new_type_alias_deref("fsamplerCube")
-        .new_type_alias_deref("fsamplerCubeArray;");
+        .new_type_alias_deref("fsamplerCubeArray");
 
     builder = builder
         .enable_cxx_namespaces()
