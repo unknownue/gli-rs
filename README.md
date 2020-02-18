@@ -26,11 +26,11 @@ Add this to `Cargo.toml`:
 
 ```toml
 [dependencies]
-gli-rs = "0.3.2"
+gli-rs = "0.4.0"
 
 # or
 [dependencies]
-gli = { package = "gli-rs", version = "0.3.2" }
+gli = { package = "gli-rs", version = "0.4.0" }
 ```
 
 ## Get help

@@ -1,13 +1,13 @@
 
 [package]
 name    = "gli-rs"
-version = "0.3.2"
+version = "0.4.0"
 authors = ["unknownue <usami-ssc@protonmail.com>"]
 edition = "2018"
 build   = "build/build.rs"
 
-homepage    = "https://github.com/Houjuu-Nue/gli-rs"
-repository  = "https://github.com/Houjuu-Nue/gli-rs"
+homepage    = "https://github.com/unknownue/gli-rs"
+repository  = "https://github.com/unknownue/gli-rs"
 description = "Rust binding for OpenGL Image(GLI)"
 keywords    = ["Graphics", "gli", "Texture"]
 license     = "MIT"
@@ -24,7 +24,7 @@ include = [
 ]
 
 [badges]
-azure-devops = { project = "Houjuu-Nue/gli-rs", pipeline = "Houjuu-Nue.gli-rs", build="3" }
+azure-devops = { project = "unknownue/gli-rs", pipeline = "unknownue.gli-rs", build="3" }
 
 [dependencies]
 failure = "0.1.5"
@@ -46,4 +46,3 @@ lto = true
 [[example]]
 name = "texture"
 path = "examples/texture.rs"
-

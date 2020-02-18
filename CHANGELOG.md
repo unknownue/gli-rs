@@ -1,3 +1,12 @@
+
+# Version 0.4.0 (2020-2-18)
+
+- Upgrade cc and bindgen dependencies.
+- Implement `Drop` trait and fix memory leak for `FSampler*` structs. #4
+- Eliminate warning toggled by rustc(1.41).
+
+
+
 # Version 0.3.2 (2019-11-29)
 
 - Add basic example codes.
