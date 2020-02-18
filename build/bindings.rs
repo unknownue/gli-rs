@@ -6,7 +6,7 @@ pub mod root {
     pub struct __BindgenUnionField<T>(::std::marker::PhantomData<T>);
     impl<T> __BindgenUnionField<T> {
         #[inline]
-        pub fn new() -> Self {
+        pub const fn new() -> Self {
             __BindgenUnionField(::std::marker::PhantomData)
         }
         #[inline]
@@ -426,7 +426,7 @@ pub mod root {
             pub Data: [u64; 3usize],
         }
         pub type storage_linear_extent_type = root::gli::extent3d;
-        pub type storage_linear_size_type = usize;
+        pub type storage_linear_size_type = root::std::size_t;
         pub use self::super::super::root::gli::format as storage_linear_format_type;
         pub type storage_linear_data_type = root::gli::byte;
         extern "C" {
@@ -535,13 +535,13 @@ pub mod root {
             pub fn storage_linear_copy(
                 this: *mut root::gli::storage_linear,
                 StorageSrc: *const root::gli::storage_linear,
-                LayerSrc: usize,
-                FaceSrc: usize,
-                LevelSrc: usize,
+                LayerSrc: root::std::size_t,
+                FaceSrc: root::std::size_t,
+                LevelSrc: root::std::size_t,
                 BlockIndexSrc: *const root::gli::storage_linear_extent_type,
-                LayerDst: usize,
-                FaceDst: usize,
-                LevelDst: usize,
+                LayerDst: root::std::size_t,
+                FaceDst: root::std::size_t,
+                LevelDst: root::std::size_t,
                 BlockIndexDst: *const root::gli::storage_linear_extent_type,
                 BlockCount: *const root::gli::storage_linear_extent_type,
             );
@@ -674,13 +674,13 @@ pub mod root {
             pub unsafe fn copy(
                 &mut self,
                 StorageSrc: *const root::gli::storage_linear,
-                LayerSrc: usize,
-                FaceSrc: usize,
-                LevelSrc: usize,
+                LayerSrc: root::std::size_t,
+                FaceSrc: root::std::size_t,
+                LevelSrc: root::std::size_t,
                 BlockIndexSrc: *const root::gli::storage_linear_extent_type,
-                LayerDst: usize,
-                FaceDst: usize,
-                LevelDst: usize,
+                LayerDst: root::std::size_t,
+                FaceDst: root::std::size_t,
+                LevelDst: root::std::size_t,
                 BlockIndexDst: *const root::gli::storage_linear_extent_type,
                 BlockCount: *const root::gli::storage_linear_extent_type,
             ) {
@@ -725,9 +725,9 @@ pub mod root {
             }
             #[inline]
             pub unsafe fn new() -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
-                storage_linear_storage_linear(&mut __bindgen_tmp);
-                __bindgen_tmp
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
+                storage_linear_storage_linear(__bindgen_tmp.as_mut_ptr());
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new1(
@@ -737,16 +737,16 @@ pub mod root {
                 Faces: root::gli::storage_linear_size_type,
                 Levels: root::gli::storage_linear_size_type,
             ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
                 storage_linear_storage_linear1(
-                    &mut __bindgen_tmp,
+                    __bindgen_tmp.as_mut_ptr(),
                     Format,
                     Extent,
                     Layers,
                     Faces,
                     Levels,
                 );
-                __bindgen_tmp
+                __bindgen_tmp.assume_init()
             }
         }
         #[doc = " Genetic texture class. It can support any target."]
@@ -765,7 +765,7 @@ pub mod root {
             pub Swizzles: root::gli::texture_swizzles_type,
             pub Cache: root::gli::texture_cache,
         }
-        pub type texture_size_type = usize;
+        pub type texture_size_type = root::std::size_t;
         pub use self::super::super::root::gli::format as texture_format_type;
         pub use self::super::super::root::gli::target as texture_target_type;
         pub type texture_swizzles_type = root::gli::swizzles;
@@ -925,12 +925,12 @@ pub mod root {
             pub fn texture_copy(
                 this: *mut root::gli::texture,
                 TextureSrc: *const root::gli::texture,
-                LayerSrc: usize,
-                FaceSrc: usize,
-                LevelSrc: usize,
-                LayerDst: usize,
-                FaceDst: usize,
-                LevelDst: usize,
+                LayerSrc: root::std::size_t,
+                FaceSrc: root::std::size_t,
+                LevelSrc: root::std::size_t,
+                LayerDst: root::std::size_t,
+                FaceDst: root::std::size_t,
+                LevelDst: root::std::size_t,
             );
         }
         extern "C" {
@@ -939,13 +939,13 @@ pub mod root {
             pub fn texture_copy1(
                 this: *mut root::gli::texture,
                 TextureSrc: *const root::gli::texture,
-                LayerSrc: usize,
-                FaceSrc: usize,
-                LevelSrc: usize,
+                LayerSrc: root::std::size_t,
+                FaceSrc: root::std::size_t,
+                LevelSrc: root::std::size_t,
                 OffsetSrc: *const root::gli::texture_extent_type,
-                LayerDst: usize,
-                FaceDst: usize,
-                LevelDst: usize,
+                LayerDst: root::std::size_t,
+                FaceDst: root::std::size_t,
+                LevelDst: root::std::size_t,
                 OffsetDst: *const root::gli::texture_extent_type,
                 Extent: *const root::gli::texture_extent_type,
             );
@@ -1116,12 +1116,12 @@ pub mod root {
             pub unsafe fn copy(
                 &mut self,
                 TextureSrc: *const root::gli::texture,
-                LayerSrc: usize,
-                FaceSrc: usize,
-                LevelSrc: usize,
-                LayerDst: usize,
-                FaceDst: usize,
-                LevelDst: usize,
+                LayerSrc: root::std::size_t,
+                FaceSrc: root::std::size_t,
+                LevelSrc: root::std::size_t,
+                LayerDst: root::std::size_t,
+                FaceDst: root::std::size_t,
+                LevelDst: root::std::size_t,
             ) {
                 texture_copy(
                     self, TextureSrc, LayerSrc, FaceSrc, LevelSrc, LayerDst, FaceDst, LevelDst,
@@ -1131,13 +1131,13 @@ pub mod root {
             pub unsafe fn copy1(
                 &mut self,
                 TextureSrc: *const root::gli::texture,
-                LayerSrc: usize,
-                FaceSrc: usize,
-                LevelSrc: usize,
+                LayerSrc: root::std::size_t,
+                FaceSrc: root::std::size_t,
+                LevelSrc: root::std::size_t,
                 OffsetSrc: *const root::gli::texture_extent_type,
-                LayerDst: usize,
-                FaceDst: usize,
-                LevelDst: usize,
+                LayerDst: root::std::size_t,
+                FaceDst: root::std::size_t,
+                LevelDst: root::std::size_t,
                 OffsetDst: *const root::gli::texture_extent_type,
                 Extent: *const root::gli::texture_extent_type,
             ) {
@@ -1148,9 +1148,9 @@ pub mod root {
             }
             #[inline]
             pub unsafe fn new() -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
-                texture_texture(&mut __bindgen_tmp);
-                __bindgen_tmp
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
+                texture_texture(__bindgen_tmp.as_mut_ptr());
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new1(
@@ -1162,9 +1162,9 @@ pub mod root {
                 Levels: root::gli::texture_size_type,
                 Swizzles: *const root::gli::texture_swizzles_type,
             ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
                 texture_texture1(
-                    &mut __bindgen_tmp,
+                    __bindgen_tmp.as_mut_ptr(),
                     Target,
                     Format,
                     Extent,
@@ -1173,7 +1173,7 @@ pub mod root {
                     Levels,
                     Swizzles,
                 );
-                __bindgen_tmp
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new2(
@@ -1188,9 +1188,9 @@ pub mod root {
                 MaxLevel: root::gli::texture_size_type,
                 Swizzles: *const root::gli::texture_swizzles_type,
             ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
                 texture_texture2(
-                    &mut __bindgen_tmp,
+                    __bindgen_tmp.as_mut_ptr(),
                     Texture,
                     Target,
                     Format,
@@ -1202,7 +1202,7 @@ pub mod root {
                     MaxLevel,
                     Swizzles,
                 );
-                __bindgen_tmp
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new3(
@@ -1211,9 +1211,15 @@ pub mod root {
                 Format: root::gli::texture_format_type,
                 Swizzles: *const root::gli::texture_swizzles_type,
             ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
-                texture_texture3(&mut __bindgen_tmp, Texture, Target, Format, Swizzles);
-                __bindgen_tmp
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
+                texture_texture3(
+                    __bindgen_tmp.as_mut_ptr(),
+                    Texture,
+                    Target,
+                    Format,
+                    Swizzles,
+                );
+                __bindgen_tmp.assume_init()
             }
         }
         #[doc = " Image, representation for a single texture level"]
@@ -1227,7 +1233,7 @@ pub mod root {
             pub Data: *mut root::gli::image_data_type,
             pub Size: root::gli::image_size_type,
         }
-        pub type image_size_type = usize;
+        pub type image_size_type = root::std::size_t;
         pub use self::super::super::root::gli::format as image_format_type;
         pub type image_extent_type = root::gli::storage_linear_extent_type;
         pub type image_data_type = root::gli::storage_linear_data_type;
@@ -1339,27 +1345,27 @@ pub mod root {
             }
             #[inline]
             pub unsafe fn new() -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
-                image_image(&mut __bindgen_tmp);
-                __bindgen_tmp
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
+                image_image(__bindgen_tmp.as_mut_ptr());
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new1(
                 Format: root::gli::image_format_type,
                 Extent: *const root::gli::image_extent_type,
             ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
-                image_image1(&mut __bindgen_tmp, Format, Extent);
-                __bindgen_tmp
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
+                image_image1(__bindgen_tmp.as_mut_ptr(), Format, Extent);
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new2(
                 Image: *const root::gli::image,
                 Format: root::gli::image_format_type,
             ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
-                image_image2(&mut __bindgen_tmp, Image, Format);
-                __bindgen_tmp
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
+                image_image2(__bindgen_tmp.as_mut_ptr(), Image, Format);
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new3(
@@ -1369,16 +1375,16 @@ pub mod root {
                 BaseFace: root::gli::image_size_type,
                 BaseLevel: root::gli::image_size_type,
             ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
                 image_image3(
-                    &mut __bindgen_tmp,
+                    __bindgen_tmp.as_mut_ptr(),
                     Texture,
                     Format,
                     BaseLayer,
                     BaseFace,
                     BaseLevel,
                 );
-                __bindgen_tmp
+                __bindgen_tmp.assume_init()
             }
         }
         #[doc = " 1d texture"]
@@ -1470,9 +1476,9 @@ pub mod root {
             }
             #[inline]
             pub unsafe fn new() -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
-                texture1d_texture1d(&mut __bindgen_tmp);
-                __bindgen_tmp
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
+                texture1d_texture1d(__bindgen_tmp.as_mut_ptr());
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new1(
@@ -1481,9 +1487,9 @@ pub mod root {
                 Levels: root::gli::texture_size_type,
                 Swizzles: *const root::gli::texture_swizzles_type,
             ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
-                texture1d_texture1d1(&mut __bindgen_tmp, Format, Extent, Levels, Swizzles);
-                __bindgen_tmp
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
+                texture1d_texture1d1(__bindgen_tmp.as_mut_ptr(), Format, Extent, Levels, Swizzles);
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new2(
@@ -1491,15 +1497,15 @@ pub mod root {
                 Extent: *const root::gli::texture1d_extent_type,
                 Swizzles: *const root::gli::texture_swizzles_type,
             ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
-                texture1d_texture1d2(&mut __bindgen_tmp, Format, Extent, Swizzles);
-                __bindgen_tmp
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
+                texture1d_texture1d2(__bindgen_tmp.as_mut_ptr(), Format, Extent, Swizzles);
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new3(Texture: *const root::gli::texture) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
-                texture1d_texture1d3(&mut __bindgen_tmp, Texture);
-                __bindgen_tmp
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
+                texture1d_texture1d3(__bindgen_tmp.as_mut_ptr(), Texture);
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new4(
@@ -1513,9 +1519,9 @@ pub mod root {
                 MaxLevel: root::gli::texture_size_type,
                 Swizzles: *const root::gli::texture_swizzles_type,
             ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
                 texture1d_texture1d4(
-                    &mut __bindgen_tmp,
+                    __bindgen_tmp.as_mut_ptr(),
                     Texture,
                     Format,
                     BaseLayer,
@@ -1526,7 +1532,7 @@ pub mod root {
                     MaxLevel,
                     Swizzles,
                 );
-                __bindgen_tmp
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new5(
@@ -1534,9 +1540,9 @@ pub mod root {
                 BaseLevel: root::gli::texture_size_type,
                 MaxLevel: root::gli::texture_size_type,
             ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
-                texture1d_texture1d5(&mut __bindgen_tmp, Texture, BaseLevel, MaxLevel);
-                __bindgen_tmp
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
+                texture1d_texture1d5(__bindgen_tmp.as_mut_ptr(), Texture, BaseLevel, MaxLevel);
+                __bindgen_tmp.assume_init()
             }
         }
         #[doc = " 1d array texture"]
@@ -1632,9 +1638,9 @@ pub mod root {
             }
             #[inline]
             pub unsafe fn new() -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
-                texture1d_array_texture1d_array(&mut __bindgen_tmp);
-                __bindgen_tmp
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
+                texture1d_array_texture1d_array(__bindgen_tmp.as_mut_ptr());
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new1(
@@ -1644,16 +1650,16 @@ pub mod root {
                 Levels: root::gli::texture_size_type,
                 Swizzles: *const root::gli::texture_swizzles_type,
             ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
                 texture1d_array_texture1d_array1(
-                    &mut __bindgen_tmp,
+                    __bindgen_tmp.as_mut_ptr(),
                     Format,
                     Extent,
                     Layers,
                     Levels,
                     Swizzles,
                 );
-                __bindgen_tmp
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new2(
@@ -1662,21 +1668,21 @@ pub mod root {
                 Layers: root::gli::texture_size_type,
                 Swizzles: *const root::gli::texture_swizzles_type,
             ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
                 texture1d_array_texture1d_array2(
-                    &mut __bindgen_tmp,
+                    __bindgen_tmp.as_mut_ptr(),
                     Format,
                     Extent,
                     Layers,
                     Swizzles,
                 );
-                __bindgen_tmp
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new3(Texture: *const root::gli::texture) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
-                texture1d_array_texture1d_array3(&mut __bindgen_tmp, Texture);
-                __bindgen_tmp
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
+                texture1d_array_texture1d_array3(__bindgen_tmp.as_mut_ptr(), Texture);
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new4(
@@ -1690,9 +1696,9 @@ pub mod root {
                 MaxLevel: root::gli::texture_size_type,
                 Swizzles: *const root::gli::texture_swizzles_type,
             ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
                 texture1d_array_texture1d_array4(
-                    &mut __bindgen_tmp,
+                    __bindgen_tmp.as_mut_ptr(),
                     Texture,
                     Format,
                     BaseLayer,
@@ -1703,7 +1709,7 @@ pub mod root {
                     MaxLevel,
                     Swizzles,
                 );
-                __bindgen_tmp
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new5(
@@ -1713,16 +1719,16 @@ pub mod root {
                 BaseLevel: root::gli::texture_size_type,
                 MaxLevel: root::gli::texture_size_type,
             ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
                 texture1d_array_texture1d_array5(
-                    &mut __bindgen_tmp,
+                    __bindgen_tmp.as_mut_ptr(),
                     Texture,
                     BaseLayer,
                     MaxLayer,
                     BaseLevel,
                     MaxLevel,
                 );
-                __bindgen_tmp
+                __bindgen_tmp.assume_init()
             }
         }
         #[doc = " 2d texture"]
@@ -1814,9 +1820,9 @@ pub mod root {
             }
             #[inline]
             pub unsafe fn new() -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
-                texture2d_texture2d(&mut __bindgen_tmp);
-                __bindgen_tmp
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
+                texture2d_texture2d(__bindgen_tmp.as_mut_ptr());
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new1(
@@ -1825,9 +1831,9 @@ pub mod root {
                 Levels: root::gli::texture_size_type,
                 Swizzles: *const root::gli::texture_swizzles_type,
             ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
-                texture2d_texture2d1(&mut __bindgen_tmp, Format, Extent, Levels, Swizzles);
-                __bindgen_tmp
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
+                texture2d_texture2d1(__bindgen_tmp.as_mut_ptr(), Format, Extent, Levels, Swizzles);
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new2(
@@ -1835,15 +1841,15 @@ pub mod root {
                 Extent: *const root::gli::texture2d_extent_type,
                 Swizzles: *const root::gli::texture_swizzles_type,
             ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
-                texture2d_texture2d2(&mut __bindgen_tmp, Format, Extent, Swizzles);
-                __bindgen_tmp
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
+                texture2d_texture2d2(__bindgen_tmp.as_mut_ptr(), Format, Extent, Swizzles);
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new3(Texture: *const root::gli::texture) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
-                texture2d_texture2d3(&mut __bindgen_tmp, Texture);
-                __bindgen_tmp
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
+                texture2d_texture2d3(__bindgen_tmp.as_mut_ptr(), Texture);
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new4(
@@ -1857,9 +1863,9 @@ pub mod root {
                 MaxLevel: root::gli::texture_size_type,
                 Swizzles: *const root::gli::texture_swizzles_type,
             ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
                 texture2d_texture2d4(
-                    &mut __bindgen_tmp,
+                    __bindgen_tmp.as_mut_ptr(),
                     Texture,
                     Format,
                     BaseLayer,
@@ -1870,7 +1876,7 @@ pub mod root {
                     MaxLevel,
                     Swizzles,
                 );
-                __bindgen_tmp
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new5(
@@ -1878,9 +1884,9 @@ pub mod root {
                 BaseLevel: root::gli::texture_size_type,
                 MaxLevel: root::gli::texture_size_type,
             ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
-                texture2d_texture2d5(&mut __bindgen_tmp, Texture, BaseLevel, MaxLevel);
-                __bindgen_tmp
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
+                texture2d_texture2d5(__bindgen_tmp.as_mut_ptr(), Texture, BaseLevel, MaxLevel);
+                __bindgen_tmp.assume_init()
             }
         }
         #[doc = " 2d array texture"]
@@ -1976,9 +1982,9 @@ pub mod root {
             }
             #[inline]
             pub unsafe fn new() -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
-                texture2d_array_texture2d_array(&mut __bindgen_tmp);
-                __bindgen_tmp
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
+                texture2d_array_texture2d_array(__bindgen_tmp.as_mut_ptr());
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new1(
@@ -1988,16 +1994,16 @@ pub mod root {
                 Levels: root::gli::texture_size_type,
                 Swizzles: *const root::gli::texture_swizzles_type,
             ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
                 texture2d_array_texture2d_array1(
-                    &mut __bindgen_tmp,
+                    __bindgen_tmp.as_mut_ptr(),
                     Format,
                     Extent,
                     Layers,
                     Levels,
                     Swizzles,
                 );
-                __bindgen_tmp
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new2(
@@ -2006,21 +2012,21 @@ pub mod root {
                 Layers: root::gli::texture_size_type,
                 Swizzles: *const root::gli::texture_swizzles_type,
             ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
                 texture2d_array_texture2d_array2(
-                    &mut __bindgen_tmp,
+                    __bindgen_tmp.as_mut_ptr(),
                     Format,
                     Extent,
                     Layers,
                     Swizzles,
                 );
-                __bindgen_tmp
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new3(Texture: *const root::gli::texture) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
-                texture2d_array_texture2d_array3(&mut __bindgen_tmp, Texture);
-                __bindgen_tmp
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
+                texture2d_array_texture2d_array3(__bindgen_tmp.as_mut_ptr(), Texture);
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new4(
@@ -2034,9 +2040,9 @@ pub mod root {
                 MaxLevel: root::gli::texture_size_type,
                 Swizzles: *const root::gli::texture_swizzles_type,
             ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
                 texture2d_array_texture2d_array4(
-                    &mut __bindgen_tmp,
+                    __bindgen_tmp.as_mut_ptr(),
                     Texture,
                     Format,
                     BaseLayer,
@@ -2047,7 +2053,7 @@ pub mod root {
                     MaxLevel,
                     Swizzles,
                 );
-                __bindgen_tmp
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new5(
@@ -2057,16 +2063,16 @@ pub mod root {
                 BaseLevel: root::gli::texture_size_type,
                 MaxLevel: root::gli::texture_size_type,
             ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
                 texture2d_array_texture2d_array5(
-                    &mut __bindgen_tmp,
+                    __bindgen_tmp.as_mut_ptr(),
                     Texture,
                     BaseLayer,
                     MaxLayer,
                     BaseLevel,
                     MaxLevel,
                 );
-                __bindgen_tmp
+                __bindgen_tmp.assume_init()
             }
         }
         #[doc = " 3d texture"]
@@ -2158,9 +2164,9 @@ pub mod root {
             }
             #[inline]
             pub unsafe fn new() -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
-                texture3d_texture3d(&mut __bindgen_tmp);
-                __bindgen_tmp
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
+                texture3d_texture3d(__bindgen_tmp.as_mut_ptr());
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new1(
@@ -2169,9 +2175,9 @@ pub mod root {
                 Levels: root::gli::texture_size_type,
                 Swizzles: *const root::gli::texture_swizzles_type,
             ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
-                texture3d_texture3d1(&mut __bindgen_tmp, Format, Extent, Levels, Swizzles);
-                __bindgen_tmp
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
+                texture3d_texture3d1(__bindgen_tmp.as_mut_ptr(), Format, Extent, Levels, Swizzles);
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new2(
@@ -2179,15 +2185,15 @@ pub mod root {
                 Extent: *const root::gli::texture3d_extent_type,
                 Swizzles: *const root::gli::texture_swizzles_type,
             ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
-                texture3d_texture3d2(&mut __bindgen_tmp, Format, Extent, Swizzles);
-                __bindgen_tmp
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
+                texture3d_texture3d2(__bindgen_tmp.as_mut_ptr(), Format, Extent, Swizzles);
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new3(Texture: *const root::gli::texture) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
-                texture3d_texture3d3(&mut __bindgen_tmp, Texture);
-                __bindgen_tmp
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
+                texture3d_texture3d3(__bindgen_tmp.as_mut_ptr(), Texture);
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new4(
@@ -2201,9 +2207,9 @@ pub mod root {
                 MaxLevel: root::gli::texture_size_type,
                 Swizzles: *const root::gli::texture_swizzles_type,
             ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
                 texture3d_texture3d4(
-                    &mut __bindgen_tmp,
+                    __bindgen_tmp.as_mut_ptr(),
                     Texture,
                     Format,
                     BaseLayer,
@@ -2214,7 +2220,7 @@ pub mod root {
                     MaxLevel,
                     Swizzles,
                 );
-                __bindgen_tmp
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new5(
@@ -2222,9 +2228,9 @@ pub mod root {
                 BaseLevel: root::gli::texture_size_type,
                 MaxLevel: root::gli::texture_size_type,
             ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
-                texture3d_texture3d5(&mut __bindgen_tmp, Texture, BaseLevel, MaxLevel);
-                __bindgen_tmp
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
+                texture3d_texture3d5(__bindgen_tmp.as_mut_ptr(), Texture, BaseLevel, MaxLevel);
+                __bindgen_tmp.assume_init()
             }
         }
         #[doc = " Cube map texture"]
@@ -2318,9 +2324,9 @@ pub mod root {
             }
             #[inline]
             pub unsafe fn new() -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
-                texture_cube_texture_cube(&mut __bindgen_tmp);
-                __bindgen_tmp
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
+                texture_cube_texture_cube(__bindgen_tmp.as_mut_ptr());
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new1(
@@ -2329,9 +2335,15 @@ pub mod root {
                 Levels: root::gli::texture_size_type,
                 Swizzles: *const root::gli::texture_swizzles_type,
             ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
-                texture_cube_texture_cube1(&mut __bindgen_tmp, Format, Extent, Levels, Swizzles);
-                __bindgen_tmp
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
+                texture_cube_texture_cube1(
+                    __bindgen_tmp.as_mut_ptr(),
+                    Format,
+                    Extent,
+                    Levels,
+                    Swizzles,
+                );
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new2(
@@ -2339,15 +2351,15 @@ pub mod root {
                 Extent: *const root::gli::texture_cube_extent_type,
                 Swizzles: *const root::gli::texture_swizzles_type,
             ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
-                texture_cube_texture_cube2(&mut __bindgen_tmp, Format, Extent, Swizzles);
-                __bindgen_tmp
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
+                texture_cube_texture_cube2(__bindgen_tmp.as_mut_ptr(), Format, Extent, Swizzles);
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new3(Texture: *const root::gli::texture) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
-                texture_cube_texture_cube3(&mut __bindgen_tmp, Texture);
-                __bindgen_tmp
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
+                texture_cube_texture_cube3(__bindgen_tmp.as_mut_ptr(), Texture);
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new4(
@@ -2361,9 +2373,9 @@ pub mod root {
                 MaxLevel: root::gli::texture_size_type,
                 Swizzles: *const root::gli::texture_swizzles_type,
             ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
                 texture_cube_texture_cube4(
-                    &mut __bindgen_tmp,
+                    __bindgen_tmp.as_mut_ptr(),
                     Texture,
                     Format,
                     BaseLayer,
@@ -2374,7 +2386,7 @@ pub mod root {
                     MaxLevel,
                     Swizzles,
                 );
-                __bindgen_tmp
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new5(
@@ -2384,16 +2396,16 @@ pub mod root {
                 BaseLevel: root::gli::texture_size_type,
                 MaxLevel: root::gli::texture_size_type,
             ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
                 texture_cube_texture_cube5(
-                    &mut __bindgen_tmp,
+                    __bindgen_tmp.as_mut_ptr(),
                     Texture,
                     BaseFace,
                     MaxFace,
                     BaseLevel,
                     MaxLevel,
                 );
-                __bindgen_tmp
+                __bindgen_tmp.assume_init()
             }
         }
         #[doc = " Cube map array texture"]
@@ -2491,9 +2503,9 @@ pub mod root {
             }
             #[inline]
             pub unsafe fn new() -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
-                texture_cube_array_texture_cube_array(&mut __bindgen_tmp);
-                __bindgen_tmp
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
+                texture_cube_array_texture_cube_array(__bindgen_tmp.as_mut_ptr());
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new1(
@@ -2503,16 +2515,16 @@ pub mod root {
                 Levels: root::gli::texture_size_type,
                 Swizzles: *const root::gli::texture_swizzles_type,
             ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
                 texture_cube_array_texture_cube_array1(
-                    &mut __bindgen_tmp,
+                    __bindgen_tmp.as_mut_ptr(),
                     Format,
                     Extent,
                     Layers,
                     Levels,
                     Swizzles,
                 );
-                __bindgen_tmp
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new2(
@@ -2521,21 +2533,21 @@ pub mod root {
                 Layers: root::gli::texture_size_type,
                 Swizzles: *const root::gli::texture_swizzles_type,
             ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
                 texture_cube_array_texture_cube_array2(
-                    &mut __bindgen_tmp,
+                    __bindgen_tmp.as_mut_ptr(),
                     Format,
                     Extent,
                     Layers,
                     Swizzles,
                 );
-                __bindgen_tmp
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new3(Texture: *const root::gli::texture) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
-                texture_cube_array_texture_cube_array3(&mut __bindgen_tmp, Texture);
-                __bindgen_tmp
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
+                texture_cube_array_texture_cube_array3(__bindgen_tmp.as_mut_ptr(), Texture);
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new4(
@@ -2549,9 +2561,9 @@ pub mod root {
                 MaxLevel: root::gli::texture_size_type,
                 Swizzles: *const root::gli::texture_swizzles_type,
             ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
                 texture_cube_array_texture_cube_array4(
-                    &mut __bindgen_tmp,
+                    __bindgen_tmp.as_mut_ptr(),
                     Texture,
                     Format,
                     BaseLayer,
@@ -2562,7 +2574,7 @@ pub mod root {
                     MaxLevel,
                     Swizzles,
                 );
-                __bindgen_tmp
+                __bindgen_tmp.assume_init()
             }
             #[inline]
             pub unsafe fn new5(
@@ -2574,9 +2586,9 @@ pub mod root {
                 BaseLevel: root::gli::texture_size_type,
                 MaxLevel: root::gli::texture_size_type,
             ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
                 texture_cube_array_texture_cube_array5(
-                    &mut __bindgen_tmp,
+                    __bindgen_tmp.as_mut_ptr(),
                     Texture,
                     BaseLayer,
                     MaxLayer,
@@ -2585,7 +2597,7 @@ pub mod root {
                     BaseLevel,
                     MaxLevel,
                 );
-                __bindgen_tmp
+                __bindgen_tmp.assume_init()
             }
         }
         #[doc = " Translation class to convert GLI enums into OpenGL values"]
@@ -3000,9 +3012,9 @@ pub mod root {
             }
             #[inline]
             pub unsafe fn new(Profile: root::gli::gl_profile) -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
-                gl_gl(&mut __bindgen_tmp, Profile);
-                __bindgen_tmp
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
+                gl_gl(__bindgen_tmp.as_mut_ptr(), Profile);
+                __bindgen_tmp.assume_init()
             }
         }
         #[doc = " Translation class to convert GLI enums into DirectX enums"]
@@ -3624,9 +3636,9 @@ pub mod root {
             }
             #[inline]
             pub unsafe fn new() -> Self {
-                let mut __bindgen_tmp = ::std::mem::uninitialized();
-                dx_dx(&mut __bindgen_tmp);
-                __bindgen_tmp
+                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
+                dx_dx(__bindgen_tmp.as_mut_ptr());
+                __bindgen_tmp.assume_init()
             }
         }
         extern "C" {
@@ -3738,6 +3750,7 @@ pub mod root {
     pub mod std {
         #[allow(unused_imports)]
         use self::super::super::root;
+        pub type size_t = u64;
         #[repr(C)]
         #[derive(Debug, Default)]
         pub struct allocator {
@@ -3808,6 +3821,7 @@ pub mod root {
         #[allow(unused_imports)]
         use self::super::super::root;
     }
+    pub type size_t = ::std::os::raw::c_ulong;
     pub mod glm {
         #[allow(unused_imports)]
         use self::super::super::root;
@@ -3949,25 +3963,25 @@ pub mod root {
                 pub fn texture_copy(
                     tex: *mut root::gli::texture,
                     src: *const root::gli::texture,
-                    src_layer: usize,
-                    src_face: usize,
-                    src_level: usize,
-                    dst_layer: usize,
-                    dst_face: usize,
-                    dst_level: usize,
+                    src_layer: root::size_t,
+                    src_face: root::size_t,
+                    src_level: root::size_t,
+                    dst_layer: root::size_t,
+                    dst_face: root::size_t,
+                    dst_level: root::size_t,
                 );
             }
             extern "C" {
                 pub fn texture_copy_subset(
                     tex: *mut root::gli::texture,
                     src: *const root::gli::texture,
-                    src_layer: usize,
-                    src_face: usize,
-                    src_level: usize,
+                    src_layer: root::size_t,
+                    src_face: root::size_t,
+                    src_level: root::size_t,
                     src_offset: *const root::gli::texture_extent_type,
-                    dst_layer: usize,
-                    dst_face: usize,
-                    dst_level: usize,
+                    dst_layer: root::size_t,
+                    dst_face: root::size_t,
+                    dst_level: root::size_t,
                     dst_offset: *const root::gli::texture_extent_type,
                     extent: *const root::gli::texture_extent_type,
                 );
@@ -4491,7 +4505,7 @@ pub mod root {
             extern "C" {
                 pub fn load_memory(
                     Data: *const ::std::os::raw::c_char,
-                    Size: usize,
+                    Size: root::std::size_t,
                 ) -> root::gli::texture;
             }
             extern "C" {
@@ -4500,7 +4514,7 @@ pub mod root {
             extern "C" {
                 pub fn load_dds_memory(
                     Data: *const ::std::os::raw::c_char,
-                    Size: usize,
+                    Size: root::std::size_t,
                 ) -> root::gli::texture;
             }
             extern "C" {
@@ -4509,7 +4523,7 @@ pub mod root {
             extern "C" {
                 pub fn load_kmg_memory(
                     Data: *const ::std::os::raw::c_char,
-                    Size: usize,
+                    Size: root::std::size_t,
                 ) -> root::gli::texture;
             }
             extern "C" {
@@ -4518,7 +4532,7 @@ pub mod root {
             extern "C" {
                 pub fn load_ktx_memory(
                     Data: *const ::std::os::raw::c_char,
-                    Size: usize,
+                    Size: root::std::size_t,
                 ) -> root::gli::texture;
             }
             extern "C" {

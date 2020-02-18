@@ -75,6 +75,7 @@ fn generate_bindings() {
     builder = builder
         .enable_cxx_namespaces()
         .disable_untagged_union()
+        //.new_type_alias("fsampler*")
         .derive_debug(true)
         .derive_copy(false)
         .derive_default(true)
